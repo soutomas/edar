@@ -53,19 +53,17 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> ft(src=1)
 #' mtcars |> ft("This is a footnote.",src=1)
 ft = function(d,fnote=NULL,ttl=NULL,src=NULL){
+  flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
+  on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
   if(!is.null(src) && src %in% c(1,2)) labsrc = label_src(src)
   out = d |>
     flextable::flextable() |>
     flextable::colformat_double(digits=3) |>
     # flextable::theme_vanilla() |>
-    flextable::padding(padding=3) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
-    flextable::add_footer_lines(fnote) |>
-    flextable::add_footer_lines(labsrc) |>
-    flextable::font(fontname="Calibri Light", part="all") |>
-    flextable::fontsize(size=10, part="all")
+    flextable::add_footer_lines(c(fnote,labsrc))
   return(out)
 }
 
