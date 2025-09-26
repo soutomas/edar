@@ -4,7 +4,7 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL)
+ft(d, fnote = NULL, ttl = NULL, src = NULL)
 }
 \arguments{
 \item{d}{A data frame}
@@ -12,6 +12,8 @@ ft(d, fnote = NULL, ttl = NULL)
 \item{fnote}{[optional] <chr> Footnote}
 
 \item{ttl}{[optional] <chr> Title}
+
+\item{src}{[optional] <int> Either 1 or 2 to add source label over 1 or 2 lines}
 }
 \value{
 A flextable object
@@ -21,4 +23,6 @@ Sugar function for default flextable output.
 }
 \examples{
 mtcars |> ft()
+mtcars |> ft(src=1)
+mtcars |> ft("This is a footnote.",src=1)
 }

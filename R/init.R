@@ -45,21 +45,27 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @param d A data frame
 #' @param fnote [optional] <chr> Footnote
 #' @param ttl [optional] <chr> Title
+#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
 #' @returns A flextable object
 #' @export
 #' @examples
 #' mtcars |> ft()
-ft = function(d,fnote=NULL,ttl=NULL){
+#' mtcars |> ft(src=1)
+#' mtcars |> ft("This is a footnote.",src=1)
+ft = function(d,fnote=NULL,ttl=NULL,src=NULL){
+  labsrc = NULL
+  if(!is.null(src) && src %in% c(1,2)) labsrc = label_src(src)
   out = d |>
     flextable::flextable() |>
     flextable::colformat_double(digits=3) |>
-    flextable::add_footer_lines(fnote) |>
-    flextable::add_header_lines(ttl) |>
-    flextable::font(fontname="Calibri Light", part="all") |>
-    flextable::fontsize(size=10, part="all") |>
-    flextable::padding(padding=3) |>
     # flextable::theme_vanilla() |>
-    flextable::autofit()
+    flextable::padding(padding=3) |>
+    flextable::autofit() |>
+    flextable::add_header_lines(ttl) |>
+    flextable::add_footer_lines(fnote) |>
+    flextable::add_footer_lines(labsrc) |>
+    flextable::font(fontname="Calibri Light", part="all") |>
+    flextable::fontsize(size=10, part="all")
   return(out)
 }
 
