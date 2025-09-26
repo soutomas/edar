@@ -6,8 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of edar is to provide some convenient functions for users on
-some common tasks during exploratory data analysis (EDA).
+The goal of edar is to provide some convenient functions for common
+tasks in exploratory data analysis.
 
 ## Installation
 
@@ -25,9 +25,9 @@ Commonly, we want to add a label indicating the source file in the
 output.
 
 ``` r
-library(tsr)
+library(edar)
 
-# Generate label of current file with run time 
+# Generate label of the current file with run time 
 lab1 = label_src(1)
 ```
 
