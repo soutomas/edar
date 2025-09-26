@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-09-25
+# Updated  : 2025-09-26
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -50,7 +50,7 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @examples
 #' mtcars |> ft()
 ft = function(d,fnote=NULL,ttl=NULL){
-  out = d %>%
+  out = d |>
     flextable::flextable() |>
     flextable::colformat_double(digits=3) |>
     flextable::add_footer_lines(fnote) |>

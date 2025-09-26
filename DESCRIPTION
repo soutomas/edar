@@ -14,12 +14,16 @@ RoxygenNote: 7.3.2
 Imports: 
     dplyr,
     flextable,
+    grDevices,
     janitor,
     kableExtra,
     knitr,
     magrittr,
     patchwork,
     rmarkdown,
+    rstudioapi,
+    scales,
     tidyr
 Suggests: 
-    ggplot2
+    ggplot2,
+    gt

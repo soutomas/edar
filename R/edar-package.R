@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom grDevices hcl
 #' @importFrom magrittr %>%
 #' @importFrom magrittr extract
 #' @importFrom magrittr extract2
