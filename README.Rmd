@@ -22,7 +22,7 @@ The goal of edar is to provide some convenient functions for common tasks in exp
 
 ## Citation
 
-Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.0.9000, <https://github.com/soutomas/edar>.
+Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.1, <https://github.com/soutomas/edar>.
 
 ```{r}
 citation("edar")

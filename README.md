@@ -13,15 +13,14 @@ tasks in exploratory data analysis.
 ## Citation
 
 Sou T (2025). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.0.9000,
-<https://github.com/soutomas/edar>.
+Analysis*. R package version 0.0.1, <https://github.com/soutomas/edar>.
 
 ``` r
 citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.0.9000,
+#>   Analysis_. R package version 0.0.1,
 #>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -30,7 +29,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.0.9000},
+#>     note = {R package version 0.0.1},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
@@ -54,7 +53,7 @@ output.
 library(edar)
 lab1 = label_src(1)
 lab1
-#> [1] "Source:C:/Users/tomas/OneDrive/WIP/Rdev/edar/README.Rmd\nRun: 2025-09-28 15:14:49 CEST"
+#> [1] "Source:C:/Users/tomas/OneDrive/WIP/Rdev/edar/README.Rmd\nRun: 2025-09-28 15:30:43 CEST"
 ```
 
 The source label can be directly added to a ggplot object.
