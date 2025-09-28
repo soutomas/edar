@@ -20,6 +20,14 @@ knitr::opts_chunk$set(
 
 The goal of edar is to provide some convenient functions for common tasks in exploratory data analysis.
 
+## Citation
+
+Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.0.9000, <https://github.com/soutomas/edar>.
+
+```{r}
+citation("edar")
+```
+
 ## Installation
 
 You can install the development version of edar from [GitHub](https://github.com/) with:
@@ -35,10 +43,50 @@ Commonly, we want to add a label indicating the source file in the output.
 
 ```{r example}
 library(edar)
-
-# Generate label of the current file with run time 
 lab1 = label_src(1)
+lab1
 ```
+The source label can be directly added to a ggplot object. 
+
+```{r fig.width=4, fig.height=3}
+library(ggplot2)
+p = ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() 
+p |> ggsrc()
+```
+
+Summary of continuous and categorical variables. 
+
+```{r}
+library(dplyr)
+
+# Data 
+dat = mtcars |> mutate(vs=factor(vs), am=factor(am))
+
+# Summary for continuous variables in a data frame. 
+dat |> summ_by()
+
+# Summary of selected variable after grouping. 
+dat |> summ_by("mpg",vs)
+dat |> summ_by("mpg",vs,am)
+
+# Summary for categorical variables in a data frame. 
+dat |> summ_cat()
+
+# Summary for selected categorical variable. 
+dat |> summ_cat("vs")
+```
+
+Results can be directly viewed in a flextable object easily. 
+
+```{r}
+# Show data frame in a flextable object. 
+dat |> summ_by("mpg",vs) |> ft()
+
+# Source label can be easily added. 
+dat |> summ_cat("am") |> ft(src=1)
+```
+
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
 
