@@ -8,8 +8,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "man/figures/README-"
+  # out.width = "100%"
 )
 ```
 
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/soutomas/edar/graph/badge.svg)](https://app.codecov.io/gh/soutomas/edar)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common tasks in exploratory data analysis.
@@ -41,25 +41,10 @@ pak::pak("soutomas/edar")
 
 ## Example
 
-Commonly, we want to add a label indicating the source file in the output. 
-
-```{r example}
-library(edar)
-lab1 = label_src(1)
-lab1
-```
-The source label can be directly added to a ggplot object. 
-
-```{r fig.width=4, fig.height=3}
-library(ggplot2)
-p = ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() 
-p |> ggsrc()
-```
-
-Summary of continuous and categorical variables. 
+Commonly, we want to generate a quick summary of variables in a dataset. 
 
 ```{r}
+library(edar)
 library(dplyr)
 
 # Data 
@@ -84,9 +69,28 @@ Results can be directly viewed in a flextable object easily.
 ```{r}
 # Show data frame in a flextable object. 
 dat |> summ_by("mpg",vs) |> ft()
+```
 
+
+```{r eval=FALSE}
 # Source label can be easily added. 
 dat |> summ_cat("am") |> ft(src=1)
+```
+
+It is often helpful to add a label in the output indicating the source file. 
+
+```{r eval=FALSE}
+# A label indicating the current source file can be easily generated. 
+lab1 = label_src(1)
+```
+
+The source label can be directly added to a ggplot object. 
+
+```{r fig.width=5, fig.height=4, eval=FALSE}
+library(ggplot2)
+p = ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() 
+p |> ggsrc()
 ```
 
 

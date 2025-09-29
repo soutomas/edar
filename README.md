@@ -6,8 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/soutomas/edar/graph/badge.svg)](https://app.codecov.io/gh/soutomas/edar)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common
@@ -23,7 +23,7 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.1,
+#>   Analysis_. R package version 0.0.0.9000,
 #>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -32,7 +32,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.1},
+#>     note = {R package version 0.0.0.9000},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
@@ -49,31 +49,10 @@ pak::pak("soutomas/edar")
 
 ## Example
 
-Commonly, we want to add a label indicating the source file in the
-output.
+Commonly, we want to generate a quick summary of variables in a dataset.
 
 ``` r
 library(edar)
-lab1 = label_src(1)
-lab1
-#> [1] "Source:C:/Users/tomas/OneDrive/WIP/Rdev/edar/README.Rmd\nRun: 2025-09-29 00:29:04 CEST"
-```
-
-The source label can be directly added to a ggplot object.
-
-``` r
-library(ggplot2)
-#> Warning: package 'ggplot2' was built under R version 4.4.3
-p = ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() 
-p |> ggsrc()
-```
-
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
-
-Summary of continuous and categorical variables.
-
-``` r
 library(dplyr)
 #> Warning: package 'dplyr' was built under R version 4.4.3
 #> 
@@ -153,33 +132,37 @@ dat |> summ_by("mpg",vs) |> ft()
 #> Adding missing grouping variables: `vs`
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="1213" />
 
 ``` r
-
 # Source label can be easily added. 
 dat |> summ_cat("am") |> ft(src=1)
-#> Dropped: mpg cyl disp hp drat wt qsec gear carb
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-2.png" width="100%" />
+It is often helpful to add a label in the output indicating the source
+file.
+
+``` r
+# A label indicating the current source file can be easily generated. 
+lab1 = label_src(1)
+```
+
+The source label can be directly added to a ggplot object.
+
+``` r
+library(ggplot2)
+p = ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() 
+p |> ggsrc()
+```
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
-
 <!-- ```{r cars} -->
-
 <!-- summary(cars) -->
-
 <!-- ``` -->
-
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. -->
-
 <!-- You can also embed plots, for example: -->
-
 <!-- ```{r pressure, echo = FALSE} -->
-
 <!-- plot(pressure) -->
-
 <!-- ``` -->
-
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
