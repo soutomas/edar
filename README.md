@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
+![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -53,19 +54,9 @@ Commonly, we want to generate a quick summary of variables in a dataset.
 
 ``` r
 library(edar)
-library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.4.3
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 
 # Data 
-dat = mtcars |> mutate(vs=factor(vs), am=factor(am))
+dat = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 
 # Summary for continuous variables in a data frame. 
 dat |> summ_by()
@@ -134,11 +125,6 @@ dat |> summ_by("mpg",vs) |> ft()
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="1213" />
 
-``` r
-# Source label can be easily added. 
-dat |> summ_cat("am") |> ft(src=1)
-```
-
 It is often helpful to add a label in the output indicating the source
 file.
 
@@ -147,9 +133,13 @@ file.
 lab1 = label_src(1)
 ```
 
-The source label can be directly added to a ggplot object.
+``` r
+# A source label can be directly added to the flextable output. 
+dat |> summ_cat("am") |> ft(src=1)
+```
 
 ``` r
+# A source label can be easily added to a ggplot object. 
 library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) +
   geom_point() 
