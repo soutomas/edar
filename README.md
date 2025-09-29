@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/soutomas/edar/graph/badge.svg)](https://app.codecov.io/gh/soutomas/edar)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common
@@ -53,7 +56,7 @@ output.
 library(edar)
 lab1 = label_src(1)
 lab1
-#> [1] "Source:C:/Users/tomas/OneDrive/WIP/Rdev/edar/README.Rmd\nRun: 2025-09-28 15:30:43 CEST"
+#> [1] "Source:C:/Users/tomas/OneDrive/WIP/Rdev/edar/README.Rmd\nRun: 2025-09-29 00:29:04 CEST"
 ```
 
 The source label can be directly added to a ggplot object.

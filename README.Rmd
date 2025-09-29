@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # edar
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/soutomas/edar/graph/badge.svg)](https://app.codecov.io/gh/soutomas/edar)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common tasks in exploratory data analysis.
