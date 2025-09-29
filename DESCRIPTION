@@ -2,8 +2,7 @@ Package: edar
 Type: Package
 Title: Convenient Functions for Exploratory Data Analysis
 Version: 0.0.1.9000
-Date: 2025-09-28
-Description: Convenient functions for commone tasks in exploratory data analysis
+Description: Convenient functions for commone tasks in exploratory data analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -28,3 +27,5 @@ Imports:
 Suggests: 
     ggplot2,
     gt
+Depends: 
+    R (>= 4.2.0)
