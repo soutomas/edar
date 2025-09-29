@@ -21,10 +21,12 @@ Analysis*. R package version 0.0.1, <https://github.com/soutomas/edar>.
 
 ``` r
 citation("edar")
+#> Warning in citation("edar"): could not determine year for 'edar' from package
+#> DESCRIPTION file
 #> To cite package 'edar' in publications use:
 #> 
-#>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.0.9000,
+#>   Sou T (????). _edar: Convenient Functions for Exploratory Data
+#>   Analysis_. R package version 0.0.2,
 #>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -32,8 +34,7 @@ citation("edar")
 #>   @Manual{,
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
-#>     year = {2025},
-#>     note = {R package version 0.0.0.9000},
+#>     note = {R package version 0.0.2},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
@@ -123,7 +124,7 @@ dat |> summ_by("mpg",vs) |> ft()
 #> Adding missing grouping variables: `vs`
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="1213" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="1114" />
 
 It is often helpful to add a label in the output indicating the source
 file.
@@ -147,12 +148,21 @@ p |> ggsrc()
 ```
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
+
 <!-- ```{r cars} -->
+
 <!-- summary(cars) -->
+
 <!-- ``` -->
+
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. -->
+
 <!-- You can also embed plots, for example: -->
+
 <!-- ```{r pressure, echo = FALSE} -->
+
 <!-- plot(pressure) -->
+
 <!-- ``` -->
+
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->

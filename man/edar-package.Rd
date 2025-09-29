@@ -6,7 +6,7 @@
 \alias{edar-package}
 \title{edar: Convenient Functions for Exploratory Data Analysis}
 \description{
-Convenient functions for commone tasks in exploratory data analysis
+Convenient functions for commone tasks in exploratory data analysis.
 }
 \seealso{
 Useful links:
@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com}
+\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} [copyright holder]
 
 }
 \keyword{internal}

@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-09-26
+# Updated  : 2025-09-29
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -21,6 +21,11 @@
 #' @param tag [optional] <chr> Tag to the filename
 #' @param des Destination folder
 #' @export
+#' @examples
+#' \dontrun{
+#' # Copy a file to home directory
+#' fc("myfile.R",des="~")
+#' }
 fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
   # Copy
   fname = basename(fpath)
@@ -82,6 +87,13 @@ ft = function(d,fnote=NULL,ttl=NULL,src=NULL){
 #' @param omit [optional] <chr> Text to omit from the label
 #' @returns A ggplot object with the added label
 #' @export
+#' @examples
+#' \dontrun{
+#' # A source label can be easily added to a ggplot object.
+#' library(ggplot2)
+#' p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
+#' p |> ggsrc()
+#' }
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
   lab1 = label_src(1) |> gsub(omit,"",x=_)
   lab2 = label_src(2) |> gsub(omit,"",x=_)

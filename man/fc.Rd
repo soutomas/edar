@@ -16,3 +16,9 @@ fc(fpath, tag = "-", des = "/home/souto1/Documents/")
 \description{
 Copy file to destination and rename if desired.
 }
+\examples{
+\dontrun{
+# Copy a file to home directory
+fc("myfile.R",des="~")
+}
+}
