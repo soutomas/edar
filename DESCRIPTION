@@ -20,7 +20,7 @@ Imports:
     knitr,
     magrittr,
     patchwork,
-    rmarkdown,
+    rlang,
     rstudioapi,
     scales,
     tidyr

@@ -5,3 +5,4 @@
 ^\.github$
 ^R/exp.R$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
