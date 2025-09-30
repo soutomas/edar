@@ -205,7 +205,7 @@ summ_by = function(d,cols=NULL,...,xname=""){
     tidyr::pivot_longer(dplyr::everything(),names_to="name") |>
     dplyr::group_by(name)
   if(is.null(gps)){
-    catv = d |> dplyr::select(where(~!is.numeric(.x)))
+    catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
     cat("Dropped:",names(catv),"\n")
   }
   if(is.null(gps) & xname=="") xname = paste0(names(d.),"_",collapse="|")
@@ -247,10 +247,10 @@ summ_by = function(d,cols=NULL,...,xname=""){
 #' sleep |> summ_cat(1)
 #' sleep |> summ_cat("group")
 summ_cat = function(d,pos=NULL){
-  x = d |> dplyr::select(where(is.numeric))
+  x = d |> dplyr::select(dplyr::where(is.numeric))
   cat("Dropped:",names(x),"\n")
   out = d |>
-    dplyr::select(-where(is.numeric)) |>
+    dplyr::select(-dplyr::where(is.numeric)) |>
     lapply(janitor::tabyl)
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
