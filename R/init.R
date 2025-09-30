@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-09-29
+# Updated  : 2025-09-30
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -103,7 +103,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
       caption = lab3,
-      theme = theme(plot.caption = element_text(colour=col,size=size))
+      theme = ggplot2::theme(plot.caption = ggplot2::element_text()(colour=col,size=size))
     )
   return(out)
 }
@@ -201,8 +201,8 @@ summ_by = function(d,cols=NULL,...,xname=""){
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
   if(is.null(gps)) d. = d |>
-    dplyr::select(where(is.numeric)) |>
-    tidyr::pivot_longer(everything()) |>
+    dplyr::select(dplyr::where(is.numeric)) |>
+    tidyr::pivot_longer(dplyr::everything(),names_to="name") |>
     dplyr::group_by(name)
   if(is.null(gps)){
     catv = d |> dplyr::select(where(~!is.numeric(.x)))
@@ -210,7 +210,7 @@ summ_by = function(d,cols=NULL,...,xname=""){
   }
   if(is.null(gps) & xname=="") xname = paste0(names(d.),"_",collapse="|")
   if(!is.null(gps)) gps = gps |> dplyr::select(-.rows) |> names()
-  x = d. |> dplyr::select(where(is.numeric)) |> ncol() - length(gps)
+  x = d. |> dplyr::select(dplyr::where(is.numeric)) |> ncol() - length(gps)
   if(x==1 & xname=="") xname = paste0(names(d.),"_",collapse="|")
   out = d. |>
     dplyr::summarise(
