@@ -6,7 +6,7 @@
 \alias{edar-package}
 \title{edar: Convenient Functions for Exploratory Data Analysis}
 \description{
-Convenient functions for commone tasks in exploratory data analysis.
+Convenient functions for common tasks in exploratory data analysis.
 }
 \seealso{
 Useful links:

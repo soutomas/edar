@@ -3,4 +3,5 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^\.github$
+^R/exp.R$
 ^cran-comments\.md$
