@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-09-30
+# Updated  : 2025-10-03
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -251,7 +251,8 @@ summ_cat = function(d,pos=NULL){
   cat("Dropped:",names(x),"\n")
   out = d |>
     dplyr::select(-dplyr::where(is.numeric)) |>
-    lapply(janitor::tabyl)
+    lapply(janitor::tabyl) |>
+    lapply(janitor::adorn_totals)
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
