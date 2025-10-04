@@ -120,17 +120,14 @@ Results can be directly viewed in a flextable object easily.
 ``` r
 # Show data frame in a flextable object. 
 dat |> summ_by("mpg",vs) |> ft()
-#> Adding missing grouping variables: `vs`
 ```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="1114" />
 
 It is often helpful to add a label in the output indicating the source
 file.
 
 ``` r
 # A label indicating the current source file can be easily generated. 
-lab1 = label_src(1)
+lab = label_src(1)
 ```
 
 ``` r
@@ -141,8 +138,7 @@ dat |> summ_cat("am") |> ft(src=1)
 ``` r
 # A source label can be easily added to a ggplot object. 
 library(ggplot2)
-p = ggplot(mtcars, aes(mpg, wt)) +
-  geom_point() 
+p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
 ```
 
