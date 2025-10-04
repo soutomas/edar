@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-03
+# Updated  : 2025-10-04
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -103,7 +103,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
       caption = lab3,
-      theme = ggplot2::theme(plot.caption = ggplot2::element_text()(colour=col,size=size))
+      theme = ggplot2::theme(plot.caption = ggplot2::element_text(colour=col,size=size))
     )
   return(out)
 }
