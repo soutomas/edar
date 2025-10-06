@@ -1,7 +1,7 @@
 Package: edar
 Type: Package
 Title: Convenient Functions for Exploratory Data Analysis
-Version: 0.0.2
+Version: 0.0.2.9000
 Description: Convenient functions for common tasks in exploratory data analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
