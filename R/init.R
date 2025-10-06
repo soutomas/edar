@@ -113,7 +113,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #'
 #' Set colour scales for the desired number of colours.
 #'
-#' @param n <num> Number of colours to output
+#' @param n <int> Number of colours to output
 #' @param show <lgl> `TRUE` to show the output colours
 #' @returns Hex code of colours that can be used for plotting
 #' @export
@@ -152,23 +152,26 @@ kbl2 = function(d,fnote=NULL,cap=NULL){
 #' Generate a source label with file path and run time.
 #' In interactive sessions, this function uses `rstudioapi` to get the file path.
 #' It is designed to work in a script file in RStudio when running interactively.
-#' It will return empty when running in the console.
+#' It will return empty if run in the console.
 #'
-#' @param span <num> Number of lines: either 1 or 2
+#' @param span <int> Number of lines: either 1 or 2
 #' @param omit [optional] <chr> Text to omit from the label
+#' @param tz <lgl> `FALSE` to exclude time stamp
 #' @returns A label with source file path and run time
 #' @export
 #' @examples
 #' label_src(1)
-label_src = function(span=2,omit=""){
+#' label_src(tz=FALSE)
+label_src = function(span=2,omit="",tz=TRUE){
   loc_src = getwd()
   if(interactive()) loc_src = rstudioapi::getActiveDocumentContext()$path |> dirname()
   fname_src = knitr::current_input() |> gsub(".rmarkdown",".qmd",x=_)
   if(interactive()) fname_src = rstudioapi::getActiveDocumentContext()$path |> basename()
   fpath_src  = file.path(loc_src,fname_src)
-  tz = paste0("Run: ",format(Sys.time(),usetz=T))
-  lab1 = paste0("Source:",fpath_src,"\n",tz)
-  lab2 = paste0("Source:",loc_src,"/\n",fname_src,"\n",tz)
+  labtz = paste0("\nRun: ",format(Sys.time(),usetz=T))
+  if(!tz) labtz = NULL
+  lab1 = paste0("Source:",fpath_src,labtz)
+  lab2 = paste0("Source:",loc_src,"/\n",fname_src,labtz)
   out = lab1
   if(span==2) out = lab2
   out = out |> gsub(omit,"",x=_)
@@ -181,7 +184,7 @@ label_src = function(span=2,omit=""){
 #' Generate a time stamp label of the current time.
 #'
 #' @param omit [optional] <chr> Text to omit from the label
-#' @return A label of time stamp
+#' @returns A label with time stamp
 #' @export
 #' @examples
 #' label_tz()

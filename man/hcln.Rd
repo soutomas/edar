@@ -7,7 +7,7 @@
 hcln(n, show = FALSE)
 }
 \arguments{
-\item{n}{<num> Number of colours to output}
+\item{n}{<int> Number of colours to output}
 
 \item{show}{<lgl> `TRUE` to show the output colours}
 }
