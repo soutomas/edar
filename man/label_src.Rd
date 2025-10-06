@@ -4,14 +4,12 @@
 \alias{label_src}
 \title{Generate source label}
 \usage{
-label_src(span = 2, omit = "", tzonly = FALSE)
+label_src(span = 2, omit = "")
 }
 \arguments{
 \item{span}{<num> Number of lines: either 1 or 2}
 
 \item{omit}{[optional] <chr> Text to omit from the label}
-
-\item{tzonly}{[optional] <lgl> `TRUE`: Time stamp label only without source file path}
 }
 \value{
 A label with source file path and run time
@@ -24,5 +22,4 @@ It will return empty when running in the console.
 }
 \examples{
 label_src(1)
-label_src(tzonly=TRUE)
 }

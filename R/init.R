@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-05
+# Updated  : 2025-10-06
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -156,13 +156,11 @@ kbl2 = function(d,fnote=NULL,cap=NULL){
 #'
 #' @param span <num> Number of lines: either 1 or 2
 #' @param omit [optional] <chr> Text to omit from the label
-#' @param tzonly [optional] <lgl> `TRUE`: Time stamp label only without source file path
 #' @returns A label with source file path and run time
 #' @export
 #' @examples
 #' label_src(1)
-#' label_src(tzonly=TRUE)
-label_src = function(span=2,omit="",tzonly=FALSE){
+label_src = function(span=2,omit=""){
   loc_src = getwd()
   if(interactive()) loc_src = rstudioapi::getActiveDocumentContext()$path |> dirname()
   fname_src = knitr::current_input() |> gsub(".rmarkdown",".qmd",x=_)
@@ -173,8 +171,22 @@ label_src = function(span=2,omit="",tzonly=FALSE){
   lab2 = paste0("Source:",loc_src,"/\n",fname_src,"\n",tz)
   out = lab1
   if(span==2) out = lab2
-  if(tzonly) out = tz
   out = out |> gsub(omit,"",x=_)
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Generate time stamp label
+#'
+#' Generate a time stamp label of the current time.
+#'
+#' @param omit [optional] <chr> Text to omit from the label
+#' @return A label of time stamp
+#' @export
+#' @examples
+#' label_tz()
+label_tz = function(omit=""){
+  out= paste0("Run: ",format(Sys.time(),usetz=T)) |> gsub(omit,"",x=_)
   return(out)
 }
 
