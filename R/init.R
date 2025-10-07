@@ -67,7 +67,7 @@ ft = function(d,fnote=NULL,ttl=NULL,src=NULL,sig=3,dig=3){
   labsrc = NULL
   if(!is.null(src) && src %in% c(1,2)) labsrc = label_src(src)
   out = d |>
-    dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
@@ -149,7 +149,7 @@ hcln = function(n,show=FALSE){
 #' mtcars |> kbl2(sig=2,dig=1)
 kbl2 = function(d,fnote=NULL,cap=NULL,sig=3,dig=3){
   d |>
-    dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
     kableExtra::footnote(fnote,general_title="")
