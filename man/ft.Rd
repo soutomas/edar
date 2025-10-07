@@ -26,9 +26,9 @@ A flextable object
 Sugar function for default flextable output.
 }
 \examples{
+iris |> ft()
 mtcars |> ft()
-mtcars |> ft(sig=1)
-mtcars |> ft(sig=1,dig=1)
 mtcars |> ft(src=1)
-mtcars |> ft("This is a footnote.",src=1)
+mtcars |> ft(sig=1)
+mtcars |> ft(sig=2,dig=1)
 }

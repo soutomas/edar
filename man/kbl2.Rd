@@ -24,5 +24,7 @@ A kable object
 Sugar function for default kable output.
 }
 \examples{
+iris |> kbl2()
 mtcars |> kbl2()
+mtcars |> kbl2(sig=2,dig=1)
 }
