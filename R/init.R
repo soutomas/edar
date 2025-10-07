@@ -51,20 +51,25 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @param fnote [optional] <chr> Footnote
 #' @param ttl [optional] <chr> Title
 #' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
+#' @param sig <int> Number of significant digits to compute
+#' @param dig <int> Number of decimal places to display
 #' @returns A flextable object
 #' @export
 #' @examples
 #' mtcars |> ft()
+#' mtcars |> ft(sig=1)
+#' mtcars |> ft(sig=1,dig=1)
 #' mtcars |> ft(src=1)
 #' mtcars |> ft("This is a footnote.",src=1)
-ft = function(d,fnote=NULL,ttl=NULL,src=NULL){
+ft = function(d,fnote=NULL,ttl=NULL,src=NULL,sig=3,dig=3){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
   if(!is.null(src) && src %in% c(1,2)) labsrc = label_src(src)
   out = d |>
+    signif(sig) |>
     flextable::flextable() |>
-    flextable::colformat_double(digits=3) |>
+    flextable::colformat_double(digits=dig) |>
     # flextable::theme_vanilla() |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
@@ -135,13 +140,16 @@ hcln = function(n,show=FALSE){
 #' @param d A data frame
 #' @param fnote [optional] <chr> Footnote
 #' @param cap [optional] <chr> Caption
+#' @param sig <int> Number of significant digits to compute
+#' @param dig <int> Number of decimal places to display
 #' @returns A kable object
 #' @export
 #' @examples
 #' mtcars |> kbl2()
-kbl2 = function(d,fnote=NULL,cap=NULL){
-  d %>%
-    kableExtra::kbl(caption=cap,digits=3) |>
+kbl2 = function(d,fnote=NULL,cap=NULL,sig=3,dig=3){
+  d |>
+    signif(sig) |>
+    kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
     kableExtra::footnote(fnote,general_title="")
 }

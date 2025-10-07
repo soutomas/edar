@@ -4,7 +4,7 @@
 \alias{kbl2}
 \title{kable wrapper}
 \usage{
-kbl2(d, fnote = NULL, cap = NULL)
+kbl2(d, fnote = NULL, cap = NULL, sig = 3, dig = 3)
 }
 \arguments{
 \item{d}{A data frame}
@@ -12,6 +12,10 @@ kbl2(d, fnote = NULL, cap = NULL)
 \item{fnote}{[optional] <chr> Footnote}
 
 \item{cap}{[optional] <chr> Caption}
+
+\item{sig}{<int> Number of significant digits to compute}
+
+\item{dig}{<int> Number of decimal places to display}
 }
 \value{
 A kable object

@@ -4,7 +4,7 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL, src = NULL)
+ft(d, fnote = NULL, ttl = NULL, src = NULL, sig = 3, dig = 3)
 }
 \arguments{
 \item{d}{A data frame}
@@ -14,6 +14,10 @@ ft(d, fnote = NULL, ttl = NULL, src = NULL)
 \item{ttl}{[optional] <chr> Title}
 
 \item{src}{[optional] <int> Either 1 or 2 to add source label over 1 or 2 lines}
+
+\item{sig}{<int> Number of significant digits to compute}
+
+\item{dig}{<int> Number of decimal places to display}
 }
 \value{
 A flextable object
@@ -23,6 +27,8 @@ Sugar function for default flextable output.
 }
 \examples{
 mtcars |> ft()
+mtcars |> ft(sig=1)
+mtcars |> ft(sig=1,dig=1)
 mtcars |> ft(src=1)
 mtcars |> ft("This is a footnote.",src=1)
 }
