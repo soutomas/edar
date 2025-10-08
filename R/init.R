@@ -58,14 +58,17 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @examples
 #' mtcars |> head() |> ft()
 #' mtcars |> head() |> ft(src=1)
+#' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
 ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=3,dig=3){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
+  labsrc = NULL
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src))
+  if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
-  if(src %in% c(1,2)) lab = paste0(label_src(src))
-  if(!is.null(fnote)) lab = paste0(fnote,"\n",label_src(src))
+  if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     flextable::flextable() |>
@@ -147,12 +150,15 @@ hcln = function(n,show=FALSE){
 #' @examples
 #' mtcars |> head() |> kb()
 #' mtcars |> head() |> kb(src=1)
+#' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
 kb = function(d,fnote=NULL,cap=NULL,src=0,sig=3,dig=3){
+  labsrc = NULL
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src))
+  if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
-  if(src %in% c(1,2)) lab = paste0(label_src(src))
-  if(!is.null(fnote)) lab = paste0(fnote,"\n",label_src(src))
+  if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>

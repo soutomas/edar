@@ -28,6 +28,7 @@ Sugar function for default flextable output.
 \examples{
 mtcars |> head() |> ft()
 mtcars |> head() |> ft(src=1)
+mtcars |> head() |> ft("Footnote")
 mtcars |> head() |> ft("Footnote",src=1)
 mtcars |> head() |> ft(sig=2,dig=1)
 }

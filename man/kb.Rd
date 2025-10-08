@@ -28,6 +28,7 @@ Sugar function for default kable output.
 \examples{
 mtcars |> head() |> kb()
 mtcars |> head() |> kb(src=1)
+mtcars |> head() |> kb("Footnote")
 mtcars |> head() |> kb("Footnote",src=1)
 mtcars |> head() |> kb(sig=2,dig=1)
 }
