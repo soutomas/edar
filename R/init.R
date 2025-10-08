@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-07
+# Updated  : 2025-10-08
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -61,18 +61,18 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> ft(src=1)
 #' mtcars |> ft(sig=1)
 #' mtcars |> ft(sig=2,dig=1)
-ft = function(d,fnote=NULL,ttl=NULL,src=NULL,sig=3,dig=3){
+ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=3,dig=3){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
-  if(!is.null(src) && src %in% c(1,2)) labsrc = label_src(src)
+  if(src %in% c(1,2)) labsrc = label_src(src)
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
-    flextable::add_footer_lines(c(fnote,labsrc))
+    flextable::add_footer_lines(paste0(fnote,"\n",labsrc))
   return(out)
 }
 
@@ -139,20 +139,25 @@ hcln = function(n,show=FALSE){
 #' @param d A data frame
 #' @param fnote [optional] <chr> Footnote
 #' @param cap [optional] <chr> Caption
+#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
 #' @param sig <int> Number of significant digits to compute
 #' @param dig <int> Number of decimal places to display
 #' @returns A kable object
 #' @export
 #' @examples
 #' iris |> kbl2()
+#' iris |> kbl2(src=1)
 #' mtcars |> kbl2()
+#' mtcars |> kbl2(sig=1)
 #' mtcars |> kbl2(sig=2,dig=1)
-kbl2 = function(d,fnote=NULL,cap=NULL,sig=3,dig=3){
+kbl2 = function(d,fnote=NULL,cap=NULL,src=0,sig=3,dig=3){
+  labsrc = NULL
+  if(src %in% c(1,2)) labsrc = label_src(src)
   d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
-    kableExtra::footnote(fnote,general_title="")
+    kableExtra::footnote(paste0(fnote,"\n",labsrc),general_title="")
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

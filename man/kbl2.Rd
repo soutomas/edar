@@ -4,7 +4,7 @@
 \alias{kbl2}
 \title{kable wrapper}
 \usage{
-kbl2(d, fnote = NULL, cap = NULL, sig = 3, dig = 3)
+kbl2(d, fnote = NULL, cap = NULL, src = 0, sig = 3, dig = 3)
 }
 \arguments{
 \item{d}{A data frame}
@@ -12,6 +12,8 @@ kbl2(d, fnote = NULL, cap = NULL, sig = 3, dig = 3)
 \item{fnote}{[optional] <chr> Footnote}
 
 \item{cap}{[optional] <chr> Caption}
+
+\item{src}{[optional] <int> Either 1 or 2 to add source label over 1 or 2 lines}
 
 \item{sig}{<int> Number of significant digits to compute}
 
@@ -25,6 +27,8 @@ Sugar function for default kable output.
 }
 \examples{
 iris |> kbl2()
+iris |> kbl2(src=1)
 mtcars |> kbl2()
+mtcars |> kbl2(sig=1)
 mtcars |> kbl2(sig=2,dig=1)
 }
