@@ -56,23 +56,23 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @returns A flextable object
 #' @export
 #' @examples
-#' iris |> ft()
-#' mtcars |> ft()
-#' mtcars |> ft(src=1)
-#' mtcars |> ft(sig=1)
-#' mtcars |> ft(sig=2,dig=1)
+#' mtcars |> head() |> ft()
+#' mtcars |> head() |> ft(src=1)
+#' mtcars |> head() |> ft("Footnote",src=1)
+#' mtcars |> head() |> ft(sig=2,dig=1)
 ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=3,dig=3){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
-  labsrc = NULL
-  if(src %in% c(1,2)) labsrc = label_src(src)
+  lab = fnote
+  if(src %in% c(1,2)) lab = paste0(label_src(src))
+  if(!is.null(fnote)) lab = paste0(fnote,"\n",label_src(src))
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
-    flextable::add_footer_lines(paste0(fnote,"\n",labsrc))
+    flextable::add_footer_lines(lab)
   return(out)
 }
 
@@ -145,19 +145,19 @@ hcln = function(n,show=FALSE){
 #' @returns A kable object
 #' @export
 #' @examples
-#' iris |> kbl2()
-#' iris |> kbl2(src=1)
-#' mtcars |> kbl2()
-#' mtcars |> kbl2(sig=1)
-#' mtcars |> kbl2(sig=2,dig=1)
-kbl2 = function(d,fnote=NULL,cap=NULL,src=0,sig=3,dig=3){
-  labsrc = NULL
-  if(src %in% c(1,2)) labsrc = label_src(src)
+#' mtcars |> head() |> kb()
+#' mtcars |> head() |> kb(src=1)
+#' mtcars |> head() |> kb("Footnote",src=1)
+#' mtcars |> head() |> kb(sig=2,dig=1)
+kb = function(d,fnote=NULL,cap=NULL,src=0,sig=3,dig=3){
+  lab = fnote
+  if(src %in% c(1,2)) lab = paste0(label_src(src))
+  if(!is.null(fnote)) lab = paste0(fnote,"\n",label_src(src))
   d |>
     dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
-    kableExtra::footnote(paste0(fnote,"\n",labsrc),general_title="")
+    kableExtra::footnote(lab,general_title="")
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
