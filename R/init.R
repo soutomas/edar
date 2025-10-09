@@ -224,7 +224,6 @@ label_tz = function(omit=""){
 #' @param ... [optional] <unquoted names> Columns to group by
 #' @param pct <num> A vector of two indicating the percentiles to compute
 #' @param xname [optional] <chr> Characters to omit in output column names
-#'
 #' @returns A data frame of summarised variables
 #' @export
 #' @examples
@@ -273,10 +272,8 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
       )
     ) |>
     dplyr::rename_with(~gsub(xname,"",.x)) |>
-    dplyr::rename(
-      !!paste0("P",pct[1]*100) := Plo,
-      !!paste0("P",pct[2]*100) := Pup,
-    )
+    dplyr::rename_with(~gsub("Plo",paste0("P",pct[1]*100), .x), dplyr::contains("Plo")) |>
+    dplyr::rename_with(~gsub("Pup",paste0("P",pct[2]*100), .x), dplyr::contains("Pup"))
   return(out)
 }
 
