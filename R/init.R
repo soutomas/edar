@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-08
+# Updated  : 2025-10-09
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -222,11 +222,14 @@ label_tz = function(omit=""){
 #' @param d A data frame
 #' @param cols [optional] <chr> A vector of column names to select
 #' @param ... [optional] <unquoted names> Columns to group by
+#' @param pct <num> A vector of two indicating the percentiles to compute
 #' @param xname [optional] <chr> Characters to omit in output column names
+#'
 #' @returns A data frame of summarised variables
 #' @export
 #' @examples
 #' mtcars |> summ_by()
+#' mtcars |> summ_by(pct=c(0.1,0.9))
 #' mtcars |> summ_by("mpg")
 #' mtcars |> summ_by("mpg",vs)
 #' mtcars |> summ_by("mpg",vs,am)
@@ -235,7 +238,8 @@ label_tz = function(omit=""){
 #' mtcars |> summ_by(c("mpg","disp"),vs,xname="mpg_")
 #' # grouping without column selection is possible but rarely useful in large dataset
 #' mtcars |> summ_by(NULL,vs)
-summ_by = function(d,cols=NULL,...,xname=""){
+summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
+  plo = paste0("P",pct[1])
   if(!is.null(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
@@ -262,13 +266,17 @@ summ_by = function(d,cols=NULL,...,xname=""){
           Med = ~median(.x, na.rm=T),
           SD  = ~sd(.x, na.rm=T),
           Min = ~min(.x, na.rm=T),
-          P10 = ~quantile(.x, 0.1, na.rm=T),
-          P90 = ~quantile(.x, 0.9, na.rm=T),
+          Plo = ~quantile(.x, pct[1], na.rm=T),
+          Pup = ~quantile(.x, pct[2], na.rm=T),
           Max = ~max(.x, na.rm=T)
         )
       )
     ) |>
-    dplyr::rename_with(~gsub(xname,"",.x))
+    dplyr::rename_with(~gsub(xname,"",.x)) |>
+    dplyr::rename(
+      !!paste0("P",pct[1]*100) := Plo,
+      !!paste0("P",pct[2]*100) := Pup,
+    )
   return(out)
 }
 

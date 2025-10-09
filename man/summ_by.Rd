@@ -4,7 +4,7 @@
 \alias{summ_by}
 \title{Summarise continuous variables by group}
 \usage{
-summ_by(d, cols = NULL, ..., xname = "")
+summ_by(d, cols = NULL, ..., pct = c(0.25, 0.75), xname = "")
 }
 \arguments{
 \item{d}{A data frame}
@@ -12,6 +12,8 @@ summ_by(d, cols = NULL, ..., xname = "")
 \item{cols}{[optional] <chr> A vector of column names to select}
 
 \item{...}{[optional] <unquoted names> Columns to group by}
+
+\item{pct}{<num> A vector of two indicating the percentiles to compute}
 
 \item{xname}{[optional] <chr> Characters to omit in output column names}
 }
@@ -24,6 +26,7 @@ Non-numeric variables will be dropped.
 }
 \examples{
 mtcars |> summ_by()
+mtcars |> summ_by(pct=c(0.1,0.9))
 mtcars |> summ_by("mpg")
 mtcars |> summ_by("mpg",vs)
 mtcars |> summ_by("mpg",vs,am)
