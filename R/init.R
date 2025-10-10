@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-09
+# Updated  : 2025-10-10
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -61,7 +61,7 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=3,dig=3){
+ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=6,dig=3){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
@@ -153,7 +153,7 @@ hcln = function(n,show=FALSE){
 #' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
-kb = function(d,fnote=NULL,cap=NULL,src=0,sig=3,dig=3){
+kb = function(d,fnote=NULL,cap=NULL,src=0,sig=6,dig=3){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)

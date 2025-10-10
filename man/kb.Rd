@@ -4,7 +4,7 @@
 \alias{kb}
 \title{kable wrapper}
 \usage{
-kb(d, fnote = NULL, cap = NULL, src = 0, sig = 3, dig = 3)
+kb(d, fnote = NULL, cap = NULL, src = 0, sig = 6, dig = 3)
 }
 \arguments{
 \item{d}{A data frame}
