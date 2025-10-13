@@ -4,7 +4,7 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL, src = 0, sig = 6, dig = 2)
+ft(d, fnote = NULL, ttl = NULL, sig = 6, dig = 2, src = 0, omit = "")
 }
 \arguments{
 \item{d}{A data frame}
@@ -13,11 +13,13 @@ ft(d, fnote = NULL, ttl = NULL, src = 0, sig = 6, dig = 2)
 
 \item{ttl}{[optional] <chr> Title}
 
-\item{src}{[optional] <int> Either 1 or 2 to add source label over 1 or 2 lines}
-
 \item{sig}{<int> Number of significant digits to compute}
 
 \item{dig}{<int> Number of decimal places to display}
+
+\item{src}{[optional] <int> Either 1 or 2 to add source label over 1 or 2 lines}
+
+\item{omit}{[optional] <chr> Text to omit from the source label}
 }
 \value{
 A flextable object

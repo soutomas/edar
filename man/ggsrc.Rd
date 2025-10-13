@@ -31,5 +31,6 @@ Generate and add a source label with file path and run time to a ggplot object.
 library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
 p |> ggsrc()
+p |> ggsrc(lab="My label")
 }
 }

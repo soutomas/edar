@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-11
+# Updated  : 2025-10-13
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -50,9 +50,10 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' @param d A data frame
 #' @param fnote [optional] <chr> Footnote
 #' @param ttl [optional] <chr> Title
-#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
 #' @param sig <int> Number of significant digits to compute
 #' @param dig <int> Number of decimal places to display
+#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit [optional] <chr> Text to omit from the source label
 #' @returns A flextable object
 #' @export
 #' @examples
@@ -61,11 +62,11 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=6,dig=2){
+ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
-  if(src %in% c(1,2)) labsrc = paste0(label_src(src))
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src)) |> gsub(omit,"",x=_)
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
@@ -100,16 +101,14 @@ ft = function(d,fnote=NULL,ttl=NULL,src=0,sig=6,dig=2){
 #' library(ggplot2)
 #' p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
 #' p |> ggsrc()
+#' p |> ggsrc(lab="My label")
 #' }
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
-  lab1 = label_src(1) |> gsub(omit,"",x=_)
-  lab2 = label_src(2) |> gsub(omit,"",x=_)
-  lab3 = lab1
-  if(span==2) lab3 = lab2
-  if(!is.null(lab)) lab3 = lab
+  labsrc = label_src(span) |> gsub(omit,"",x=_)
+  if(!is.null(lab)) labsrc = lab
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
-      caption = lab3,
+      caption = labsrc,
       theme = ggplot2::theme(plot.caption = ggplot2::element_text(colour=col,size=size))
     )
   return(out)
@@ -142,9 +141,10 @@ hcln = function(n,show=FALSE){
 #' @param d A data frame
 #' @param fnote [optional] <chr> Footnote
 #' @param cap [optional] <chr> Caption
-#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
 #' @param sig <int> Number of significant digits to compute
 #' @param dig <int> Number of decimal places to display
+#' @param src [optional] <int> Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit [optional] <chr> Text to omit from the source label
 #' @returns A kable object
 #' @export
 #' @examples
@@ -153,9 +153,9 @@ hcln = function(n,show=FALSE){
 #' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
-kb = function(d,fnote=NULL,cap=NULL,src=0,sig=6,dig=2){
+kb = function(d,fnote=NULL,cap=NULL,sig=6,dig=2,src=0,omit=""){
   labsrc = NULL
-  if(src %in% c(1,2)) labsrc = paste0(label_src(src))
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src)) |> gsub(omit,"",x=_)
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
