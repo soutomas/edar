@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-13
+# Updated  : 2025-10-14
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -66,7 +66,7 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
   flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
   on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
-  if(src %in% c(1,2)) labsrc = paste0(label_src(src)) |> gsub(omit,"",x=_)
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
@@ -155,7 +155,7 @@ hcln = function(n,show=FALSE){
 #' mtcars |> head() |> kb(sig=2,dig=1)
 kb = function(d,fnote=NULL,cap=NULL,sig=6,dig=2,src=0,omit=""){
   labsrc = NULL
-  if(src %in% c(1,2)) labsrc = paste0(label_src(src)) |> gsub(omit,"",x=_)
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
@@ -245,13 +245,13 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
   if(is.null(gps)) d. = d |>
     dplyr::select(dplyr::where(is.numeric)) |>
     tidyr::pivot_longer(dplyr::everything(),names_to="name") |>
-    dplyr::group_by(name)
+    dplyr::group_by(dplyr::pick(dplyr::contains("name")))
   if(is.null(gps)){
     catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
     cat("Dropped:",names(catv),"\n")
   }
   if(is.null(gps) & xname=="") xname = paste0(names(d.),"_",collapse="|")
-  if(!is.null(gps)) gps = gps |> dplyr::select(-.rows) |> names()
+  if(!is.null(gps)) gps = gps |> dplyr::select(-dplyr::last_col()) |> names()
   x = d. |> dplyr::select(dplyr::where(is.numeric)) |> ncol() - length(gps)
   if(x==1 & xname=="") xname = paste0(names(d.),"_",collapse="|")
   out = d. |>
