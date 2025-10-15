@@ -9,15 +9,15 @@ ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
 \arguments{
 \item{plt}{A ggplot object}
 
-\item{span}{<\emph{num}> Number of lines: either 1 or 2}
+\item{span}{<\code{num}> Number of lines: either 1 or 2}
 
-\item{size}{<\emph{num}> Text size}
+\item{size}{<\code{num}> Text size}
 
-\item{col}{<\emph{chr}> Colour of the text}
+\item{col}{<\code{chr}> Colour of the text}
 
-\item{lab}{[optional] <\emph{chr}> Custom label to use instead of the default}
+\item{lab}{<\code{chr}> Custom label to use instead of the default}
 
-\item{omit}{[optional] <\emph{chr}> Text to omit from the label}
+\item{omit}{<\code{chr}> Text to omit from the label}
 }
 \value{
 A ggplot object with the added label

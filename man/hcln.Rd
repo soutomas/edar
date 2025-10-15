@@ -7,9 +7,9 @@
 hcln(n, show = FALSE)
 }
 \arguments{
-\item{n}{<\emph{int}> Number of colours to output}
+\item{n}{<\code{int}> Number of colours to output}
 
-\item{show}{<\emph{lgl}> \code{TRUE} to show the output colours}
+\item{show}{<\code{lgl}> \code{TRUE} to show the output colours}
 }
 \value{
 Hex code of colours that can be used for plotting

@@ -7,11 +7,11 @@
 label_src(span = 2, omit = "", tz = TRUE)
 }
 \arguments{
-\item{span}{<\emph{int}> Number of lines: either 1 or 2}
+\item{span}{<\code{int}> Number of lines: either 1 or 2}
 
-\item{omit}{[optional] <\emph{chr}> Text to omit from the label}
+\item{omit}{<\code{chr}> Text to omit from the label}
 
-\item{tz}{<\emph{lgl}> \code{FALSE} to exclude time stamp}
+\item{tz}{<\code{lgl}> \code{FALSE} to exclude time stamp}
 }
 \value{
 A label with source file path and run time

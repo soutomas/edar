@@ -4,22 +4,22 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL, sig = 6, dig = 2, src = 0, omit = "")
+ft(d, fnote = NULL, ttl = NULL, sig = 8, dig = 2, src = 0, omit = "")
 }
 \arguments{
 \item{d}{A data frame}
 
-\item{fnote}{[optional] <\emph{chr}> Footnote}
+\item{fnote}{<\code{chr}> Footnote}
 
-\item{ttl}{[optional] <\emph{chr}> Title}
+\item{ttl}{<\code{chr}> Title}
 
-\item{sig}{<\emph{int}> Number of significant digits to compute}
+\item{sig}{<\code{int}> Number of significant digits to compute}
 
-\item{dig}{<\emph{int}> Number of decimal places to display}
+\item{dig}{<\code{int}> Number of decimal places to display}
 
-\item{src}{[optional] <\emph{int}> Either 1 or 2 to add source label over 1 or 2 lines}
+\item{src}{<\code{int}> Either 1 or 2 to add source label over 1 or 2 lines}
 
-\item{omit}{[optional] <\emph{chr}> Text to omit from the source label}
+\item{omit}{<\code{chr}> Text to omit from the source label}
 }
 \value{
 A flextable object

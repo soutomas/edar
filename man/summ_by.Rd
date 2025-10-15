@@ -9,13 +9,13 @@ summ_by(d, cols = NULL, ..., pct = c(0.25, 0.75), xname = "")
 \arguments{
 \item{d}{A data frame}
 
-\item{cols}{[optional] <\emph{chr}> A vector of column names to select}
+\item{cols}{<\code{chr}> A vector of column names to select}
 
-\item{...}{[optional] <\emph{unquoted names}> Columns to group by}
+\item{...}{<\verb{unquoted names}> Columns to group by}
 
-\item{pct}{<\emph{num}> A vector of two indicating the percentiles to compute}
+\item{pct}{<\code{num}> A vector of two indicating the percentiles to compute}
 
-\item{xname}{[optional] <\emph{chr}> Characters to omit in output column names}
+\item{xname}{<\code{chr}> Characters to omit in output column names}
 }
 \value{
 A data frame of summarised variables

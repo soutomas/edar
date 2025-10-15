@@ -7,7 +7,7 @@
 label_tz(omit = "")
 }
 \arguments{
-\item{omit}{[optional] <\emph{chr}> Text to omit from the label}
+\item{omit}{<\code{chr}> Text to omit from the label}
 }
 \value{
 A label with time stamp

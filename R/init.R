@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-15
+# Updated  : 2025-10-16
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -18,7 +18,7 @@
 #' Copy file to destination and rename if desired.
 #'
 #' @param fpath File path of the source file
-#' @param tag \\[optional] <*chr*> Tag to the filename
+#' @param tag <`chr`> Tag to the filename
 #' @param des Destination folder
 #' @export
 #' @examples
@@ -48,12 +48,12 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' Sugar function for default flextable output.
 #'
 #' @param d A data frame
-#' @param fnote \[optional] <*chr*> Footnote
-#' @param ttl \[optional] <*chr*> Title
-#' @param sig <*int*> Number of significant digits to compute
-#' @param dig <*int*> Number of decimal places to display
-#' @param src \[optional] <*int*> Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit \[optional] <*chr*> Text to omit from the source label
+#' @param fnote <`chr`> Footnote
+#' @param ttl <`chr`> Title
+#' @param sig <`int`> Number of significant digits to compute
+#' @param dig <`int`> Number of decimal places to display
+#' @param src <`int`> Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit <`chr`> Text to omit from the source label
 #' @returns A flextable object
 #' @export
 #' @examples
@@ -62,14 +62,14 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
+ft = function(d,fnote=NULL,ttl=NULL,sig=8,dig=2,src=0,omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   out = d |>
-    dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.double(.x) && !lubridate::is.Date(.x)), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
@@ -83,9 +83,9 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
 #'
 #' Sugar function to set flextable defaults.
 #'
-#' @param font <*chr*> See `font.family` in [flextable::set_flextable_defaults()]
-#' @param fsize <*int*> Font size (in point)
-#' @param pad <*int*> Padding space around
+#' @param font <`chr`> See `font.family` in [flextable::set_flextable_defaults()]
+#' @param fsize <`int`> Font size (in point)
+#' @param pad <`int`> Padding space around
 #' @returns A list containing previous default values
 #' @seealso [flextable::set_flextable_defaults()]
 #' @export
@@ -109,11 +109,11 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 #' Generate and add a source label with file path and run time to a ggplot object.
 #'
 #' @param plt A ggplot object
-#' @param span <*num*> Number of lines: either 1 or 2
-#' @param size <*num*> Text size
-#' @param col <*chr*> Colour of the text
-#' @param lab \[optional] <*chr*> Custom label to use instead of the default
-#' @param omit \[optional] <*chr*> Text to omit from the label
+#' @param span <`num`> Number of lines: either 1 or 2
+#' @param size <`num`> Text size
+#' @param col <`chr`> Colour of the text
+#' @param lab <`chr`> Custom label to use instead of the default
+#' @param omit <`chr`> Text to omit from the label
 #' @returns A ggplot object with the added label
 #' @export
 #' @examples
@@ -140,8 +140,8 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #'
 #' Set colour scales for the desired number of colours.
 #'
-#' @param n <*int*> Number of colours to output
-#' @param show <*lgl*> `TRUE` to show the output colours
+#' @param n <`int`> Number of colours to output
+#' @param show <`lgl`> `TRUE` to show the output colours
 #' @returns Hex code of colours that can be used for plotting
 #' @export
 #' @examples
@@ -160,12 +160,12 @@ hcln = function(n,show=FALSE){
 #' Sugar function for default kable output.
 #'
 #' @param d A data frame
-#' @param fnote \[optional] <*chr*> Footnote
-#' @param cap \[optional] <*chr*> Caption
-#' @param sig <*int*> Number of significant digits to compute
-#' @param dig <*int*> Number of decimal places to display
-#' @param src \[optional] <*int*> Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit \[optional] <*chr*> Text to omit from the source label
+#' @param fnote <`chr`> Footnote
+#' @param cap <`chr`> Caption
+#' @param sig <`int`> Number of significant digits to compute
+#' @param dig <`int`> Number of decimal places to display
+#' @param src  <`int`> Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit <`chr`> Text to omit from the source label
 #' @returns A kable object
 #' @export
 #' @examples
@@ -174,14 +174,14 @@ hcln = function(n,show=FALSE){
 #' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
-kb = function(d,fnote=NULL,cap=NULL,sig=6,dig=2,src=0,omit=""){
+kb = function(d,fnote=NULL,cap=NULL,sig=8,dig=2,src=0,omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   d |>
-    dplyr::mutate(dplyr::across(dplyr::where(is.double), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.double(.x) && !lubridate::is.Date(.x)), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
     kableExtra::footnote(lab,general_title="")
@@ -195,9 +195,9 @@ kb = function(d,fnote=NULL,cap=NULL,sig=6,dig=2,src=0,omit=""){
 #' It is designed to work in a script file in RStudio when running interactively.
 #' It will return empty if run in the console.
 #'
-#' @param span <*int*> Number of lines: either 1 or 2
-#' @param omit \[optional] <*chr*> Text to omit from the label
-#' @param tz <*lgl*> `FALSE` to exclude time stamp
+#' @param span <`int`> Number of lines: either 1 or 2
+#' @param omit <`chr`> Text to omit from the label
+#' @param tz <`lgl`> `FALSE` to exclude time stamp
 #' @returns A label with source file path and run time
 #' @export
 #' @examples
@@ -224,7 +224,7 @@ label_src = function(span=2,omit="",tz=TRUE){
 #'
 #' Generate a time stamp label of the current time.
 #'
-#' @param omit \[optional] <*chr*> Text to omit from the label
+#' @param omit <`chr`> Text to omit from the label
 #' @returns A label with time stamp
 #' @export
 #' @examples
@@ -241,10 +241,10 @@ label_tz = function(omit=""){
 #' Non-numeric variables will be dropped.
 #'
 #' @param d A data frame
-#' @param cols \[optional] <*chr*> A vector of column names to select
-#' @param ... \[optional] <*unquoted names*> Columns to group by
-#' @param pct <*num*> A vector of two indicating the percentiles to compute
-#' @param xname \[optional] <*chr*> Characters to omit in output column names
+#' @param cols <`chr`> A vector of column names to select
+#' @param ... <`unquoted names`> Columns to group by
+#' @param pct <`num`> A vector of two indicating the percentiles to compute
+#' @param xname  <`chr`> Characters to omit in output column names
 #' @returns A data frame of summarised variables
 #' @export
 #' @examples
@@ -304,7 +304,7 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
 #' Summarise categorical variables. Numeric variables will be dropped.
 #'
 #' @param d A data frame
-#' @param pos \[optional] <*chr*>/<*int*> Position (name or numeric) of the summary list to return
+#' @param pos <`chr`>/<`int`> Position (name or integer) of the summary list to return
 #' @returns A list containing summaries of the categorical variables
 #' @export
 #' @examples

@@ -9,7 +9,7 @@ fc(fpath, tag = "-", des = "/home/souto1/Documents/")
 \arguments{
 \item{fpath}{File path of the source file}
 
-\item{tag}{\[optional] <\emph{chr}> Tag to the filename}
+\item{tag}{<\code{chr}> Tag to the filename}
 
 \item{des}{Destination folder}
 }
