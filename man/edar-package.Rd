@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} [copyright holder]
+\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com}
 
 }
 \keyword{internal}

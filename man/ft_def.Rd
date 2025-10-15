@@ -7,11 +7,11 @@
 ft_def(font = "Calibri Light", fsize = 10, pad = 3)
 }
 \arguments{
-\item{font}{<chr> See `font.family` in [flextable::set_flextable_defaults()]}
+\item{font}{<\emph{chr}> See \code{font.family} in \code{\link[flextable:set_flextable_defaults]{flextable::set_flextable_defaults()}}}
 
-\item{fsize}{<int> Font size (in point)}
+\item{fsize}{<\emph{int}> Font size (in point)}
 
-\item{pad}{<int> Padding space around}
+\item{pad}{<\emph{int}> Padding space around}
 }
 \value{
 A list containing previous default values
@@ -25,5 +25,5 @@ ft_def()
 }
 }
 \seealso{
-[flextable::set_flextable_defaults()]
+\code{\link[flextable:set_flextable_defaults]{flextable::set_flextable_defaults()}}
 }

@@ -9,7 +9,7 @@ LazyData: true
 URL: https://github.com/soutomas/edar, https://soutomas.github.io/edar/
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
-    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre", "cph"))
+    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"))
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
@@ -29,3 +29,4 @@ Suggests:
     gt
 Depends: 
     R (>= 4.2.0)
+Roxygen: list(markdown = TRUE)

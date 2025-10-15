@@ -7,18 +7,18 @@
 label_src(span = 2, omit = "", tz = TRUE)
 }
 \arguments{
-\item{span}{<int> Number of lines: either 1 or 2}
+\item{span}{<\emph{int}> Number of lines: either 1 or 2}
 
-\item{omit}{[optional] <chr> Text to omit from the label}
+\item{omit}{[optional] <\emph{chr}> Text to omit from the label}
 
-\item{tz}{<lgl> `FALSE` to exclude time stamp}
+\item{tz}{<\emph{lgl}> \code{FALSE} to exclude time stamp}
 }
 \value{
 A label with source file path and run time
 }
 \description{
 Generate a source label with file path and run time.
-In interactive sessions, this function uses `rstudioapi` to get the file path.
+In interactive sessions, this function uses \code{rstudioapi} to get the file path.
 It is designed to work in a script file in RStudio when running interactively.
 It will return empty if run in the console.
 }
