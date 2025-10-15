@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-14
+# Updated  : 2025-10-15
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -63,8 +63,6 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
 ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
-  flextable::set_flextable_defaults(font.family="Calibri Light", font.size=10, padding=3)
-  on.exit(flextable::init_flextable_defaults(), add=TRUE)
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
@@ -78,6 +76,29 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=6,dig=2,src=0,omit=""){
     flextable::add_header_lines(ttl) |>
     flextable::add_footer_lines(lab)
   return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' flextable default
+#'
+#' Sugar function to set flextable defaults.
+#'
+#' @param font <chr> See `font.family` in [flextable::set_flextable_defaults()]
+#' @param fsize <int> Font size (in point)
+#' @param pad <int> Padding space around
+#' @returns A list containing previous default values
+#' @seealso [flextable::set_flextable_defaults()]
+#' @export
+#' @examples
+#' \dontrun{
+#' ft_def()
+#' }
+ft_def = function(font="Calibri Light", fsize=10, pad=3){
+  flextable::set_flextable_defaults(
+    font.family = font,
+    font.size = fsize,
+    padding = pad
+  )
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -2,6 +2,7 @@
 
 export(fc)
 export(ft)
+export(ft_def)
 export(ggsrc)
 export(hcln)
 export(kb)

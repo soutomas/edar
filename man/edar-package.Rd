@@ -12,6 +12,7 @@ Convenient functions for common tasks in exploratory data analysis.
 Useful links:
 \itemize{
   \item \url{https://github.com/soutomas/edar}
+  \item \url{https://soutomas.github.io/edar/}
   \item Report bugs at \url{https://github.com/soutomas/edar/issues}
 }
 
