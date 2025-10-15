@@ -39,7 +39,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kb</span><span class="op">(</span><span class="va">d</span>, fnote <span class="op">=</span> <span class="cn">NULL</span>, cap <span class="op">=</span> <span class="cn">NULL</span>, sig <span class="op">=</span> <span class="fl">6</span>, dig <span class="op">=</span> <span class="fl">2</span>, src <span class="op">=</span> <span class="fl">0</span>, omit <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kb</span><span class="op">(</span><span class="va">d</span>, fnote <span class="op">=</span> <span class="cn">NULL</span>, cap <span class="op">=</span> <span class="cn">NULL</span>, sig <span class="op">=</span> <span class="fl">8</span>, dig <span class="op">=</span> <span class="fl">2</span>, src <span class="op">=</span> <span class="fl">0</span>, omit <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -51,27 +51,27 @@
 
 
 <dt id="arg-fnote">fnote<a class="anchor" aria-label="anchor" href="#arg-fnote"></a></dt>
-<dd><p>[optional] &lt;<em>chr</em>&gt; Footnote</p></dd>
+<dd><p>&lt;<code>chr</code>&gt; Footnote</p></dd>
 
 
 <dt id="arg-cap">cap<a class="anchor" aria-label="anchor" href="#arg-cap"></a></dt>
-<dd><p>[optional] &lt;<em>chr</em>&gt; Caption</p></dd>
+<dd><p>&lt;<code>chr</code>&gt; Caption</p></dd>
 
 
 <dt id="arg-sig">sig<a class="anchor" aria-label="anchor" href="#arg-sig"></a></dt>
-<dd><p>&lt;<em>int</em>&gt; Number of significant digits to compute</p></dd>
+<dd><p>&lt;<code>int</code>&gt; Number of significant digits to compute</p></dd>
 
 
 <dt id="arg-dig">dig<a class="anchor" aria-label="anchor" href="#arg-dig"></a></dt>
-<dd><p>&lt;<em>int</em>&gt; Number of decimal places to display</p></dd>
+<dd><p>&lt;<code>int</code>&gt; Number of decimal places to display</p></dd>
 
 
 <dt id="arg-src">src<a class="anchor" aria-label="anchor" href="#arg-src"></a></dt>
-<dd><p>[optional] &lt;<em>int</em>&gt; Either 1 or 2 to add source label over 1 or 2 lines</p></dd>
+<dd><p>&lt;<code>int</code>&gt; Either 1 or 2 to add source label over 1 or 2 lines</p></dd>
 
 
 <dt id="arg-omit">omit<a class="anchor" aria-label="anchor" href="#arg-omit"></a></dt>
-<dd><p>[optional] &lt;<em>chr</em>&gt; Text to omit from the source label</p></dd>
+<dd><p>&lt;<code>chr</code>&gt; Text to omit from the source label</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -291,7 +291,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;sup&gt;&lt;/sup&gt; Source:&lt;br&gt;Run: 2025-10-15 08:40:58 UTC&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;sup&gt;&lt;/sup&gt; Source:&lt;br&gt;Run: 2025-10-15 22:55:08 UTC&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/table&gt;</span>
 <span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">kb</span><span class="op">(</span><span class="st">"Footnote"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'&gt;</span>
@@ -506,7 +506,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;sup&gt;&lt;/sup&gt; Footnote&lt;br&gt;Source:&lt;br&gt;Run: 2025-10-15 08:40:58 UTC&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;sup&gt;&lt;/sup&gt; Footnote&lt;br&gt;Source:&lt;br&gt;Run: 2025-10-15 22:55:08 UTC&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/table&gt;</span>
 <span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">kb</span><span class="op">(</span>sig<span class="op">=</span><span class="fl">2</span>,dig<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'&gt;</span>
