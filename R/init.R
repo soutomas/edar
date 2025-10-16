@@ -74,7 +74,8 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=8,dig=2,src=0,omit=""){
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
-    flextable::add_footer_lines(lab)
+    flextable::add_footer_lines(lab) |>
+    flextable::align(align="left", part="all")
   return(out)
 }
 
@@ -98,7 +99,9 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
   flextable::set_flextable_defaults(
     font.family = font,
     font.size = fsize,
-    padding = pad
+    padding = pad,
+    na_str = "",
+    nan_str = ""
   )
 }
 
