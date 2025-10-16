@@ -69,7 +69,7 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=8,dig=2,src=0,omit=""){
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   out = d |>
-    dplyr::mutate(dplyr::across(dplyr::where(~ is.double(.x) && !lubridate::is.Date(.x)), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
@@ -185,7 +185,7 @@ kb = function(d,fnote=NULL,cap=NULL,sig=8,dig=2,src=0,omit=""){
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   d |>
-    dplyr::mutate(dplyr::across(dplyr::where(~ is.double(.x) && !lubridate::is.Date(.x)), ~signif(.x,sig))) |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
     kableExtra::kable_classic(full_width=F) |>
     kableExtra::footnote(lab,general_title="")
