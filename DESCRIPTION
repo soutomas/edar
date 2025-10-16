@@ -6,10 +6,13 @@ Description: Convenient functions for common tasks in exploratory data analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/soutomas/edar, https://soutomas.github.io/edar/
+URL: https://soutomas.github.io/edar/
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
-    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"))
+    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-7570-5545")
+    )
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
@@ -29,4 +32,3 @@ Suggests:
     gt
 Depends: 
     R (>= 4.2.0)
-Roxygen: list(markdown = TRUE)
