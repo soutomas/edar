@@ -9,7 +9,7 @@ summ_cat(d, pos = NULL)
 \arguments{
 \item{d}{A data frame}
 
-\item{pos}{<\code{chr}>/<\code{int}> Position (name or integer) of the summary list to return}
+\item{pos}{\verb{<chr>}/\verb{<int>} Position (name or integer) of the summary list to return}
 }
 \value{
 A list containing summaries of the categorical variables

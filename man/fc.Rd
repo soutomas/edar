@@ -7,11 +7,11 @@
 fc(fpath, tag = "-", des = "/home/souto1/Documents/")
 }
 \arguments{
-\item{fpath}{File path of the source file}
+\item{fpath}{\verb{<chr>} File path of the source file}
 
-\item{tag}{<\code{chr}> Tag to the filename}
+\item{tag}{\verb{<chr>} Tag to the filename}
 
-\item{des}{Destination folder}
+\item{des}{\verb{<chr>} Destination folder}
 }
 \description{
 Copy file to destination and rename if desired.

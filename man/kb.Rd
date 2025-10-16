@@ -7,19 +7,19 @@
 kb(d, fnote = NULL, cap = NULL, sig = 8, dig = 2, src = 0, omit = "")
 }
 \arguments{
-\item{d}{A data frame}
+\item{d}{\verb{<dfr>} A data frame}
 
-\item{fnote}{<\code{chr}> Footnote}
+\item{fnote}{\verb{<chr>} Footnote}
 
-\item{cap}{<\code{chr}> Caption}
+\item{cap}{\verb{<chr>} Caption}
 
-\item{sig}{<\code{int}> Number of significant digits to compute}
+\item{sig}{\verb{<int>} Number of significant digits to compute}
 
-\item{dig}{<\code{int}> Number of decimal places to display}
+\item{dig}{\verb{<int>} Number of decimal places to display}
 
-\item{src}{<\code{int}> Either 1 or 2 to add source label over 1 or 2 lines}
+\item{src}{\verb{<int>} Either 1 or 2 to add source label over 1 or 2 lines}
 
-\item{omit}{<\code{chr}> Text to omit from the source label}
+\item{omit}{\verb{<chr>} Text to omit from the source label}
 }
 \value{
 A kable object

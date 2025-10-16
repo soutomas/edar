@@ -7,15 +7,15 @@
 summ_by(d, cols = NULL, ..., pct = c(0.25, 0.75), xname = "")
 }
 \arguments{
-\item{d}{A data frame}
+\item{d}{\verb{<dfr>} A data frame}
 
-\item{cols}{<\code{chr}> A vector of column names to select}
+\item{cols}{\verb{<chr>} A vector of column names to select}
 
-\item{...}{<\verb{unquoted names}> Columns to group by}
+\item{...}{\verb{<var>} Columns to group by as unquoted variable names}
 
-\item{pct}{<\code{num}> A vector of two indicating the percentiles to compute}
+\item{pct}{\verb{<num>} A vector of two indicating the percentiles to compute}
 
-\item{xname}{<\code{chr}> Characters to omit in output column names}
+\item{xname}{\verb{<chr>} Characters to omit in output column names}
 }
 \value{
 A data frame of summarised variables

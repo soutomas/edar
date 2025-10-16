@@ -17,9 +17,9 @@
 #'
 #' Copy file to destination and rename if desired.
 #'
-#' @param fpath File path of the source file
-#' @param tag <`chr`> Tag to the filename
-#' @param des Destination folder
+#' @param fpath `<chr>` File path of the source file
+#' @param tag `<chr>` Tag to the filename
+#' @param des `<chr>` Destination folder
 #' @export
 #' @examples
 #' \dontrun{
@@ -47,13 +47,13 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #'
 #' Sugar function for default flextable output.
 #'
-#' @param d A data frame
-#' @param fnote <`chr`> Footnote
-#' @param ttl <`chr`> Title
-#' @param sig <`int`> Number of significant digits to compute
-#' @param dig <`int`> Number of decimal places to display
-#' @param src <`int`> Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit <`chr`> Text to omit from the source label
+#' @param d `<dfr>` A data frame
+#' @param fnote `<chr>` Footnote
+#' @param ttl `<chr>` Title
+#' @param sig `<int>` Number of significant digits to compute
+#' @param dig `<int>` Number of decimal places to display
+#' @param src `<int>` Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit `<chr>` Text to omit from the source label
 #' @returns A flextable object
 #' @export
 #' @examples
@@ -82,10 +82,11 @@ ft = function(d,fnote=NULL,ttl=NULL,sig=8,dig=2,src=0,omit=""){
 #' flextable default
 #'
 #' Sugar function to set flextable defaults.
+#' The arguments are passed to [flextable::set_flextable_defaults()].
 #'
-#' @param font <`chr`> See `font.family` in [flextable::set_flextable_defaults()]
-#' @param fsize <`int`> Font size (in point)
-#' @param pad <`int`> Padding space around
+#' @param font `<chr>` Font family - for `font.family`
+#' @param fsize `<int>` Font size (in point) - for `font.size`
+#' @param pad `<int>` Padding space around text - for `padding`
 #' @returns A list containing previous default values
 #' @seealso [flextable::set_flextable_defaults()]
 #' @export
@@ -109,11 +110,11 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 #' Generate and add a source label with file path and run time to a ggplot object.
 #'
 #' @param plt A ggplot object
-#' @param span <`num`> Number of lines: either 1 or 2
-#' @param size <`num`> Text size
-#' @param col <`chr`> Colour of the text
-#' @param lab <`chr`> Custom label to use instead of the default
-#' @param omit <`chr`> Text to omit from the label
+#' @param span `<num>` Number of lines: either 1 or 2
+#' @param size `<num>` Text size
+#' @param col `<chr>` Colour of the text
+#' @param lab `<chr>` Custom label to use instead of the default
+#' @param omit `<chr>` Text to omit from the label
 #' @returns A ggplot object with the added label
 #' @export
 #' @examples
@@ -140,8 +141,8 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #'
 #' Set colour scales for the desired number of colours.
 #'
-#' @param n <`int`> Number of colours to output
-#' @param show <`lgl`> `TRUE` to show the output colours
+#' @param n `<int>` Number of colours to output
+#' @param show `<lgl>` `TRUE` to show the output colours
 #' @returns Hex code of colours that can be used for plotting
 #' @export
 #' @examples
@@ -159,13 +160,13 @@ hcln = function(n,show=FALSE){
 #'
 #' Sugar function for default kable output.
 #'
-#' @param d A data frame
-#' @param fnote <`chr`> Footnote
-#' @param cap <`chr`> Caption
-#' @param sig <`int`> Number of significant digits to compute
-#' @param dig <`int`> Number of decimal places to display
-#' @param src  <`int`> Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit <`chr`> Text to omit from the source label
+#' @param d `<dfr>` A data frame
+#' @param fnote `<chr>` Footnote
+#' @param cap `<chr>` Caption
+#' @param sig `<int>` Number of significant digits to compute
+#' @param dig `<int>` Number of decimal places to display
+#' @param src  `<int>` Either 1 or 2 to add source label over 1 or 2 lines
+#' @param omit `<chr>` Text to omit from the source label
 #' @returns A kable object
 #' @export
 #' @examples
@@ -195,9 +196,9 @@ kb = function(d,fnote=NULL,cap=NULL,sig=8,dig=2,src=0,omit=""){
 #' It is designed to work in a script file in RStudio when running interactively.
 #' It will return empty if run in the console.
 #'
-#' @param span <`int`> Number of lines: either 1 or 2
-#' @param omit <`chr`> Text to omit from the label
-#' @param tz <`lgl`> `FALSE` to exclude time stamp
+#' @param span `<int>` Number of lines: either 1 or 2
+#' @param omit `<chr>` Text to omit from the label
+#' @param tz `<lgl>` `FALSE` to exclude time stamp
 #' @returns A label with source file path and run time
 #' @export
 #' @examples
@@ -224,7 +225,7 @@ label_src = function(span=2,omit="",tz=TRUE){
 #'
 #' Generate a time stamp label of the current time.
 #'
-#' @param omit <`chr`> Text to omit from the label
+#' @param omit `<chr>` Text to omit from the label
 #' @returns A label with time stamp
 #' @export
 #' @examples
@@ -240,11 +241,11 @@ label_tz = function(omit=""){
 #' Summarise continuous variables by group.
 #' Non-numeric variables will be dropped.
 #'
-#' @param d A data frame
-#' @param cols <`chr`> A vector of column names to select
-#' @param ... <`unquoted names`> Columns to group by
-#' @param pct <`num`> A vector of two indicating the percentiles to compute
-#' @param xname  <`chr`> Characters to omit in output column names
+#' @param d `<dfr>` A data frame
+#' @param cols `<chr>` A vector of column names to select
+#' @param ... `<var>` Columns to group by as unquoted variable names
+#' @param pct `<num>` A vector of two indicating the percentiles to compute
+#' @param xname  `<chr>` Characters to omit in output column names
 #' @returns A data frame of summarised variables
 #' @export
 #' @examples
@@ -304,7 +305,7 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
 #' Summarise categorical variables. Numeric variables will be dropped.
 #'
 #' @param d A data frame
-#' @param pos <`chr`>/<`int`> Position (name or integer) of the summary list to return
+#' @param pos `<chr>`/`<int>` Position (name or integer) of the summary list to return
 #' @returns A list containing summaries of the categorical variables
 #' @export
 #' @examples
