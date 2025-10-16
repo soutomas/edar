@@ -11,14 +11,13 @@ Convenient functions for common tasks in exploratory data analysis.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/soutomas/edar}
   \item \url{https://soutomas.github.io/edar/}
   \item Report bugs at \url{https://github.com/soutomas/edar/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com}
+\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} (\href{https://orcid.org/0000-0002-7570-5545}{ORCID})
 
 }
 \keyword{internal}
