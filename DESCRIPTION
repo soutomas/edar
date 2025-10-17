@@ -6,7 +6,8 @@ Description: Convenient functions for common tasks in exploratory data analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://soutomas.github.io/edar/
+URL: https://soutomas.github.io/edar/,
+    https://github.com/soutomas/edar/
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
     person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"),
