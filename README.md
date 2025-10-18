@@ -34,11 +34,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-<<<<<<< HEAD
 #>     note = {R package version 0.0.3.9000},
-=======
-#>     note = {R package version 0.0.3.9000, commit 5b8a08e5af52682062ab48030be7eb60aff30663},
->>>>>>> 89eb75d1eecc60459962204190d8586334ebfaf6
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
