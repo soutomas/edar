@@ -25,8 +25,7 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.3.9000, 
-#>   <https://github.com/soutomas/edar>.
+#>   Analysis_. R package version 0.0.3.9000, <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
