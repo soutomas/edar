@@ -63,13 +63,13 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Sou T (2025). <em>edar: Convenient Functions for Exploratory Data Analysis</em>. R package version 0.0.1, <a href="https://github.com/soutomas/edar" class="external-link uri">https://github.com/soutomas/edar</a>.</p>
+<p>Sou T (2025). <em>edar: Convenient Functions for Exploratory Data Analysis</em>. R package version 0.0.3.9000, <a href="https://github.com/soutomas/edar" class="external-link uri">https://github.com/soutomas/edar</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"edar"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite package 'edar' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Sou T (2025). _edar: Convenient Functions for Exploratory Data</span></span>
-<span><span class="co">#&gt;   Analysis_. R package version 0.0.1,</span></span>
+<span><span class="co">#&gt;   Analysis_. R package version 0.0.3.9000, </span></span>
 <span><span class="co">#&gt;   &lt;https://github.com/soutomas/edar&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -78,7 +78,7 @@
 <span><span class="co">#&gt;     title = {edar: Convenient Functions for Exploratory Data Analysis},</span></span>
 <span><span class="co">#&gt;     author = {Tomas Sou},</span></span>
 <span><span class="co">#&gt;     year = {2025},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.0.1},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.0.3.9000, commit 5b8a08e5af52682062ab48030be7eb60aff30663},</span></span>
 <span><span class="co">#&gt;     url = {https://github.com/soutomas/edar},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
@@ -105,56 +105,59 @@
 <span><span class="co">#&gt; Dropped: vs am</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `name`</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 10</span></span>
-<span><span class="co">#&gt;   name      n   nNA   Mean    Med      SD   Min   P10    P90    Max</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 carb     32     0   2.81   2      1.62   1     1      4      8   </span></span>
-<span><span class="co">#&gt; 2 cyl      32     0   6.19   6      1.79   4     4      8      8   </span></span>
-<span><span class="co">#&gt; 3 disp     32     0 231.   196.   124.    71.1  80.6  396    472   </span></span>
-<span><span class="co">#&gt; 4 drat     32     0   3.60   3.70   0.535  2.76  3.01   4.21   4.93</span></span>
-<span><span class="co">#&gt; 5 gear     32     0   3.69   4      0.738  3     3      5      5   </span></span>
-<span><span class="co">#&gt; 6 hp       32     0 147.   123     68.6   52    66    244.   335   </span></span>
-<span><span class="co">#&gt; 7 mpg      32     0  20.1   19.2    6.03  10.4  14.3   30.1   33.9 </span></span>
-<span><span class="co">#&gt; 8 qsec     32     0  17.8   17.7    1.79  14.5  15.5   20.0   22.9 </span></span>
-<span><span class="co">#&gt; 9 wt       32     0   3.22   3.32   0.978  1.51  1.96   4.05   5.42</span></span>
+<span><span class="co">#&gt;   name      n   nNA   Mean    Med      SD   Min    P25    P75    Max</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 carb     32     0   2.81   2      1.62   1      2      4      8   </span></span>
+<span><span class="co">#&gt; 2 cyl      32     0   6.19   6      1.79   4      4      8      8   </span></span>
+<span><span class="co">#&gt; 3 disp     32     0 231.   196.   124.    71.1  121.   326    472   </span></span>
+<span><span class="co">#&gt; 4 drat     32     0   3.60   3.70   0.535  2.76   3.08   3.92   4.93</span></span>
+<span><span class="co">#&gt; 5 gear     32     0   3.69   4      0.738  3      3      4      5   </span></span>
+<span><span class="co">#&gt; 6 hp       32     0 147.   123     68.6   52     96.5  180    335   </span></span>
+<span><span class="co">#&gt; 7 mpg      32     0  20.1   19.2    6.03  10.4   15.4   22.8   33.9 </span></span>
+<span><span class="co">#&gt; 8 qsec     32     0  17.8   17.7    1.79  14.5   16.9   18.9   22.9 </span></span>
+<span><span class="co">#&gt; 9 wt       32     0   3.22   3.32   0.978  1.51   2.58   3.61   5.42</span></span>
 <span></span>
 <span><span class="co"># Summary of selected variable after grouping. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="st">"mpg"</span>,<span class="va">vs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `vs`</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 10</span></span>
-<span><span class="co">#&gt;   vs        n   nNA  Mean   Med    SD   Min   P10   P90   Max</span></span>
+<span><span class="co">#&gt;   vs        n   nNA  Mean   Med    SD   Min   P25   P75   Max</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0        18     0  16.6  15.6  3.86  10.4  12.4  21    26  </span></span>
-<span><span class="co">#&gt; 2 1        14     0  24.6  22.8  5.38  17.8  18.4  31.8  33.9</span></span>
+<span><span class="co">#&gt; 1 0        18     0  16.6  15.6  3.86  10.4  14.8  19.1  26  </span></span>
+<span><span class="co">#&gt; 2 1        14     0  24.6  22.8  5.38  17.8  21.4  29.6  33.9</span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="st">"mpg"</span>,<span class="va">vs</span>,<span class="va">am</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `vs`, `am`</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
 <span><span class="co">#&gt; # Groups:   vs [2]</span></span>
-<span><span class="co">#&gt;   vs    am        n   nNA  Mean   Med    SD   Min   P10   P90   Max</span></span>
+<span><span class="co">#&gt;   vs    am        n   nNA  Mean   Med    SD   Min   P25   P75   Max</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0     0        12     0  15.0  15.2  2.77  10.4  10.7  18.6  19.2</span></span>
-<span><span class="co">#&gt; 2 0     1         6     0  19.8  20.4  4.01  15    15.4  23.5  26  </span></span>
-<span><span class="co">#&gt; 3 1     0         7     0  20.7  21.4  2.47  17.8  18.0  23.4  24.4</span></span>
-<span><span class="co">#&gt; 4 1     1         7     0  28.4  30.4  4.76  21.4  22.2  33    33.9</span></span>
+<span><span class="co">#&gt; 1 0     0        12     0  15.0  15.2  2.77  10.4  14.0  16.6  19.2</span></span>
+<span><span class="co">#&gt; 2 0     1         6     0  19.8  20.4  4.01  15    16.8  21    26  </span></span>
+<span><span class="co">#&gt; 3 1     0         7     0  20.7  21.4  2.47  17.8  18.6  22.2  24.4</span></span>
+<span><span class="co">#&gt; 4 1     1         7     0  28.4  30.4  4.76  21.4  25.0  31.4  33.9</span></span>
 <span></span>
 <span><span class="co"># Summary for categorical variables in a data frame. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_cat.html">summ_cat</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Dropped: mpg cyl disp hp drat wt qsec gear carb</span></span>
 <span><span class="co">#&gt; $vs</span></span>
-<span><span class="co">#&gt;  vs  n percent</span></span>
-<span><span class="co">#&gt;   0 18  0.5625</span></span>
-<span><span class="co">#&gt;   1 14  0.4375</span></span>
+<span><span class="co">#&gt;     vs  n percent</span></span>
+<span><span class="co">#&gt;      0 18  0.5625</span></span>
+<span><span class="co">#&gt;      1 14  0.4375</span></span>
+<span><span class="co">#&gt;  Total 32  1.0000</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $am</span></span>
-<span><span class="co">#&gt;  am  n percent</span></span>
-<span><span class="co">#&gt;   0 19 0.59375</span></span>
-<span><span class="co">#&gt;   1 13 0.40625</span></span>
+<span><span class="co">#&gt;     am  n percent</span></span>
+<span><span class="co">#&gt;      0 19 0.59375</span></span>
+<span><span class="co">#&gt;      1 13 0.40625</span></span>
+<span><span class="co">#&gt;  Total 32 1.00000</span></span>
 <span></span>
 <span><span class="co"># Summary for selected categorical variable. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_cat.html">summ_cat</a></span><span class="op">(</span><span class="st">"vs"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Dropped: mpg cyl disp hp drat wt qsec gear carb</span></span>
-<span><span class="co">#&gt;  vs  n percent</span></span>
-<span><span class="co">#&gt;   0 18  0.5625</span></span>
-<span><span class="co">#&gt;   1 14  0.4375</span></span></code></pre></div>
+<span><span class="co">#&gt;     vs  n percent</span></span>
+<span><span class="co">#&gt;      0 18  0.5625</span></span>
+<span><span class="co">#&gt;      1 14  0.4375</span></span>
+<span><span class="co">#&gt;  Total 32  1.0000</span></span></code></pre></div>
 <p>Results can be directly viewed in a flextable object easily.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show data frame in a flextable object. </span></span>
