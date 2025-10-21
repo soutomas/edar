@@ -239,6 +239,30 @@ label_tz = function(omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Histogram wrapper for numeric variables
+#'
+#' Sugar function to show histograms of numeric variables in a dataset.
+#'
+#' @param d `<dfr>` A data frame
+#' @param bins `<int>` Number of bins
+#' @param ... Other arguments to pass to [ggplot2::geom_histogram]
+#' @returns A ggplot object with histograms of numeric variables
+#' @export
+#' @examples
+#' iris |> gghist()
+gghist = function(d, bins=30, ...){
+  nsub = d |> dplyr::distinct() |> nrow()
+  catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
+  cat("Dropped:",names(catv),"\n")
+  d |>
+    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="val") |>
+    ggplot2::ggplot(ggplot2::aes(x=val))+
+    ggplot2::geom_histogram(bins=bins, ...)+
+    ggplot2::facet_wrap(~name,scales="free")+
+    ggplot2::labs(caption=paste0("n=",nsub))
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Summarise continuous variables by group
 #'
 #' Summarise continuous variables by group.
