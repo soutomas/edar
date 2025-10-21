@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-16
+# Updated  : 2025-10-21
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -287,10 +287,10 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
           n = ~length(.x),
           nNA = ~sum(is.na(.x)),
           Mean = ~mean(.x, na.rm=T),
-          Med = ~median(.x, na.rm=T),
           SD  = ~sd(.x, na.rm=T),
           Min = ~min(.x, na.rm=T),
           Plo = ~quantile(.x, pct[1], na.rm=T),
+          Med = ~median(.x, na.rm=T),
           Pup = ~quantile(.x, pct[2], na.rm=T),
           Max = ~max(.x, na.rm=T)
         )
