@@ -18,6 +18,7 @@ A list containing summaries of the categorical variables
 Summarise categorical variables. Numeric variables will be dropped.
 }
 \examples{
+iris |> summ_cat()
 sleep |> summ_cat()
 sleep |> summ_cat(1)
 sleep |> summ_cat("group")

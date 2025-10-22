@@ -26,11 +26,9 @@ A ggplot object with the added label
 Generate and add a source label with file path and run time to a ggplot object.
 }
 \examples{
-\dontrun{
 # A source label can be easily added to a ggplot object.
 library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
 p |> ggsrc()
 p |> ggsrc(lab="My label")
-}
 }

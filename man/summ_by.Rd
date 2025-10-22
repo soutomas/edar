@@ -25,8 +25,9 @@ Summarise continuous variables by group.
 Non-numeric variables will be dropped.
 }
 \examples{
-mtcars |> summ_by()
-mtcars |> summ_by(pct=c(0.1,0.9))
+iris |> summ_by()
+iris |> summ_by(pct=c(0.1,0.9))
+mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am)) |> summ_by()
 mtcars |> summ_by("mpg")
 mtcars |> summ_by("mpg",vs)
 mtcars |> summ_by("mpg",vs,am)

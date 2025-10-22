@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-21
+# Updated  : 2025-10-22
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -13,25 +13,27 @@
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Functions
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Copy to destination
+#' Copy file to destination
 #'
-#' Copy file to destination and rename if desired.
+#' Copy file to destination and add date to file name with a tag as desired.
 #'
 #' @param fpath `<chr>` File path of the source file
 #' @param tag `<chr>` Tag to the filename
 #' @param des `<chr>` Destination folder
+#' @returns A logical vector indicating if the operation succeeded for each of the files attempted
 #' @export
 #' @examples
 #' \dontrun{
 #' # Copy a file to home directory
-#' fc("myfile.R",des="~")
+#' tmp <- tempdir()
+#' fc("myfile.R",des=tmp)
 #' }
-fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
+fc = function(fpath,tag="-",des=""){
   # Copy
   fname = basename(fpath)
   fstem = tools::file_path_sans_ext(fname)
   fext = tools::file_ext(fname)
-  file.copy(fpath,des,overwrite=T)
+  file.copy(fpath,des,overwrite=TRUE)
   # Rename
   today = format(Sys.time(),"%y%m%d")
   fname_to = paste0(fstem,tag,today,".",fext)
@@ -62,7 +64,7 @@ fc = function(fpath,tag="-",des="/home/souto1/Documents/"){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d,fnote=NULL,ttl=NULL,sig=8,dig=2,src=0,omit=""){
+ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
@@ -106,6 +108,56 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Histogram wrapper for continuous variables
+#'
+#' Sugar function to show histograms of numeric variables in a dataset.
+#'
+#' @param d `<dfr>` A data frame
+#' @param bins `<int>` Number of bins
+#' @param ... Other arguments to pass to [ggplot2::geom_histogram]
+#' @returns A ggplot object with histograms of numeric variables
+#' @export
+#' @examples
+#' iris |> ggcov_hist()
+ggcov_hist = function(d, bins=30, ...){
+  nsub = d |> dplyr::distinct() |> nrow()
+  catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
+  message("Dropped: ", paste(names(catv), collapse=" "))
+  d |>
+    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="val") |>
+    ggplot2::ggplot()+
+    ggplot2::aes(x=val)+
+    ggplot2::geom_histogram(bins=bins, ...)+
+    ggplot2::facet_wrap(~name,scales="free")+
+    ggplot2::labs(caption=paste0("n=",nsub))
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Violin plot wrapper for categorical variables
+#'
+#' Sugar function to show box plots of a continous variable by a discrete variable in a dataset.
+#' Orientation will follow the axis of the discrete variable.
+#'
+#' @param d `<dfr>` A data frame
+#' @param x,y `<unquote name>` Varaiable names (discrete vs continuous)
+#' @param ... Other arguments to pass to [ggplot2::geom_violin]
+#' @returns A ggplot object of a violin plot showing the quantiles
+#' @export
+#' @examples
+#' iris |> ggcov_violin(Species, Sepal.Length)
+#' mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_violin(cyl,mpg)
+ggcov_violin = function(d, x, y, ...){
+  nsub = d |> dplyr::distinct() |> nrow()
+  d |>
+    ggplot2::ggplot()+
+    ggplot2::aes(x={{x}},y={{y}})+
+    ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,...)+
+    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
+    ggplot2::labs(caption=paste0("n=",nsub))
+}
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # library(patchwork)
 
 #' Add source label to ggplot
@@ -121,13 +173,11 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 #' @returns A ggplot object with the added label
 #' @export
 #' @examples
-#' \dontrun{
 #' # A source label can be easily added to a ggplot object.
 #' library(ggplot2)
 #' p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
-#' }
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
   labsrc = label_src(span) |> gsub(omit,"",x=_)
   if(!is.null(lab)) labsrc = lab
@@ -178,7 +228,7 @@ hcln = function(n,show=FALSE){
 #' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
-kb = function(d,fnote=NULL,cap=NULL,sig=8,dig=2,src=0,omit=""){
+kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
@@ -187,7 +237,7 @@ kb = function(d,fnote=NULL,cap=NULL,sig=8,dig=2,src=0,omit=""){
   d |>
     dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     kableExtra::kbl(caption=cap,digits=dig) |>
-    kableExtra::kable_classic(full_width=F) |>
+    kableExtra::kable_classic(full_width=FALSE) |>
     kableExtra::footnote(lab,general_title="")
 }
 
@@ -213,7 +263,7 @@ label_src = function(span=2,omit="",tz=TRUE){
   fname_src = knitr::current_input() |> gsub(".rmarkdown",".qmd",x=_)
   if(interactive()) fname_src = rstudioapi::getActiveDocumentContext()$path |> basename()
   fpath_src  = file.path(loc_src,fname_src)
-  labtz = paste0("\nRun: ",format(Sys.time(),usetz=T))
+  labtz = paste0("\nRun: ",format(Sys.time(),usetz=TRUE))
   if(!tz) labtz = NULL
   lab1 = paste0("Source:",fpath_src,labtz)
   lab2 = paste0("Source:",loc_src,"/\n",fname_src,labtz)
@@ -234,32 +284,8 @@ label_src = function(span=2,omit="",tz=TRUE){
 #' @examples
 #' label_tz()
 label_tz = function(omit=""){
-  out= paste0("Run: ",format(Sys.time(),usetz=T)) |> gsub(omit,"",x=_)
+  out= paste0("Run: ",format(Sys.time(),usetz=TRUE)) |> gsub(omit,"",x=_)
   return(out)
-}
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Histogram wrapper for numeric variables
-#'
-#' Sugar function to show histograms of numeric variables in a dataset.
-#'
-#' @param d `<dfr>` A data frame
-#' @param bins `<int>` Number of bins
-#' @param ... Other arguments to pass to [ggplot2::geom_histogram]
-#' @returns A ggplot object with histograms of numeric variables
-#' @export
-#' @examples
-#' iris |> gghist()
-gghist = function(d, bins=30, ...){
-  nsub = d |> dplyr::distinct() |> nrow()
-  catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
-  cat("Dropped:",names(catv),"\n")
-  d |>
-    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="val") |>
-    ggplot2::ggplot(ggplot2::aes(x=val))+
-    ggplot2::geom_histogram(bins=bins, ...)+
-    ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=paste0("n=",nsub))
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -276,8 +302,9 @@ gghist = function(d, bins=30, ...){
 #' @returns A data frame of summarised variables
 #' @export
 #' @examples
-#' mtcars |> summ_by()
-#' mtcars |> summ_by(pct=c(0.1,0.9))
+#' iris |> summ_by()
+#' iris |> summ_by(pct=c(0.1,0.9))
+#' mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am)) |> summ_by()
 #' mtcars |> summ_by("mpg")
 #' mtcars |> summ_by("mpg",vs)
 #' mtcars |> summ_by("mpg",vs,am)
@@ -297,7 +324,7 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
     dplyr::group_by(dplyr::pick(dplyr::contains("name")))
   if(is.null(gps)){
     catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
-    cat("Dropped:",names(catv),"\n")
+    message("Dropped: ", paste(names(catv), collapse=" "))
   }
   if(is.null(gps) & xname=="") xname = paste0(names(d.),"_",collapse="|")
   if(!is.null(gps)) gps = gps |> dplyr::select(-dplyr::last_col()) |> names()
@@ -310,13 +337,13 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
         list(
           n = ~length(.x),
           nNA = ~sum(is.na(.x)),
-          Mean = ~mean(.x, na.rm=T),
-          SD  = ~sd(.x, na.rm=T),
-          Min = ~min(.x, na.rm=T),
-          Plo = ~quantile(.x, pct[1], na.rm=T),
-          Med = ~median(.x, na.rm=T),
-          Pup = ~quantile(.x, pct[2], na.rm=T),
-          Max = ~max(.x, na.rm=T)
+          Mean = ~mean(.x, na.rm=TRUE),
+          SD  = ~sd(.x, na.rm=TRUE),
+          Min = ~min(.x, na.rm=TRUE),
+          Plo = ~quantile(.x, pct[1], na.rm=TRUE),
+          Med = ~median(.x, na.rm=TRUE),
+          Pup = ~quantile(.x, pct[2], na.rm=TRUE),
+          Max = ~max(.x, na.rm=TRUE)
         )
       )
     ) |>
@@ -336,12 +363,13 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
 #' @returns A list containing summaries of the categorical variables
 #' @export
 #' @examples
+#' iris |> summ_cat()
 #' sleep |> summ_cat()
 #' sleep |> summ_cat(1)
 #' sleep |> summ_cat("group")
 summ_cat = function(d,pos=NULL){
   x = d |> dplyr::select(dplyr::where(is.numeric))
-  cat("Dropped:",names(x),"\n")
+  message("Dropped: ", paste(names(x), collapse=" "))
   out = d |>
     dplyr::select(-dplyr::where(is.numeric)) |>
     lapply(janitor::tabyl) |>

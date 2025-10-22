@@ -2,7 +2,11 @@ Package: edar
 Type: Package
 Title: Convenient Functions for Exploratory Data Analysis
 Version: 0.0.3.9000
-Description: Convenient functions for common tasks in exploratory data analysis.
+Description: A collection of convenient functions to facilitate common tasks in exploratory data analysis. 
+          Some common tasks include generating summary tables of categrocial and continuous variables,
+          displaying the summary tables as a flextable or a kable easily
+          and showing distributions of variables using ggplot2. 
+          Labels showing the source file with run time can be generated easily for annotation in tables and plots. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -14,7 +18,7 @@ Authors@R:
       comment = c(ORCID = "0000-0002-7570-5545")
     )
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: 
     dplyr,
     flextable,

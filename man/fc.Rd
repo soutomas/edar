@@ -2,9 +2,9 @@
 % Please edit documentation in R/init.R
 \name{fc}
 \alias{fc}
-\title{Copy to destination}
+\title{Copy file to destination}
 \usage{
-fc(fpath, tag = "-", des = "/home/souto1/Documents/")
+fc(fpath, tag = "-", des = "")
 }
 \arguments{
 \item{fpath}{\verb{<chr>} File path of the source file}
@@ -13,12 +13,16 @@ fc(fpath, tag = "-", des = "/home/souto1/Documents/")
 
 \item{des}{\verb{<chr>} Destination folder}
 }
+\value{
+A logical vector indicating if the operation succeeded for each of the files attempted
+}
 \description{
-Copy file to destination and rename if desired.
+Copy file to destination and add date to file name with a tag as desired.
 }
 \examples{
 \dontrun{
 # Copy a file to home directory
-fc("myfile.R",des="~")
+tmp <- tempdir()
+fc("myfile.R",des=tmp)
 }
 }
