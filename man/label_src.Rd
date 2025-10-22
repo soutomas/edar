@@ -14,13 +14,13 @@ label_src(span = 2, omit = "", tz = TRUE)
 \item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp}
 }
 \value{
-A label with source file path and run time
+A label showing the source file path with a time stamp
 }
 \description{
 Generate a source label with file path and run time.
-In interactive sessions, this function uses \code{rstudioapi} to get the file path.
+In interactive sessions, the function uses \code{rstudioapi} to get the file path.
 It is designed to work in a script file in RStudio when running interactively.
-It will return empty if run in the console.
+It will return empty if run in the console directly.
 }
 \examples{
 label_src(1)

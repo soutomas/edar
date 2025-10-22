@@ -2,7 +2,7 @@
 % Please edit documentation in R/init.R
 \name{ggsrc}
 \alias{ggsrc}
-\title{Add source label to ggplot}
+\title{Add source label to a ggplot object}
 \usage{
 ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
 }

@@ -20,7 +20,7 @@
 #' @param fpath `<chr>` File path of the source file
 #' @param tag `<chr>` Tag to the filename
 #' @param des `<chr>` Destination folder
-#' @returns A logical vector indicating if the operation succeeded for each of the files attempted
+#' @returns A logical vector indicating if the operation succeeded for each of the files
 #' @export
 #' @examples
 #' \dontrun{
@@ -183,7 +183,7 @@ ggcov_violin = function(d, x, y, ...){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # library(patchwork)
 
-#' Add source label to ggplot
+#' Add source label to a ggplot object
 #'
 #' Generate and add a source label with file path and run time to a ggplot object.
 #'
@@ -268,14 +268,14 @@ kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
 #' Generate source label
 #'
 #' Generate a source label with file path and run time.
-#' In interactive sessions, this function uses `rstudioapi` to get the file path.
+#' In interactive sessions, the function uses `rstudioapi` to get the file path.
 #' It is designed to work in a script file in RStudio when running interactively.
-#' It will return empty if run in the console.
+#' It will return empty if run in the console directly.
 #'
 #' @param span `<int>` Number of lines: either 1 or 2
 #' @param omit `<chr>` Text to omit from the label
 #' @param tz `<lgl>` `FALSE` to exclude time stamp
-#' @returns A label with source file path and run time
+#' @returns A label showing the source file path with a time stamp
 #' @export
 #' @examples
 #' label_src(1)

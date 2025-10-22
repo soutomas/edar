@@ -14,7 +14,7 @@ fc(fpath, tag = "-", des = "")
 \item{des}{\verb{<chr>} Destination folder}
 }
 \value{
-A logical vector indicating if the operation succeeded for each of the files attempted
+A logical vector indicating if the operation succeeded for each of the files
 }
 \description{
 Copy file to destination and add date to file name with a tag as desired.
