@@ -2,25 +2,29 @@
 % Please edit documentation in R/init.R
 \name{ggcov_box}
 \alias{ggcov_box}
-\title{Box plot wrapper for categorical variables}
+\title{Box plot wrapper}
 \usage{
-ggcov_box(d, x, y, ...)
+ggcov_box(d, cont, cats = NULL, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{x, y}{\verb{<var>} Unquoted variable names (discrete and continuous)}
+\item{cont}{\verb{<var>} A continuous variable to plot as unquoted name}
 
-\item{...}{Other arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}}
+\item{cats}{\verb{<chr>} Optional. Discrete variables to plot}
+
+\item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}}
 }
 \value{
 A ggplot object of a box plot
 }
 \description{
-Sugar function to generate box plot for a discrete variable in a dataset.
-Orientation will follow the axis of the discrete variable.
+Sugar function to generate box plots for a continuous variable by discrete variables.
+Orientation will follow the axis of the discrete variables.
 }
 \examples{
-iris |> ggcov_box(Species,Sepal.Length)
-mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_box(cyl,mpg)
+iris |> ggcov_box(Sepal.Length)
+d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+d |> ggcov_box(mpg)
+d |> ggcov_box(mpg,c("cyl","vs"))
 }

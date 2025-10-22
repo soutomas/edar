@@ -108,42 +108,52 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Box plot wrapper for categorical variables
+#' Box plot wrapper
 #'
-#' Sugar function to generate box plot for a discrete variable in a dataset.
-#' Orientation will follow the axis of the discrete variable.
+#' Sugar function to generate box plots for a continuous variable by discrete variables.
+#' Orientation will follow the axis of the discrete variables.
 #'
 #' @param d `<dfr>` A data frame
-#' @param x,y `<var>` Unquoted variable names (discrete and continuous)
-#' @param ... Other arguments to pass to [ggplot2::geom_boxplot]
+#' @param cont `<var>` A continuous variable to plot as unquoted name
+#' @param cats `<chr>` Optional. A character vector of selected discrete variables
+#' @param ... List of arguments to pass to [ggplot2::geom_boxplot]
 #' @returns A ggplot object of a box plot
 #' @export
 #' @examples
-#' iris |> ggcov_box(Species,Sepal.Length)
-#' mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_box(cyl,mpg)
-ggcov_box = function(d, x, y, ...){
+#' iris |> ggcov_box(Sepal.Length)
+#' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+#' d |> ggcov_box(mpg)
+#' d |> ggcov_box(mpg,c("cyl","vs"))
+ggcov_box = function(d, cont, cats=NULL, ...){
+  if(!is.null(cats)) d = d |> dplyr::select({{cont}},{{cats}})
+  d = d |> tidyr::pivot_longer(-dplyr::where(is.numeric),names_to="name", values_to="levels")
   nsub = d |> dplyr::distinct() |> nrow()
   d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x={{x}},y={{y}})+
+    ggplot2::aes(x=levels,y={{cont}})+
     ggplot2::geom_boxplot(...)+
     ggplot2::geom_jitter(width=0.2,alpha=0.1)+
-    ggplot2::labs(caption=paste0("n=",nsub))
+    ggplot2::facet_wrap(~name,scales="free")+
+    ggplot2::labs(caption = paste0("n=",nsub))
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Histogram wrapper for continuous variables
 #'
 #' Sugar function to generate histograms of numeric variables in a dataset.
+#' Non-numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame
+#' @param cols `<chr>` Optional. A character vector of selected columns
 #' @param bins `<int>` Number of bins
 #' @param ... Other arguments to pass to [ggplot2::geom_histogram]
 #' @returns A ggplot object with histograms of numeric variables
 #' @export
 #' @examples
 #' iris |> ggcov_hist()
-ggcov_hist = function(d, bins=30, ...){
+#' iris |> ggcov_hist(c("Sepal.Width","Sepal.Length"))
+ggcov_hist = function(d, cols=NULL, bins=30, ...){
+  if(!is.null(cols)) d = d |> dplyr::select({{cols}})
   nsub = d |> dplyr::distinct() |> nrow()
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
@@ -157,26 +167,32 @@ ggcov_hist = function(d, bins=30, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Violin plot wrapper for categorical variables
+#' Violin plot wrapper
 #'
-#' Sugar function to generate violin plot for a discrete variable in a dataset.
-#' Orientation will follow the axis of the discrete variable.
+#' Sugar function to generate violin plots for a continuous variable.
+#' Orientation will follow the axis of the discrete variables.
 #'
 #' @param d `<dfr>` A data frame
-#' @param x,y `<var>` Unquoted variable names (discrete and continuous)
-#' @param ... Other arguments to pass to [ggplot2::geom_violin]
-#' @returns A ggplot object of a violin plot
+#' @param cont `<var>` A continuous variable to plot as unquoted name
+#' @param cats `<chr>` Optional. A character vector of selected discrete variables
+#' @param ... List of arguments to pass to [ggplot2::geom_violin]
+#' @returns A ggplot object with violin plots
 #' @export
 #' @examples
-#' iris |> ggcov_violin(Species,Sepal.Length)
-#' mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_violin(cyl,mpg)
-ggcov_violin = function(d, x, y, ...){
+#' iris |> ggcov_violin(Sepal.Length)
+#' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+#' d |> ggcov_violin(mpg)
+#' d |> ggcov_violin(mpg,c("cyl","vs"))
+ggcov_violin = function(d, cont, cats=NULL, ...){
+  if(!is.null(cats)) d = d |> dplyr::select({{cont}},{{cats}})
+  d = d |> tidyr::pivot_longer(-dplyr::where(is.numeric),names_to="name", values_to="levels")
   nsub = d |> dplyr::distinct() |> nrow()
   d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x={{x}},y={{y}})+
-    ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,...)+
+    ggplot2::aes(x=levels,y={{cont}})+
+    ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
     ggplot2::geom_jitter(width=0.2,alpha=0.1)+
+    ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=paste0("n=",nsub))
 }
 
@@ -327,17 +343,16 @@ label_tz = function(omit=""){
 #' @examples
 #' iris |> summ_by()
 #' iris |> summ_by(pct=c(0.1,0.9))
-#' mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am)) |> summ_by()
-#' mtcars |> summ_by("mpg")
-#' mtcars |> summ_by("mpg",vs)
-#' mtcars |> summ_by("mpg",vs,am)
-#' mtcars |> summ_by(c("mpg","disp"))
-#' mtcars |> summ_by(c("mpg","disp"),vs)
-#' mtcars |> summ_by(c("mpg","disp"),vs,xname="mpg_")
+#' d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+#' d |> summ_by("mpg")
+#' d |> summ_by("mpg",vs)
+#' d |> summ_by("mpg",vs,am)
+#' d |> summ_by(c("mpg","disp"))
+#' d |> summ_by(c("mpg","disp"),vs)
+#' d |> summ_by(c("mpg","disp"),vs,xname="mpg_")
 #' # grouping without column selection is possible but rarely useful in large dataset
-#' mtcars |> summ_by(NULL,vs)
+#' d |> summ_by(NULL,vs)
 summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
-  plo = paste0("P",pct[1])
   if(!is.null(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")

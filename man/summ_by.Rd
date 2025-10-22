@@ -27,13 +27,13 @@ Non-numeric variables will be dropped.
 \examples{
 iris |> summ_by()
 iris |> summ_by(pct=c(0.1,0.9))
-mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am)) |> summ_by()
-mtcars |> summ_by("mpg")
-mtcars |> summ_by("mpg",vs)
-mtcars |> summ_by("mpg",vs,am)
-mtcars |> summ_by(c("mpg","disp"))
-mtcars |> summ_by(c("mpg","disp"),vs)
-mtcars |> summ_by(c("mpg","disp"),vs,xname="mpg_")
+d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+d |> summ_by("mpg")
+d |> summ_by("mpg",vs)
+d |> summ_by("mpg",vs,am)
+d |> summ_by(c("mpg","disp"))
+d |> summ_by(c("mpg","disp"),vs)
+d |> summ_by(c("mpg","disp"),vs,xname="mpg_")
 # grouping without column selection is possible but rarely useful in large dataset
-mtcars |> summ_by(NULL,vs)
+d |> summ_by(NULL,vs)
 }

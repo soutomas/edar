@@ -2,25 +2,29 @@
 % Please edit documentation in R/init.R
 \name{ggcov_violin}
 \alias{ggcov_violin}
-\title{Violin plot wrapper for categorical variables}
+\title{Violin plot wrapper}
 \usage{
-ggcov_violin(d, x, y, ...)
+ggcov_violin(d, cont, cats = NULL, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{x, y}{\verb{<var>} Unquoted variable names (discrete and continuous)}
+\item{cont}{\verb{<var>} A continuous variable to plot as unquoted name}
 
-\item{...}{Other arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}}
+\item{cats}{\verb{<chr>} Optional. Discrete variables to plot}
+
+\item{...}{List of arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}}
 }
 \value{
-A ggplot object of a violin plot
+A ggplot object with violin plots
 }
 \description{
-Sugar function to generate violin plot for a discrete variable in a dataset.
-Orientation will follow the axis of the discrete variable.
+Sugar function to generate violin plots for a continuous variable.
+Orientation will follow the axis of the discrete variables.
 }
 \examples{
-iris |> ggcov_violin(Species,Sepal.Length)
-mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_violin(cyl,mpg)
+iris |> ggcov_violin(Sepal.Length)
+d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+d |> ggcov_violin(mpg)
+d |> ggcov_violin(mpg,c("cyl","vs"))
 }

@@ -4,10 +4,12 @@
 \alias{ggcov_hist}
 \title{Histogram wrapper for continuous variables}
 \usage{
-ggcov_hist(d, bins = 30, ...)
+ggcov_hist(d, cols = NULL, bins = 30, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
+
+\item{cols}{\verb{<chr>} A character vector of variable names to select}
 
 \item{bins}{\verb{<int>} Number of bins}
 
@@ -18,7 +20,10 @@ A ggplot object with histograms of numeric variables
 }
 \description{
 Sugar function to generate histograms of numeric variables in a dataset.
+Non-numeric variables will be dropped.
 }
 \examples{
 iris |> ggcov_hist()
+iris |> ggcov_hist(c(Sepal.Width,Sepal.Length))
+iris |> ggcov_hist(c("Sepal.Width","Sepal.Length"))
 }
