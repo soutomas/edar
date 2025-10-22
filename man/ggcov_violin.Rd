@@ -9,19 +9,18 @@ ggcov_violin(d, x, y, ...)
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{x, y}{\verb{<unquote name>} Varaiable names (one discrete and one continuous) to plot}
+\item{x, y}{\verb{<var>} Unquoted variable names (discrete and continuous)}
 
 \item{...}{Other arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}}
 }
 \value{
-A ggplot object with box plots of categorical variables
+A ggplot object of a violin plot
 }
 \description{
-Sugar function to show box plots of a continous variable by a discrete variable in a dataset.
+Sugar function to generate violin plot for a discrete variable in a dataset.
 Orientation will follow the axis of the discrete variable.
 }
 \examples{
 iris |> ggcov_violin(Species,Sepal.Length)
-iris |> ggcov_violin(Species,Sepal.Length,)
 mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_violin(cyl,mpg)
 }

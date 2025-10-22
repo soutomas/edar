@@ -3,6 +3,7 @@
 export(fc)
 export(ft)
 export(ft_def)
+export(ggcov_box)
 export(ggcov_hist)
 export(ggcov_violin)
 export(ggsrc)

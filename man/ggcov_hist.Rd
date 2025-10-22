@@ -17,7 +17,7 @@ ggcov_hist(d, bins = 30, ...)
 A ggplot object with histograms of numeric variables
 }
 \description{
-Sugar function to show histograms of numeric variables in a dataset.
+Sugar function to generate histograms of numeric variables in a dataset.
 }
 \examples{
 iris |> ggcov_hist()

@@ -108,9 +108,33 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Box plot wrapper for categorical variables
+#'
+#' Sugar function to generate box plot for a discrete variable in a dataset.
+#' Orientation will follow the axis of the discrete variable.
+#'
+#' @param d `<dfr>` A data frame
+#' @param x,y `<var>` Unquoted variable names (discrete and continuous)
+#' @param ... Other arguments to pass to [ggplot2::geom_boxplot]
+#' @returns A ggplot object of a box plot
+#' @export
+#' @examples
+#' iris |> ggcov_box(Species,Sepal.Length)
+#' mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_box(cyl,mpg)
+ggcov_box = function(d, x, y, ...){
+  nsub = d |> dplyr::distinct() |> nrow()
+  d |>
+    ggplot2::ggplot()+
+    ggplot2::aes(x={{x}},y={{y}})+
+    ggplot2::geom_boxplot(...)+
+    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
+    ggplot2::labs(caption=paste0("n=",nsub))
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Histogram wrapper for continuous variables
 #'
-#' Sugar function to show histograms of numeric variables in a dataset.
+#' Sugar function to generate histograms of numeric variables in a dataset.
 #'
 #' @param d `<dfr>` A data frame
 #' @param bins `<int>` Number of bins
@@ -135,16 +159,16 @@ ggcov_hist = function(d, bins=30, ...){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Violin plot wrapper for categorical variables
 #'
-#' Sugar function to show box plots of a continous variable by a discrete variable in a dataset.
+#' Sugar function to generate violin plot for a discrete variable in a dataset.
 #' Orientation will follow the axis of the discrete variable.
 #'
 #' @param d `<dfr>` A data frame
-#' @param x,y `<unquote name>` Varaiable names (discrete vs continuous)
+#' @param x,y `<var>` Unquoted variable names (discrete and continuous)
 #' @param ... Other arguments to pass to [ggplot2::geom_violin]
-#' @returns A ggplot object of a violin plot showing the quantiles
+#' @returns A ggplot object of a violin plot
 #' @export
 #' @examples
-#' iris |> ggcov_violin(Species, Sepal.Length)
+#' iris |> ggcov_violin(Species,Sepal.Length)
 #' mtcars |> dplyr::mutate(cyl=factor(cyl)) |> ggcov_violin(cyl,mpg)
 ggcov_violin = function(d, x, y, ...){
   nsub = d |> dplyr::distinct() |> nrow()
@@ -155,7 +179,6 @@ ggcov_violin = function(d, x, y, ...){
     ggplot2::geom_jitter(width=0.2,alpha=0.1)+
     ggplot2::labs(caption=paste0("n=",nsub))
 }
-
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # library(patchwork)
