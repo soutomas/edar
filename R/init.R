@@ -158,9 +158,9 @@ ggcov_hist = function(d, cols=NULL, bins=30, ...){
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
   d |>
-    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="val") |>
+    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value") |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=val)+
+    ggplot2::aes(x=value)+
     ggplot2::geom_histogram(bins=bins, ...)+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=paste0("n=",nsub))

@@ -11,7 +11,7 @@ ggcov_box(d, cont, cats = NULL, ...)
 
 \item{cont}{\verb{<var>} A continuous variable to plot as unquoted name}
 
-\item{cats}{\verb{<chr>} Optional. Discrete variables to plot}
+\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables}
 
 \item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}}
 }

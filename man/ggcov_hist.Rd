@@ -9,7 +9,7 @@ ggcov_hist(d, cols = NULL, bins = 30, ...)
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{cols}{\verb{<chr>} A character vector of variable names to select}
+\item{cols}{\verb{<chr>} Optional. A character vector of selected columns}
 
 \item{bins}{\verb{<int>} Number of bins}
 
@@ -24,6 +24,5 @@ Non-numeric variables will be dropped.
 }
 \examples{
 iris |> ggcov_hist()
-iris |> ggcov_hist(c(Sepal.Width,Sepal.Length))
 iris |> ggcov_hist(c("Sepal.Width","Sepal.Length"))
 }
