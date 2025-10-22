@@ -138,6 +138,8 @@ ggcov_box = function(d, cont, cats=NULL, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+utils::globalVariables(c("value"))
+
 #' Histogram wrapper for continuous variables
 #'
 #' Sugar function to generate histograms of numeric variables in a dataset.
@@ -157,8 +159,8 @@ ggcov_hist = function(d, cols=NULL, bins=30, ...){
   nsub = d |> dplyr::distinct() |> nrow()
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
+  d = d |> tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value")
   d |>
-    tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value") |>
     ggplot2::ggplot()+
     ggplot2::aes(x=value)+
     ggplot2::geom_histogram(bins=bins, ...)+
