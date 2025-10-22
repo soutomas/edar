@@ -1,7 +1,7 @@
 Package: edar
 Type: Package
 Title: Convenient Functions for Exploratory Data Analysis
-Version: 0.0.3.9000
+Version: 0.0.4
 Description: A collection of convenient functions to facilitate common tasks in exploratory data analysis. 
           Some common tasks include generating summary tables of categrocial and continuous variables,
           displaying the summary tables as a flextable or a kable easily
