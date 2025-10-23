@@ -9,7 +9,7 @@ ggcov_violin(d, var, cats, ...)
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{var}{\verb{<var>} A chosen variable to plot as unquoted name.}
+\item{var}{\verb{<var>} A variable to plot as unquoted name.}
 
 \item{cats}{\verb{<var>} Optional. A vector of selected discrete variables as unquoted names.}
 

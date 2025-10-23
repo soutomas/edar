@@ -9,7 +9,7 @@ ggcov_hist(d, cols, bins = 30, ...)
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{cols}{\verb{<var>} Optional. A vector of selected variables as unquoted names.}
+\item{cols}{\verb{<var>} Optional. A vector of selected columns as unquoted names.}
 
 \item{bins}{\verb{<int>} Number of bins.}
 

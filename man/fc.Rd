@@ -2,12 +2,12 @@
 % Please edit documentation in R/init.R
 \name{fc}
 \alias{fc}
-\title{Copy file to destination}
+\title{Copy files and rename with date}
 \usage{
 fc(fpath, tag = "-", des = "")
 }
 \arguments{
-\item{fpath}{\verb{<chr>} File path of the source file.}
+\item{fpath}{\verb{<chr>} A vector of file paths of the source files to copy.}
 
 \item{tag}{\verb{<chr>} Tag to the filename.}
 
@@ -17,12 +17,12 @@ fc(fpath, tag = "-", des = "")
 A logical vector indicating if the operation succeeded for each of the files.
 }
 \description{
-Copy file to destination and add date to file name with a tag as desired.
+Copy files to destination and add date to file name with a tag as desired.
 }
 \examples{
 \dontrun{
 # Copy a file to home directory
 tmp <- tempdir()
-fc("myfile.R",des=tmp)
+fc(c("f1.R","f2.R"),des=tmp)
 }
 }

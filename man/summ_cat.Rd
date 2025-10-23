@@ -4,15 +4,15 @@
 \alias{summ_cat}
 \title{Summarise categorical variables}
 \usage{
-summ_cat(d, pos = NULL)
+summ_cat(d, pos)
 }
 \arguments{
 \item{d}{A data frame.}
 
-\item{pos}{\verb{<chr>}/\verb{<int>} (name or position) Optional. Choose a variable to return.}
+\item{pos}{\verb{<chr/int>} (name or position) Optional. Choose a variable to return.}
 }
 \value{
-A list of summaries for each categorical variables.
+A list containing summaries for each categorical variables.
 }
 \description{
 Summarise categorical variables. Numeric variables will be dropped.
