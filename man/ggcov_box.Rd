@@ -4,14 +4,14 @@
 \alias{ggcov_box}
 \title{Box plot wrapper for discrete covariates}
 \usage{
-ggcov_box(d, var, cats = NULL, ...)
+ggcov_box(d, var, cats, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
 \item{var}{\verb{<var>} A chosen variable to plot as unquoted name.}
 
-\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables.}
+\item{cats}{\verb{<var>} Optional. A vector of selected discrete variables as unquoted names.}
 
 \item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}.}
 }
@@ -25,7 +25,8 @@ Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
 iris |> ggcov_box(Sepal.Length)
-sleep |> ggcov_box(extra,"group")
+sleep |> ggcov_box(extra,group)
+sleep |> ggcov_box(extra,"group") # character for `cats` will not break
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggcov_box(mpg)
 d |> ggcov_box(mpg,c("cyl","vs"))

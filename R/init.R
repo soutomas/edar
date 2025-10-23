@@ -116,18 +116,19 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 #'
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A chosen variable to plot as unquoted name.
-#' @param cats `<chr>` Optional. A character vector of selected discrete variables.
+#' @param cats `<var>` Optional. A vector of selected discrete variables as unquoted names.
 #' @param ... List of arguments to pass to [ggplot2::geom_boxplot].
 #' @returns A ggplot object of a box plot.
 #' @export
 #' @examples
 #' iris |> ggcov_box(Sepal.Length)
-#' sleep |> ggcov_box(extra,"group")
+#' sleep |> ggcov_box(extra,group)
+#' sleep |> ggcov_box(extra,"group") # character for `cats` will not break
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggcov_box(mpg)
 #' d |> ggcov_box(mpg,c("cyl","vs"))
-ggcov_box = function(d, var, cats=NULL, ...){
-  if(!is.null(cats)) d = d |> dplyr::select({{var}},{{cats}})
+ggcov_box = function(d, var, cats, ...){
+  if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
     names_to = "name",
@@ -152,16 +153,16 @@ utils::globalVariables(c("value"))
 #' Non-numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param cols `<chr>` Optional. A character vector of selected columns.
+#' @param cols `<var>` Optional. A vector of selected variables as unquoted names.
 #' @param bins `<int>` Number of bins.
 #' @param ... Other arguments to pass to [ggplot2::geom_histogram].
 #' @returns A ggplot object with histograms of numeric variables.
 #' @export
 #' @examples
 #' iris |> ggcov_hist()
-#' iris |> ggcov_hist(c("Sepal.Width","Sepal.Length"))
-ggcov_hist = function(d, cols=NULL, bins=30, ...){
-  if(!is.null(cols)) d = d |> dplyr::select({{cols}})
+#' iris |> ggcov_hist(c(Sepal.Width,Sepal.Length))
+ggcov_hist = function(d, cols, bins=30, ...){
+  if(!missing(cols)) d = d |> dplyr::select({{cols}})
   nsub = d |> dplyr::distinct() |> nrow()
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
@@ -183,18 +184,19 @@ ggcov_hist = function(d, cols=NULL, bins=30, ...){
 #'
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A chosen variable to plot as unquoted name.
-#' @param cats `<chr>` Optional. A character vector of selected discrete variables.
+#' @param cats `<var>` Optional. A vector of selected discrete variables as unquoted names.
 #' @param ... List of arguments to pass to [ggplot2::geom_violin].
 #' @returns A ggplot object with violin plots.
 #' @export
 #' @examples
 #' iris |> ggcov_violin(Sepal.Length)
-#' sleep |> ggcov_violin(extra,"group")
+#' sleep |> ggcov_violin(extra,group)
+#' sleep |> ggcov_box(extra,"group") # character for `cats` will not break
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggcov_violin(mpg)
 #' d |> ggcov_violin(mpg,c("cyl","vs"))
-ggcov_violin = function(d, var, cats=NULL, ...){
-  if(!is.null(cats)) d = d |> dplyr::select({{var}},{{cats}})
+ggcov_violin = function(d, var, cats, ...){
+  if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nsub = d |> dplyr::distinct() |> nrow()
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
@@ -348,8 +350,8 @@ label_tz = function(omit=""){
 #' Non-numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param cols `<var>` Optional. Select a vector of variable as unqouted names.
-#' @param ... `<var>` Optional. Columns to group by as unquoted variable names.
+#' @param cols `<var>` Optional. Select a vector of variables as unquoted names.
+#' @param ... `<var>` Optional. Columns to group by as unquoted names.
 #' @param pct `<num>` A vector of two indicating the percentiles to compute.
 #' @param xname  `<chr>` Characters to omit in output column names.
 #' @returns A data frame of summarised variables.
@@ -366,7 +368,7 @@ label_tz = function(omit=""){
 #' d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 #' # grouping without column selection is possible but rarely useful in large dataset
 #' d |> summ_by(,vs)
-summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
+summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
   if(!missing(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
