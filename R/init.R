@@ -1,6 +1,6 @@
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Filename : init.R
-# Use      : Convenient functions
+# Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
 # Updated  : 2025-10-24
@@ -342,7 +342,7 @@ label_src = function(span=2,omit="",tz=TRUE){
 #' @examples
 #' label_tz()
 label_tz = function(omit=""){
-  out= paste0("Run: ",format(Sys.time(),usetz=TRUE)) |> gsub(omit,"",x=_)
+  out = paste0("Run: ",format(Sys.time(),usetz=TRUE)) |> gsub(omit,"",x=_)
   return(out)
 }
 
