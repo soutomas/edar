@@ -7,16 +7,16 @@
 ggcov_violin(d, var, cats = NULL, ...)
 }
 \arguments{
-\item{d}{\verb{<dfr>} A data frame}
+\item{d}{\verb{<dfr>} A data frame.}
 
-\item{var}{\verb{<var>} A chosen variable to plot as unquoted name}
+\item{var}{\verb{<var>} A chosen variable to plot as unquoted name.}
 
-\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables}
+\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables.}
 
-\item{...}{List of arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}}
+\item{...}{List of arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}.}
 }
 \value{
-A ggplot object with violin plots
+A ggplot object with violin plots.
 }
 \description{
 Sugar function to generate violin plots for a chosen variable by discrete covariates.

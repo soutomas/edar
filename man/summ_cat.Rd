@@ -7,12 +7,12 @@
 summ_cat(d, pos = NULL)
 }
 \arguments{
-\item{d}{A data frame}
+\item{d}{A data frame.}
 
-\item{pos}{\verb{<chr>}/\verb{<int>} Position (name or integer) of the summary list to return}
+\item{pos}{\verb{<chr>}/\verb{<int>} (name or position) Optional. Choose a variable to return.}
 }
 \value{
-A list containing summaries of the categorical variables
+A list of summaries for each categorical variables.
 }
 \description{
 Summarise categorical variables. Numeric variables will be dropped.
@@ -20,6 +20,6 @@ Summarise categorical variables. Numeric variables will be dropped.
 \examples{
 iris |> summ_cat()
 sleep |> summ_cat()
-sleep |> summ_cat(1)
 sleep |> summ_cat("group")
+sleep |> summ_cat(1)
 }

@@ -7,33 +7,33 @@
 summ_by(d, cols = NULL, ..., pct = c(0.25, 0.75), xname = "")
 }
 \arguments{
-\item{d}{\verb{<dfr>} A data frame}
+\item{d}{\verb{<dfr>} A data frame.}
 
-\item{cols}{\verb{<chr>} A vector of column names to select}
+\item{cols}{\verb{<var>} Optional. Select a vector of variable as unqouted names.}
 
-\item{...}{\verb{<var>} Columns to group by as unquoted variable names}
+\item{...}{\verb{<var>} Optional. Columns to group by as unquoted variable names.}
 
-\item{pct}{\verb{<num>} A vector of two indicating the percentiles to compute}
+\item{pct}{\verb{<num>} A vector of two indicating the percentiles to compute.}
 
-\item{xname}{\verb{<chr>} Characters to omit in output column names}
+\item{xname}{\verb{<chr>} Characters to omit in output column names.}
 }
 \value{
-A data frame of summarised variables
+A data frame of summarised variables.
 }
 \description{
-Summarise continuous variables by group.
+Summarise all continuous variables by group.
 Non-numeric variables will be dropped.
 }
 \examples{
 iris |> summ_by()
 iris |> summ_by(pct=c(0.1,0.9))
 d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
-d |> summ_by("mpg")
-d |> summ_by("mpg",vs)
-d |> summ_by("mpg",vs,am)
-d |> summ_by(c("mpg","disp"))
-d |> summ_by(c("mpg","disp"),vs)
-d |> summ_by(c("mpg","disp"),vs,xname="mpg_")
+d |> summ_by(mpg)
+d |> summ_by(mpg,vs)
+d |> summ_by(mpg,vs,am)
+d |> summ_by(c(mpg,disp))
+d |> summ_by(c(mpg,disp),vs)
+d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 # grouping without column selection is possible but rarely useful in large dataset
-d |> summ_by(NULL,vs)
+d |> summ_by(,vs)
 }

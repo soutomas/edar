@@ -17,10 +17,10 @@
 #'
 #' Copy file to destination and add date to file name with a tag as desired.
 #'
-#' @param fpath `<chr>` File path of the source file
-#' @param tag `<chr>` Tag to the filename
-#' @param des `<chr>` Destination folder
-#' @returns A logical vector indicating if the operation succeeded for each of the files
+#' @param fpath `<chr>` File path of the source file.
+#' @param tag `<chr>` Tag to the filename.
+#' @param des `<chr>` Destination folder.
+#' @returns A logical vector indicating if the operation succeeded for each of the files.
 #' @export
 #' @examples
 #' \dontrun{
@@ -49,14 +49,14 @@ fc = function(fpath,tag="-",des=""){
 #'
 #' Sugar function for default flextable output.
 #'
-#' @param d `<dfr>` A data frame
-#' @param fnote `<chr>` Footnote
-#' @param ttl `<chr>` Title
-#' @param sig `<int>` Number of significant digits to compute
-#' @param dig `<int>` Number of decimal places to display
-#' @param src `<int>` Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit `<chr>` Text to omit from the source label
-#' @returns A flextable object
+#' @param d `<dfr>` A data frame.
+#' @param fnote `<chr>` Footnote.
+#' @param ttl `<chr>` Title.
+#' @param sig `<int>` Number of significant digits to compute.
+#' @param dig `<int>` Number of decimal places to display.
+#' @param src `<int>` Either 1 or 2 to add source label over 1 or 2 lines.
+#' @param omit `<chr>` Text to omit from the source label.
+#' @returns A flextable object.
 #' @export
 #' @examples
 #' mtcars |> head() |> ft()
@@ -87,11 +87,11 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
 #' Sugar function to set flextable defaults.
 #' The arguments are passed to [flextable::set_flextable_defaults()].
 #'
-#' @param font `<chr>` Font family - for `font.family`
-#' @param fsize `<int>` Font size (in point) - for `font.size`
-#' @param pad `<int>` Padding space around text - for `padding`
-#' @returns A list containing previous default values
-#' @seealso [flextable::set_flextable_defaults()]
+#' @param font `<chr>` Font family - for `font.family`.
+#' @param fsize `<int>` Font size (in point) - for `font.size`.
+#' @param pad `<int>` Padding space around text - for `padding`.
+#' @returns A list containing previous default values.
+#' @seealso [flextable::set_flextable_defaults()].
 #' @export
 #' @examples
 #' \dontrun{
@@ -114,11 +114,11 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 #' Orientation will follow the axis of the discrete variables.
 #' Numeric variables will be dropped, except the chosen variable to plot.
 #'
-#' @param d `<dfr>` A data frame
-#' @param var `<var>` A chosen variable to plot as unquoted name
-#' @param cats `<chr>` Optional. A character vector of selected discrete variables
-#' @param ... List of arguments to pass to [ggplot2::geom_boxplot]
-#' @returns A ggplot object of a box plot
+#' @param d `<dfr>` A data frame.
+#' @param var `<var>` A chosen variable to plot as unquoted name.
+#' @param cats `<chr>` Optional. A character vector of selected discrete variables.
+#' @param ... List of arguments to pass to [ggplot2::geom_boxplot].
+#' @returns A ggplot object of a box plot.
 #' @export
 #' @examples
 #' iris |> ggcov_box(Sepal.Length)
@@ -151,11 +151,11 @@ utils::globalVariables(c("value"))
 #' Sugar function to generate histograms for numeric variables in a dataset.
 #' Non-numeric variables will be dropped.
 #'
-#' @param d `<dfr>` A data frame
-#' @param cols `<chr>` Optional. A character vector of selected columns
-#' @param bins `<int>` Number of bins
-#' @param ... Other arguments to pass to [ggplot2::geom_histogram]
-#' @returns A ggplot object with histograms of numeric variables
+#' @param d `<dfr>` A data frame.
+#' @param cols `<chr>` Optional. A character vector of selected columns.
+#' @param bins `<int>` Number of bins.
+#' @param ... Other arguments to pass to [ggplot2::geom_histogram].
+#' @returns A ggplot object with histograms of numeric variables.
 #' @export
 #' @examples
 #' iris |> ggcov_hist()
@@ -181,11 +181,11 @@ ggcov_hist = function(d, cols=NULL, bins=30, ...){
 #' Orientation will follow the axis of the discrete variables.
 #' Numeric variables will be dropped, except the chosen variable to plot.
 #'
-#' @param d `<dfr>` A data frame
-#' @param var `<var>` A chosen variable to plot as unquoted name
-#' @param cats `<chr>` Optional. A character vector of selected discrete variables
-#' @param ... List of arguments to pass to [ggplot2::geom_violin]
-#' @returns A ggplot object with violin plots
+#' @param d `<dfr>` A data frame.
+#' @param var `<var>` A chosen variable to plot as unquoted name.
+#' @param cats `<chr>` Optional. A character vector of selected discrete variables.
+#' @param ... List of arguments to pass to [ggplot2::geom_violin].
+#' @returns A ggplot object with violin plots.
 #' @export
 #' @examples
 #' iris |> ggcov_violin(Sepal.Length)
@@ -217,13 +217,13 @@ ggcov_violin = function(d, var, cats=NULL, ...){
 #'
 #' Generate and add a source label with file path and run time to a ggplot object.
 #'
-#' @param plt A ggplot object
-#' @param span `<num>` Number of lines: either 1 or 2
-#' @param size `<num>` Text size
-#' @param col `<chr>` Colour of the text
-#' @param lab `<chr>` Custom label to use instead of the default
-#' @param omit `<chr>` Text to omit from the label
-#' @returns A ggplot object with the added label
+#' @param plt A ggplot object.
+#' @param span `<num>` Number of lines: either 1 or 2.
+#' @param size `<num>` Text size.
+#' @param col `<chr>` Colour of the text.
+#' @param lab `<chr>` Custom label to use instead of the default.
+#' @param omit `<chr>` Text to omit from the label.
+#' @returns A ggplot object with the added label.
 #' @export
 #' @examples
 #' # A source label can be easily added to a ggplot object.
@@ -247,9 +247,9 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #'
 #' Set colour scales for the desired number of colours.
 #'
-#' @param n `<int>` Number of colours to output
-#' @param show `<lgl>` `TRUE` to show the output colours
-#' @returns Hex code of colours that can be used for plotting
+#' @param n `<int>` Number of colours to output.
+#' @param show `<lgl>` `TRUE` to show the output colours.
+#' @returns Hex code of colours that can be used for plotting.
 #' @export
 #' @examples
 #' hcln(6,FALSE)
@@ -266,13 +266,13 @@ hcln = function(n,show=FALSE){
 #'
 #' Sugar function for default kable output.
 #'
-#' @param d `<dfr>` A data frame
-#' @param fnote `<chr>` Footnote
-#' @param cap `<chr>` Caption
-#' @param sig `<int>` Number of significant digits to compute
-#' @param dig `<int>` Number of decimal places to display
-#' @param src  `<int>` Either 1 or 2 to add source label over 1 or 2 lines
-#' @param omit `<chr>` Text to omit from the source label
+#' @param d `<dfr>` A data frame.
+#' @param fnote `<chr>` Footnote.
+#' @param cap `<chr>` Caption.
+#' @param sig `<int>` Number of significant digits to compute.
+#' @param dig `<int>` Number of decimal places to display.
+#' @param src  `<int>` Either 1 or 2 to add source label over 1 or 2 lines.
+#' @param omit `<chr>` Text to omit from the source label.
 #' @returns A kable object
 #' @export
 #' @examples
@@ -302,10 +302,10 @@ kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
 #' It is designed to work in a script file in RStudio when running interactively.
 #' It will return empty if run in the console directly.
 #'
-#' @param span `<int>` Number of lines: either 1 or 2
-#' @param omit `<chr>` Text to omit from the label
-#' @param tz `<lgl>` `FALSE` to exclude time stamp
-#' @returns A label showing the source file path with a time stamp
+#' @param span `<int>` Number of lines: either 1 or 2.
+#' @param omit `<chr>` Text to omit from the label.
+#' @param tz `<lgl>` `FALSE` to exclude time stamp.
+#' @returns A label showing the source file path with a time stamp.
 #' @export
 #' @examples
 #' label_src(1)
@@ -331,8 +331,8 @@ label_src = function(span=2,omit="",tz=TRUE){
 #'
 #' Generate a time stamp label of the current time.
 #'
-#' @param omit `<chr>` Text to omit from the label
-#' @returns A label with time stamp
+#' @param omit `<chr>` Text to omit from the label.
+#' @returns A label with time stamp.
 #' @export
 #' @examples
 #' label_tz()
@@ -344,30 +344,30 @@ label_tz = function(omit=""){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Summarise continuous variables by group
 #'
-#' Summarise continuous variables by group.
+#' Summarise all continuous variables by group.
 #' Non-numeric variables will be dropped.
 #'
-#' @param d `<dfr>` A data frame
-#' @param cols `<chr>` A vector of column names to select
-#' @param ... `<var>` Columns to group by as unquoted variable names
-#' @param pct `<num>` A vector of two indicating the percentiles to compute
-#' @param xname  `<chr>` Characters to omit in output column names
-#' @returns A data frame of summarised variables
+#' @param d `<dfr>` A data frame.
+#' @param cols `<var>` Optional. Select a vector of variable as unqouted names.
+#' @param ... `<var>` Optional. Columns to group by as unquoted variable names.
+#' @param pct `<num>` A vector of two indicating the percentiles to compute.
+#' @param xname  `<chr>` Characters to omit in output column names.
+#' @returns A data frame of summarised variables.
 #' @export
 #' @examples
 #' iris |> summ_by()
 #' iris |> summ_by(pct=c(0.1,0.9))
 #' d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
-#' d |> summ_by("mpg")
-#' d |> summ_by("mpg",vs)
-#' d |> summ_by("mpg",vs,am)
-#' d |> summ_by(c("mpg","disp"))
-#' d |> summ_by(c("mpg","disp"),vs)
-#' d |> summ_by(c("mpg","disp"),vs,xname="mpg_")
+#' d |> summ_by(mpg)
+#' d |> summ_by(mpg,vs)
+#' d |> summ_by(mpg,vs,am)
+#' d |> summ_by(c(mpg,disp))
+#' d |> summ_by(c(mpg,disp),vs)
+#' d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 #' # grouping without column selection is possible but rarely useful in large dataset
-#' d |> summ_by(NULL,vs)
+#' d |> summ_by(,vs)
 summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
-  if(!is.null(cols)) d = d |> dplyr::select(...,{{cols}})
+  if(!missing(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
   if(is.null(gps)) d. = d |>
@@ -410,15 +410,15 @@ summ_by = function(d, cols=NULL, ..., pct=c(0.25,0.75), xname=""){
 #'
 #' Summarise categorical variables. Numeric variables will be dropped.
 #'
-#' @param d A data frame
-#' @param pos `<chr>`/`<int>` Position (name or integer) of the summary list to return
-#' @returns A list containing summaries of the categorical variables
+#' @param d A data frame.
+#' @param pos `<chr>`/`<int>` (name or position) Optional. Choose a variable to return.
+#' @returns A list of summaries for each categorical variables.
 #' @export
 #' @examples
 #' iris |> summ_cat()
 #' sleep |> summ_cat()
-#' sleep |> summ_cat(1)
 #' sleep |> summ_cat("group")
+#' sleep |> summ_cat(1)
 summ_cat = function(d,pos=NULL){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   message("Dropped: ", paste(names(x), collapse=" "))

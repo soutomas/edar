@@ -7,10 +7,10 @@
 label_tz(omit = "")
 }
 \arguments{
-\item{omit}{\verb{<chr>} Text to omit from the label}
+\item{omit}{\verb{<chr>} Text to omit from the label.}
 }
 \value{
-A label with time stamp
+A label with time stamp.
 }
 \description{
 Generate a time stamp label of the current time.

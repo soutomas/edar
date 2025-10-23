@@ -7,16 +7,16 @@
 ggcov_box(d, var, cats = NULL, ...)
 }
 \arguments{
-\item{d}{\verb{<dfr>} A data frame}
+\item{d}{\verb{<dfr>} A data frame.}
 
-\item{var}{\verb{<var>} A chosen variable to plot as unquoted name}
+\item{var}{\verb{<var>} A chosen variable to plot as unquoted name.}
 
-\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables}
+\item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables.}
 
-\item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}}
+\item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}.}
 }
 \value{
-A ggplot object of a box plot
+A ggplot object of a box plot.
 }
 \description{
 Sugar function to generate box plots for a chosen variable by discrete covariates.

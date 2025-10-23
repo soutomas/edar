@@ -7,16 +7,16 @@
 ggcov_hist(d, cols = NULL, bins = 30, ...)
 }
 \arguments{
-\item{d}{\verb{<dfr>} A data frame}
+\item{d}{\verb{<dfr>} A data frame.}
 
-\item{cols}{\verb{<chr>} Optional. A character vector of selected columns}
+\item{cols}{\verb{<chr>} Optional. A character vector of selected columns.}
 
-\item{bins}{\verb{<int>} Number of bins}
+\item{bins}{\verb{<int>} Number of bins.}
 
-\item{...}{Other arguments to pass to \link[ggplot2:geom_histogram]{ggplot2::geom_histogram}}
+\item{...}{Other arguments to pass to \link[ggplot2:geom_histogram]{ggplot2::geom_histogram}.}
 }
 \value{
-A ggplot object with histograms of numeric variables
+A ggplot object with histograms of numeric variables.
 }
 \description{
 Sugar function to generate histograms for numeric variables in a dataset.

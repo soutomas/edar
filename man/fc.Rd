@@ -7,14 +7,14 @@
 fc(fpath, tag = "-", des = "")
 }
 \arguments{
-\item{fpath}{\verb{<chr>} File path of the source file}
+\item{fpath}{\verb{<chr>} File path of the source file.}
 
-\item{tag}{\verb{<chr>} Tag to the filename}
+\item{tag}{\verb{<chr>} Tag to the filename.}
 
-\item{des}{\verb{<chr>} Destination folder}
+\item{des}{\verb{<chr>} Destination folder.}
 }
 \value{
-A logical vector indicating if the operation succeeded for each of the files
+A logical vector indicating if the operation succeeded for each of the files.
 }
 \description{
 Copy file to destination and add date to file name with a tag as desired.

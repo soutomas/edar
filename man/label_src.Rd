@@ -7,14 +7,14 @@
 label_src(span = 2, omit = "", tz = TRUE)
 }
 \arguments{
-\item{span}{\verb{<int>} Number of lines: either 1 or 2}
+\item{span}{\verb{<int>} Number of lines: either 1 or 2.}
 
-\item{omit}{\verb{<chr>} Text to omit from the label}
+\item{omit}{\verb{<chr>} Text to omit from the label.}
 
-\item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp}
+\item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp.}
 }
 \value{
-A label showing the source file path with a time stamp
+A label showing the source file path with a time stamp.
 }
 \description{
 Generate a source label with file path and run time.

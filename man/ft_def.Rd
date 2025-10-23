@@ -7,14 +7,14 @@
 ft_def(font = "Calibri Light", fsize = 10, pad = 3)
 }
 \arguments{
-\item{font}{\verb{<chr>} Font family - for \code{font.family}}
+\item{font}{\verb{<chr>} Font family - for \code{font.family}.}
 
-\item{fsize}{\verb{<int>} Font size (in point) - for \code{font.size}}
+\item{fsize}{\verb{<int>} Font size (in point) - for \code{font.size}.}
 
-\item{pad}{\verb{<int>} Padding space around text - for \code{padding}}
+\item{pad}{\verb{<int>} Padding space around text - for \code{padding}.}
 }
 \value{
-A list containing previous default values
+A list containing previous default values.
 }
 \description{
 Sugar function to set flextable defaults.
@@ -26,5 +26,5 @@ ft_def()
 }
 }
 \seealso{
-\code{\link[flextable:set_flextable_defaults]{flextable::set_flextable_defaults()}}
+\code{\link[flextable:set_flextable_defaults]{flextable::set_flextable_defaults()}}.
 }
