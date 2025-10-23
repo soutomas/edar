@@ -3,7 +3,7 @@
 # Use      : Convenient functions
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-22
+# Updated  : 2025-10-23
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -108,29 +108,35 @@ ft_def = function(font="Calibri Light", fsize=10, pad=3){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Box plot wrapper
+#' Box plot wrapper for discrete covariates
 #'
-#' Sugar function to generate box plots for a continuous variable by discrete variables.
+#' Sugar function to generate box plots for a chosen variable by discrete covariates.
 #' Orientation will follow the axis of the discrete variables.
+#' Numeric variables will be dropped, except the chosen variable to plot.
 #'
 #' @param d `<dfr>` A data frame
-#' @param cont `<var>` A continuous variable to plot as unquoted name
+#' @param var `<var>` A chosen variable to plot as unquoted name
 #' @param cats `<chr>` Optional. A character vector of selected discrete variables
 #' @param ... List of arguments to pass to [ggplot2::geom_boxplot]
 #' @returns A ggplot object of a box plot
 #' @export
 #' @examples
 #' iris |> ggcov_box(Sepal.Length)
+#' sleep |> ggcov_box(extra,"group")
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggcov_box(mpg)
 #' d |> ggcov_box(mpg,c("cyl","vs"))
-ggcov_box = function(d, cont, cats=NULL, ...){
-  if(!is.null(cats)) d = d |> dplyr::select({{cont}},{{cats}})
-  d = d |> tidyr::pivot_longer(-dplyr::where(is.numeric),names_to="name", values_to="levels")
+ggcov_box = function(d, var, cats=NULL, ...){
+  if(!is.null(cats)) d = d |> dplyr::select({{var}},{{cats}})
+  d = d |> tidyr::pivot_longer(
+    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
+    names_to = "name",
+    values_to = "levels"
+  )
   nsub = d |> dplyr::distinct() |> nrow()
   d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=levels,y={{cont}})+
+    ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_boxplot(...)+
     ggplot2::geom_jitter(width=0.2,alpha=0.1)+
     ggplot2::facet_wrap(~name,scales="free")+
@@ -140,9 +146,9 @@ ggcov_box = function(d, cont, cats=NULL, ...){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 utils::globalVariables(c("value"))
 
-#' Histogram wrapper for continuous variables
+#' Histogram wrapper for continuous covariates
 #'
-#' Sugar function to generate histograms of numeric variables in a dataset.
+#' Sugar function to generate histograms for numeric variables in a dataset.
 #' Non-numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame
@@ -169,29 +175,35 @@ ggcov_hist = function(d, cols=NULL, bins=30, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Violin plot wrapper
+#' Violin plot wrapper for discrete covariates
 #'
-#' Sugar function to generate violin plots for a continuous variable.
+#' Sugar function to generate violin plots for a chosen variable by discrete covariates.
 #' Orientation will follow the axis of the discrete variables.
+#' Numeric variables will be dropped, except the chosen variable to plot.
 #'
 #' @param d `<dfr>` A data frame
-#' @param cont `<var>` A continuous variable to plot as unquoted name
+#' @param var `<var>` A chosen variable to plot as unquoted name
 #' @param cats `<chr>` Optional. A character vector of selected discrete variables
 #' @param ... List of arguments to pass to [ggplot2::geom_violin]
 #' @returns A ggplot object with violin plots
 #' @export
 #' @examples
 #' iris |> ggcov_violin(Sepal.Length)
+#' sleep |> ggcov_violin(extra,"group")
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggcov_violin(mpg)
 #' d |> ggcov_violin(mpg,c("cyl","vs"))
-ggcov_violin = function(d, cont, cats=NULL, ...){
-  if(!is.null(cats)) d = d |> dplyr::select({{cont}},{{cats}})
-  d = d |> tidyr::pivot_longer(-dplyr::where(is.numeric),names_to="name", values_to="levels")
+ggcov_violin = function(d, var, cats=NULL, ...){
+  if(!is.null(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nsub = d |> dplyr::distinct() |> nrow()
+  d = d |> tidyr::pivot_longer(
+    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
+    names_to = "name",
+    values_to = "levels"
+  )
   d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=levels,y={{cont}})+
+    ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
     ggplot2::geom_jitter(width=0.2,alpha=0.1)+
     ggplot2::facet_wrap(~name,scales="free")+

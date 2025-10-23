@@ -2,7 +2,7 @@
 % Please edit documentation in R/init.R
 \name{ggcov_hist}
 \alias{ggcov_hist}
-\title{Histogram wrapper for continuous variables}
+\title{Histogram wrapper for continuous covariates}
 \usage{
 ggcov_hist(d, cols = NULL, bins = 30, ...)
 }
@@ -19,7 +19,7 @@ ggcov_hist(d, cols = NULL, bins = 30, ...)
 A ggplot object with histograms of numeric variables
 }
 \description{
-Sugar function to generate histograms of numeric variables in a dataset.
+Sugar function to generate histograms for numeric variables in a dataset.
 Non-numeric variables will be dropped.
 }
 \examples{

@@ -2,14 +2,14 @@
 % Please edit documentation in R/init.R
 \name{ggcov_box}
 \alias{ggcov_box}
-\title{Box plot wrapper}
+\title{Box plot wrapper for discrete covariates}
 \usage{
-ggcov_box(d, cont, cats = NULL, ...)
+ggcov_box(d, var, cats = NULL, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{cont}{\verb{<var>} A continuous variable to plot as unquoted name}
+\item{var}{\verb{<var>} A chosen variable to plot as unquoted name}
 
 \item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables}
 
@@ -19,11 +19,13 @@ ggcov_box(d, cont, cats = NULL, ...)
 A ggplot object of a box plot
 }
 \description{
-Sugar function to generate box plots for a continuous variable by discrete variables.
+Sugar function to generate box plots for a chosen variable by discrete covariates.
 Orientation will follow the axis of the discrete variables.
+Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
 iris |> ggcov_box(Sepal.Length)
+sleep |> ggcov_box(extra,"group")
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggcov_box(mpg)
 d |> ggcov_box(mpg,c("cyl","vs"))

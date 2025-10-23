@@ -2,14 +2,14 @@
 % Please edit documentation in R/init.R
 \name{ggcov_violin}
 \alias{ggcov_violin}
-\title{Violin plot wrapper}
+\title{Violin plot wrapper for discrete covariates}
 \usage{
-ggcov_violin(d, cont, cats = NULL, ...)
+ggcov_violin(d, var, cats = NULL, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame}
 
-\item{cont}{\verb{<var>} A continuous variable to plot as unquoted name}
+\item{var}{\verb{<var>} A chosen variable to plot as unquoted name}
 
 \item{cats}{\verb{<chr>} Optional. A character vector of selected discrete variables}
 
@@ -19,11 +19,13 @@ ggcov_violin(d, cont, cats = NULL, ...)
 A ggplot object with violin plots
 }
 \description{
-Sugar function to generate violin plots for a continuous variable.
+Sugar function to generate violin plots for a chosen variable by discrete covariates.
 Orientation will follow the axis of the discrete variables.
+Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
 iris |> ggcov_violin(Sepal.Length)
+sleep |> ggcov_violin(extra,"group")
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggcov_violin(mpg)
 d |> ggcov_violin(mpg,c("cyl","vs"))
