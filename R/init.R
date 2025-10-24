@@ -82,14 +82,18 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' flextable default
+#' flextable defaults
 #'
 #' Sugar function to set flextable defaults.
 #' The arguments are passed to [flextable::set_flextable_defaults()].
 #'
+#' @param show `<lgl>` `TRUE` to show updated values
 #' @param font `<chr>` Font family - for `font.family`.
 #' @param fsize `<int>` Font size (in point) - for `font.size`.
 #' @param pad `<int>` Padding space around text - for `padding`.
+#' @param na `<chr>` A value to display instead of NA - for `na_str`
+#' @param nan `<chr>` A value to display instead of NaN - for `nan_str`
+#' @param ... Additional arguments to pass to [flextable::set_flextable_defaults()]
 #' @returns A list containing previous default values.
 #' @seealso [flextable::set_flextable_defaults()].
 #' @export
@@ -97,14 +101,17 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
 #' \dontrun{
 #' ft_def()
 #' }
-ft_def = function(font="Calibri Light", fsize=10, pad=3){
-  flextable::set_flextable_defaults(
+ft_def = function(show=FALSE, font="Calibri Light", fsize=10, pad=3, na="", nan="", ...){
+  out = flextable::set_flextable_defaults(
     font.family = font,
     font.size = fsize,
     padding = pad,
-    na_str = "",
-    nan_str = ""
+    na_str = na,
+    nan_str = nan,
+    ...
   )
+  if(show) print(get_flextable_defaults())
+  invisible(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

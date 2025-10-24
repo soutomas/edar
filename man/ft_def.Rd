@@ -2,16 +2,32 @@
 % Please edit documentation in R/init.R
 \name{ft_def}
 \alias{ft_def}
-\title{flextable default}
+\title{flextable defaults}
 \usage{
-ft_def(font = "Calibri Light", fsize = 10, pad = 3)
+ft_def(
+  show = FALSE,
+  font = "Calibri Light",
+  fsize = 10,
+  pad = 3,
+  na = "",
+  nan = "",
+  ...
+)
 }
 \arguments{
+\item{show}{\verb{<lgl>} \code{TRUE} to show updated values}
+
 \item{font}{\verb{<chr>} Font family - for \code{font.family}.}
 
 \item{fsize}{\verb{<int>} Font size (in point) - for \code{font.size}.}
 
 \item{pad}{\verb{<int>} Padding space around text - for \code{padding}.}
+
+\item{na}{\verb{<chr>} A value to display instead of NA - for \code{na_str}}
+
+\item{nan}{\verb{<chr>} A value to display instead of NaN - for \code{nan_str}}
+
+\item{...}{Additional arguments to pass to \code{\link[flextable:set_flextable_defaults]{flextable::set_flextable_defaults()}}}
 }
 \value{
 A list containing previous default values.
