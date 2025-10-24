@@ -4,14 +4,14 @@
 \alias{fc}
 \title{Copy files and rename with date}
 \usage{
-fc(fpath, tag = "-", des = "")
+fc(fpath, des = "", tag = "-")
 }
 \arguments{
 \item{fpath}{\verb{<chr>} A vector of file paths of the source files to copy.}
 
-\item{tag}{\verb{<chr>} Tag to the filename.}
-
 \item{des}{\verb{<chr>} Destination folder.}
+
+\item{tag}{\verb{<chr>} Tag to the filename.}
 }
 \value{
 A logical vector indicating if the operation succeeded for each of the files.

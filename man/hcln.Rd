@@ -2,7 +2,7 @@
 % Please edit documentation in R/init.R
 \name{hcln}
 \alias{hcln}
-\title{Generate hex colur codes for plotting}
+\title{Generate hex colour codes for plotting}
 \usage{
 hcln(n, show = FALSE)
 }
