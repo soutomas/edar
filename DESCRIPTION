@@ -23,6 +23,7 @@ RoxygenNote: 7.3.3
 Imports: 
     dplyr,
     flextable,
+    ggpubr,
     grDevices,
     janitor,
     kableExtra,
