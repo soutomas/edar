@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
-![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common
@@ -17,7 +17,7 @@ tasks in exploratory data analysis.
 ## Citation
 
 Sou T (2025). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.3.9000,
+Analysis*. R package version 0.0.5,
 <https://github.com/soutomas/edar>.
 
 ``` r
@@ -25,7 +25,7 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.3.9000, <https://github.com/soutomas/edar>.
+#>   Analysis_. R package version 0.0.5, <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -33,7 +33,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.3.9000},
+#>     note = {R package version 0.0.5},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```

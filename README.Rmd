@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
-![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions for common tasks in exploratory data analysis.
