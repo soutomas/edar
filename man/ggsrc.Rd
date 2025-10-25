@@ -2,7 +2,7 @@
 % Please edit documentation in R/fns_gg.R
 \name{ggsrc}
 \alias{ggsrc}
-\title{Add source label to a ggplot object}
+\title{Add source file label to a ggplot object}
 \usage{
 ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
 }
@@ -23,7 +23,7 @@ ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
 A ggplot object with the added label.
 }
 \description{
-Generate and add a source label with file path and run time to a ggplot object.
+Add a label with the current source file path and run time to a ggplot object.
 }
 \examples{
 # A source label can be easily added to a ggplot object.

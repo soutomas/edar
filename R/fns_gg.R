@@ -11,26 +11,26 @@
 # Updates
 # na
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Box plot wrapper for discrete covariates
+#' Box plot wrapper by categorical covariates
 #'
-#' Sugar function to generate box plots for a chosen variable by discrete covariates.
+#' Create box plots for a chosen variable by all discrete covariates in a dataset.
 #' Orientation will follow the axis of the discrete variables.
 #' Numeric variables will be dropped, except the chosen variable to plot.
 #'
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A variable to plot as unquoted name.
-#' @param cats `<var>` Optional. A vector of selected discrete variables as unquoted names.
+#' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
 #' @param ... List of arguments to pass to [ggplot2::geom_boxplot].
 #' @returns A ggplot object of a box plot.
 #' @export
 #' @examples
-#' iris |> ggcov_box(Sepal.Length)
-#' sleep |> ggcov_box(extra,group)
-#' sleep |> ggcov_box(extra,"group") # character for `cats` will not break
+#' iris |> ggbox(Sepal.Length)
+#' sleep |> ggbox(extra)
+#' sleep |> ggbox(extra,group)
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
-#' d |> ggcov_box(mpg)
-#' d |> ggcov_box(mpg,c("cyl","vs"))
-ggcov_box = function(d, var, cats, ...){
+#' d |> ggbox(mpg)
+#' d |> ggbox(mpg,c("cyl","vs"))
+ggbox = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   d = d |> tidyr::pivot_longer(
@@ -53,19 +53,19 @@ utils::globalVariables(c("value"))
 
 #' Histogram wrapper for continuous covariates
 #'
-#' Sugar function to generate histograms for numeric variables in a dataset.
+#' Create histograms for all numeric variables in a dataset.
 #' Non-numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param cols `<var>` Optional. A vector of selected columns as unquoted names.
+#' @param cols `<var>` Optional. Columns to plot as a vector of unquoted names.
 #' @param bins `<int>` Number of bins.
 #' @param ... Other arguments to pass to [ggplot2::geom_histogram].
 #' @returns A ggplot object with histograms of numeric variables.
 #' @export
 #' @examples
-#' iris |> ggcov_hist()
-#' iris |> ggcov_hist(c(Sepal.Width,Sepal.Length))
-ggcov_hist = function(d, cols, bins=30, ...){
+#' iris |> gghist()
+#' iris |> gghist(c(Sepal.Width,Sepal.Length))
+gghist = function(d, cols, bins=30, ...){
   if(!missing(cols)) d = d |> dplyr::select({{cols}})
   nsub = d |> dplyr::distinct() |> nrow()
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
@@ -80,49 +80,9 @@ ggcov_hist = function(d, cols, bins=30, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Violin plot wrapper for discrete covariates
+#' Add source file label to a ggplot object
 #'
-#' Sugar function to generate violin plots for a chosen variable by discrete covariates.
-#' Orientation will follow the axis of the discrete variables.
-#' Numeric variables will be dropped, except the chosen variable to plot.
-#'
-#' @param d `<dfr>` A data frame.
-#' @param var `<var>` A variable to plot as unquoted name.
-#' @param cats `<var>` Optional. A vector of selected discrete variables as unquoted names.
-#' @param ... List of arguments to pass to [ggplot2::geom_violin].
-#' @returns A ggplot object with violin plots.
-#' @export
-#' @examples
-#' iris |> ggcov_violin(Sepal.Length)
-#' sleep |> ggcov_violin(extra,group)
-#' sleep |> ggcov_box(extra,"group") # character for `cats` will not break
-#' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
-#' d |> ggcov_violin(mpg)
-#' d |> ggcov_violin(mpg,c("cyl","vs"))
-ggcov_violin = function(d, var, cats, ...){
-  if(missing(var)) stop("Specify a variable to plot!")
-  if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
-  nsub = d |> dplyr::distinct() |> nrow()
-  d = d |> tidyr::pivot_longer(
-    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
-    names_to = "name",
-    values_to = "levels"
-  )
-  d |>
-    ggplot2::ggplot()+
-    ggplot2::aes(x=levels,y={{var}})+
-    ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
-    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
-    ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=paste0("n=",nsub))
-}
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# library(patchwork)
-
-#' Add source label to a ggplot object
-#'
-#' Generate and add a source label with file path and run time to a ggplot object.
+#' Add a label with the current source file path and run time to a ggplot object.
 #'
 #' @param plt A ggplot object.
 #' @param span `<num>` Number of lines: either 1 or 2.
@@ -150,30 +110,70 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Generate XY scatter plot
+#' Violin plot wrapper by categorical covariates
 #'
-#' Wrapper function to generate basic XY scatter plot for quick exploration.
+#' Create violin plots for a chosen variable by all discrete covariates in a dataset.
+#' Orientation will follow the axis of the discrete variables.
+#' Numeric variables will be dropped, except the chosen variable to plot.
+#'
+#' @param d `<dfr>` A data frame.
+#' @param var `<var>` A variable to plot as unquoted name.
+#' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
+#' @param ... List of arguments to pass to [ggplot2::geom_violin].
+#' @returns A ggplot object with violin plots.
+#' @export
+#' @examples
+#' iris |> ggviolin(Sepal.Length)
+#' sleep |> ggviolin(extra)
+#' sleep |> ggviolin(extra,group)
+#' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+#' d |> ggviolin(mpg)
+#' d |> ggviolin(mpg,c("cyl","vs"))
+ggviolin = function(d, var, cats, ...){
+  if(missing(var)) stop("Specify a variable to plot!")
+  if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
+  nsub = d |> dplyr::distinct() |> nrow()
+  d = d |> tidyr::pivot_longer(
+    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
+    names_to = "name",
+    values_to = "levels"
+  )
+  d |>
+    ggplot2::ggplot()+
+    ggplot2::aes(x=levels,y={{var}})+
+    ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
+    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
+    ggplot2::facet_wrap(~name,scales="free")+
+    ggplot2::labs(caption=paste0("n=",nsub))
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' XY scatter plot wrapper
+#'
+#' Create basic XY scatter plot for quick data exploration.
 #' Default to show Pearson correlation coefficient with p-value from [ggpubr::stat_cor()].
 #' For more complex plots, it is recommended to use [ggplot2] directly.
 #'
 #' @param d `<dfr>` A data frame.
 #' @param x `<var>` Variable for the x-axis as unquoted name.
 #' @param y `<var>` Variable for the y-axis as unquoted name.
-#' @param lm `<lgl>` `TRUE` to add regression line from linear model
-#' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value
+#' @param lm `<lgl>` `TRUE` to add regression line from linear model.
+#' @param se `<lgl>` `TRUE` to show standard error with the regression line.
+#' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
 #'
 #' @returns A ggplot object.
 #' @export
 #' @examples
 #' mtcars |> ggxy(wt,hp)
+#' mtcars |> ggxy(mpg,hp,se=FALSE)
 #' mtcars |> ggxy(mpg,hp,lm=FALSE)
 #' mtcars |> ggxy(cyl,hp,cor=FALSE)
-ggxy = function(d,x,y,lm=TRUE,cor=TRUE){
+ggxy = function(d,x,y,lm=TRUE,se=TRUE,cor=TRUE){
   p = d |>
     ggplot2::ggplot()+
     ggplot2::aes(x={{x}},y={{y}})+
     ggplot2::geom_point()
-  if(lm) p = p + ggplot2::geom_smooth(method="lm")
+  if(lm) p = p + ggplot2::geom_smooth(method="lm",se=se)
   if(cor) p = p + ggpubr::stat_cor()
   return(p)
 }

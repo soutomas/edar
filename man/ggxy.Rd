@@ -2,9 +2,9 @@
 % Please edit documentation in R/fns_gg.R
 \name{ggxy}
 \alias{ggxy}
-\title{Generate XY scatter plot}
+\title{XY scatter plot wrapper}
 \usage{
-ggxy(d, x, y, lm = TRUE, cor = TRUE)
+ggxy(d, x, y, lm = TRUE, se = TRUE, cor = TRUE)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -13,20 +13,23 @@ ggxy(d, x, y, lm = TRUE, cor = TRUE)
 
 \item{y}{\verb{<var>} Variable for the y-axis as unquoted name.}
 
-\item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model}
+\item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
-\item{cor}{\verb{<lgl>} \code{TRUE} to show Pearson correlation coefficient with p-value}
+\item{se}{\verb{<lgl>} \code{TRUE} to show standard error with the regression line.}
+
+\item{cor}{\verb{<lgl>} \code{TRUE} to show Pearson correlation coefficient with p-value.}
 }
 \value{
 A ggplot object.
 }
 \description{
-Wrapper function to generate basic XY scatter plot for quick exploration.
+Create basic XY scatter plot for quick data exploration.
 Default to show Pearson correlation coefficient with p-value from \code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}.
 For more complex plots, it is recommended to use \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} directly.
 }
 \examples{
 mtcars |> ggxy(wt,hp)
+mtcars |> ggxy(mpg,hp,se=FALSE)
 mtcars |> ggxy(mpg,hp,lm=FALSE)
 mtcars |> ggxy(cyl,hp,cor=FALSE)
 }
