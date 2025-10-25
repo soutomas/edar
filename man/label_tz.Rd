@@ -13,7 +13,7 @@ label_tz(omit = "")
 A label with time stamp.
 }
 \description{
-Generate a time stamp label of the current time.
+Generate a label with a time stamp indicating the run time.
 }
 \examples{
 label_tz()

@@ -15,7 +15,7 @@ ft_def(
 )
 }
 \arguments{
-\item{show}{\verb{<lgl>} \code{TRUE} to show updated values}
+\item{show}{\verb{<lgl>} \code{TRUE} to show default values after the update}
 
 \item{font}{\verb{<chr>} Font family - for \code{font.family}.}
 

@@ -17,7 +17,7 @@ fc(fpath, des = "", tag = "-")
 A logical vector indicating if the operation succeeded for each of the files.
 }
 \description{
-Copy files to destination and add date to file name with a tag as desired.
+Copy files to destination and add date to file names with a tag as desired.
 }
 \examples{
 \dontrun{

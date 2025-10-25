@@ -2,7 +2,7 @@
 % Please edit documentation in R/fns_misc.R
 \name{label_src}
 \alias{label_src}
-\title{Generate source label}
+\title{Generate source file label}
 \usage{
 label_src(span = 2, omit = "", tz = TRUE)
 }
@@ -17,7 +17,7 @@ label_src(span = 2, omit = "", tz = TRUE)
 A label showing the source file path with a time stamp.
 }
 \description{
-Generate a source label with file path and run time.
+Generate a label with the current source file path and run time.
 In interactive sessions, the function uses \code{rstudioapi} to get the file path.
 It is designed to work in a script file in RStudio when running interactively.
 It will return empty if run in the console directly.

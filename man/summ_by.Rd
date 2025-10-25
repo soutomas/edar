@@ -9,7 +9,7 @@ summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "")
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{cols}{\verb{<var>} Optional. Select a vector of variables as unquoted names.}
+\item{cols}{\verb{<var>} Optional. Columns to summarise as unquoted names.}
 
 \item{...}{\verb{<var>} Optional. Columns to group by as unquoted names.}
 
@@ -34,6 +34,6 @@ d |> summ_by(mpg,vs,am)
 d |> summ_by(c(mpg,disp))
 d |> summ_by(c(mpg,disp),vs)
 d |> summ_by(c(mpg,disp),vs,xname="mpg_")
-# grouping without column selection is possible but rarely useful in large dataset
+# Grouping without column selection is possible but rarely useful in large dataset
 d |> summ_by(,vs)
 }

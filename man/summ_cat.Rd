@@ -9,13 +9,14 @@ summ_cat(d, pos)
 \arguments{
 \item{d}{A data frame.}
 
-\item{pos}{\verb{<chr/int>} (name or position) Optional. Choose a variable to return.}
+\item{pos}{\verb{<chr/int>} (name or position) Optional. Extract a chosen variable.}
 }
 \value{
 A list containing summaries for each categorical variables.
 }
 \description{
-Summarise categorical variables. Numeric variables will be dropped.
+Summarise all categorical variables.
+Numeric variables will be dropped.
 }
 \examples{
 iris |> summ_cat()
