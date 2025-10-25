@@ -25,7 +25,7 @@ The goal of edar is to provide some convenient functions for common tasks in exp
 
 ## Citation
 
-Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.3.9000, <https://github.com/soutomas/edar>.
+Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.5.9000, <https://github.com/soutomas/edar>.
 
 ```{r}
 citation("edar")
@@ -50,37 +50,35 @@ library(edar)
 # Data 
 dat = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 
-# Summary for continuous variables in a data frame. 
+# Summaries of all continuous variables in a data frame. 
 dat |> summ_by()
 
-# Summary of selected variable after grouping. 
-dat |> summ_by("mpg",vs)
-dat |> summ_by("mpg",vs,am)
+# Summaries of a selected variable after grouping. 
+dat |> summ_by(mpg,vs)
+dat |> summ_by(mpg,vs,am)
 
-# Summary for categorical variables in a data frame. 
+# Summaries of all categorical variables in a data frame. 
 dat |> summ_cat()
 
-# Summary for selected categorical variable. 
-dat |> summ_cat("vs")
 ```
 
-Results can be directly viewed in a flextable object easily. 
+Results can be directly viewed in a flextable object.  
 
 ```{r eval=FALSE}
 # Show data frame in a flextable object. 
-dat |> summ_by("mpg",vs) |> ft()
+dat |> summ_by(mpg,vs) |> ft()
 ```
 
 It is often helpful to add a label in the output indicating the source file. 
 
 ```{r eval=FALSE}
-# A label indicating the current source file can be easily generated. 
+# A label indicating the current source file with run time can be easily generated. 
 lab = label_src(1)
 ```
 
 ```{r eval=FALSE}
 # A source label can be directly added to the flextable output. 
-dat |> summ_cat("am") |> ft(src=1)
+dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ```{r fig.width=5, fig.height=4, eval=FALSE}
