@@ -4,12 +4,12 @@
 \alias{summ_cat}
 \title{Summarise categorical variables}
 \usage{
-summ_cat(d, pos)
+summ_cat(d, ...)
 }
 \arguments{
 \item{d}{A data frame.}
 
-\item{pos}{\verb{<var/int>} (variable or position) Optional. A variable to extract as unquoted name.}
+\item{...}{\verb{<var/int>} (name or index) Optional. A variable to extract.}
 }
 \value{
 A list containing summaries for each categorical variables.
@@ -19,8 +19,8 @@ Summarise all categorical variables.
 Numeric variables will be dropped.
 }
 \examples{
-iris |> summ_cat()
-sleep |> summ_cat()
-sleep |> summ_cat(1)
-sleep |> summ_cat(group)
+x <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+x |> summ_cat()
+x |> summ_cat(1)
+x |> summ_cat(cyl)
 }

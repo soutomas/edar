@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-25
+# Updated  : 2025-10-26
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -282,15 +282,15 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
 #' Numeric variables will be dropped.
 #'
 #' @param d A data frame.
-#' @param pos `<var/int>` (variable or position) Optional. A variable to extract as unquoted name.
+#' @param ... `<var/int>` (name or index) Optional. A variable to extract.
 #' @returns A list containing summaries for each categorical variables.
 #' @export
 #' @examples
-#' iris |> summ_cat()
-#' sleep |> summ_cat()
-#' sleep |> summ_cat(1)
-#' sleep |> summ_cat(group)
-summ_cat = function(d,pos){
+#' x <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+#' x |> summ_cat()
+#' x |> summ_cat(1)
+#' x |> summ_cat(cyl)
+summ_cat = function(d,...){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   message("Dropped: ", paste(names(x), collapse=" "))
   out = d |>
@@ -300,7 +300,6 @@ summ_cat = function(d,pos){
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
-  # if(!missing(pos)) out = out |> magrittr::extract2(pos)
-  if(!missing(pos)) out = out |> listr::list_extract({{pos}})
+  if(!missing(...)) out = out |> listr::list_extract(...)
   return(out)
 }
