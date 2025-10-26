@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-10-25
+# Updated  : 2025-10-26
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -29,7 +29,7 @@
 #' sleep |> ggbox(extra,group)
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggbox(mpg)
-#' d |> ggbox(mpg,c("cyl","vs"))
+#' d |> ggbox(mpg,c(cyl,vs))
 ggbox = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
@@ -128,7 +128,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' sleep |> ggviolin(extra,group)
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggviolin(mpg)
-#' d |> ggviolin(mpg,c("cyl","vs"))
+#' d |> ggviolin(mpg,c(cyl,vs))
 ggviolin = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})

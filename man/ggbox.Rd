@@ -29,5 +29,5 @@ sleep |> ggbox(extra)
 sleep |> ggbox(extra,group)
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggbox(mpg)
-d |> ggbox(mpg,c("cyl","vs"))
+d |> ggbox(mpg,c(cyl,vs))
 }

@@ -29,5 +29,5 @@ sleep |> ggviolin(extra)
 sleep |> ggviolin(extra,group)
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggviolin(mpg)
-d |> ggviolin(mpg,c("cyl","vs"))
+d |> ggviolin(mpg,c(cyl,vs))
 }
