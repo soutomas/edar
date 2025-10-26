@@ -48,7 +48,7 @@ Numeric variables will be dropped.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">pos</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -59,8 +59,8 @@ Numeric variables will be dropped.</p>
 <dd><p>A data frame.</p></dd>
 
 
-<dt id="arg-pos">pos<a class="anchor" aria-label="anchor" href="#arg-pos"></a></dt>
-<dd><p><code>&lt;var/int&gt;</code> (variable or position) Optional. A variable to extract as unquoted name.</p></dd>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p><code>&lt;var/int&gt;</code> (name or index) Optional. A variable to extract.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -70,49 +70,59 @@ Numeric variables will be dropped.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Species   n   percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      setosa  50 0.3333333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  versicolor  50 0.3333333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   virginica  50 0.3333333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Total 150 1.0000000</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>,<span class="va">vs</span>,<span class="va">am</span>,<span class="va">gear</span>,<span class="va">carb</span><span class="op">)</span>,<span class="va">factor</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="va">sleep</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: extra</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $group</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  group  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 20     1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     vs  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      0 18  0.5625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1 14  0.4375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32  1.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     ID  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      3  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      9  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     10  2     0.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 20     1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     am  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      0 19 0.59375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1 13 0.40625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="va">sleep</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: extra</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  group  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 20     1.0</span>
-<span class="r-in"><span><span class="va">sleep</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="va">group</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: extra</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  group  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2 10     0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 20     1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   gear  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      3 15 0.46875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 12 0.37500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5  5 0.15625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   carb  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1  7 0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      2 10 0.31250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      3  3 0.09375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 10 0.31250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6  1 0.03125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8  1 0.03125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
