@@ -4,7 +4,7 @@
 \alias{ggxy}
 \title{XY scatter plot wrapper}
 \usage{
-ggxy(d, x, y, lm = TRUE, se = TRUE, cor = TRUE)
+ggxy(d, x, y, ..., lm = TRUE, se = TRUE, cor = TRUE, pacc = NULL)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -13,11 +13,15 @@ ggxy(d, x, y, lm = TRUE, se = TRUE, cor = TRUE)
 
 \item{y}{\verb{<var>} Variable for the y-axis as unquoted name.}
 
+\item{...}{\verb{<expr>} Expression passed to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+
 \item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
 \item{se}{\verb{<lgl>} \code{TRUE} to show standard error with the regression line.}
 
 \item{cor}{\verb{<lgl>} \code{TRUE} to show Pearson correlation coefficient with p-value.}
+
+\item{pacc}{\verb{<dbl>} Precision for the p-value, e.g., 0.0001 to show 4 decimal places.}
 }
 \value{
 A ggplot object.
@@ -29,7 +33,13 @@ For more complex plots, it is recommended to use \link[ggplot2:ggplot2-package]{
 }
 \examples{
 mtcars |> ggxy(wt,hp)
-mtcars |> ggxy(mpg,hp,se=FALSE)
-mtcars |> ggxy(mpg,hp,lm=FALSE)
-mtcars |> ggxy(cyl,hp,cor=FALSE)
+mtcars |> ggxy(wt,hp,col=factor(gear))
+mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
+mtcars |> ggxy(wt,hp,pacc=0.001)
+mtcars |> ggxy(wt,hp,se=FALSE)
+mtcars |> ggxy(wt,hp,lm=FALSE)
+mtcars |> ggxy(wt,hp,cor=FALSE)
+}
+\seealso{
+\link[ggpubr:stat_cor]{ggpubr::stat_cor}
 }

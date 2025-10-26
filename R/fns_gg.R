@@ -11,10 +11,9 @@
 # Updates
 # na
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Box plot wrapper by categorical covariates
+#' Box plot wrapper for categorical covariates
 #'
-#' Create box plots for a chosen variable by all discrete covariates in a dataset.
-#' Orientation will follow the axis of the discrete variables.
+#' Create box plots for a chosen variable by all discrete covariates.
 #' Numeric variables will be dropped, except the chosen variable to plot.
 #'
 #' @param d `<dfr>` A data frame.
@@ -24,21 +23,20 @@
 #' @returns A ggplot object of a box plot.
 #' @export
 #' @examples
-#' iris |> ggbox(Sepal.Length)
-#' sleep |> ggbox(extra)
-#' sleep |> ggbox(extra,group)
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggbox(mpg)
 #' d |> ggbox(mpg,c(cyl,vs))
 ggbox = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
+  nsub = d |> nrow()
+  x = d |> dplyr::select(dplyr::where(~!is.numeric(.x)), -{{var}})
+  message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
     names_to = "name",
     values_to = "levels"
   )
-  nsub = d |> dplyr::distinct() |> nrow()
   d |>
     ggplot2::ggplot()+
     ggplot2::aes(x=levels,y={{var}})+
@@ -67,7 +65,7 @@ utils::globalVariables(c("value"))
 #' iris |> gghist(c(Sepal.Width,Sepal.Length))
 gghist = function(d, cols, bins=30, ...){
   if(!missing(cols)) d = d |> dplyr::select({{cols}})
-  nsub = d |> dplyr::distinct() |> nrow()
+  nsub = d |> nrow()
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
   d = d |> tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value")
@@ -110,10 +108,9 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Violin plot wrapper by categorical covariates
+#' Violin plot wrapper for categorical covariates
 #'
-#' Create violin plots for a chosen variable by all discrete covariates in a dataset.
-#' Orientation will follow the axis of the discrete variables.
+#' Create violin plots for a chosen variable by all discrete covariates.
 #' Numeric variables will be dropped, except the chosen variable to plot.
 #'
 #' @param d `<dfr>` A data frame.
@@ -123,16 +120,15 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @returns A ggplot object with violin plots.
 #' @export
 #' @examples
-#' iris |> ggviolin(Sepal.Length)
-#' sleep |> ggviolin(extra)
-#' sleep |> ggviolin(extra,group)
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggviolin(mpg)
 #' d |> ggviolin(mpg,c(cyl,vs))
 ggviolin = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
-  nsub = d |> dplyr::distinct() |> nrow()
+  nsub = d |> nrow()
+  x = d |> dplyr::select(dplyr::where(~!is.numeric(.x)), -{{var}})
+  message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
     names_to = "name",
@@ -157,23 +153,30 @@ ggviolin = function(d, var, cats, ...){
 #' @param d `<dfr>` A data frame.
 #' @param x `<var>` Variable for the x-axis as unquoted name.
 #' @param y `<var>` Variable for the y-axis as unquoted name.
+#' @param ... `<expr>` Expression passed to [ggplot2::aes] for additional mapping.
 #' @param lm `<lgl>` `TRUE` to add regression line from linear model.
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
 #' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
-#'
+#' @param pacc `<dbl>` Precision for the p-value, e.g., 0.0001 to show 4 decimal places.
+#' @seealso [ggpubr::stat_cor]
 #' @returns A ggplot object.
 #' @export
 #' @examples
 #' mtcars |> ggxy(wt,hp)
-#' mtcars |> ggxy(mpg,hp,se=FALSE)
-#' mtcars |> ggxy(mpg,hp,lm=FALSE)
-#' mtcars |> ggxy(cyl,hp,cor=FALSE)
-ggxy = function(d,x,y,lm=TRUE,se=TRUE,cor=TRUE){
+#' mtcars |> ggxy(wt,hp,col=factor(gear))
+#' mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
+#' mtcars |> ggxy(wt,hp,pacc=0.001)
+#' mtcars |> ggxy(wt,hp,se=FALSE)
+#' mtcars |> ggxy(wt,hp,lm=FALSE)
+#' mtcars |> ggxy(wt,hp,cor=FALSE)
+ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pacc=NULL){
+  nsub = d |> nrow()
   p = d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x={{x}},y={{y}})+
-    ggplot2::geom_point()
+    ggplot2::aes(x={{x}},y={{y}},...)+
+    ggplot2::geom_point()+
+    ggplot2::labs(caption=paste0("n=",nsub))
   if(lm) p = p + ggplot2::geom_smooth(method="lm",se=se)
-  if(cor) p = p + ggpubr::stat_cor()
+  if(cor) p = p + ggpubr::stat_cor(p.accuracy=pacc,show.legend=FALSE)
   return(p)
 }

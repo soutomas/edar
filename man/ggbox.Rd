@@ -2,7 +2,7 @@
 % Please edit documentation in R/fns_gg.R
 \name{ggbox}
 \alias{ggbox}
-\title{Box plot wrapper by categorical covariates}
+\title{Box plot wrapper for categorical covariates}
 \usage{
 ggbox(d, var, cats, ...)
 }
@@ -19,14 +19,10 @@ ggbox(d, var, cats, ...)
 A ggplot object of a box plot.
 }
 \description{
-Create box plots for a chosen variable by all discrete covariates in a dataset.
-Orientation will follow the axis of the discrete variables.
+Create box plots for a chosen variable by all discrete covariates.
 Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
-iris |> ggbox(Sepal.Length)
-sleep |> ggbox(extra)
-sleep |> ggbox(extra,group)
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggbox(mpg)
 d |> ggbox(mpg,c(cyl,vs))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fns_gg.R
 \name{ggviolin}
 \alias{ggviolin}
-\title{Violin plot wrapper by categorical covariates}
+\title{Violin plot wrapper for categorical covariates}
 \usage{
 ggviolin(d, var, cats, ...)
 }
@@ -19,14 +19,10 @@ ggviolin(d, var, cats, ...)
 A ggplot object with violin plots.
 }
 \description{
-Create violin plots for a chosen variable by all discrete covariates in a dataset.
-Orientation will follow the axis of the discrete variables.
+Create violin plots for a chosen variable by all discrete covariates.
 Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
-iris |> ggviolin(Sepal.Length)
-sleep |> ggviolin(extra)
-sleep |> ggviolin(extra,group)
 d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggviolin(mpg)
 d |> ggviolin(mpg,c(cyl,vs))
