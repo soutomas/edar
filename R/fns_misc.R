@@ -225,9 +225,9 @@ label_tz = function(omit=""){
 #' @returns A data frame of summarised variables.
 #' @export
 #' @examples
-#' iris |> summ_by()
-#' iris |> summ_by(pct=c(0.1,0.9))
 #' d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+#' d |> summ_by()
+#' d |> summ_by(pct=c(0.1,0.9))
 #' d |> summ_by(mpg)
 #' d |> summ_by(mpg,vs)
 #' d |> summ_by(mpg,vs,am)
@@ -282,16 +282,20 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
 #' Numeric variables will be dropped.
 #'
 #' @param d A data frame.
-#' @param ... `<var/int>` (name or index) Optional. A variable to extract.
-#' @returns A list containing summaries for each categorical variables.
+#' @param ... `<var>` Optional. Columns to summarise.
+#' @param var `<var/int>` (name or index) Optional. A variable to extract as a data frame.
+#' @returns A list containing summaries for all categorical variables or
+#'   a data frame showing the summary of a selected variable.
 #' @export
 #' @examples
-#' x <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
-#' x |> summ_cat()
-#' x |> summ_cat(1)
-#' x |> summ_cat(cyl)
-summ_cat = function(d,...){
+#' d <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+#' d |> summ_cat()
+#' d |> summ_cat(cyl,vs,gear)
+#' d |> summ_cat(var=cyl)
+#' d |> summ_cat(var=1)
+summ_cat = function(d,...,var){
   x = d |> dplyr::select(dplyr::where(is.numeric))
+  if(!missing(...)) d = d |> dplyr::select(...)
   message("Dropped: ", paste(names(x), collapse=" "))
   out = d |>
     dplyr::select(-dplyr::where(is.numeric)) |>
@@ -300,6 +304,6 @@ summ_cat = function(d,...){
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
-  if(!missing(...)) out = out |> listr::list_extract(...)
+  if(!missing(var)) out = out |> listr::list_extract({{var}})
   return(out)
 }

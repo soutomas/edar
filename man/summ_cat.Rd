@@ -4,23 +4,27 @@
 \alias{summ_cat}
 \title{Summarise categorical variables}
 \usage{
-summ_cat(d, ...)
+summ_cat(d, ..., var)
 }
 \arguments{
 \item{d}{A data frame.}
 
-\item{...}{\verb{<var/int>} (name or index) Optional. A variable to extract.}
+\item{...}{\verb{<var>} Optional. Columns to summarise.}
+
+\item{var}{\verb{<var/int>} (name or index) Optional. A variable to extract as a data frame.}
 }
 \value{
-A list containing summaries for each categorical variables.
+A list containing summaries for all categorical variables or
+a data frame showing the summary of a selected variable.
 }
 \description{
 Summarise all categorical variables.
 Numeric variables will be dropped.
 }
 \examples{
-x <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
-x |> summ_cat()
-x |> summ_cat(1)
-x |> summ_cat(cyl)
+d <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+d |> summ_cat()
+d |> summ_cat(cyl,vs,gear)
+d |> summ_cat(var=cyl)
+d |> summ_cat(var=1)
 }
