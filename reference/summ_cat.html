@@ -48,7 +48,7 @@ Numeric variables will be dropped.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">...</span>, <span class="va">var</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,18 +60,23 @@ Numeric variables will be dropped.</p>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p><code>&lt;var/int&gt;</code> (name or index) Optional. A variable to extract.</p></dd>
+<dd><p><code>&lt;var&gt;</code> Optional. Columns to summarise.</p></dd>
+
+
+<dt id="arg-var">var<a class="anchor" aria-label="anchor" href="#arg-var"></a></dt>
+<dd><p><code>&lt;var/int&gt;</code> (name or index) Optional. A variable to extract as a data frame.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list containing summaries for each categorical variables.</p>
+    <p>A list containing summaries for all categorical variables or
+a data frame showing the summary of a selected variable.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>,<span class="va">vs</span>,<span class="va">am</span>,<span class="va">gear</span>,<span class="va">carb</span><span class="op">)</span>,<span class="va">factor</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cyl</span>,<span class="va">vs</span>,<span class="va">am</span>,<span class="va">gear</span>,<span class="va">carb</span><span class="op">)</span>,<span class="va">factor</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $cyl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
@@ -109,14 +114,36 @@ Numeric variables will be dropped.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      8  1 0.03125</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="va">cyl</span>,<span class="va">vs</span>,<span class="va">gear</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     vs  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      0 18  0.5625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1 14  0.4375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32  1.0000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   gear  n percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      3 15 0.46875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4 12 0.37500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5  5 0.15625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span>var<span class="op">=</span><span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span>var<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
