@@ -9,7 +9,7 @@ summ_cat(d, pos)
 \arguments{
 \item{d}{A data frame.}
 
-\item{pos}{\verb{<chr/int>} (name or position) Optional. Extract a chosen variable.}
+\item{pos}{\verb{<var/int>} (variable or position) Optional. A variable to extract as unquoted name.}
 }
 \value{
 A list containing summaries for each categorical variables.
@@ -21,6 +21,6 @@ Numeric variables will be dropped.
 \examples{
 iris |> summ_cat()
 sleep |> summ_cat()
-sleep |> summ_cat("group")
 sleep |> summ_cat(1)
+sleep |> summ_cat(group)
 }

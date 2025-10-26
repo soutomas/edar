@@ -282,14 +282,14 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
 #' Numeric variables will be dropped.
 #'
 #' @param d A data frame.
-#' @param pos `<chr/int>` (name or position) Optional. Extract a chosen variable.
+#' @param pos `<var/int>` (variable or position) Optional. A variable to extract as unquoted name.
 #' @returns A list containing summaries for each categorical variables.
 #' @export
 #' @examples
 #' iris |> summ_cat()
 #' sleep |> summ_cat()
-#' sleep |> summ_cat("group")
 #' sleep |> summ_cat(1)
+#' sleep |> summ_cat(group)
 summ_cat = function(d,pos){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   message("Dropped: ", paste(names(x), collapse=" "))
@@ -300,6 +300,7 @@ summ_cat = function(d,pos){
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
-  if(!missing(pos)) out = out |> magrittr::extract2(pos)
+  # if(!missing(pos)) out = out |> magrittr::extract2(pos)
+  if(!missing(pos)) out = out |> listr::list_extract({{pos}})
   return(out)
 }

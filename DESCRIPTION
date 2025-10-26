@@ -28,6 +28,7 @@ Imports:
     janitor,
     kableExtra,
     knitr,
+    listr,
     magrittr,
     patchwork,
     rlang,
