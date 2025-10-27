@@ -13,7 +13,7 @@ ggbox(d, var, cats, ...)
 
 \item{cats}{\verb{<var>} Optional. Categorical variables to plot as a vector of unquoted names.}
 
-\item{...}{List of arguments to pass to \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}.}
+\item{...}{Additional arguments for \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}.}
 }
 \value{
 A ggplot object of a box plot.

@@ -13,7 +13,7 @@ ggxy(d, x, y, ..., lm = TRUE, se = TRUE, cor = TRUE, pacc = NULL)
 
 \item{y}{\verb{<var>} Variable for the y-axis as unquoted name.}
 
-\item{...}{\verb{<expr>} Expression passed to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+\item{...}{Other arguments for \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
 \item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
@@ -28,7 +28,7 @@ A ggplot object.
 }
 \description{
 Create basic XY scatter plot for quick data exploration.
-Default to show Pearson correlation coefficient with p-value from \code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}.
+Default to show Pearson correlation coefficient with p-value using \code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}.
 For more complex plots, it is recommended to use \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} directly.
 }
 \examples{
