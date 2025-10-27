@@ -13,7 +13,7 @@ gghist(d, cols, bins = 30, ...)
 
 \item{bins}{\verb{<int>} Number of bins.}
 
-\item{...}{Other arguments to pass to \link[ggplot2:geom_histogram]{ggplot2::geom_histogram}.}
+\item{...}{Additional arguments for \link[ggplot2:geom_histogram]{ggplot2::geom_histogram}.}
 }
 \value{
 A ggplot object with histograms of numeric variables.

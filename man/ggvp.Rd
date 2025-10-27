@@ -13,7 +13,7 @@ ggvp(d, var, cats, ...)
 
 \item{cats}{\verb{<var>} Optional. Categorical variables to plot as a vector of unquoted names.}
 
-\item{...}{List of arguments to pass to \link[ggplot2:geom_violin]{ggplot2::geom_violin}.}
+\item{...}{Additional arguments for \link[ggplot2:geom_violin]{ggplot2::geom_violin}.}
 }
 \value{
 A ggplot object with violin plots.

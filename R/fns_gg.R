@@ -19,7 +19,7 @@
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A variable to plot as unquoted name.
 #' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
-#' @param ... List of arguments to pass to [ggplot2::geom_boxplot].
+#' @param ... Additional arguments for [ggplot2::geom_boxplot].
 #' @returns A ggplot object of a box plot.
 #' @export
 #' @examples
@@ -57,7 +57,7 @@ utils::globalVariables(c("value"))
 #' @param d `<dfr>` A data frame.
 #' @param cols `<var>` Optional. Columns to plot as a vector of unquoted names.
 #' @param bins `<int>` Number of bins.
-#' @param ... Other arguments to pass to [ggplot2::geom_histogram].
+#' @param ... Additional arguments for [ggplot2::geom_histogram].
 #' @returns A ggplot object with histograms of numeric variables.
 #' @export
 #' @examples
@@ -116,7 +116,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A variable to plot as unquoted name.
 #' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
-#' @param ... List of arguments to pass to [ggplot2::geom_violin].
+#' @param ... Additional arguments for [ggplot2::geom_violin].
 #' @returns A ggplot object with violin plots.
 #' @export
 #' @examples
@@ -147,13 +147,13 @@ ggvp = function(d, var, cats, ...){
 #' XY scatter plot wrapper
 #'
 #' Create basic XY scatter plot for quick data exploration.
-#' Default to show Pearson correlation coefficient with p-value from [ggpubr::stat_cor()].
+#' Default to show Pearson correlation coefficient with p-value using [ggpubr::stat_cor()].
 #' For more complex plots, it is recommended to use [ggplot2] directly.
 #'
 #' @param d `<dfr>` A data frame.
 #' @param x `<var>` Variable for the x-axis as unquoted name.
 #' @param y `<var>` Variable for the y-axis as unquoted name.
-#' @param ... `<expr>` Expression passed to [ggplot2::aes] for additional mapping.
+#' @param ... Other arguments for [ggplot2::aes] for additional mapping.
 #' @param lm `<lgl>` `TRUE` to add regression line from linear model.
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
 #' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
