@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-10-26
+# Updated  : 2025-10-27
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -93,7 +93,7 @@ gghist = function(d, cols, bins=30, ...){
 #' @examples
 #' # A source label can be easily added to a ggplot object.
 #' library(ggplot2)
-#' p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
+#' p <- ggplot(mtcars, aes(mpg, wt)) + geom_point()
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
@@ -121,9 +121,9 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @export
 #' @examples
 #' d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
-#' d |> ggviolin(mpg)
-#' d |> ggviolin(mpg,c(cyl,vs))
-ggviolin = function(d, var, cats, ...){
+#' d |> ggvp(mpg)
+#' d |> ggvp(mpg,c(cyl,vs))
+ggvp = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nsub = d |> nrow()
