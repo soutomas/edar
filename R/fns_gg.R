@@ -30,7 +30,7 @@ ggbox = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nsub = d |> nrow()
-  x = d |> dplyr::select(dplyr::where(~!is.numeric(.x)), -{{var}})
+  x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
   message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
@@ -127,7 +127,7 @@ ggvp = function(d, var, cats, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nsub = d |> nrow()
-  x = d |> dplyr::select(dplyr::where(~!is.numeric(.x)), -{{var}})
+  x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
   message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
