@@ -91,13 +91,12 @@ gghist = function(d, cols, bins=30, ...){
 #' @returns A ggplot object with the added label.
 #' @export
 #' @examples
-#' # A source label can be easily added to a ggplot object.
 #' library(ggplot2)
 #' p <- ggplot(mtcars, aes(mpg, wt)) + geom_point()
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
-  labsrc = label_src(span) |> gsub(omit,"",x=_)
+  labsrc = label_src(span,omit)
   if(!is.null(lab)) labsrc = lab
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
