@@ -2,7 +2,7 @@
 % Please edit documentation in R/fns_gg.R
 \name{ggtp}
 \alias{ggtp}
-\title{Create time-profile plots}
+\title{Time-profile plot wrapper}
 \usage{
 ggtp(
   d,
@@ -27,7 +27,7 @@ ggtp(
 
 \item{x, y}{\verb{<var>} Column for x- and y-axis.}
 
-\item{id}{\verb{<var>} Column of subject ID for grouping.}
+\item{id}{\verb{<var>} Column for grouping ID such as subject ID.}
 
 \item{...}{Other arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
@@ -47,7 +47,7 @@ ggtp(
 A ggplot object.
 }
 \description{
-Wrapper function to create plots for time profiles such as PK and PD plots.
+Create plots for time profile data such as PK and PD plots.
 }
 \examples{
 Theoph |> ggtp(x=Time,y=conc,id=Subject)

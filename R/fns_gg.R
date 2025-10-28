@@ -107,13 +107,13 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#' Create time-profile plots
+#' Time-profile plot wrapper
 #'
-#' Wrapper function to create plots for time profiles such as PK and PD plots.
+#' Create plots for time profile data such as PK and PD plots.
 #'
 #' @param d `<dfr>` A data frame.
 #' @param x,y `<var>` Column for x- and y-axis.
-#' @param id `<var>` Column of subject ID for grouping.
+#' @param id `<var>` Column for grouping ID such as subject ID.
 #' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
 #' @param nsub `<lgl>` `TRUE` to show number of subjects in caption.
 #' @param logx,logy `<lgl>` `TRUE` to log x- and y-axis.
