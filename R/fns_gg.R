@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-10-27
+# Updated  : 2025-10-28
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -103,6 +103,50 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
       caption = labsrc,
       theme = ggplot2::theme(plot.caption = ggplot2::element_text(colour=col,size=size))
     )
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Create time-profile plots
+#'
+#' Wrapper function to create plots for time profiles such as PK and PD plots.
+#'
+#' @param d `<dfr>` A data frame.
+#' @param x,y `<var>` Column for x- and y-axis.
+#' @param id `<var>` Column of subject ID for grouping.
+#' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
+#' @param nsub `<lgl>` `TRUE` to show number of subjects in caption.
+#' @param logx,logy `<lgl>` `TRUE` to log x- and y-axis.
+#' @param alpha_point `<num>` Alpha value for [ggplot2::geom_point].
+#' @param alpha_line `<num>` Alpha value for [ggplot2::geom_line].
+#' @param xlab,ylab `<chr>` Labels for x- and y-axis.
+#' @param ttl,sttl,cap `<chr>` Title. Subtitle. Caption.
+#' @returns A ggplot object.
+#' @export
+#' @examples
+#' Theoph |> ggtp(x=Time,y=conc,id=Subject)
+ggtp = function(
+    d,x,y,id,...,
+    nsub=TRUE,logx=FALSE,logy=FALSE,
+    alpha_point=0.2,alpha_line=0.1,
+    xlab=NULL,ylab=NULL,ttl=NULL,sttl=NULL,cap=NULL
+  ){
+  labn = NULL
+  nSub = d |> dplyr::distinct({{id}}) |> dim()
+  if(!missing(id) && nSub[2]>0) labn = paste0("nSub=",nSub[1])
+  out = d |>
+    ggplot2::ggplot()+
+    ggplot2::aes(x={{x}}, y={{y}}, group={{id}}, ...)+
+    ggplot2::geom_point(alpha=alpha_point)+
+    ggplot2::geom_line(alpha=alpha_line)+
+    ggplot2::labs(
+      title = ttl,
+      x = xlab,
+      y = ylab,
+      caption = paste0(labn,cap)
+    )
+  if(logx) out = out + xgxr::xgx_scale_x_log10()
+  if(logy) out = out + xgxr::xgx_scale_y_log10()
   return(out)
 }
 

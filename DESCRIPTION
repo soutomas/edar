@@ -34,7 +34,8 @@ Imports:
     rlang,
     rstudioapi,
     scales,
-    tidyr
+    tidyr,
+    xgxr
 Suggests: 
     ggplot2,
     gt
