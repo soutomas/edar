@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-10-26
+# Updated  : 2025-10-28
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -167,20 +167,23 @@ kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Generate source file label
 #'
-#' Generate a label with the current source file path and run time.
-#' In interactive sessions, the function uses `rstudioapi` to get the file path.
-#' It is designed to work in a script file in RStudio when running interactively.
+#' Generate a label with the current source file path and run time,
+#' assuming that the source file is in the current working directory.
+#' In interactive sessions, the function is designed to work in a script file in RStudio
+#' and uses `rstudioapi` to get the file path.
 #' It will return empty if run in the console directly.
 #'
 #' @param span `<int>` Number of lines: either 1 or 2.
 #' @param omit `<chr>` Text to omit from the label.
 #' @param tz `<lgl>` `FALSE` to exclude time stamp.
+#' @param fname `<lgl>` `TRUE` to return the file name only.
 #' @returns A label showing the source file path with a time stamp.
 #' @export
 #' @examples
 #' label_src(1)
 #' label_src(tz=FALSE)
-label_src = function(span=2,omit="",tz=TRUE){
+#' label_src(fname=TRUE)
+label_src = function(span=2,omit="",tz=TRUE,fname=FALSE){
   loc_src = getwd()
   if(interactive()) loc_src = rstudioapi::getActiveDocumentContext()$path |> dirname()
   fname_src = knitr::current_input() |> gsub(".rmarkdown",".qmd",x=_)
@@ -192,6 +195,7 @@ label_src = function(span=2,omit="",tz=TRUE){
   lab2 = paste0("Source:",loc_src,"/\n",fname_src,labtz)
   out = lab1
   if(span==2) out = lab2
+  if(fname) out = fname_src
   out = out |> gsub(omit,"",x=_)
   return(out)
 }

@@ -4,7 +4,7 @@
 \alias{label_src}
 \title{Generate source file label}
 \usage{
-label_src(span = 2, omit = "", tz = TRUE)
+label_src(span = 2, omit = "", tz = TRUE, fname = FALSE)
 }
 \arguments{
 \item{span}{\verb{<int>} Number of lines: either 1 or 2.}
@@ -12,17 +12,21 @@ label_src(span = 2, omit = "", tz = TRUE)
 \item{omit}{\verb{<chr>} Text to omit from the label.}
 
 \item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp.}
+
+\item{fname}{\verb{<lgl>} \code{TRUE} to return the file name only.}
 }
 \value{
 A label showing the source file path with a time stamp.
 }
 \description{
-Generate a label with the current source file path and run time.
-In interactive sessions, the function uses \code{rstudioapi} to get the file path.
-It is designed to work in a script file in RStudio when running interactively.
+Generate a label with the current source file path and run time,
+assuming that the source file is in the current working directory.
+In interactive sessions, the function is designed to work in a script file in RStudio
+and uses \code{rstudioapi} to get the file path.
 It will return empty if run in the console directly.
 }
 \examples{
 label_src(1)
 label_src(tz=FALSE)
+label_src(fname=TRUE)
 }
