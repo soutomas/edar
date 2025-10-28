@@ -13,27 +13,30 @@
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Copy files and rename with date
 #'
-#' Copy files to destination and add date to file names with a tag as desired.
+#' Copy files to destination and rename with date and a tag as desired.
 #'
-#' @param fpath `<chr>` A vector of file paths of the source files to copy.
+#' @param ... `<chr>` A vector of file paths of the source files to copy and rename.
+#' @param des `<chr>` Destination folder. "." to rename files at the same location.
 #' @param tag `<chr>` Tag to the filename.
-#' @param des `<chr>` Destination folder.
+#' @param td `<lgl>` `TRUE` to add today (yymmdd) to the filename.
 #' @returns A logical vector indicating if the operation succeeded for each of the files.
 #' @export
 #' @examples
 #' \dontrun{
 #' # Copy a file to home directory
 #' tmp <- tempdir()
-#' fc(c("f1.R","f2.R"),des=tmp)
+#' fc("f1.R","f2.R",des=tmp)
 #' }
-fc = function(fpath,des="",tag="-"){
+fc = function(...,des="",tag="-",td=TRUE){
   # Copy
+  fpath = c(...)
   fname = basename(fpath)
   fstem = tools::file_path_sans_ext(fname)
   fext = tools::file_ext(fname)
   file.copy(fpath,des,overwrite=TRUE)
   # Rename
-  today = format(Sys.time(),"%y%m%d")
+  today = NULL
+  if(td) today = format(Sys.time(),"%y%m%d")
   fname_to = paste0(fstem,tag,today,".",fext)
   fpath1 = file.path(des,fname)
   fpath2 = file.path(des,fname_to)
