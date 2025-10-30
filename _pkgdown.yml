@@ -1,9 +1,15 @@
 url: https://soutomas.github.io/edar/
+
 template:
   bootstrap: 5
   light-switch: true
+  opengraph:
+    twitter:
+      creator: "@tomas_sou"
+
 authors:
   Tomas Sou:
     href: "https://tomassou.com/about"
+
 development:
   mode: auto
