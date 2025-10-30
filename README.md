@@ -8,10 +8,11 @@
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![GitHub Release](https://img.shields.io/github/v/release/soutomas/edar)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
 <!-- badges: end -->
 
-The goal of edar is to provide some convenient functions for common
+The goal of edar is to provide some convenient functions to facilitate
 tasks in exploratory data analysis.
 
 ## Citation
@@ -25,7 +26,8 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000, <https://github.com/soutomas/edar>.
+#>   Analysis_. R package version 0.0.5,
+#>   <https://CRAN.R-project.org/package=edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -33,17 +35,20 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.5.9000},
-#>     url = {https://github.com/soutomas/edar},
+#>     note = {R package version 0.0.5},
+#>     url = {https://CRAN.R-project.org/package=edar},
 #>   }
 ```
 
 ## Installation
 
-You can install the development version of edar from
-[GitHub](https://github.com/) with:
+You can install edar from CRAN or [GitHub](https://github.com/) with:
 
 ``` r
+# CRAN 
+install.packages("edar")
+
+# The latest development version 
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
