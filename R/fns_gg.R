@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-10-28
+# Updated  : 2025-10-29
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -124,8 +124,8 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @returns A ggplot object.
 #' @export
 #' @examples
-#' Theoph |> ggtp(x=Time,y=conc,id=Subject)
-ggtp = function(
+#' Theoph |> ggtpp(x=Time,y=conc,id=Subject)
+ggtpp = function(
     d,x,y,id,...,
     nsub=TRUE,logx=FALSE,logy=FALSE,
     alpha_point=0.2,alpha_line=0.1,
@@ -200,7 +200,7 @@ ggvp = function(d, var, cats, ...){
 #' @param lm `<lgl>` `TRUE` to add regression line from linear model.
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
 #' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
-#' @param pacc `<dbl>` Precision for the p-value, e.g., 0.0001 to show 4 decimal places.
+#' @param pv `<dbl>` Precision for the p-value, e.g., 0.001 to show 3 decimal places.
 #' @seealso [ggpubr::stat_cor]
 #' @returns A ggplot object.
 #' @export
@@ -208,11 +208,11 @@ ggvp = function(d, var, cats, ...){
 #' mtcars |> ggxy(wt,hp)
 #' mtcars |> ggxy(wt,hp,col=factor(gear))
 #' mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
-#' mtcars |> ggxy(wt,hp,pacc=0.001)
+#' mtcars |> ggxy(wt,hp,pv=0.001)
 #' mtcars |> ggxy(wt,hp,se=FALSE)
 #' mtcars |> ggxy(wt,hp,lm=FALSE)
 #' mtcars |> ggxy(wt,hp,cor=FALSE)
-ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pacc=NULL){
+ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=NULL){
   nsub = d |> nrow()
   p = d |>
     ggplot2::ggplot()+
@@ -220,6 +220,6 @@ ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pacc=NULL){
     ggplot2::geom_point()+
     ggplot2::labs(caption=paste0("n=",nsub))
   if(lm) p = p + ggplot2::geom_smooth(method="lm",se=se)
-  if(cor) p = p + ggpubr::stat_cor(p.accuracy=pacc,show.legend=FALSE)
+  if(cor) p = p + ggpubr::stat_cor(p.accuracy=pv,show.legend=FALSE)
   return(p)
 }
