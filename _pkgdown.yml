@@ -5,3 +5,5 @@ template:
 authors:
   Tomas Sou:
     href: "https://tomassou.com/about"
+development:
+  mode: auto

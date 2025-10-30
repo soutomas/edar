@@ -6,10 +6,10 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate
@@ -26,8 +26,9 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5,
-#>   <https://CRAN.R-project.org/package=edar>.
+#>   Analysis_. R package version 0.0.5.9000, commit
+#>   972aa81648712c4ecc3a12d8a165c3e36ac48444,
+#>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -35,8 +36,8 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.5},
-#>     url = {https://CRAN.R-project.org/package=edar},
+#>     note = {R package version 0.0.5.9000, commit 972aa81648712c4ecc3a12d8a165c3e36ac48444},
+#>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
 
@@ -143,21 +144,12 @@ p |> ggsrc()
 ```
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
-
 <!-- ```{r cars} -->
-
 <!-- summary(cars) -->
-
 <!-- ``` -->
-
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. -->
-
 <!-- You can also embed plots, for example: -->
-
 <!-- ```{r pressure, echo = FALSE} -->
-
 <!-- plot(pressure) -->
-
 <!-- ``` -->
-
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
