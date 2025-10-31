@@ -4,7 +4,7 @@
 \alias{ggbox}
 \title{Box plot wrapper for categorical covariates}
 \usage{
-ggbox(d, var, cats, ...)
+ggbox(d, var, cats, nsub = TRUE, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -13,17 +13,20 @@ ggbox(d, var, cats, ...)
 
 \item{cats}{\verb{<var>} Optional. Categorical variables to plot as a vector of unquoted names.}
 
+\item{nsub}{\verb{<lgl>} Show number of observations.}
+
 \item{...}{Additional arguments for \link[ggplot2:geom_boxplot]{ggplot2::geom_boxplot}.}
 }
 \value{
-A ggplot object of a box plot.
+A ggplot object.
 }
 \description{
-Create box plots for a chosen variable by all discrete covariates.
+Create box plots for a chosen variable by all discrete covariates in a dataset.
 Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
-d <- mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggbox(mpg)
+d |> ggbox(mpg,nsub=FALSE)
 d |> ggbox(mpg,c(cyl,vs))
 }

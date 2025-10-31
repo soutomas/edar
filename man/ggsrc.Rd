@@ -27,7 +27,7 @@ Add a label with the current source file path and run time to a ggplot object.
 }
 \examples{
 library(ggplot2)
-p <- ggplot(mtcars, aes(mpg, wt)) + geom_point()
+p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
 p |> ggsrc()
 p |> ggsrc(lab="My label")
 }

@@ -30,7 +30,7 @@ A ggplot object.
 }
 \description{
 Create basic XY scatter plot for quick data exploration.
-Default to show Pearson correlation coefficient with p-value using \code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}.
+Default to show Pearson correlation coefficient with p-value using \link[ggpubr:stat_cor]{ggpubr::stat_cor}.
 For more complex plots, it is recommended to use \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} directly.
 }
 \examples{
