@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-<!-- badges: end -->
-
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
@@ -14,6 +12,7 @@ status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/p
 version](https://img.shields.io/github/r-package/v/soutomas/edar)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate
 tasks in exploratory data analysis.
