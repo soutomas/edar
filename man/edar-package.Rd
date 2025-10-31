@@ -6,7 +6,7 @@
 \alias{edar-package}
 \title{edar: Convenient Functions for Exploratory Data Analysis}
 \description{
-A collection of convenient functions to facilitate common tasks in exploratory data analysis. Some common tasks include generating summary tables of variables, displaying tables as a 'flextable' or a 'kable' and showing distributions of variables using 'ggplot2'. Labels stating the source file with run time can be easily generated for annotation in tables and plots.
+A collection of convenient functions to facilitate common tasks in exploratory data analysis. Some common tasks include generating summary tables of variables, displaying tables as a 'flextable' or a 'kable' and visualising variables using 'ggplot2'. Labels stating the source file with run time can be easily generated for annotation in tables and plots.
 }
 \seealso{
 Useful links:
@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} (\href{https://orcid.org/0000-0002-7570-5545}{ORCID})
+\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} (\href{https://orcid.org/0000-0002-7570-5545}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}
