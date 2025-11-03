@@ -86,7 +86,7 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
 #' Sugar function to set flextable defaults.
 #' The arguments are passed to [flextable::set_flextable_defaults()].
 #'
-#' @param show `<lgl>` `TRUE` to show default values after the update
+#' @param show `<lgl>` `TRUE` to show values after the update.
 #' @param font `<chr>` Font family - for `font.family`.
 #' @param fsize `<int>` Font size (in point) - for `font.size`.
 #' @param pad `<int>` Padding space around text - for `padding`.
