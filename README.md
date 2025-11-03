@@ -14,7 +14,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate
-tasks in exploratory data analysis.
+common tasks in exploratory data analysis.
 
 ## Citation
 
@@ -28,7 +28,7 @@ citation("edar")
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
 #>   Analysis_. R package version 0.0.5.9000, commit
-#>   73f708b36aa43c0fbc3c2e0c70a4ef04c805b03b,
+#>   7bfb053bb1cb50dd264cec6c3ff28af8687759d3,
 #>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -37,7 +37,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.5.9000, commit 73f708b36aa43c0fbc3c2e0c70a4ef04c805b03b},
+#>     note = {R package version 0.0.5.9000, commit 7bfb053bb1cb50dd264cec6c3ff28af8687759d3},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
@@ -143,12 +143,21 @@ p |> ggsrc()
 ```
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
+
 <!-- ```{r cars} -->
+
 <!-- summary(cars) -->
+
 <!-- ``` -->
+
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. -->
+
 <!-- You can also embed plots, for example: -->
+
 <!-- ```{r pressure, echo = FALSE} -->
+
 <!-- plot(pressure) -->
+
 <!-- ``` -->
+
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
