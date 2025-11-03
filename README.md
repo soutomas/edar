@@ -9,8 +9,6 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
 [![](http://cranlogs.r-pkg.org/badges/edar)](https://cran.r-project.org/package=edar)
-![GitHub R package
-version](https://img.shields.io/github/r-package/v/soutomas/edar)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
