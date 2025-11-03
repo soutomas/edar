@@ -22,6 +22,7 @@ RoxygenNote: 7.3.3
 Imports: 
     dplyr,
     flextable,
+    ggplot2,
     ggpubr,
     grDevices,
     janitor,
@@ -36,7 +37,6 @@ Imports:
     tidyr,
     xgxr
 Suggests: 
-    ggplot2,
     gt
 Depends: 
     R (>= 4.2.0)
