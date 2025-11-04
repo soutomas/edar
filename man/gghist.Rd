@@ -4,7 +4,7 @@
 \alias{gghist}
 \title{Histogram wrapper for continuous covariates}
 \usage{
-gghist(d, cols, bins = 30, ...)
+gghist(d, cols, bins = 30, nsub = TRUE, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -12,6 +12,8 @@ gghist(d, cols, bins = 30, ...)
 \item{cols}{\verb{<var>} Optional. Columns to plot as a vector of unquoted names.}
 
 \item{bins}{\verb{<int>} Number of bins.}
+
+\item{nsub}{\verb{<lgl>} Show number of observations.}
 
 \item{...}{Additional arguments for \link[ggplot2:geom_histogram]{ggplot2::geom_histogram}.}
 }

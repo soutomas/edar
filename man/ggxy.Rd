@@ -4,16 +4,25 @@
 \alias{ggxy}
 \title{XY scatter plot wrapper}
 \usage{
-ggxy(d, x, y, ..., lm = TRUE, se = TRUE, cor = TRUE, pv = NULL, legend = TRUE)
+ggxy(
+  d,
+  x,
+  y,
+  ...,
+  lm = TRUE,
+  se = TRUE,
+  cor = TRUE,
+  pv = NULL,
+  nsub = TRUE,
+  legend = TRUE
+)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{x}{\verb{<var>} Variable for the x-axis as unquoted name.}
+\item{x, y}{\verb{<var>} Variables for x- and y-axis as unquoted names.}
 
-\item{y}{\verb{<var>} Variable for the y-axis as unquoted name.}
-
-\item{...}{Other arguments for \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+\item{...}{Other arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
 \item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
@@ -22,6 +31,8 @@ ggxy(d, x, y, ..., lm = TRUE, se = TRUE, cor = TRUE, pv = NULL, legend = TRUE)
 \item{cor}{\verb{<lgl>} \code{TRUE} to show Pearson correlation coefficient with p-value.}
 
 \item{pv}{\verb{<dbl>} Precision for the p-value, e.g., 0.001 to show 3 decimal places.}
+
+\item{nsub}{\verb{<lgl>} Show number of observations.}
 
 \item{legend}{\verb{<lgl>} \code{TRUE} to show legend.}
 }
@@ -39,6 +50,7 @@ mtcars |> ggxy(wt,hp,col=factor(gear))
 mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 mtcars |> ggxy(wt,hp,pv=0.001)
+mtcars |> ggxy(wt,hp,nsub=FALSE)
 mtcars |> ggxy(wt,hp,se=FALSE)
 mtcars |> ggxy(wt,hp,lm=FALSE)
 mtcars |> ggxy(wt,hp,cor=FALSE)

@@ -22,7 +22,7 @@ kb(d, fnote = NULL, cap = NULL, sig = 8, dig = 2, src = 0, omit = "")
 \item{omit}{\verb{<chr>} Text to omit from the source label.}
 }
 \value{
-A kable object
+A kable object.
 }
 \description{
 Sugar function for default kable output.

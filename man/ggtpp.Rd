@@ -25,13 +25,13 @@ ggtpp(
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{x, y}{\verb{<var>} Column for x- and y-axis.}
+\item{x, y}{\verb{<var>} Variables for x- and y-axis as unquoted names}
 
-\item{id}{\verb{<var>} Column for grouping ID such as subject ID.}
+\item{id}{\verb{<var>} Variable for grouping ID such as subject ID as unquoted name.}
 
 \item{...}{Other arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
-\item{nsub}{\verb{<lgl>} \code{TRUE} to show number of subjects in caption.}
+\item{nsub}{\verb{<lgl>} \code{TRUE} to show number of subjects as per \code{id} in caption.}
 
 \item{logx, logy}{\verb{<lgl>} \code{TRUE} to log x- and y-axis.}
 

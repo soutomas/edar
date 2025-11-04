@@ -4,12 +4,12 @@
 \alias{fc}
 \title{Copy files and rename with date}
 \usage{
-fc(..., des = "", tag = "-", td = TRUE)
+fc(..., des = "", tag = "", td = TRUE)
 }
 \arguments{
 \item{...}{\verb{<chr>} A vector of file paths of the source files to copy and rename.}
 
-\item{des}{\verb{<chr>} Destination folder. "." to rename files at the same location.}
+\item{des}{\verb{<chr>} Destination folder. "." to rename files at the current location.}
 
 \item{tag}{\verb{<chr>} Tag to the filename.}
 
@@ -24,7 +24,7 @@ Copy files to destination and rename with date and a tag as desired.
 \examples{
 \dontrun{
 # Copy a file to home directory
-tmp <- tempdir()
+tmp = tempdir()
 fc("f1.R","f2.R",des=tmp)
 }
 }

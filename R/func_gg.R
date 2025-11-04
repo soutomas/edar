@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-11-01
+# Updated  : 2025-11-04
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -44,9 +44,9 @@ ggbox = function(d, var, cats, nsub=TRUE, ...){
     ggplot2::ggplot()+
     ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_boxplot(...)+
-    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
+    ggplot2::geom_jitter(width=0.2, alpha=0.1)+
     ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption = nSub)
+    ggplot2::labs(caption=nSub)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -60,15 +60,17 @@ utils::globalVariables(c("value"))
 #' @param d `<dfr>` A data frame.
 #' @param cols `<var>` Optional. Columns to plot as a vector of unquoted names.
 #' @param bins `<int>` Number of bins.
+#' @param nsub `<lgl>` Show number of observations.
 #' @param ... Additional arguments for [ggplot2::geom_histogram].
 #' @returns A ggplot object.
 #' @export
 #' @examples
 #' iris |> gghist()
 #' iris |> gghist(c(Sepal.Width,Sepal.Length))
-gghist = function(d, cols, bins=30, ...){
+gghist = function(d, cols, bins=30, nsub=TRUE, ...){
   if(!missing(cols)) d = d |> dplyr::select({{cols}})
-  nsub = d |> nrow()
+  nSub = NULL
+  if(nsub) nSub = paste0("n=",nrow(d))
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("Dropped: ", paste(names(catv), collapse=" "))
   d = d |> tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value")
@@ -77,7 +79,7 @@ gghist = function(d, cols, bins=30, ...){
     ggplot2::aes(x=value)+
     ggplot2::geom_histogram(bins=bins, ...)+
     ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=paste0("n=",nsub))
+    ggplot2::labs(caption=nSub)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -115,10 +117,10 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' Create plots for time profile data such as PK and PD plots.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param x,y `<var>` Column for x- and y-axis.
-#' @param id `<var>` Column for grouping ID such as subject ID.
+#' @param x,y `<var>` Variables for x- and y-axis as unquoted names
+#' @param id `<var>` Variable for grouping ID such as subject ID as unquoted name.
 #' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
-#' @param nsub `<lgl>` `TRUE` to show number of subjects in caption.
+#' @param nsub `<lgl>` `TRUE` to show number of subjects as per `id` in caption.
 #' @param logx,logy `<lgl>` `TRUE` to log x- and y-axis.
 #' @param alpha_point `<num>` Alpha value for [ggplot2::geom_point].
 #' @param alpha_line `<num>` Alpha value for [ggplot2::geom_line].
@@ -129,10 +131,10 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @examples
 #' Theoph |> ggtpp(x=Time,y=conc,id=Subject)
 ggtpp = function(
-    d,x,y,id,...,
-    nsub=TRUE,logx=FALSE,logy=FALSE,
-    alpha_point=0.2,alpha_line=0.1,
-    xlab=NULL,ylab=NULL,ttl=NULL,sttl=NULL,cap=NULL
+    d, x, y, id, ...,
+    nsub=TRUE, logx=FALSE, logy=FALSE,
+    alpha_point=0.2, alpha_line=0.1,
+    xlab=NULL, ylab=NULL, ttl=NULL, sttl=NULL, cap=NULL
   ){
   labn = NULL
   nSub = d |> dplyr::distinct({{id}}) |> dim()
@@ -200,11 +202,11 @@ ggvio = function(d, var, cats, nsub=TRUE, ...){
 #' For more complex plots, it is recommended to use [ggplot2] directly.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param x `<var>` Variable for the x-axis as unquoted name.
-#' @param y `<var>` Variable for the y-axis as unquoted name.
-#' @param ... Other arguments for [ggplot2::aes] for additional mapping.
+#' @param x,y `<var>` Variables for x- and y-axis as unquoted names.
+#' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
 #' @param lm `<lgl>` `TRUE` to add regression line from linear model.
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
+#' @param nsub `<lgl>` Show number of observations.
 #' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
 #' @param pv `<dbl>` Precision for the p-value, e.g., 0.001 to show 3 decimal places.
 #' @param legend `<lgl>` `TRUE` to show legend.
@@ -217,16 +219,18 @@ ggvio = function(d, var, cats, nsub=TRUE, ...){
 #' mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 #' mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 #' mtcars |> ggxy(wt,hp,pv=0.001)
+#' mtcars |> ggxy(wt,hp,nsub=FALSE)
 #' mtcars |> ggxy(wt,hp,se=FALSE)
 #' mtcars |> ggxy(wt,hp,lm=FALSE)
 #' mtcars |> ggxy(wt,hp,cor=FALSE)
-ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=NULL,legend=TRUE){
-  nsub = d |> nrow()
+ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=NULL,nsub=TRUE,legend=TRUE){
+  nSub = NULL
+  if(nsub) nSub = paste0("n=",nrow(d))
   p = d |>
     ggplot2::ggplot()+
     ggplot2::aes(x={{x}},y={{y}},...)+
     ggplot2::geom_point(show.legend=legend)+
-    ggplot2::labs(caption=paste0("n=",nsub))
+    ggplot2::labs(caption=nSub)
   if(lm) p = p + ggplot2::geom_smooth(method="lm",se=se,show.legend=legend)
   if(cor) p = p + ggpubr::stat_cor(p.accuracy=pv,show.legend=FALSE)
   return(p)

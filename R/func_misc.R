@@ -16,7 +16,7 @@
 #' Copy files to destination and rename with date and a tag as desired.
 #'
 #' @param ... `<chr>` A vector of file paths of the source files to copy and rename.
-#' @param des `<chr>` Destination folder. "." to rename files at the same location.
+#' @param des `<chr>` Destination folder. "." to rename files at the current location.
 #' @param tag `<chr>` Tag to the filename.
 #' @param td `<lgl>` `TRUE` to add today (yymmdd) to the filename.
 #' @returns A logical vector indicating if the operation succeeded for each of the files.
@@ -24,10 +24,10 @@
 #' @examples
 #' \dontrun{
 #' # Copy a file to home directory
-#' tmp <- tempdir()
+#' tmp = tempdir()
 #' fc("f1.R","f2.R",des=tmp)
 #' }
-fc = function(...,des="",tag="-",td=TRUE){
+fc = function(...,des="",tag="",td=TRUE){
   # Copy
   fpath = c(...)
   fname = basename(fpath)
@@ -36,7 +36,7 @@ fc = function(...,des="",tag="-",td=TRUE){
   file.copy(fpath,des,overwrite=TRUE)
   # Rename
   today = NULL
-  if(td) today = format(Sys.time(),"%y%m%d")
+  if(td) today = paste0("-",format(Sys.time(),"%y%m%d"))
   fname_to = paste0(fstem,tag,today,".",fext)
   fpath1 = file.path(des,fname)
   fpath2 = file.path(des,fname_to)
@@ -147,7 +147,7 @@ hexn = function(n,show=FALSE){
 #' @param dig `<int>` Number of decimal places to display.
 #' @param src  `<int>` Either 1 or 2 to add source label over 1 or 2 lines.
 #' @param omit `<chr>` Text to omit from the source label.
-#' @returns A kable object
+#' @returns A kable object.
 #' @export
 #' @examples
 #' mtcars |> head() |> kb()
