@@ -14,7 +14,7 @@ URL: https://soutomas.github.io/edar/,
     https://github.com/soutomas/edar/
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
-    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre", "cph"),
+    person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"),
       comment = c(ORCID = "0000-0002-7570-5545")
     )
 Roxygen: list(markdown = TRUE)
