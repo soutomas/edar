@@ -4,7 +4,7 @@
 \alias{ggvio}
 \title{Violin plot wrapper for categorical covariates}
 \usage{
-ggvio(d, var, cats, nsub = TRUE, ...)
+ggvio(d, var, cats, alpha = 0.1, show = TRUE, nsub = TRUE, ...)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -12,6 +12,10 @@ ggvio(d, var, cats, nsub = TRUE, ...)
 \item{var}{\verb{<var>} A variable to plot as unquoted name.}
 
 \item{cats}{\verb{<var>} Optional. Categorical variables to plot as a vector of unquoted names.}
+
+\item{alpha}{\verb{<num>} Alpha value for \link[ggplot2:geom_jitter]{ggplot2::geom_jitter}.}
+
+\item{show}{\verb{<lgl>} \code{TRUE} to show data using \link[ggplot2:geom_jitter]{ggplot2::geom_jitter}.}
 
 \item{nsub}{\verb{<lgl>} Show number of observations.}
 
@@ -27,6 +31,8 @@ Numeric variables will be dropped, except the chosen variable to plot.
 \examples{
 d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggvio(mpg)
+d |> ggvio(mpg,alpha=0.5)
+d |> ggvio(mpg,show=FALSE)
 d |> ggvio(mpg,nsub=FALSE)
 d |> ggvio(mpg,c(cyl,vs))
 }

@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-11-04
+# Updated  : 2025-11-05
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -19,16 +19,21 @@
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A variable to plot as unquoted name.
 #' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
+#' @param alpha `<num>` Alpha value for [ggplot2::geom_jitter].
+#' @param show `<lgl>` `TRUE` to show data using [ggplot2::geom_jitter].
 #' @param nsub `<lgl>` Show number of observations.
 #' @param ... Additional arguments for [ggplot2::geom_boxplot].
+#'
 #' @returns A ggplot object.
 #' @export
 #' @examples
 #' d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggbox(mpg)
+#' d |> ggbox(mpg,alpha=0.5)
+#' d |> ggbox(mpg,show=FALSE)
 #' d |> ggbox(mpg,nsub=FALSE)
 #' d |> ggbox(mpg,c(cyl,vs))
-ggbox = function(d, var, cats, nsub=TRUE, ...){
+ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nSub = NULL
@@ -40,13 +45,14 @@ ggbox = function(d, var, cats, nsub=TRUE, ...){
     names_to = "name",
     values_to = "levels"
   )
-  d |>
+  out = d |>
     ggplot2::ggplot()+
     ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_boxplot(...)+
-    ggplot2::geom_jitter(width=0.2, alpha=0.1)+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)
+  if(show) out = out + ggplot2::geom_jitter(width=0.2, alpha=alpha)
+  return(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -164,6 +170,8 @@ ggtpp = function(
 #' @param d `<dfr>` A data frame.
 #' @param var `<var>` A variable to plot as unquoted name.
 #' @param cats `<var>` Optional. Categorical variables to plot as a vector of unquoted names.
+#' @param alpha `<num>` Alpha value for [ggplot2::geom_jitter].
+#' @param show `<lgl>` `TRUE` to show data using [ggplot2::geom_jitter].
 #' @param nsub `<lgl>` Show number of observations.
 #' @param ... Additional arguments for [ggplot2::geom_violin].
 #' @returns A ggplot object.
@@ -171,9 +179,11 @@ ggtpp = function(
 #' @examples
 #' d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 #' d |> ggvio(mpg)
+#' d |> ggvio(mpg,alpha=0.5)
+#' d |> ggvio(mpg,show=FALSE)
 #' d |> ggvio(mpg,nsub=FALSE)
 #' d |> ggvio(mpg,c(cyl,vs))
-ggvio = function(d, var, cats, nsub=TRUE, ...){
+ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   if(missing(var)) stop("Specify a variable to plot!")
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nSub = NULL
@@ -185,13 +195,14 @@ ggvio = function(d, var, cats, nsub=TRUE, ...){
     names_to = "name",
     values_to = "levels"
   )
-  d |>
+  out = d |>
     ggplot2::ggplot()+
     ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
-    ggplot2::geom_jitter(width=0.2,alpha=0.1)+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)
+  if(show) out = out + ggplot2::geom_jitter(width=0.2,alpha=alpha)
+  return(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
