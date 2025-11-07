@@ -1,5 +1,5 @@
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Filename : func_misc.R
+# Filename : func_all.R
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29

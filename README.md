@@ -28,7 +28,7 @@ citation("edar")
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
 #>   Analysis_. R package version 0.0.5.9000, commit
-#>   7bfb053bb1cb50dd264cec6c3ff28af8687759d3,
+#>   041862613b31db4b3af6801978ec84f05f156a33,
 #>   <https://github.com/soutomas/edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -37,7 +37,7 @@ citation("edar")
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
 #>     year = {2025},
-#>     note = {R package version 0.0.5.9000, commit 7bfb053bb1cb50dd264cec6c3ff28af8687759d3},
+#>     note = {R package version 0.0.5.9000, commit 041862613b31db4b3af6801978ec84f05f156a33},
 #>     url = {https://github.com/soutomas/edar},
 #>   }
 ```
@@ -45,10 +45,10 @@ citation("edar")
 ## Installation
 
 ``` r
-# CRAN 
+# From CRAN 
 install.packages("edar")
 
-# The latest development version 
+# From GitHub - for the latest development version
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
@@ -126,7 +126,7 @@ It is often helpful to add a label in the output indicating the source
 file.
 
 ``` r
-# A label indicating the current source file with run time can be easily generated. 
+# A label indicating the current source file with run time can be easily generated for annotation. 
 lab = label_src(1)
 ```
 
@@ -136,7 +136,7 @@ dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ``` r
-# A source label can be easily added to a ggplot object. 
+# A source label can be directly added to a ggplot object. 
 library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
