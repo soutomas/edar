@@ -71,7 +71,7 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Sou T (2025). _edar: Convenient Functions for Exploratory Data</span></span>
 <span><span class="co">#&gt;   Analysis_. R package version 0.0.5.9000, commit</span></span>
-<span><span class="co">#&gt;   7bfb053bb1cb50dd264cec6c3ff28af8687759d3,</span></span>
+<span><span class="co">#&gt;   041862613b31db4b3af6801978ec84f05f156a33,</span></span>
 <span><span class="co">#&gt;   &lt;https://github.com/soutomas/edar&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -80,7 +80,7 @@
 <span><span class="co">#&gt;     title = {edar: Convenient Functions for Exploratory Data Analysis},</span></span>
 <span><span class="co">#&gt;     author = {Tomas Sou},</span></span>
 <span><span class="co">#&gt;     year = {2025},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.0.5.9000, commit 7bfb053bb1cb50dd264cec6c3ff28af8687759d3},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.0.5.9000, commit 041862613b31db4b3af6801978ec84f05f156a33},</span></span>
 <span><span class="co">#&gt;     url = {https://github.com/soutomas/edar},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
@@ -88,10 +88,10 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># CRAN </span></span>
+<code class="sourceCode R"><span><span class="co"># From CRAN </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"edar"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># The latest development version </span></span>
+<span><span class="co"># From GitHub - for the latest development version</span></span>
 <span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"soutomas/edar"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -161,13 +161,13 @@
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>It is often helpful to add a label in the output indicating the source file.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># A label indicating the current source file with run time can be easily generated. </span></span>
+<code class="sourceCode R"><span><span class="co"># A label indicating the current source file with run time can be easily generated for annotation. </span></span>
 <span><span class="va">lab</span> <span class="op">=</span> <span class="fu"><a href="reference/label_src.html">label_src</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># A source label can be directly added to the flextable output. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span>src<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># A source label can be easily added to a ggplot object. </span></span>
+<code class="sourceCode R"><span><span class="co"># A source label can be directly added to a ggplot object. </span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="va">p</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggsrc.html">ggsrc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -212,7 +212,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://tomassou.com/me" class="external-link">Tomas Sou</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7570-5545" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<a href="https://tomassou.com/me/" class="external-link">Tomas Sou</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7570-5545" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -231,11 +231,11 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by <a href="https://tomassou.com/me" class="external-link">Tomas Sou</a>.</p>
+  <p>Developed by <a href="https://tomassou.com/me/" class="external-link">Tomas Sou</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
