@@ -114,7 +114,7 @@ file.
 
 ``` r
 # A label indicating the current source file with run time can be easily generated for annotation. 
-lab = label_src(1)
+lab = label_src()
 ```
 
 ``` r
