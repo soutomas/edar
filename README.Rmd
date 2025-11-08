@@ -76,7 +76,7 @@ It is often helpful to add a label in the output indicating the source file.
 
 ```{r eval=FALSE}
 # A label indicating the current source file with run time can be easily generated for annotation. 
-lab = label_src(1)
+lab = label_src()
 ```
 
 ```{r eval=FALSE}
