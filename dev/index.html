@@ -108,25 +108,22 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soutomas.github.io/edar/">edar</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Data </span></span>
-<span><span class="va">dat</span> <span class="op">=</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>vs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span>, am<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dat</span> <span class="op">=</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">am</span>,<span class="va">carb</span>,<span class="va">cyl</span>,<span class="va">gear</span>,<span class="va">vs</span><span class="op">)</span>,<span class="va">factor</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Summaries of all continuous variables in a data frame. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Non-numeric variables are dropped.</span></span>
-<span><span class="co">#&gt; Dropped: vs am</span></span>
+<span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `name`</span></span>
-<span><span class="co">#&gt; # A tibble: 9 × 10</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
 <span><span class="co">#&gt;   name      n   nNA   Mean      SD   Min    P25    Med    P75    Max</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 carb     32     0   2.81   1.62   1      2      2      4      8   </span></span>
-<span><span class="co">#&gt; 2 cyl      32     0   6.19   1.79   4      4      6      8      8   </span></span>
-<span><span class="co">#&gt; 3 disp     32     0 231.   124.    71.1  121.   196.   326    472   </span></span>
-<span><span class="co">#&gt; 4 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93</span></span>
-<span><span class="co">#&gt; 5 gear     32     0   3.69   0.738  3      3      4      4      5   </span></span>
-<span><span class="co">#&gt; 6 hp       32     0 147.    68.6   52     96.5  123    180    335   </span></span>
-<span><span class="co">#&gt; 7 mpg      32     0  20.1    6.03  10.4   15.4   19.2   22.8   33.9 </span></span>
-<span><span class="co">#&gt; 8 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 </span></span>
-<span><span class="co">#&gt; 9 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42</span></span>
+<span><span class="co">#&gt; 1 disp     32     0 231.   124.    71.1  121.   196.   326    472   </span></span>
+<span><span class="co">#&gt; 2 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93</span></span>
+<span><span class="co">#&gt; 3 hp       32     0 147.    68.6   52     96.5  123    180    335   </span></span>
+<span><span class="co">#&gt; 4 mpg      32     0  20.1    6.03  10.4   15.4   19.2   22.8   33.9 </span></span>
+<span><span class="co">#&gt; 5 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 </span></span>
+<span><span class="co">#&gt; 6 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42</span></span>
 <span></span>
 <span><span class="co"># Summaries of a selected variable after grouping. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span></span>
@@ -136,21 +133,18 @@
 <span><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  </span></span>
 <span><span class="co">#&gt; 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9</span></span>
-<span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span>,<span class="va">am</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Adding missing grouping variables: `vs`, `am`</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
-<span><span class="co">#&gt; # Groups:   vs [2]</span></span>
-<span><span class="co">#&gt;   vs    am        n   nNA  Mean    SD   Min   P25   Med   P75   Max</span></span>
-<span><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0     0        12     0  15.0  2.77  10.4  14.0  15.2  16.6  19.2</span></span>
-<span><span class="co">#&gt; 2 0     1         6     0  19.8  4.01  15    16.8  20.4  21    26  </span></span>
-<span><span class="co">#&gt; 3 1     0         7     0  20.7  2.47  17.8  18.6  21.4  22.2  24.4</span></span>
-<span><span class="co">#&gt; 4 1     1         7     0  28.4  4.76  21.4  25.0  30.4  31.4  33.9</span></span>
 <span></span>
 <span><span class="co"># Summaries of all categorical variables in a data frame. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_cat.html">summ_cat</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
-<span><span class="co">#&gt; Dropped: mpg cyl disp hp drat wt qsec gear carb</span></span>
+<span><span class="co">#&gt; Dropped: mpg disp hp drat wt qsec</span></span>
+<span><span class="co">#&gt; $cyl</span></span>
+<span><span class="co">#&gt;    cyl  n percent</span></span>
+<span><span class="co">#&gt;      4 11 0.34375</span></span>
+<span><span class="co">#&gt;      6  7 0.21875</span></span>
+<span><span class="co">#&gt;      8 14 0.43750</span></span>
+<span><span class="co">#&gt;  Total 32 1.00000</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $vs</span></span>
 <span><span class="co">#&gt;     vs  n percent</span></span>
 <span><span class="co">#&gt;      0 18  0.5625</span></span>
@@ -161,11 +155,29 @@
 <span><span class="co">#&gt;     am  n percent</span></span>
 <span><span class="co">#&gt;      0 19 0.59375</span></span>
 <span><span class="co">#&gt;      1 13 0.40625</span></span>
+<span><span class="co">#&gt;  Total 32 1.00000</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $gear</span></span>
+<span><span class="co">#&gt;   gear  n percent</span></span>
+<span><span class="co">#&gt;      3 15 0.46875</span></span>
+<span><span class="co">#&gt;      4 12 0.37500</span></span>
+<span><span class="co">#&gt;      5  5 0.15625</span></span>
+<span><span class="co">#&gt;  Total 32 1.00000</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $carb</span></span>
+<span><span class="co">#&gt;   carb  n percent</span></span>
+<span><span class="co">#&gt;      1  7 0.21875</span></span>
+<span><span class="co">#&gt;      2 10 0.31250</span></span>
+<span><span class="co">#&gt;      3  3 0.09375</span></span>
+<span><span class="co">#&gt;      4 10 0.31250</span></span>
+<span><span class="co">#&gt;      6  1 0.03125</span></span>
+<span><span class="co">#&gt;      8  1 0.03125</span></span>
 <span><span class="co">#&gt;  Total 32 1.00000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualisation">Visualisation<a class="anchor" aria-label="anchor" href="#visualisation"></a>
 </h3>
+<p>Distributions of variables can be quickly visualised for exploratory graphical analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.4.3</span></span>
@@ -174,27 +186,31 @@
 <span><span class="co"># Histograms of all continuous variables in a dataset. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/gghist.html">gghist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Non-numeric variables are dropped.</span></span>
-<span><span class="co">#&gt; Dropped: vs am</span></span></code></pre></div>
+<span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="70%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># Box plots of selected variable by all categorical variables in a dataset. </span></span>
+<span><span class="co"># Box plots of a selected variable by all categorical variables in a dataset. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggbox.html">ggbox</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
-<span><span class="co">#&gt; Dropped: cyl disp hp drat wt qsec gear carb</span></span></code></pre></div>
+<span><span class="co">#&gt; Dropped: disp hp drat wt qsec</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-2.png" width="70%"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># Violin plots of selected variable by all categorical variables in a dataset. </span></span>
+<span><span class="co"># Violin plots of a selected variable by all categorical variables in a dataset. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggvio.html">ggvio</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
-<span><span class="co">#&gt; Dropped: cyl disp hp drat wt qsec gear carb</span></span></code></pre></div>
+<span><span class="co">#&gt; Dropped: disp hp drat wt qsec</span></span>
+<span><span class="co">#&gt; Warning: Groups with fewer than two datapoints have been dropped.</span></span>
+<span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span>
+<span><span class="co">#&gt; Warning: Groups with fewer than two datapoints have been dropped.</span></span>
+<span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-3.png" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="tables">Tables<a class="anchor" aria-label="anchor" href="#tables"></a>
 </h3>
-<p>Tables can be directly viewed in a flextable object.</p>
+<p>Tables can be viewed directly in a flextable object.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show data frame in a flextable object. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -204,15 +220,15 @@
 <div class="section level3">
 <h3 id="labels">Labels<a class="anchor" aria-label="anchor" href="#labels"></a>
 </h3>
-<p>It is often good practice to add a label in the output indicating the source file.</p>
+<p>A label indicating the current source file with a time stamp can be easily generated for annotation.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># A label indicating the current source file with a time stamp can be easily generated for annotation. </span></span>
+<code class="sourceCode R"><span><span class="co"># To generate a source file label for annotation </span></span>
 <span><span class="va">lab</span> <span class="op">=</span> <span class="fu"><a href="reference/label_src.html">label_src</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># A source label can be directly added to the flextable output. </span></span>
+<code class="sourceCode R"><span><span class="co"># A source file label can be directly added to the flextable output. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span>src<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># A source label can be directly added to a ggplot object. </span></span>
+<code class="sourceCode R"><span><span class="co"># A source file label can be directly added to a ggplot object. </span></span>
 <span><span class="va">p</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="va">p</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggsrc.html">ggsrc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
