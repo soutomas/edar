@@ -68,11 +68,14 @@ dat |> summ_cat()
 
 ### Visualisation 
 
-Distributions of variables can be quickly visualised for exploratory graphical analysis. 
+Variables can be quickly visualised for exploratory graphical analysis. 
 
 ```{r eval=TRUE, out.width="70%"}
 library(ggplot2)
 set_theme(theme_bw())
+
+# Correlation plot of two variables. 
+dat |> ggxy(hp,disp)
 
 # Histograms of all continuous variables in a dataset. 
 dat |> gghist()
@@ -98,7 +101,7 @@ dat |> summ_by(mpg,vs) |> ft()
 A label indicating the current source file with a time stamp can be easily generated for annotation. 
 
 ```{r eval=FALSE}
-# To generate a source file label for annotation 
+# To generate a source file label for annotation.
 lab = label_src()
 ```
 
