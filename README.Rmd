@@ -53,20 +53,22 @@ It is often helpful to see a quick summary of the dataset.
 library(edar)
 
 # Data 
-dat = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+dat = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 
 # Summaries of all continuous variables in a data frame. 
 dat |> summ_by()
 
 # Summaries of a selected variable after grouping. 
 dat |> summ_by(mpg,vs)
-dat |> summ_by(mpg,vs,am)
 
 # Summaries of all categorical variables in a data frame. 
 dat |> summ_cat()
+
 ```
 
 ### Visualisation 
+
+Distributions of variables can be quickly visualised for exploratory graphical analysis. 
 
 ```{r eval=TRUE, out.width="70%"}
 library(ggplot2)
@@ -75,16 +77,16 @@ set_theme(theme_bw())
 # Histograms of all continuous variables in a dataset. 
 dat |> gghist()
 
-# Box plots of selected variable by all categorical variables in a dataset. 
+# Box plots of a selected variable by all categorical variables in a dataset. 
 dat |> ggbox(mpg)
 
-# Violin plots of selected variable by all categorical variables in a dataset. 
+# Violin plots of a selected variable by all categorical variables in a dataset. 
 dat |> ggvio(mpg)
 ```
 
 ### Tables
 
-Tables can be directly viewed in a flextable object.  
+Tables can be viewed directly in a flextable object.  
 
 ```{r eval=TRUE, out.width="70%"}
 # Show data frame in a flextable object. 
@@ -93,20 +95,20 @@ dat |> summ_by(mpg,vs) |> ft()
 
 ### Labels
 
-It is often good practice to add a label in the output indicating the source file. 
+A label indicating the current source file with a time stamp can be easily generated for annotation. 
 
 ```{r eval=FALSE}
-# A label indicating the current source file with a time stamp can be easily generated for annotation. 
+# To generate a source file label for annotation 
 lab = label_src()
 ```
 
 ```{r eval=FALSE}
-# A source label can be directly added to the flextable output. 
+# A source file label can be directly added to the flextable output. 
 dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ```{r fig.width=5, fig.height=4, eval=FALSE}
-# A source label can be directly added to a ggplot object. 
+# A source file label can be directly added to a ggplot object. 
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
 ```

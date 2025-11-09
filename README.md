@@ -65,25 +65,22 @@ It is often helpful to see a quick summary of the dataset.
 library(edar)
 
 # Data 
-dat = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+dat = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 
 # Summaries of all continuous variables in a data frame. 
 dat |> summ_by()
 #> NB: Non-numeric variables are dropped.
-#> Dropped: vs am
+#> Dropped: cyl vs am gear carb
 #> Adding missing grouping variables: `name`
-#> # A tibble: 9 × 10
+#> # A tibble: 6 × 10
 #>   name      n   nNA   Mean      SD   Min    P25    Med    P75    Max
 #>   <chr> <int> <int>  <dbl>   <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
-#> 1 carb     32     0   2.81   1.62   1      2      2      4      8   
-#> 2 cyl      32     0   6.19   1.79   4      4      6      8      8   
-#> 3 disp     32     0 231.   124.    71.1  121.   196.   326    472   
-#> 4 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93
-#> 5 gear     32     0   3.69   0.738  3      3      4      4      5   
-#> 6 hp       32     0 147.    68.6   52     96.5  123    180    335   
-#> 7 mpg      32     0  20.1    6.03  10.4   15.4   19.2   22.8   33.9 
-#> 8 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 
-#> 9 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42
+#> 1 disp     32     0 231.   124.    71.1  121.   196.   326    472   
+#> 2 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93
+#> 3 hp       32     0 147.    68.6   52     96.5  123    180    335   
+#> 4 mpg      32     0  20.1    6.03  10.4   15.4   19.2   22.8   33.9 
+#> 5 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 
+#> 6 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42
 
 # Summaries of a selected variable after grouping. 
 dat |> summ_by(mpg,vs)
@@ -93,21 +90,18 @@ dat |> summ_by(mpg,vs)
 #>   <fct> <int> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  
 #> 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9
-dat |> summ_by(mpg,vs,am)
-#> Adding missing grouping variables: `vs`, `am`
-#> # A tibble: 4 × 11
-#> # Groups:   vs [2]
-#>   vs    am        n   nNA  Mean    SD   Min   P25   Med   P75   Max
-#>   <fct> <fct> <int> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 0     0        12     0  15.0  2.77  10.4  14.0  15.2  16.6  19.2
-#> 2 0     1         6     0  19.8  4.01  15    16.8  20.4  21    26  
-#> 3 1     0         7     0  20.7  2.47  17.8  18.6  21.4  22.2  24.4
-#> 4 1     1         7     0  28.4  4.76  21.4  25.0  30.4  31.4  33.9
 
 # Summaries of all categorical variables in a data frame. 
 dat |> summ_cat()
 #> NB: Numeric variables are dropped.
-#> Dropped: mpg cyl disp hp drat wt qsec gear carb
+#> Dropped: mpg disp hp drat wt qsec
+#> $cyl
+#>    cyl  n percent
+#>      4 11 0.34375
+#>      6  7 0.21875
+#>      8 14 0.43750
+#>  Total 32 1.00000
+#> 
 #> $vs
 #>     vs  n percent
 #>      0 18  0.5625
@@ -119,9 +113,29 @@ dat |> summ_cat()
 #>      0 19 0.59375
 #>      1 13 0.40625
 #>  Total 32 1.00000
+#> 
+#> $gear
+#>   gear  n percent
+#>      3 15 0.46875
+#>      4 12 0.37500
+#>      5  5 0.15625
+#>  Total 32 1.00000
+#> 
+#> $carb
+#>   carb  n percent
+#>      1  7 0.21875
+#>      2 10 0.31250
+#>      3  3 0.09375
+#>      4 10 0.31250
+#>      6  1 0.03125
+#>      8  1 0.03125
+#>  Total 32 1.00000
 ```
 
 ### Visualisation
+
+Distributions of variables can be quickly visualised for exploratory
+graphical analysis.
 
 ``` r
 library(ggplot2)
@@ -131,34 +145,38 @@ set_theme(theme_bw())
 # Histograms of all continuous variables in a dataset. 
 dat |> gghist()
 #> NB: Non-numeric variables are dropped.
-#> Dropped: vs am
+#> Dropped: cyl vs am gear carb
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="70%" />
 
 ``` r
 
-# Box plots of selected variable by all categorical variables in a dataset. 
+# Box plots of a selected variable by all categorical variables in a dataset. 
 dat |> ggbox(mpg)
 #> NB: Numeric variables are dropped.
-#> Dropped: cyl disp hp drat wt qsec gear carb
+#> Dropped: disp hp drat wt qsec
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-2.png" width="70%" />
 
 ``` r
 
-# Violin plots of selected variable by all categorical variables in a dataset. 
+# Violin plots of a selected variable by all categorical variables in a dataset. 
 dat |> ggvio(mpg)
 #> NB: Numeric variables are dropped.
-#> Dropped: cyl disp hp drat wt qsec gear carb
+#> Dropped: disp hp drat wt qsec
+#> Warning: Groups with fewer than two datapoints have been dropped.
+#> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
+#> Warning: Groups with fewer than two datapoints have been dropped.
+#> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-3.png" width="70%" />
 
 ### Tables
 
-Tables can be directly viewed in a flextable object.
+Tables can be viewed directly in a flextable object.
 
 ``` r
 # Show data frame in a flextable object. 
@@ -170,21 +188,21 @@ dat |> summ_by(mpg,vs) |> ft()
 
 ### Labels
 
-It is often good practice to add a label in the output indicating the
-source file.
+A label indicating the current source file with a time stamp can be
+easily generated for annotation.
 
 ``` r
-# A label indicating the current source file with a time stamp can be easily generated for annotation. 
+# To generate a source file label for annotation 
 lab = label_src()
 ```
 
 ``` r
-# A source label can be directly added to the flextable output. 
+# A source file label can be directly added to the flextable output. 
 dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ``` r
-# A source label can be directly added to a ggplot object. 
+# A source file label can be directly added to a ggplot object. 
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
 ```
