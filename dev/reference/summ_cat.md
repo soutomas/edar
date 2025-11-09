@@ -31,8 +31,9 @@ frame showing the summary of a selected variable.
 ## Examples
 
 ``` r
-d <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+d = mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
 d |> summ_cat()
+#> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #> $cyl
 #>    cyl  n percent
@@ -70,7 +71,8 @@ d |> summ_cat()
 #>      8  1 0.03125
 #>  Total 32 1.00000
 #> 
-d |> summ_cat(cyl,vs,gear)
+d |> summ_cat(cyl,vs)
+#> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #> $cyl
 #>    cyl  n percent
@@ -85,14 +87,8 @@ d |> summ_cat(cyl,vs,gear)
 #>      1 14  0.4375
 #>  Total 32  1.0000
 #> 
-#> $gear
-#>   gear  n percent
-#>      3 15 0.46875
-#>      4 12 0.37500
-#>      5  5 0.15625
-#>  Total 32 1.00000
-#> 
 d |> summ_cat(var=cyl)
+#> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #>    cyl  n percent
 #>      4 11 0.34375
@@ -100,6 +96,7 @@ d |> summ_cat(var=cyl)
 #>      8 14 0.43750
 #>  Total 32 1.00000
 d |> summ_cat(var=1)
+#> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #>    cyl  n percent
 #>      4 11 0.34375

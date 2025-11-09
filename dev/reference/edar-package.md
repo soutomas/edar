@@ -20,4 +20,4 @@ Useful links:
 ## Author
 
 **Maintainer**: Tomas Sou <tomas.sou@carexer.com>
-([ORCID](https://orcid.org/0000-0002-7570-5545)) \[copyright holder\]
+([ORCID](https://orcid.org/0000-0002-7570-5545))

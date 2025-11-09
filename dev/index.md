@@ -11,21 +11,23 @@ Analysis*. R package version 0.0.5.9000,
 
 ``` r
 citation("edar")
+#> Warning in citation("edar"): could not determine year for 'edar' from package
+#> DESCRIPTION file
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000, commit
-#>   041862613b31db4b3af6801978ec84f05f156a33,
-#>   <https://github.com/soutomas/edar>.
+#>   Analysis_. R package version 0.0.5.9000,
+#>   https://github.com/soutomas/edar/,
+#>   <https://soutomas.github.io/edar/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
-#>     year = {2025},
-#>     note = {R package version 0.0.5.9000, commit 041862613b31db4b3af6801978ec84f05f156a33},
-#>     url = {https://github.com/soutomas/edar},
+#>     note = {R package version 0.0.5.9000, 
+#> https://github.com/soutomas/edar/},
+#>     url = {https://soutomas.github.io/edar/},
 #>   }
 ```
 
@@ -35,14 +37,16 @@ citation("edar")
 # From CRAN 
 install.packages("edar")
 
-# From GitHub - for the latest development version
+# From GitHub - for the development version
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
 
 ## Example
 
-Commonly, we want to generate a quick summary of variables in a dataset.
+### Summary
+
+It is often helpful to see a quick summary of the dataset.
 
 ``` r
 library(edar)
@@ -52,6 +56,7 @@ dat = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 
 # Summaries of all continuous variables in a data frame. 
 dat |> summ_by()
+#> NB: Non-numeric variables are dropped.
 #> Dropped: vs am
 #> Adding missing grouping variables: `name`
 #> # A tibble: 9 × 10
@@ -88,6 +93,7 @@ dat |> summ_by(mpg,vs,am)
 
 # Summaries of all categorical variables in a data frame. 
 dat |> summ_cat()
+#> NB: Numeric variables are dropped.
 #> Dropped: mpg cyl disp hp drat wt qsec gear carb
 #> $vs
 #>     vs  n percent
@@ -102,18 +108,60 @@ dat |> summ_cat()
 #>  Total 32 1.00000
 ```
 
-Results can be directly viewed in a flextable object.
+### Visualisation
+
+``` r
+library(ggplot2)
+#> Warning: package 'ggplot2' was built under R version 4.4.3
+set_theme(theme_bw())
+
+# Histograms of all continuous variables in a dataset. 
+dat |> gghist()
+#> NB: Non-numeric variables are dropped.
+#> Dropped: vs am
+```
+
+![](reference/figures/README-unnamed-chunk-4-1.png)
+
+``` r
+
+# Box plots of selected variable by all categorical variables in a dataset. 
+dat |> ggbox(mpg)
+#> NB: Numeric variables are dropped.
+#> Dropped: cyl disp hp drat wt qsec gear carb
+```
+
+![](reference/figures/README-unnamed-chunk-4-2.png)
+
+``` r
+
+# Violin plots of selected variable by all categorical variables in a dataset. 
+dat |> ggvio(mpg)
+#> NB: Numeric variables are dropped.
+#> Dropped: cyl disp hp drat wt qsec gear carb
+```
+
+![](reference/figures/README-unnamed-chunk-4-3.png)
+
+### Tables
+
+Tables can be directly viewed in a flextable object.
 
 ``` r
 # Show data frame in a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
+#> Adding missing grouping variables: `vs`
 ```
 
-It is often helpful to add a label in the output indicating the source
-file.
+![](reference/figures/README-unnamed-chunk-5-1.png)
+
+### Labels
+
+It is often good practice to add a label in the output indicating the
+source file.
 
 ``` r
-# A label indicating the current source file with run time can be easily generated for annotation. 
+# A label indicating the current source file with a time stamp can be easily generated for annotation. 
 lab = label_src()
 ```
 
@@ -124,7 +172,6 @@ dat |> summ_by(mpg,vs) |> ft(src=1)
 
 ``` r
 # A source label can be directly added to a ggplot object. 
-library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
 ```

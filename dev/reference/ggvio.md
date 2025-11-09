@@ -53,17 +53,22 @@ A ggplot object.
 ``` r
 d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggvio(mpg)
+#> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
 
 d |> ggvio(mpg,alpha=0.5)
+#> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
 
 d |> ggvio(mpg,show=FALSE)
+#> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
 
 d |> ggvio(mpg,nsub=FALSE)
+#> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
 
 d |> ggvio(mpg,c(cyl,vs))
+#> NB: Numeric variables are dropped.
 #> Dropped: 
 ```

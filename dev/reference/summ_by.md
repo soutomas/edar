@@ -38,8 +38,9 @@ A data frame of summarised variables.
 ## Examples
 
 ``` r
-d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+d = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 d |> summ_by()
+#> NB: Non-numeric variables are dropped.
 #> Dropped: vs am
 #> Adding missing grouping variables: `name`
 #> # A tibble: 9 × 10
@@ -55,6 +56,7 @@ d |> summ_by()
 #> 8 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 
 #> 9 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42
 d |> summ_by(pct=c(0.1,0.9))
+#> NB: Non-numeric variables are dropped.
 #> Dropped: vs am
 #> Adding missing grouping variables: `name`
 #> # A tibble: 9 × 10
@@ -70,6 +72,7 @@ d |> summ_by(pct=c(0.1,0.9))
 #> 8 qsec     32     0  17.8    1.79  14.5  15.5   17.7   20.0   22.9 
 #> 9 wt       32     0   3.22   0.978  1.51  1.96   3.32   4.05   5.42
 d |> summ_by(mpg)
+#> NB: Non-numeric variables are dropped.
 #> Dropped: 
 #> Adding missing grouping variables: `name`
 #> # A tibble: 1 × 10
@@ -94,6 +97,7 @@ d |> summ_by(mpg,vs,am)
 #> 3 1     0         7     0  20.7  2.47  17.8  18.6  21.4  22.2  24.4
 #> 4 1     1         7     0  28.4  4.76  21.4  25.0  30.4  31.4  33.9
 d |> summ_by(c(mpg,disp))
+#> NB: Non-numeric variables are dropped.
 #> Dropped: 
 #> Adding missing grouping variables: `name`
 #> # A tibble: 2 × 10

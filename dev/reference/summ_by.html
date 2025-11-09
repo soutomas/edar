@@ -37,7 +37,7 @@ Non-numeric variables will be dropped."><meta name="robots" content="noindex"></
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Summarise continuous variables by group</h1>
-      <small class="dont-index">Source: <a href="https://github.com/soutomas/edar/blob/main/R/func_misc.R" class="external-link"><code>R/func_misc.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/soutomas/edar/blob/main/R/func_all.R" class="external-link"><code>R/func_all.R</code></a></small>
       <div class="d-none name"><code>summ_by.Rd</code></div>
     </div>
 
@@ -82,8 +82,9 @@ Non-numeric variables will be dropped.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>vs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span>, am<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>vs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span>, am<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_by</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Non-numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: vs am</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding missing grouping variables: `name`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 10</span></span>
@@ -99,6 +100,7 @@ Non-numeric variables will be dropped.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42</span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_by</span><span class="op">(</span>pct<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.9</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Non-numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: vs am</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding missing grouping variables: `name`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 10</span></span>
@@ -114,6 +116,7 @@ Non-numeric variables will be dropped.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> qsec     32     0  17.8    1.79  14.5  15.5   17.7   20.0   22.9 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> wt       32     0   3.22   0.978  1.51  1.96   3.32   4.05   5.42</span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_by</span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Non-numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding missing grouping variables: `name`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
@@ -138,6 +141,7 @@ Non-numeric variables will be dropped.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1     0         7     0  20.7  2.47  17.8  18.6  21.4  22.2  24.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 1     1         7     0  28.4  4.76  21.4  25.0  30.4  31.4  33.9</span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_by</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">disp</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Non-numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding missing grouping variables: `name`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 10</span></span>

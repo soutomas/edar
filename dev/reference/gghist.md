@@ -40,8 +40,10 @@ A ggplot object.
 
 ``` r
 iris |> gghist()
+#> NB: Non-numeric variables are dropped.
 #> Dropped: Species
 
 iris |> gghist(c(Sepal.Width,Sepal.Length))
+#> NB: Non-numeric variables are dropped.
 #> Dropped: 
 ```
