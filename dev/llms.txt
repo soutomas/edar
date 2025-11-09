@@ -121,13 +121,21 @@ dat |> summ_cat()
 
 ### Visualisation
 
-Distributions of variables can be quickly visualised for exploratory
-graphical analysis.
+Variables can be quickly visualised for exploratory graphical analysis.
 
 ``` r
 library(ggplot2)
 #> Warning: package 'ggplot2' was built under R version 4.4.3
 set_theme(theme_bw())
+
+# Correlation plot of two variables. 
+dat |> ggxy(hp,disp)
+#> `geom_smooth()` using formula = 'y ~ x'
+```
+
+![](reference/figures/README-unnamed-chunk-4-1.png)
+
+``` r
 
 # Histograms of all continuous variables in a dataset. 
 dat |> gghist()
@@ -135,7 +143,7 @@ dat |> gghist()
 #> Dropped: cyl vs am gear carb
 ```
 
-![](reference/figures/README-unnamed-chunk-4-1.png)
+![](reference/figures/README-unnamed-chunk-4-2.png)
 
 ``` r
 
@@ -145,7 +153,7 @@ dat |> ggbox(mpg)
 #> Dropped: disp hp drat wt qsec
 ```
 
-![](reference/figures/README-unnamed-chunk-4-2.png)
+![](reference/figures/README-unnamed-chunk-4-3.png)
 
 ``` r
 
@@ -159,7 +167,7 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-![](reference/figures/README-unnamed-chunk-4-3.png)
+![](reference/figures/README-unnamed-chunk-4-4.png)
 
 ### Tables
 
@@ -179,7 +187,7 @@ A label indicating the current source file with a time stamp can be
 easily generated for annotation.
 
 ``` r
-# To generate a source file label for annotation 
+# To generate a source file label for annotation.
 lab = label_src()
 ```
 
