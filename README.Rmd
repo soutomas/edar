@@ -38,14 +38,16 @@ citation("edar")
 # From CRAN 
 install.packages("edar")
 
-# From GitHub - for the latest development version
+# From GitHub - for the development version
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
 
 ## Example
 
-Commonly, we want to generate a quick summary of variables in a dataset. 
+### Summary 
+
+It is often helpful to see a quick summary of the dataset. 
 
 ```{r}
 library(edar)
@@ -62,20 +64,39 @@ dat |> summ_by(mpg,vs,am)
 
 # Summaries of all categorical variables in a data frame. 
 dat |> summ_cat()
-
 ```
 
-Results can be directly viewed in a flextable object.  
+### Visualisation 
 
-```{r eval=FALSE}
+```{r eval=TRUE, out.width="70%"}
+library(ggplot2)
+set_theme(theme_bw())
+
+# Histograms of all continuous variables in a dataset. 
+dat |> gghist()
+
+# Box plots of selected variable by all categorical variables in a dataset. 
+dat |> ggbox(mpg)
+
+# Violin plots of selected variable by all categorical variables in a dataset. 
+dat |> ggvio(mpg)
+```
+
+### Tables
+
+Tables can be directly viewed in a flextable object.  
+
+```{r eval=TRUE, out.width="70%"}
 # Show data frame in a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
 ```
 
-It is often helpful to add a label in the output indicating the source file. 
+### Labels
+
+It is often good practice to add a label in the output indicating the source file. 
 
 ```{r eval=FALSE}
-# A label indicating the current source file with run time can be easily generated for annotation. 
+# A label indicating the current source file with a time stamp can be easily generated for annotation. 
 lab = label_src()
 ```
 
@@ -86,7 +107,6 @@ dat |> summ_by(mpg,vs) |> ft(src=1)
 
 ```{r fig.width=5, fig.height=4, eval=FALSE}
 # A source label can be directly added to a ggplot object. 
-library(ggplot2)
 p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
 p |> ggsrc()
 ```
