@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-11-03
+# Updated  : 2025-11-09
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -233,7 +233,7 @@ label_tz = function(omit=""){
 #' @returns A data frame of summarised variables.
 #' @export
 #' @examples
-#' d <- mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
+#' d = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 #' d |> summ_by()
 #' d |> summ_by(pct=c(0.1,0.9))
 #' d |> summ_by(mpg)
@@ -254,6 +254,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
     dplyr::group_by(dplyr::pick(dplyr::contains("name")))
   if(is.null(gps)){
     catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
+    message("NB: Non-numeric variables are dropped.")
     message("Dropped: ", paste(names(catv), collapse=" "))
   }
   if(is.null(gps) & xname=="") xname = paste0(names(d.),"_",collapse="|")
@@ -296,14 +297,15 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
 #'   a data frame showing the summary of a selected variable.
 #' @export
 #' @examples
-#' d <- mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
+#' d = mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
 #' d |> summ_cat()
-#' d |> summ_cat(cyl,vs,gear)
+#' d |> summ_cat(cyl,vs)
 #' d |> summ_cat(var=cyl)
 #' d |> summ_cat(var=1)
 summ_cat = function(d,...,var){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   if(!missing(...)) d = d |> dplyr::select(...)
+  message("NB: Numeric variables are dropped.")
   message("Dropped: ", paste(names(x), collapse=" "))
   out = d |>
     dplyr::select(-dplyr::where(is.numeric)) |>

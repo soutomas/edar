@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} (\href{https://orcid.org/0000-0002-7570-5545}{ORCID}) [copyright holder]
+\strong{Maintainer}: Tomas Sou \email{tomas.sou@carexer.com} (\href{https://orcid.org/0000-0002-7570-5545}{ORCID})
 
 }
 \keyword{internal}

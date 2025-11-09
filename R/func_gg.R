@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-11-05
+# Updated  : 2025-11-09
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -39,6 +39,7 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
   x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
+  message("NB: Numeric variables are dropped.")
   message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
@@ -78,6 +79,7 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
+  message("NB: Non-numeric variables are dropped.")
   message("Dropped: ", paste(names(catv), collapse=" "))
   d = d |> tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value")
   d |>
@@ -189,6 +191,7 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
   x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
+  message("NB: Numeric variables are dropped.")
   message("Dropped: ", paste(names(x), collapse=" "))
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
