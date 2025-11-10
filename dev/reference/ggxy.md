@@ -20,7 +20,8 @@ ggxy(
   cor = TRUE,
   pv = NULL,
   nsub = TRUE,
-  legend = TRUE
+  legend = TRUE,
+  asp = 1
 )
 ```
 
@@ -65,6 +66,11 @@ ggxy(
 
   `<lgl>` `TRUE` to show legend.
 
+- asp:
+
+  `<num>` For `aspect.ratio` in
+  [ggplot2::theme](https://ggplot2.tidyverse.org/reference/theme.html).
+
 ## Value
 
 A ggplot object.
@@ -88,16 +94,16 @@ mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 #> `geom_smooth()` using formula = 'y ~ x'
 
-mtcars |> ggxy(wt,hp,pv=0.001)
-#> `geom_smooth()` using formula = 'y ~ x'
-
 mtcars |> ggxy(wt,hp,nsub=FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'
 
-mtcars |> ggxy(wt,hp,se=FALSE)
+mtcars |> ggxy(wt,hp,pv=0.001)
 #> `geom_smooth()` using formula = 'y ~ x'
 
 mtcars |> ggxy(wt,hp,lm=FALSE)
+
+mtcars |> ggxy(wt,hp,se=FALSE)
+#> `geom_smooth()` using formula = 'y ~ x'
 
 mtcars |> ggxy(wt,hp,cor=FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'

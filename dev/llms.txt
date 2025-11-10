@@ -54,7 +54,7 @@ library(edar)
 # Data 
 dat = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 
-# Summaries of all continuous variables in a data frame. 
+# Summaries of all continuous variables. 
 dat |> summ_by()
 #> NB: Non-numeric variables are dropped.
 #> Dropped: cyl vs am gear carb
@@ -78,7 +78,7 @@ dat |> summ_by(mpg,vs)
 #> 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  
 #> 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9
 
-# Summaries of all categorical variables in a data frame. 
+# Summaries of all categorical variables. 
 dat |> summ_cat()
 #> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
@@ -128,36 +128,27 @@ library(ggplot2)
 #> Warning: package 'ggplot2' was built under R version 4.4.3
 set_theme(theme_bw())
 
-# Correlation plot of two variables. 
-dat |> ggxy(hp,disp)
-#> `geom_smooth()` using formula = 'y ~ x'
+# Histograms of all continuous variables. 
+dat |> gghist()
+#> NB: Non-numeric variables are dropped.
+#> Dropped: cyl vs am gear carb
 ```
 
 ![](reference/figures/README-unnamed-chunk-4-1.png)
 
 ``` r
 
-# Histograms of all continuous variables in a dataset. 
-dat |> gghist()
-#> NB: Non-numeric variables are dropped.
-#> Dropped: cyl vs am gear carb
+# Box plots stratified by categorical variables. 
+dat |> ggbox(mpg)
+#> NB: Numeric variables are dropped.
+#> Dropped: disp hp drat wt qsec
 ```
 
 ![](reference/figures/README-unnamed-chunk-4-2.png)
 
 ``` r
 
-# Box plots of a selected variable by all categorical variables in a dataset. 
-dat |> ggbox(mpg)
-#> NB: Numeric variables are dropped.
-#> Dropped: disp hp drat wt qsec
-```
-
-![](reference/figures/README-unnamed-chunk-4-3.png)
-
-``` r
-
-# Violin plots of a selected variable by all categorical variables in a dataset. 
+# Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec
@@ -167,6 +158,15 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
+![](reference/figures/README-unnamed-chunk-4-3.png)
+
+``` r
+
+# Scatter plot showing correlation. 
+dat |> ggxy(hp,disp)
+#> `geom_smooth()` using formula = 'y ~ x'
+```
+
 ![](reference/figures/README-unnamed-chunk-4-4.png)
 
 ### Tables
@@ -174,7 +174,7 @@ dat |> ggvio(mpg)
 Tables can be viewed directly in a flextable object.
 
 ``` r
-# Show data frame in a flextable object. 
+# Show data frame as a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
 #> Adding missing grouping variables: `vs`
 ```
