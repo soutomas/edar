@@ -22,5 +22,5 @@ A label with time stamp.
 
 ``` r
 label_tz()
-#> [1] "Run: 2025-11-10 07:18:01 UTC"
+#> [1] "Run: 2025-11-10 18:31:55 UTC"
 ```

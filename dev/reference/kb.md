@@ -255,7 +255,7 @@ mtcars |> head() |> kb(src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Source:<br>Run: 2025-11-10 07:18:00 UTC</td></tr></tfoot>
+#> <sup></sup> Source:<br>Run: 2025-11-10 18:31:55 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb("Footnote")
 #> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
@@ -470,7 +470,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Footnote<br>Source:<br>Run: 2025-11-10 07:18:00 UTC</td></tr></tfoot>
+#> <sup></sup> Footnote<br>Source:<br>Run: 2025-11-10 18:31:55 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb(sig=2,dig=1)
 #> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
