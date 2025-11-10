@@ -132,6 +132,18 @@ dat |> summ_cat()
 #>  Total 32 1.00000
 ```
 
+### Tables
+
+Results can be viewed directly in a flextable object.
+
+``` r
+# Show data frame as a flextable object. 
+dat |> summ_by(mpg,vs) |> ft()
+#> Adding missing grouping variables: `vs`
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="70%" />
+
 ### Visualisation
 
 Variables can be quickly visualised for exploratory graphical analysis.
@@ -143,7 +155,7 @@ dat |> gghist()
 #> Dropped: cyl vs am gear carb
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="70%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="70%" />
 
 ``` r
 
@@ -153,7 +165,7 @@ dat |> ggbox(mpg)
 #> Dropped: disp hp drat wt qsec
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-2.png" width="70%" />
+<img src="man/figures/README-unnamed-chunk-5-2.png" width="70%" />
 
 ``` r
 
@@ -167,7 +179,7 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-3.png" width="70%" />
+<img src="man/figures/README-unnamed-chunk-5-3.png" width="70%" />
 
 ``` r
 
@@ -176,19 +188,7 @@ dat |> ggxy(hp,disp)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-4.png" width="70%" />
-
-### Tables
-
-Tables can be viewed directly in a flextable object.
-
-``` r
-# Show data frame as a flextable object. 
-dat |> summ_by(mpg,vs) |> ft()
-#> Adding missing grouping variables: `vs`
-```
-
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="70%" />
+<img src="man/figures/README-unnamed-chunk-5-4.png" width="70%" />
 
 ### Labels
 

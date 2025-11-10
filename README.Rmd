@@ -66,6 +66,16 @@ dat |> summ_cat()
 
 ```
 
+### Tables
+
+Results can be viewed directly in a flextable object.  
+
+```{r eval=TRUE, out.width="70%"}
+# Show data frame as a flextable object. 
+dat |> summ_by(mpg,vs) |> ft()
+```
+
+
 ### Visualisation 
 
 Variables can be quickly visualised for exploratory graphical analysis. 
@@ -83,15 +93,6 @@ dat |> ggvio(mpg)
 # Scatter plot showing correlation. 
 dat |> ggxy(hp,disp)
 
-```
-
-### Tables
-
-Tables can be viewed directly in a flextable object.  
-
-```{r eval=TRUE, out.width="70%"}
-# Show data frame as a flextable object. 
-dat |> summ_by(mpg,vs) |> ft()
 ```
 
 ### Labels
