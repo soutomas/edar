@@ -50,9 +50,14 @@ It is often helpful to see a quick summary of the dataset.
 
 ``` r
 library(edar)
+#> 
+#> Attaching package: 'edar'
+#> The following object is masked from 'package:stats':
+#> 
+#>     filter
 
 # Data 
-dat = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
+dat = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 
 # Summaries of all continuous variables. 
 dat |> summ_by()

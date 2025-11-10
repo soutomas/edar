@@ -37,7 +37,7 @@ ggxy(
 
 - ...:
 
-  Other arguments to pass to
+  Arguments to pass to
   [ggplot2::aes](https://ggplot2.tidyverse.org/reference/aes.html) for
   additional mapping.
 

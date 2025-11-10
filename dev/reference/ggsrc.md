@@ -42,9 +42,10 @@ A ggplot object with the added label.
 ## Examples
 
 ``` r
-library(ggplot2)
-p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
+p = mtcars |> ggxy(mpg,hp)
 p |> ggsrc()
+#> `geom_smooth()` using formula = 'y ~ x'
 
 p |> ggsrc(lab="My label")
+#> `geom_smooth()` using formula = 'y ~ x'
 ```

@@ -51,22 +51,22 @@ A ggplot object.
 ## Examples
 
 ``` r
-d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+d = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 d |> ggbox(mpg)
 #> NB: Numeric variables are dropped.
-#> Dropped: disp hp drat wt qsec am carb
+#> Dropped: disp hp drat wt qsec
 
 d |> ggbox(mpg,alpha=0.5)
 #> NB: Numeric variables are dropped.
-#> Dropped: disp hp drat wt qsec am carb
+#> Dropped: disp hp drat wt qsec
 
 d |> ggbox(mpg,show=FALSE)
 #> NB: Numeric variables are dropped.
-#> Dropped: disp hp drat wt qsec am carb
+#> Dropped: disp hp drat wt qsec
 
 d |> ggbox(mpg,nsub=FALSE)
 #> NB: Numeric variables are dropped.
-#> Dropped: disp hp drat wt qsec am carb
+#> Dropped: disp hp drat wt qsec
 
 d |> ggbox(mpg,c(cyl,vs))
 #> NB: Numeric variables are dropped.
