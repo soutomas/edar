@@ -55,13 +55,13 @@ library(edar)
 # Data 
 dat = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 
-# Summaries of all continuous variables in a data frame. 
+# Summaries of all continuous variables. 
 dat |> summ_by()
 
 # Summaries of a selected variable after grouping. 
 dat |> summ_by(mpg,vs)
 
-# Summaries of all categorical variables in a data frame. 
+# Summaries of all categorical variables. 
 dat |> summ_cat()
 
 ```
@@ -74,17 +74,18 @@ Variables can be quickly visualised for exploratory graphical analysis.
 library(ggplot2)
 set_theme(theme_bw())
 
-# Correlation plot of two variables. 
-dat |> ggxy(hp,disp)
-
-# Histograms of all continuous variables in a dataset. 
+# Histograms of all continuous variables. 
 dat |> gghist()
 
-# Box plots of a selected variable by all categorical variables in a dataset. 
+# Box plots stratified by categorical variables. 
 dat |> ggbox(mpg)
 
-# Violin plots of a selected variable by all categorical variables in a dataset. 
+# Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
+
+# Scatter plot showing correlation. 
+dat |> ggxy(hp,disp)
+
 ```
 
 ### Tables
@@ -92,7 +93,7 @@ dat |> ggvio(mpg)
 Tables can be viewed directly in a flextable object.  
 
 ```{r eval=TRUE, out.width="70%"}
-# Show data frame in a flextable object. 
+# Show data frame as a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
 ```
 

@@ -14,7 +14,8 @@ ggxy(
   cor = TRUE,
   pv = NULL,
   nsub = TRUE,
-  legend = TRUE
+  legend = TRUE,
+  asp = 1
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ ggxy(
 \item{nsub}{\verb{<lgl>} Show number of observations.}
 
 \item{legend}{\verb{<lgl>} \code{TRUE} to show legend.}
+
+\item{asp}{\verb{<num>} For \code{aspect.ratio} in \link[ggplot2:theme]{ggplot2::theme}.}
 }
 \value{
 A ggplot object.
@@ -49,10 +52,10 @@ mtcars |> ggxy(wt,hp)
 mtcars |> ggxy(wt,hp,col=factor(gear))
 mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
-mtcars |> ggxy(wt,hp,pv=0.001)
 mtcars |> ggxy(wt,hp,nsub=FALSE)
-mtcars |> ggxy(wt,hp,se=FALSE)
+mtcars |> ggxy(wt,hp,pv=0.001)
 mtcars |> ggxy(wt,hp,lm=FALSE)
+mtcars |> ggxy(wt,hp,se=FALSE)
 mtcars |> ggxy(wt,hp,cor=FALSE)
 }
 \seealso{
