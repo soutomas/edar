@@ -11,6 +11,20 @@
 # Updates
 # na
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Reexports
+
+#' @export
+dplyr::mutate
+#' @export
+dplyr::filter
+#' @export
+dplyr::select
+#' @export
+dplyr::where
+#' @export
+dplyr::across
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Box plot wrapper for categorical covariates
 #'
 #' Create box plots for a chosen variable by all discrete covariates in a dataset.
@@ -27,7 +41,7 @@
 #' @returns A ggplot object.
 #' @export
 #' @examples
-#' d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+#' d = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
 #' d |> ggbox(mpg)
 #' d |> ggbox(mpg,alpha=0.5)
 #' d |> ggbox(mpg,show=FALSE)
@@ -106,8 +120,7 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
 #' @returns A ggplot object with the added label.
 #' @export
 #' @examples
-#' library(ggplot2)
-#' p = ggplot(mtcars, aes(mpg, wt)) + geom_point()
+#' p = mtcars |> ggxy(mpg,hp)
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
@@ -129,7 +142,7 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
 #' @param d `<dfr>` A data frame.
 #' @param x,y `<var>` Variables for x- and y-axis as unquoted names
 #' @param id `<var>` Variable for grouping ID such as subject ID as unquoted name.
-#' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
+#' @param ... Arguments to pass to [ggplot2::aes] for additional mapping.
 #' @param nsub `<lgl>` `TRUE` to show number of subjects as per `id` in caption.
 #' @param logx,logy `<lgl>` `TRUE` to log x- and y-axis.
 #' @param alpha_point `<num>` Alpha value for [ggplot2::geom_point].
@@ -221,7 +234,7 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
 #'
 #' @param d `<dfr>` A data frame.
 #' @param x,y `<var>` Variables for x- and y-axis as unquoted names.
-#' @param ... Other arguments to pass to [ggplot2::aes] for additional mapping.
+#' @param ... Arguments to pass to [ggplot2::aes] for additional mapping.
 #' @param lm `<lgl>` `TRUE` to add regression line from linear model.
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
 #' @param nsub `<lgl>` Show number of observations.

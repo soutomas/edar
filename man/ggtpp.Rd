@@ -29,7 +29,7 @@ ggtpp(
 
 \item{id}{\verb{<var>} Variable for grouping ID such as subject ID as unquoted name.}
 
-\item{...}{Other arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+\item{...}{Arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
 \item{nsub}{\verb{<lgl>} \code{TRUE} to show number of subjects as per \code{id} in caption.}
 

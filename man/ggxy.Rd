@@ -23,7 +23,7 @@ ggxy(
 
 \item{x, y}{\verb{<var>} Variables for x- and y-axis as unquoted names.}
 
-\item{...}{Other arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+\item{...}{Arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
 
 \item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
