@@ -124,10 +124,6 @@ dat |> summ_cat()
 Variables can be quickly visualised for exploratory graphical analysis.
 
 ``` r
-library(ggplot2)
-#> Warning: package 'ggplot2' was built under R version 4.4.3
-set_theme(theme_bw())
-
 # Histograms of all continuous variables. 
 dat |> gghist()
 #> NB: Non-numeric variables are dropped.
@@ -154,7 +150,7 @@ dat |> ggvio(mpg)
 #> Dropped: disp hp drat wt qsec
 #> Warning: Groups with fewer than two datapoints have been dropped.
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
-#> Warning: Groups with fewer than two datapoints have been dropped.
+#> Groups with fewer than two datapoints have been dropped.
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
