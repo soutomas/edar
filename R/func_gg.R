@@ -51,7 +51,8 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
     ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_boxplot(...)+
     ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=nSub)
+    ggplot2::labs(caption=nSub)+
+    ggplot2::theme_bw()
   if(show) out = out + ggplot2::geom_jitter(width=0.2, alpha=alpha)
   return(out)
 }
@@ -87,7 +88,8 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
     ggplot2::aes(x=value)+
     ggplot2::geom_histogram(bins=bins, ...)+
     ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=nSub)
+    ggplot2::labs(caption=nSub)+
+    ggplot2::theme_bw()
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -152,6 +154,7 @@ ggtpp = function(
     ggplot2::aes(x={{x}}, y={{y}}, group={{id}}, ...)+
     ggplot2::geom_point(alpha=alpha_point)+
     ggplot2::geom_line(alpha=alpha_line)+
+    ggplot2::theme_bw()+
     ggplot2::labs(
       title = ttl,
       x = xlab,
@@ -203,7 +206,8 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
     ggplot2::aes(x=levels,y={{var}})+
     ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
     ggplot2::facet_wrap(~name,scales="free")+
-    ggplot2::labs(caption=nSub)
+    ggplot2::labs(caption=nSub)+
+    ggplot2::theme_bw()
   if(show) out = out + ggplot2::geom_jitter(width=0.2,alpha=alpha)
   return(out)
 }
@@ -246,6 +250,7 @@ ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=NULL,nsub=TRUE,legend=TRUE
     ggplot2::aes(x={{x}},y={{y}},...)+
     ggplot2::geom_point(show.legend=legend)+
     ggplot2::labs(caption=nSub)+
+    ggplot2::theme_bw()+
     ggplot2::theme(aspect.ratio=asp)
   if(lm) p = p + ggplot2::geom_smooth(method="lm",se=se,show.legend=legend)
   if(cor) p = p + ggpubr::stat_cor(p.accuracy=pv,show.legend=FALSE)

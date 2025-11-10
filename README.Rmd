@@ -71,9 +71,6 @@ dat |> summ_cat()
 Variables can be quickly visualised for exploratory graphical analysis. 
 
 ```{r eval=TRUE, out.width="70%"}
-library(ggplot2)
-set_theme(theme_bw())
-
 # Histograms of all continuous variables. 
 dat |> gghist()
 
