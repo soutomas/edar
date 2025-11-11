@@ -51,40 +51,24 @@ A ggplot object.
 ## Examples
 
 ``` r
-d = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
+d = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 d |> ggbox(mpg)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec
-#> Error in ggplot2::geom_boxplot(...): Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error in `reorder.default()`:
-#> ! argument "X" is missing, with no default
+
 d |> ggbox(mpg,alpha=0.5)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec
-#> Error in ggplot2::geom_boxplot(...): Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error in `reorder.default()`:
-#> ! argument "X" is missing, with no default
+
 d |> ggbox(mpg,show=FALSE)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec
-#> Error in ggplot2::geom_boxplot(...): Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error in `reorder.default()`:
-#> ! argument "X" is missing, with no default
+
 d |> ggbox(mpg,nsub=FALSE)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec
-#> Error in ggplot2::geom_boxplot(...): Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error in `reorder.default()`:
-#> ! argument "X" is missing, with no default
+
 d |> ggbox(mpg,c(cyl,vs))
 #> NB: Numeric variables are dropped.
 #> Dropped: 
-#> Error in ggplot2::geom_boxplot(...): Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error in `reorder.default()`:
-#> ! argument "X" is missing, with no default
 ```
