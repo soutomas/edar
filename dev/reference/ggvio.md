@@ -55,20 +55,36 @@ d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
 d |> ggvio(mpg)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
-
+#> Error in ggplot2::geom_violin(trim = FALSE, quantile.linetype = 2, draw_quantiles = c(0.25,     0.5, 0.75)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `reorder.default()`:
+#> ! argument "X" is missing, with no default
 d |> ggvio(mpg,alpha=0.5)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
-
+#> Error in ggplot2::geom_violin(trim = FALSE, quantile.linetype = 2, draw_quantiles = c(0.25,     0.5, 0.75)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `reorder.default()`:
+#> ! argument "X" is missing, with no default
 d |> ggvio(mpg,show=FALSE)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
-
+#> Error in ggplot2::geom_violin(trim = FALSE, quantile.linetype = 2, draw_quantiles = c(0.25,     0.5, 0.75)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `reorder.default()`:
+#> ! argument "X" is missing, with no default
 d |> ggvio(mpg,nsub=FALSE)
 #> NB: Numeric variables are dropped.
 #> Dropped: disp hp drat wt qsec am carb
-
+#> Error in ggplot2::geom_violin(trim = FALSE, quantile.linetype = 2, draw_quantiles = c(0.25,     0.5, 0.75)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `reorder.default()`:
+#> ! argument "X" is missing, with no default
 d |> ggvio(mpg,c(cyl,vs))
 #> NB: Numeric variables are dropped.
 #> Dropped: 
+#> Error in ggplot2::geom_violin(trim = FALSE, quantile.linetype = 2, draw_quantiles = c(0.25,     0.5, 0.75)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `reorder.default()`:
+#> ! argument "X" is missing, with no default
 ```
