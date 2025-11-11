@@ -34,6 +34,7 @@ Imports:
     rlang,
     rstudioapi,
     scales,
+    stats,
     tidyr,
     xgxr
 Suggests: 

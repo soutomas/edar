@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-11-10
+# Updated  : 2025-11-11
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -37,7 +37,6 @@ dplyr::across
 #' @param show `<lgl>` `TRUE` to show data using [ggplot2::geom_jitter].
 #' @param nsub `<lgl>` Show number of observations.
 #' @param ... Additional arguments for [ggplot2::geom_boxplot].
-#'
 #' @returns A ggplot object.
 #' @export
 #' @examples
@@ -52,9 +51,10 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
-  x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
+  dropv = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
   message("NB: Numeric variables are dropped.")
-  message("Dropped: ", paste(names(x), collapse=" "))
+  message("Dropped: ", paste(names(dropv), collapse=" "))
+  if(ncol(dropv)==ncol(d)) stop("All variables are dropped!")
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
     names_to = "name",
@@ -62,7 +62,7 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   )
   out = d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=levels,y={{var}})+
+    ggplot2::aes(x=stats::reorder(levels),y={{var}})+
     ggplot2::geom_boxplot(...)+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)+
@@ -96,6 +96,7 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
   catv = d |> dplyr::select(dplyr::where(~!is.numeric(.x)))
   message("NB: Non-numeric variables are dropped.")
   message("Dropped: ", paste(names(catv), collapse=" "))
+  if(ncol(catv)==ncol(d)) stop("All variables are dropped!")
   d = d |> tidyr::pivot_longer(cols=dplyr::where(is.numeric),names_to="name",values_to="value")
   d |>
     ggplot2::ggplot()+
@@ -206,9 +207,10 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   if(!missing(cats)) d = d |> dplyr::select({{var}},{{cats}})
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
-  x = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
+  dropv = d |> dplyr::select(dplyr::where(~is.numeric(.x)),-{{var}})
   message("NB: Numeric variables are dropped.")
-  message("Dropped: ", paste(names(x), collapse=" "))
+  message("Dropped: ", paste(names(dropv), collapse=" "))
+  if(ncol(dropv)==ncol(d)) stop("All variables are dropped!")
   d = d |> tidyr::pivot_longer(
     cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
     names_to = "name",
@@ -216,7 +218,7 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   )
   out = d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=levels,y={{var}})+
+    ggplot2::aes(x=stats::reorder(levels),y={{var}})+
     ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)+
