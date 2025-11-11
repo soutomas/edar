@@ -29,7 +29,7 @@ Create box plots for a chosen variable by all discrete covariates in a dataset.
 Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
-d = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
+d = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 d |> ggbox(mpg)
 d |> ggbox(mpg,alpha=0.5)
 d |> ggbox(mpg,show=FALSE)

@@ -25,6 +25,8 @@ dplyr::where
 dplyr::across
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+utils::globalVariables(c("value","level"))
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Box plot wrapper for categorical covariates
 #'
 #' Create box plots for a chosen variable by all discrete covariates in a dataset.
@@ -40,7 +42,7 @@ dplyr::across
 #' @returns A ggplot object.
 #' @export
 #' @examples
-#' d = mtcars |> dplyr::mutate(across(c(am,carb,cyl,gear,vs),factor))
+#' d = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 #' d |> ggbox(mpg)
 #' d |> ggbox(mpg,alpha=0.5)
 #' d |> ggbox(mpg,show=FALSE)
@@ -55,14 +57,16 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   message("NB: Numeric variables are dropped.")
   message("Dropped: ", paste(names(dropv), collapse=" "))
   if(ncol(dropv)==ncol(d)) stop("All variables are dropped!")
-  d = d |> tidyr::pivot_longer(
-    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
-    names_to = "name",
-    values_to = "levels"
-  )
+  d = d |>
+    tidyr::pivot_longer(
+      cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
+      names_to = "name",
+      values_to = "level"
+    ) |>
+    mutate(level = factor(level,levels=sort(levels(level))))
   out = d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=stats::reorder(levels),y={{var}})+
+    ggplot2::aes(x=level,y={{var}})+
     ggplot2::geom_boxplot(...)+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)+
@@ -72,8 +76,6 @@ ggbox = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-utils::globalVariables(c("value"))
-
 #' Histogram wrapper for continuous covariates
 #'
 #' Create histograms for all numeric variables in a dataset.
@@ -196,7 +198,7 @@ ggtpp = function(
 #' @returns A ggplot object.
 #' @export
 #' @examples
-#' d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+#' d = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 #' d |> ggvio(mpg)
 #' d |> ggvio(mpg,alpha=0.5)
 #' d |> ggvio(mpg,show=FALSE)
@@ -211,14 +213,16 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
   message("NB: Numeric variables are dropped.")
   message("Dropped: ", paste(names(dropv), collapse=" "))
   if(ncol(dropv)==ncol(d)) stop("All variables are dropped!")
-  d = d |> tidyr::pivot_longer(
-    cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
-    names_to = "name",
-    values_to = "levels"
-  )
+  d = d |>
+    tidyr::pivot_longer(
+      cols = !(dplyr::where(~is.numeric(.x)) | {{var}}),
+      names_to = "name",
+      values_to = "level"
+    ) |>
+    mutate(level = factor(level,levels=sort(levels(level))))
   out = d |>
     ggplot2::ggplot()+
-    ggplot2::aes(x=stats::reorder(levels),y={{var}})+
+    ggplot2::aes(x=level,y={{var}})+
     ggplot2::geom_violin(trim=FALSE,quantile.linetype=2,draw_quantiles=c(0.25,0.5,0.75))+
     ggplot2::facet_wrap(~name,scales="free")+
     ggplot2::labs(caption=nSub)+

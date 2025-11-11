@@ -29,7 +29,7 @@ Create violin plots for a chosen variable by all discrete covariates in a datase
 Numeric variables will be dropped, except the chosen variable to plot.
 }
 \examples{
-d = mtcars |> dplyr::mutate(cyl=factor(cyl),gear=factor(gear),vs=factor(vs))
+d = mtcars |> mutate(across(c(am,carb,cyl,gear,vs),factor))
 d |> ggvio(mpg)
 d |> ggvio(mpg,alpha=0.5)
 d |> ggvio(mpg,show=FALSE)
