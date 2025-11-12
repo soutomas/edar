@@ -24,13 +24,10 @@ Analysis*. R package version 0.0.5.9000,
 
 ``` r
 citation("edar")
-#> Warning in citation("edar"): could not determine year for 'edar' from package
-#> DESCRIPTION file
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000,
-#>   https://github.com/soutomas/edar/,
+#>   Analysis_. R package version 0.0.5.9000, https://github.com/soutomas/edar/,
 #>   <https://soutomas.github.io/edar/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -38,8 +35,7 @@ citation("edar")
 #>   @Manual{,
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
-#>     note = {R package version 0.0.5.9000, 
-#> https://github.com/soutomas/edar/},
+#>     note = {R package version 0.0.5.9000, https://github.com/soutomas/edar/},
 #>     url = {https://soutomas.github.io/edar/},
 #>   }
 ```
