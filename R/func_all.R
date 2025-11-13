@@ -3,13 +3,27 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-11-09
+# Updated  : 2025-11-13
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Updates
 # na
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Reexports
+
+#' @export
+dplyr::mutate
+#' @export
+dplyr::filter
+#' @export
+dplyr::select
+#' @export
+dplyr::where
+#' @export
+dplyr::across
+
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Copy files and rename with date
 #'
@@ -184,7 +198,7 @@ kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
 #' @returns A label showing the source file path with a time stamp.
 #' @export
 #' @examples
-#' label_src(1)
+#' label_src()
 #' label_src(tz=FALSE)
 #' label_src(fname=TRUE)
 label_src = function(span=2,omit="",tz=TRUE,fname=FALSE){

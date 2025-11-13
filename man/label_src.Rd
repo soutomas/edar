@@ -26,7 +26,7 @@ and uses \code{rstudioapi} to get the file path.
 It will return empty if run in the console directly.
 }
 \examples{
-label_src(1)
+label_src()
 label_src(tz=FALSE)
 label_src(fname=TRUE)
 }
