@@ -195,6 +195,6 @@ dat |> summ_by(mpg,vs) |> ft(src=1)
 
 ``` r
 # A source file label can be directly added to a ggplot object. 
-p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
+p = dat |> ggxy(hp,disp)
 p |> ggsrc()
 ```

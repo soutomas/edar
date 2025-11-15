@@ -232,7 +232,7 @@
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span>src<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># A source file label can be directly added to a ggplot object. </span></span>
-<span><span class="va">p</span> <span class="op">=</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">p</span> <span class="op">=</span> <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggsrc.html">ggsrc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
 <!-- ```{r cars} -->
