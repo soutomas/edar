@@ -24,8 +24,6 @@ Analysis*. R package version 0.0.5.9000,
 
 ``` r
 citation("edar")
-#> Warning in citation("edar"): could not determine year for 'edar' from package
-#> DESCRIPTION file
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
