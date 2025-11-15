@@ -29,8 +29,7 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000,
-#>   https://github.com/soutomas/edar/,
+#>   Analysis_. R package version 0.0.5.9000, https://github.com/soutomas/edar/,
 #>   <https://soutomas.github.io/edar/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -38,8 +37,7 @@ citation("edar")
 #>   @Manual{,
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
-#>     note = {R package version 0.0.5.9000, 
-#> https://github.com/soutomas/edar/},
+#>     note = {R package version 0.0.5.9000, https://github.com/soutomas/edar/},
 #>     url = {https://soutomas.github.io/edar/},
 #>   }
 ```
@@ -212,7 +210,7 @@ dat |> summ_by(mpg,vs) |> ft(src=1)
 
 ``` r
 # A source file label can be directly added to a ggplot object. 
-p = ggplot(mtcars, aes(mpg, wt)) + geom_point() 
+p = dat |> ggxy(hp,disp)
 p |> ggsrc()
 ```
 
