@@ -1,6 +1,6 @@
-# edar (development version)
+# edar 0.0.6
 
-* Updated plotting functions. 
+* New `ggbox()`, `gghist()`, `ggtpp()`, `ggvio()` and `ggxy()` facilitate quick data visualisation. 
 
 # edar 0.0.5
 
