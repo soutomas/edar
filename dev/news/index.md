@@ -1,8 +1,14 @@
 # Changelog
 
-## edar (development version)
+## edar 0.0.6
 
-- Updated plotting functions.
+- New
+  [`ggbox()`](https://soutomas.github.io/edar/dev/reference/ggbox.md),
+  [`gghist()`](https://soutomas.github.io/edar/dev/reference/gghist.md),
+  [`ggtpp()`](https://soutomas.github.io/edar/dev/reference/ggtpp.md),
+  [`ggvio()`](https://soutomas.github.io/edar/dev/reference/ggvio.md)
+  and [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
+  facilitate quick data visualisation.
 
 ## edar 0.0.5
 
