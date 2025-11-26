@@ -1,3 +1,5 @@
+# edar (development version)
+
 # edar 0.0.6
 
 * New `ggbox()`, `gghist()`, `ggtpp()`, `ggvio()` and `ggxy()` facilitate quick data visualisation. 
