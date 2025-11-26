@@ -14,16 +14,16 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000, https://github.com/soutomas/edar/,
-#>   <https://soutomas.github.io/edar/>.
+#>   Analysis_. R package version 0.0.6, <https://CRAN.R-project.org/package=edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {edar: Convenient Functions for Exploratory Data Analysis},
 #>     author = {Tomas Sou},
-#>     note = {R package version 0.0.5.9000, https://github.com/soutomas/edar/},
-#>     url = {https://soutomas.github.io/edar/},
+#>     year = {2025},
+#>     note = {R package version 0.0.6},
+#>     url = {https://CRAN.R-project.org/package=edar},
 #>   }
 ```
 
@@ -46,6 +46,7 @@ It is often helpful to see a quick summary of the dataset.
 
 ``` r
 library(edar)
+#> Warning: package 'edar' was built under R version 4.4.3
 #> 
 #> Attaching package: 'edar'
 #> The following object is masked from 'package:stats':

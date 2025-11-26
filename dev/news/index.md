@@ -1,6 +1,10 @@
 # Changelog
 
+## edar (development version)
+
 ## edar 0.0.6
+
+CRAN release: 2025-11-25
 
 - New
   [`ggbox()`](https://soutomas.github.io/edar/dev/reference/ggbox.md),
