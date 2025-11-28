@@ -26,7 +26,7 @@ The goal of edar is to provide some convenient functions to facilitate common ta
 
 ## Citation
 
-Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.5.9000, <https://github.com/soutomas/edar>.
+Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.6, <https://github.com/soutomas/edar>.
 
 ```{r}
 citation("edar")
@@ -81,6 +81,9 @@ dat |> summ_by(mpg,vs) |> ft()
 Variables can be quickly visualised for exploratory graphical analysis. 
 
 ```{r eval=TRUE, out.width="70%"}
+# Scatter plot showing correlation. 
+dat |> ggxy(hp,disp)
+
 # Histograms of all continuous variables. 
 dat |> gghist()
 
@@ -89,10 +92,6 @@ dat |> ggbox(mpg)
 
 # Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
-
-# Scatter plot showing correlation. 
-dat |> ggxy(hp,disp)
-
 ```
 
 ### Labels
