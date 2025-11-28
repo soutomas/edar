@@ -13,7 +13,8 @@ citation("edar")
 #> To cite package 'edar' in publications use:
 #> 
 #>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.6, <https://CRAN.R-project.org/package=edar>.
+#>   Analysis_. R package version 0.0.6,
+#>   <https://CRAN.R-project.org/package=edar>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -137,13 +138,22 @@ dat |> summ_by(mpg,vs) |> ft()
 Variables can be quickly visualised for exploratory graphical analysis.
 
 ``` r
+# Scatter plot showing correlation. 
+dat |> ggxy(hp,disp)
+#> `geom_smooth()` using formula = 'y ~ x'
+```
+
+![](reference/figures/README-unnamed-chunk-5-1.png)
+
+``` r
+
 # Histograms of all continuous variables. 
 dat |> gghist()
 #> NB: Non-numeric variables are dropped.
 #> Dropped: cyl vs am gear carb
 ```
 
-![](reference/figures/README-unnamed-chunk-5-1.png)
+![](reference/figures/README-unnamed-chunk-5-2.png)
 
 ``` r
 
@@ -153,7 +163,7 @@ dat |> ggbox(mpg)
 #> Dropped: disp hp drat wt qsec
 ```
 
-![](reference/figures/README-unnamed-chunk-5-2.png)
+![](reference/figures/README-unnamed-chunk-5-3.png)
 
 ``` r
 
@@ -165,15 +175,6 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 #> Groups with fewer than two datapoints have been dropped.
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
-```
-
-![](reference/figures/README-unnamed-chunk-5-3.png)
-
-``` r
-
-# Scatter plot showing correlation. 
-dat |> ggxy(hp,disp)
-#> `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ![](reference/figures/README-unnamed-chunk-5-4.png)

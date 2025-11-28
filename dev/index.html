@@ -71,7 +71,8 @@
 <span><span class="co">#&gt; To cite package 'edar' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Sou T (2025). _edar: Convenient Functions for Exploratory Data</span></span>
-<span><span class="co">#&gt;   Analysis_. R package version 0.0.6, &lt;https://CRAN.R-project.org/package=edar&gt;.</span></span>
+<span><span class="co">#&gt;   Analysis_. R package version 0.0.6,</span></span>
+<span><span class="co">#&gt;   &lt;https://CRAN.R-project.org/package=edar&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -192,19 +193,25 @@
 </h3>
 <p>Variables can be quickly visualised for exploratory graphical analysis.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Histograms of all continuous variables. </span></span>
+<code class="sourceCode R"><span><span class="co"># Scatter plot showing correlation. </span></span>
+<span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="70%"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Histograms of all continuous variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/gghist.html">gghist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Non-numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="70%"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-5-2.png" width="70%"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Box plots stratified by categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggbox.html">ggbox</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: disp hp drat wt qsec</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-2.png" width="70%"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-5-3.png" width="70%"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Violin plots stratified by categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggvio.html">ggvio</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
@@ -214,12 +221,6 @@
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span>
 <span><span class="co">#&gt; Groups with fewer than two datapoints have been dropped.</span></span>
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-3.png" width="70%"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Scatter plot showing correlation. </span></span>
-<span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
-<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-4.png" width="70%"></p>
 </div>
 <div class="section level3">
