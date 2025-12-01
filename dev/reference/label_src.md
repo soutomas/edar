@@ -38,7 +38,7 @@ A label showing the source file path with a time stamp.
 
 ``` r
 label_src()
-#> [1] "Source:/home/runner/work/edar/edar/docs/dev/reference/\n\nRun: 2025-11-28 22:15:01 UTC"
+#> [1] "Source:/home/runner/work/edar/edar/docs/dev/reference/\n\nRun: 2025-12-01 17:47:26 UTC"
 label_src(tz=FALSE)
 #> [1] "Source:/home/runner/work/edar/edar/docs/dev/reference/\n"
 label_src(fname=TRUE)

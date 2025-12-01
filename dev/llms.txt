@@ -179,6 +179,14 @@ dat |> ggvio(mpg)
 
 ![](reference/figures/README-unnamed-chunk-5-4.png)
 
+``` r
+
+# Time-profile plot by subject.
+Theoph |> ggtpp(Time,conc,id=Subject,xlab="Time [h]",ylab="Concentration [mg/L]")
+```
+
+![](reference/figures/README-unnamed-chunk-5-5.png)
+
 ### Labels
 
 A label indicating the current source file with a time stamp can be
