@@ -9,7 +9,6 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
 [![](http://cranlogs.r-pkg.org/badges/edar)](https://cran.r-project.org/package=edar)
-
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate
@@ -190,6 +189,14 @@ dat |> ggvio(mpg)
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-4.png" width="70%" />
+
+``` r
+
+# Time-profile plot by subject.
+Theoph |> ggtpp(Time,conc,id=Subject,xlab="Time [h]",ylab="Concentration [mg/L]")
+```
+
+<img src="man/figures/README-unnamed-chunk-5-5.png" width="70%" />
 
 ### Labels
 

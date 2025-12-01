@@ -19,7 +19,6 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/soutomas/edar/actions/workflows/R-CMD-check.yaml)
 [![CRAN status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
 [![](http://cranlogs.r-pkg.org/badges/edar)](https://cran.r-project.org/package=edar)
-
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate common tasks in exploratory data analysis.
@@ -63,7 +62,6 @@ dat |> summ_by(mpg,vs)
 
 # Summaries of all categorical variables. 
 dat |> summ_cat()
-
 ```
 
 ### Tables
@@ -92,6 +90,9 @@ dat |> ggbox(mpg)
 
 # Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
+
+# Time-profile plot by subject.
+Theoph |> ggtpp(Time,conc,id=Subject,xlab="Time [h]",ylab="Concentration [mg/L]")
 ```
 
 ### Labels
