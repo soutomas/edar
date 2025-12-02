@@ -9,6 +9,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/package=edar)
 [![](http://cranlogs.r-pkg.org/badges/edar)](https://cran.r-project.org/package=edar)
+<!-- [![](http://cranlogs.r-pkg.org/badges/grand-total/edar)](https://cran.r-project.org/package=edar) -->
 <!-- badges: end -->
 
 The goal of edar is to provide some convenient functions to facilitate
