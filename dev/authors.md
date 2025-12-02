@@ -2,7 +2,7 @@
 
 ## Authors
 
-- **[Tomas Sou](https://tomassou.com/me/)**. Author, maintainer.
+- **[Tomas Sou](https://tomassou.com/me)**. Author, maintainer.
   [](https://orcid.org/0000-0002-7570-5545)
 
 ## Citation
