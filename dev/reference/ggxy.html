@@ -59,7 +59,7 @@ For more complex plots, it is recommended to use <a href="https://ggplot2.tidyve
 <span>  lm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  se <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cor <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  pv <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  pv <span class="op">=</span> <span class="fl">0.001</span>,</span>
 <span>  nsub <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  asp <span class="op">=</span> <span class="fl">1</span></span>
@@ -95,7 +95,7 @@ For more complex plots, it is recommended to use <a href="https://ggplot2.tidyve
 
 
 <dt id="arg-pv">pv<a class="anchor" aria-label="anchor" href="#arg-pv"></a></dt>
-<dd><p><code>&lt;dbl&gt;</code> Precision for the p-value, e.g., 0.001 to show 3 decimal places.</p></dd>
+<dd><p><code>&lt;dbl&gt;</code> Precision of p-value, e.g., 0.001 to show 3 decimal places, <code>NULL</code> for no rounding.</p></dd>
 
 
 <dt id="arg-nsub">nsub<a class="anchor" aria-label="anchor" href="#arg-nsub"></a></dt>
@@ -136,7 +136,7 @@ For more complex plots, it is recommended to use <a href="https://ggplot2.tidyve
 <span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">ggxy</span><span class="op">(</span><span class="va">wt</span>,<span class="va">hp</span>,nsub<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula = 'y ~ x'</span>
 <span class="r-plt img"><img src="ggxy-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">ggxy</span><span class="op">(</span><span class="va">wt</span>,<span class="va">hp</span>,pv<span class="op">=</span><span class="fl">0.001</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">ggxy</span><span class="op">(</span><span class="va">wt</span>,<span class="va">hp</span>,pv<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula = 'y ~ x'</span>
 <span class="r-plt img"><img src="ggxy-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">mtcars</span> <span class="op">|&gt;</span> <span class="fu">ggxy</span><span class="op">(</span><span class="va">wt</span>,<span class="va">hp</span>,lm<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>

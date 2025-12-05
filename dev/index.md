@@ -8,29 +8,10 @@ common tasks in exploratory data analysis.
 Sou T (2025). *edar: Convenient Functions for Exploratory Data
 Analysis*. R package version 0.0.6, <https://github.com/soutomas/edar>.
 
-``` r
-citation("edar")
-#> To cite package 'edar' in publications use:
-#> 
-#>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.6,
-#>   <https://CRAN.R-project.org/package=edar>.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {edar: Convenient Functions for Exploratory Data Analysis},
-#>     author = {Tomas Sou},
-#>     year = {2025},
-#>     note = {R package version 0.0.6},
-#>     url = {https://CRAN.R-project.org/package=edar},
-#>   }
-```
-
 ## Installation
 
 ``` r
-# From CRAN 
+# From CRAN - for the latest CRAN release 
 install.packages("edar")
 
 # From GitHub - for the development version
@@ -46,7 +27,6 @@ It is often helpful to see a quick summary of the dataset.
 
 ``` r
 library(edar)
-#> Warning: package 'edar' was built under R version 4.4.3
 #> 
 #> Attaching package: 'edar'
 #> The following object is masked from 'package:stats':
@@ -131,7 +111,7 @@ dat |> summ_by(mpg,vs) |> ft()
 #> Adding missing grouping variables: `vs`
 ```
 
-![](reference/figures/README-unnamed-chunk-4-1.png)
+![](reference/figures/README-unnamed-chunk-3-1.png)
 
 ### Visualisation
 
@@ -143,7 +123,7 @@ dat |> ggxy(hp,disp)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![](reference/figures/README-unnamed-chunk-5-1.png)
+![](reference/figures/README-unnamed-chunk-4-1.png)
 
 ``` r
 
@@ -153,7 +133,7 @@ dat |> gghist()
 #> Dropped: cyl vs am gear carb
 ```
 
-![](reference/figures/README-unnamed-chunk-5-2.png)
+![](reference/figures/README-unnamed-chunk-4-2.png)
 
 ``` r
 
@@ -163,7 +143,7 @@ dat |> ggbox(mpg)
 #> Dropped: disp hp drat wt qsec
 ```
 
-![](reference/figures/README-unnamed-chunk-5-3.png)
+![](reference/figures/README-unnamed-chunk-4-3.png)
 
 ``` r
 
@@ -177,15 +157,15 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-![](reference/figures/README-unnamed-chunk-5-4.png)
+![](reference/figures/README-unnamed-chunk-4-4.png)
 
 ``` r
 
 # Time-profile plot by subject.
-Theoph |> ggtpp(Time,conc,id=Subject,xlab="Time [h]",ylab="Concentration [mg/L]")
+Theoph |> ggtpp(Time, conc, id=Subject, xlab="Time [h]", ylab="Concentration [mg/L]")
 ```
 
-![](reference/figures/README-unnamed-chunk-5-5.png)
+![](reference/figures/README-unnamed-chunk-4-5.png)
 
 ### Labels
 

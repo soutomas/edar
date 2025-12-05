@@ -2,6 +2,10 @@
 
 ## edar (development version)
 
+- Update
+  [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
+  default precision of p-value.
+
 ## edar 0.0.6
 
 CRAN release: 2025-11-25

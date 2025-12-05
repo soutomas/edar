@@ -65,29 +65,12 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Sou T (2025). <em>edar: Convenient Functions for Exploratory Data Analysis</em>. R package version 0.0.6, <a href="https://github.com/soutomas/edar" class="external-link uri">https://github.com/soutomas/edar</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"edar"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; To cite package 'edar' in publications use:</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Sou T (2025). _edar: Convenient Functions for Exploratory Data</span></span>
-<span><span class="co">#&gt;   Analysis_. R package version 0.0.6,</span></span>
-<span><span class="co">#&gt;   &lt;https://CRAN.R-project.org/package=edar&gt;.</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     title = {edar: Convenient Functions for Exploratory Data Analysis},</span></span>
-<span><span class="co">#&gt;     author = {Tomas Sou},</span></span>
-<span><span class="co">#&gt;     year = {2025},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.0.6},</span></span>
-<span><span class="co">#&gt;     url = {https://CRAN.R-project.org/package=edar},</span></span>
-<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># From CRAN </span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># From CRAN - for the latest CRAN release </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"edar"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># From GitHub - for the development version</span></span>
@@ -101,9 +84,8 @@
 <h3 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h3>
 <p>It is often helpful to see a quick summary of the dataset.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soutomas.github.io/edar/">edar</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: package 'edar' was built under R version 4.4.3</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'edar'</span></span>
 <span><span class="co">#&gt; The following object is masked from 'package:stats':</span></span>
@@ -181,36 +163,36 @@
 <h3 id="tables">Tables<a class="anchor" aria-label="anchor" href="#tables"></a>
 </h3>
 <p>Results can be viewed directly in a flextable object.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show data frame as a flextable object. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `vs`</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="visualisation">Visualisation<a class="anchor" aria-label="anchor" href="#visualisation"></a>
 </h3>
 <p>Variables can be quickly visualised for exploratory graphical analysis.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatter plot showing correlation. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="70%"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="70%"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Histograms of all continuous variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/gghist.html">gghist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Non-numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-2.png" width="70%"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-4-2.png" width="70%"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Box plots stratified by categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggbox.html">ggbox</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: disp hp drat wt qsec</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-3.png" width="70%"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-4-3.png" width="70%"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Violin plots stratified by categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggvio.html">ggvio</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
@@ -220,24 +202,24 @@
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span>
 <span><span class="co">#&gt; Groups with fewer than two datapoints have been dropped.</span></span>
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-4.png" width="70%"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-4-4.png" width="70%"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Time-profile plot by subject.</span></span>
-<span><span class="va">Theoph</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggtpp.html">ggtpp</a></span><span class="op">(</span><span class="va">Time</span>,<span class="va">conc</span>,id<span class="op">=</span><span class="va">Subject</span>,xlab<span class="op">=</span><span class="st">"Time [h]"</span>,ylab<span class="op">=</span><span class="st">"Concentration [mg/L]"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-5.png" width="70%"></p>
+<span><span class="va">Theoph</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggtpp.html">ggtpp</a></span><span class="op">(</span><span class="va">Time</span>, <span class="va">conc</span>, id<span class="op">=</span><span class="va">Subject</span>, xlab<span class="op">=</span><span class="st">"Time [h]"</span>, ylab<span class="op">=</span><span class="st">"Concentration [mg/L]"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-5.png" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="labels">Labels<a class="anchor" aria-label="anchor" href="#labels"></a>
 </h3>
 <p>A label indicating the current source file with a time stamp can be easily generated for annotation.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># To generate a source file label for annotation.</span></span>
 <span><span class="va">lab</span> <span class="op">=</span> <span class="fu"><a href="reference/label_src.html">label_src</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># A source file label can be directly added to the flextable output. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span>src<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># A source file label can be directly added to a ggplot object. </span></span>
 <span><span class="va">p</span> <span class="op">=</span> <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggsrc.html">ggsrc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>

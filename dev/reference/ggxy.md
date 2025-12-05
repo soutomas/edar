@@ -18,7 +18,7 @@ ggxy(
   lm = TRUE,
   se = TRUE,
   cor = TRUE,
-  pv = NULL,
+  pv = 0.001,
   nsub = TRUE,
   legend = TRUE,
   asp = 1
@@ -55,8 +55,8 @@ ggxy(
 
 - pv:
 
-  `<dbl>` Precision for the p-value, e.g., 0.001 to show 3 decimal
-  places.
+  `<dbl>` Precision of p-value, e.g., 0.001 to show 3 decimal places,
+  `NULL` for no rounding.
 
 - nsub:
 
@@ -97,7 +97,7 @@ mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 mtcars |> ggxy(wt,hp,nsub=FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'
 
-mtcars |> ggxy(wt,hp,pv=0.001)
+mtcars |> ggxy(wt,hp,pv=NULL)
 #> `geom_smooth()` using formula = 'y ~ x'
 
 mtcars |> ggxy(wt,hp,lm=FALSE)
