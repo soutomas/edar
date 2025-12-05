@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-11-13
+# Updated  : 2025-12-05
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -11,7 +11,10 @@
 # Updates
 # na
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Global
+
 utils::globalVariables(c("value","level"))
+
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Box plot wrapper for categorical covariates
 #'
@@ -231,7 +234,7 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
 #' @param se `<lgl>` `TRUE` to show standard error with the regression line.
 #' @param nsub `<lgl>` Show number of observations.
 #' @param cor `<lgl>` `TRUE` to show Pearson correlation coefficient with p-value.
-#' @param pv `<dbl>` Precision for the p-value, e.g., 0.001 to show 3 decimal places.
+#' @param pv `<dbl>` Precision of p-value, e.g., 0.001 to show 3 decimal places, `NULL` for no rounding.
 #' @param legend `<lgl>` `TRUE` to show legend.
 #' @param asp `<num>` For `aspect.ratio` in [ggplot2::theme].
 #' @seealso [ggpubr::stat_cor]
@@ -243,11 +246,11 @@ ggvio = function(d, var, cats, alpha=0.1, show=TRUE, nsub=TRUE, ...){
 #' mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 #' mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 #' mtcars |> ggxy(wt,hp,nsub=FALSE)
-#' mtcars |> ggxy(wt,hp,pv=0.001)
+#' mtcars |> ggxy(wt,hp,pv=NULL)
 #' mtcars |> ggxy(wt,hp,lm=FALSE)
 #' mtcars |> ggxy(wt,hp,se=FALSE)
 #' mtcars |> ggxy(wt,hp,cor=FALSE)
-ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=NULL,nsub=TRUE,legend=TRUE,asp=1){
+ggxy = function(d,x,y,...,lm=TRUE,se=TRUE,cor=TRUE,pv=0.001,nsub=TRUE,legend=TRUE,asp=1){
   nSub = NULL
   if(nsub) nSub = paste0("n=",nrow(d))
   p = d |>

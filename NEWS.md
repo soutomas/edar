@@ -1,5 +1,7 @@
 # edar (development version)
 
+* `ggxy()`: Updated default precision of p-value.  
+
 # edar 0.0.6
 
 * New `ggbox()`, `gghist()`, `ggtpp()`, `ggvio()` and `ggxy()` facilitate quick data visualisation. 

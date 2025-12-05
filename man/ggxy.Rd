@@ -12,7 +12,7 @@ ggxy(
   lm = TRUE,
   se = TRUE,
   cor = TRUE,
-  pv = NULL,
+  pv = 0.001,
   nsub = TRUE,
   legend = TRUE,
   asp = 1
@@ -31,7 +31,7 @@ ggxy(
 
 \item{cor}{\verb{<lgl>} \code{TRUE} to show Pearson correlation coefficient with p-value.}
 
-\item{pv}{\verb{<dbl>} Precision for the p-value, e.g., 0.001 to show 3 decimal places.}
+\item{pv}{\verb{<dbl>} Precision of p-value, e.g., 0.001 to show 3 decimal places, \code{NULL} for no rounding.}
 
 \item{nsub}{\verb{<lgl>} Show number of observations.}
 
@@ -53,7 +53,7 @@ mtcars |> ggxy(wt,hp,col=factor(gear))
 mtcars |> ggxy(wt,hp,col=factor(gear),legend=FALSE)
 mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 mtcars |> ggxy(wt,hp,nsub=FALSE)
-mtcars |> ggxy(wt,hp,pv=0.001)
+mtcars |> ggxy(wt,hp,pv=NULL)
 mtcars |> ggxy(wt,hp,lm=FALSE)
 mtcars |> ggxy(wt,hp,se=FALSE)
 mtcars |> ggxy(wt,hp,cor=FALSE)
