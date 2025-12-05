@@ -1,6 +1,6 @@
 # edar (development version)
 
-* `ggxy()`: Updated default precision of p-value.  
+* Update `ggxy()` default precision of p-value.  
 
 # edar 0.0.6
 

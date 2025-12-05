@@ -28,14 +28,10 @@ The goal of edar is to provide some convenient functions to facilitate common ta
 
 Sou T (2025). _edar: Convenient Functions for Exploratory Data Analysis_. R package version 0.0.6, <https://github.com/soutomas/edar>.
 
-```{r}
-citation("edar")
-```
-
 ## Installation
 
 ``` r
-# From CRAN 
+# From CRAN - for the latest CRAN release 
 install.packages("edar")
 
 # From GitHub - for the development version
@@ -93,7 +89,7 @@ dat |> ggbox(mpg)
 dat |> ggvio(mpg)
 
 # Time-profile plot by subject.
-Theoph |> ggtpp(Time,conc,id=Subject,xlab="Time [h]",ylab="Concentration [mg/L]")
+Theoph |> ggtpp(Time, conc, id=Subject, xlab="Time [h]", ylab="Concentration [mg/L]")
 ```
 
 ### Labels
