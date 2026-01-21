@@ -2,6 +2,8 @@
 
 * Update `ggxy()` default precision of p-value.  
 
+* Rename `Med` to `Median` in output of `summ_by()`
+
 # edar 0.0.6
 
 * New `ggbox()`, `gghist()`, `ggtpp()`, `ggvio()` and `ggxy()` facilitate quick data visualisation. 

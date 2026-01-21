@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2025-11-13
+# Updated  : 2026-01-21
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -286,7 +286,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname=""){
           SD  = ~sd(.x, na.rm=TRUE),
           Min = ~min(.x, na.rm=TRUE),
           Plo = ~quantile(.x, pct[1], na.rm=TRUE),
-          Med = ~median(.x, na.rm=TRUE),
+          Median = ~median(.x, na.rm=TRUE),
           Pup = ~quantile(.x, pct[2], na.rm=TRUE),
           Max = ~max(.x, na.rm=TRUE)
         )
