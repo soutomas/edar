@@ -10,14 +10,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/soutomas/edar/blob/main/DESCRIPTION)
 
-Sou T (2025). *edar: Convenient Functions for Exploratory Data
+Sou T (2026). *edar: Convenient Functions for Exploratory Data
 Analysis*. R package version 0.0.6.9000,
 <https://soutomas.github.io/edar/>.
 
     @Manual{,
       title = {edar: Convenient Functions for Exploratory Data Analysis},
       author = {Tomas Sou},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.0.6.9000},
       url = {https://soutomas.github.io/edar/},
     }

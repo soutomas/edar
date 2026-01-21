@@ -6,6 +6,9 @@
   [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
   default precision of p-value.
 
+- Rename `Med` to `Median` in output of
+  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+
 ## edar 0.0.6
 
 CRAN release: 2025-11-25
