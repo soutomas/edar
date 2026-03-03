@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2025-12-05
+# Updated  : 2026-03-03
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -121,7 +121,9 @@ ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
       caption = labsrc,
-      theme = ggplot2::theme(plot.caption = ggplot2::element_text(colour=col,size=size))
+      theme = ggplot2::theme(
+        plot.caption = ggplot2::element_text(colour=col,size=size,hjust=0)
+      )
     )
   return(out)
 }
