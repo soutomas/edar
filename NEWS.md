@@ -1,5 +1,9 @@
 # edar (development version)
 
+* Add flextable printing to `summ_by()` and `summ_cat()`
+
+* Left align for `ggsrc()`
+
 * Update `ggxy()` default precision of p-value.  
 
 * Rename `Med` to `Median` in output of `summ_by()`

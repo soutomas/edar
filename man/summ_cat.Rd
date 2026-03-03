@@ -4,7 +4,7 @@
 \alias{summ_cat}
 \title{Summarise categorical variables}
 \usage{
-summ_cat(d, ..., var, show = TRUE)
+summ_cat(d, ..., var, ftab = FALSE)
 }
 \arguments{
 \item{d}{A data frame.}
@@ -13,7 +13,7 @@ summ_cat(d, ..., var, show = TRUE)
 
 \item{var}{\verb{<var/int>} (name or index) Optional. A variable to extract as a data frame.}
 
-\item{show}{\verb{<lgl>} TRUE to show output as flextable.}
+\item{ftab}{\verb{<lgl>} TRUE to show output as flextable.}
 }
 \value{
 A list containing summaries for all categorical variables or

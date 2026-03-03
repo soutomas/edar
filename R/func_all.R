@@ -244,7 +244,7 @@ label_tz = function(omit=""){
 #' @param ... `<var>` Optional. Columns to group by as unquoted names.
 #' @param pct `<num>` A vector of two indicating the percentiles to compute.
 #' @param xname  `<chr>` Characters to omit in output column names.
-#' @param show `<lgl>` TRUE to print output as flextable.
+#' @param ftab `<lgl>` TRUE to print output as flextable.
 #' @returns A data frame of summarised variables.
 #' @export
 #' @examples
@@ -259,7 +259,7 @@ label_tz = function(omit=""){
 #' d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 #' # Grouping without column selection is possible but rarely useful in large dataset
 #' d |> summ_by(,vs)
-summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", show=TRUE){
+summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", ftab=FALSE){
   if(!missing(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
@@ -296,8 +296,8 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", show=TRUE){
     dplyr::rename_with(~gsub(xname,"",.x)) |>
     dplyr::rename_with(~gsub("Plo",paste0("P",pct[1]*100), .x), dplyr::contains("Plo")) |>
     dplyr::rename_with(~gsub("Pup",paste0("P",pct[2]*100), .x), dplyr::contains("Pup"))
-  if(show) ft(out) |> print()
-  invisible(out)
+  if(ftab) ft(out) |> print()
+  if(ftab) invisible(out) else return(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -309,7 +309,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", show=TRUE){
 #' @param d A data frame.
 #' @param ... `<var>` Optional. Columns to summarise.
 #' @param var `<var/int>` (name or index) Optional. A variable to extract as a data frame.
-#' @param show `<lgl>` TRUE to show output as flextable.
+#' @param ftab `<lgl>` TRUE to show output as flextable.
 #' @returns A list containing summaries for all categorical variables or
 #'   a data frame showing the summary of a selected variable.
 #' @export
@@ -319,7 +319,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", show=TRUE){
 #' d |> summ_cat(cyl,vs)
 #' d |> summ_cat(var=cyl)
 #' d |> summ_cat(var=1)
-summ_cat = function(d, ..., var, show=TRUE){
+summ_cat = function(d, ..., var, ftab=FALSE){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   if(!missing(...)) d = d |> dplyr::select(...)
   message("NB: Numeric variables are dropped.")
@@ -332,7 +332,7 @@ summ_cat = function(d, ..., var, show=TRUE){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
   if(!missing(var)) out = out |> listr::list_extract({{var}})
-  if(show &  is.data.frame(out)) ft(out) |> print()
-  if(show & !is.data.frame(out)) purrr::map(out,ft) |> print()
-  invisible(out)
+  if(ftab &  is.data.frame(out)) ft(out) |> print()
+  if(ftab & !is.data.frame(out)) purrr::map(out,ft) |> print()
+  if(ftab) invisible(out) else return(out)
 }
