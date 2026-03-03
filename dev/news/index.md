@@ -2,6 +2,14 @@
 
 ## edar (development version)
 
+- Add flextable printing to
+  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  and
+  [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md)
+
+- Left align for
+  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
+
 - Update
   [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
   default precision of p-value.
