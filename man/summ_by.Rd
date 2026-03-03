@@ -4,7 +4,7 @@
 \alias{summ_by}
 \title{Summarise continuous variables by group}
 \usage{
-summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "")
+summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", show = TRUE)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -16,6 +16,8 @@ summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "")
 \item{pct}{\verb{<num>} A vector of two indicating the percentiles to compute.}
 
 \item{xname}{\verb{<chr>} Characters to omit in output column names.}
+
+\item{show}{\verb{<lgl>} TRUE to print output as flextable.}
 }
 \value{
 A data frame of summarised variables.
