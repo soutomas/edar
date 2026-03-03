@@ -48,7 +48,7 @@ Numeric variables will be dropped.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">...</span>, <span class="va">var</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">summ_cat</span><span class="op">(</span><span class="va">d</span>, <span class="va">...</span>, <span class="va">var</span>, show <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -66,6 +66,10 @@ Numeric variables will be dropped.</p>
 <dt id="arg-var">var<a class="anchor" aria-label="anchor" href="#arg-var"></a></dt>
 <dd><p><code>&lt;var/int&gt;</code> (name or index) Optional. A variable to extract as a data frame.</p></dd>
 
+
+<dt id="arg-show">show<a class="anchor" aria-label="anchor" href="#arg-show"></a></dt>
+<dd><p><code>&lt;lgl&gt;</code> TRUE to show output as flextable.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -80,73 +84,28 @@ a data frame showing the summary of a selected variable.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     vs  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      0 18  0.5625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 14  0.4375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32  1.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     am  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      0 19 0.59375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 13 0.40625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   gear  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      3 15 0.46875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 12 0.37500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5  5 0.15625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   carb  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1  7 0.21875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      2 10 0.31250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      3  3 0.09375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 10 0.31250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  1 0.03125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8  1 0.03125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span><span class="va">cyl</span>,<span class="va">vs</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     vs  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      0 18  0.5625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1 14  0.4375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32  1.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span>var<span class="op">=</span><span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">|&gt;</span> <span class="fu">summ_cat</span><span class="op">(</span>var<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NB: Numeric variables are dropped.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Dropped: mpg disp hp drat wt qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    cyl  n percent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4 11 0.34375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6  7 0.21875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      8 14 0.43750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Total 32 1.00000</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
