@@ -4,7 +4,7 @@
 \alias{summ_by}
 \title{Summarise continuous variables by group}
 \usage{
-summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", ftab = FALSE)
+summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", view = FALSE)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -17,7 +17,7 @@ summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", ftab = FALSE)
 
 \item{xname}{\verb{<chr>} Characters to omit in output column names.}
 
-\item{ftab}{\verb{<lgl>} TRUE to print output as flextable.}
+\item{view}{\verb{<lgl>} TRUE to print output as flextable.}
 }
 \value{
 A data frame of summarised variables.
