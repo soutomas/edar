@@ -5,7 +5,7 @@ Summarise all categorical variables. Numeric variables will be dropped.
 ## Usage
 
 ``` r
-summ_cat(d, ..., var, ftab = FALSE)
+summ_cat(d, ..., var, view = FALSE)
 ```
 
 ## Arguments
@@ -23,7 +23,7 @@ summ_cat(d, ..., var, ftab = FALSE)
   `<var/int>` (name or index) Optional. A variable to extract as a data
   frame.
 
-- ftab:
+- view:
 
   `<lgl>` TRUE to show output as flextable.
 

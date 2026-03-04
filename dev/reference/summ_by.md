@@ -6,7 +6,7 @@ be dropped.
 ## Usage
 
 ``` r
-summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", ftab = FALSE)
+summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", view = FALSE)
 ```
 
 ## Arguments
@@ -31,7 +31,7 @@ summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", ftab = FALSE)
 
   `<chr>` Characters to omit in output column names.
 
-- ftab:
+- view:
 
   `<lgl>` TRUE to print output as flextable.
 
