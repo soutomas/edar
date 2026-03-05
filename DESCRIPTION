@@ -28,7 +28,6 @@ Imports:
     janitor,
     kableExtra,
     knitr,
-    listr,
     magrittr,
     patchwork,
     purrr,
@@ -36,6 +35,7 @@ Imports:
     rstudioapi,
     scales,
     tidyr,
+    tidyselect,
     xgxr
 Suggests: 
     gt
