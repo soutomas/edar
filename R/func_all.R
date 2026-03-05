@@ -331,7 +331,7 @@ summ_cat = function(d, ..., var, view=FALSE){
   for (i in seq_along(out)){
     out[[i]] = out[[i]] |> dplyr::rename(!!names(out[i]):=1)
   }
-  if(!missing(var)) out = out |> listr::list_extract({{var}})
+  if(!missing(var)) out = out[[tidyselect::eval_select(rlang::expr({{var}}),out)]]
   if(view &  is.data.frame(out)) ft(out) |> print()
   if(view & !is.data.frame(out)) purrr::map(out,ft) |> print()
   if(view) invisible(out) else return(out)
