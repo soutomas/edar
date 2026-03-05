@@ -1,12 +1,14 @@
 # edar (development version)
 
-* Add flextable printing to `summ_by()` and `summ_cat()`
+* New `tab2v()` to produce tables for 2 variables. 
 
-* Left align for `ggsrc()`
+* Add flextable printing to `summ_by()` and `summ_cat()`.
+
+* Left align for `ggsrc()`.
 
 * Update `ggxy()` default precision of p-value.  
 
-* Rename `Med` to `Median` in output of `summ_by()`
+* Rename `Med` to `Median` in output of `summ_by()`. 
 
 # edar 0.0.6
 

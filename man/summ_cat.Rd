@@ -7,7 +7,7 @@
 summ_cat(d, ..., var, view = FALSE)
 }
 \arguments{
-\item{d}{A data frame.}
+\item{d}{\verb{<dfr>} A data frame.}
 
 \item{...}{\verb{<var>} Optional. Columns to summarise.}
 

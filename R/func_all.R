@@ -306,7 +306,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", view=FALSE){
 #' Summarise all categorical variables.
 #' Numeric variables will be dropped.
 #'
-#' @param d A data frame.
+#' @param d `<dfr>` A data frame.
 #' @param ... `<var>` Optional. Columns to summarise.
 #' @param var `<var/int>` (name or index) Optional. A variable to extract as a data frame.
 #' @param view `<lgl>` TRUE to show output as flextable.
@@ -336,3 +336,29 @@ summ_cat = function(d, ..., var, view=FALSE){
   if(view & !is.data.frame(out)) purrr::map(out,ft) |> print()
   if(view) invisible(out) else return(out)
 }
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Table wrapper for two variables
+#'
+#' Wrapper function to produce summary tables for two variables.
+#'
+#' @param d `<dfr>` A data frame.
+#' @param x,y `<var>` Variables to tabulate.
+#' @returns A tabyl object.
+#' @export
+#' @examples
+#' # example code
+#' mtcars |> tab2v(vs,cyl)
+#' mtcars |> tab2v(vs,am)
+#' mtcars |> tab2v(vs,am)
+#' mtcars |> tab2v(vs,gear)
+tab2v = function(d,x,y){
+  out = d |>
+    janitor::tabyl({{x}},{{y}}) |>
+    janitor::adorn_totals(c("row","col")) |>
+    janitor::adorn_percentages() |>
+    janitor::adorn_pct_formatting() |>
+    janitor::adorn_ns()
+  return(out)
+}
+
