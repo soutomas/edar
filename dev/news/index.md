@@ -2,20 +2,24 @@
 
 ## edar (development version)
 
+- New
+  [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to
+  produce tables for 2 variables.
+
 - Add flextable printing to
   [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
   and
-  [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md)
+  [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md).
 
 - Left align for
-  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
+  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md).
 
 - Update
   [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
   default precision of p-value.
 
 - Rename `Med` to `Median` in output of
-  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
 
 ## edar 0.0.6
 

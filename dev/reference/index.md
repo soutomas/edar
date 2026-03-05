@@ -32,3 +32,5 @@
   : Summarise continuous variables by group
 - [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md)
   : Summarise categorical variables
+- [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) :
+  Table wrapper for two variables

@@ -12,7 +12,7 @@ summ_cat(d, ..., var, view = FALSE)
 
 - d:
 
-  A data frame.
+  `<dfr>` A data frame.
 
 - ...:
 
