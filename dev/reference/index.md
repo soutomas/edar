@@ -8,6 +8,10 @@
   flextable wrapper
 - [`ft_def()`](https://soutomas.github.io/edar/dev/reference/ft_def.md)
   : flextable defaults
+- [`geoMean()`](https://soutomas.github.io/edar/dev/reference/geoMean.md)
+  : Geometric mean
+- [`geoSD()`](https://soutomas.github.io/edar/dev/reference/geoSD.md) :
+  Geometric standard deviation
 - [`ggbox()`](https://soutomas.github.io/edar/dev/reference/ggbox.md) :
   Box plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/dev/reference/gghist.md)

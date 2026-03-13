@@ -2,6 +2,15 @@
 
 ## edar (development version)
 
+- Add geometric mean and standard deviation to
+  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
+
+- New
+  [`geoMean()`](https://soutomas.github.io/edar/dev/reference/geoMean.md)
+  and
+  [`geoSD()`](https://soutomas.github.io/edar/dev/reference/geoSD.md)
+  for geometric mean and standard deviation.
+
 - New
   [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to
   produce tables for 2 variables.

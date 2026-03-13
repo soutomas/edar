@@ -6,7 +6,15 @@ be dropped.
 ## Usage
 
 ``` r
-summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", view = FALSE)
+summ_by(
+  d,
+  cols,
+  ...,
+  pct = c(0.25, 0.75),
+  geo = FALSE,
+  xname = "",
+  view = FALSE
+)
 ```
 
 ## Arguments
@@ -26,6 +34,10 @@ summ_by(d, cols, ..., pct = c(0.25, 0.75), xname = "", view = FALSE)
 - pct:
 
   `<num>` A vector of two indicating the percentiles to compute.
+
+- geo:
+
+  `<lgl>` TRUE to add geometric mean and standard devaition.
 
 - xname:
 
@@ -59,6 +71,23 @@ d |> summ_by()
 #> 7 mpg      32     0  20.1    6.03  10.4   15.4   19.2   22.8   33.9 
 #> 8 qsec     32     0  17.8    1.79  14.5   16.9   17.7   18.9   22.9 
 #> 9 wt       32     0   3.22   0.978  1.51   2.58   3.32   3.61   5.42
+d |> summ_by(geo=TRUE)
+#> NB: Non-numeric variables are dropped.
+#> Dropped: vs am
+#> Adding missing grouping variables: `name`
+#> # A tibble: 9 × 12
+#>   name      n   nNA   Mean      SD GeoMean GeoSD   Min    P25 Median    P75
+#>   <chr> <int> <int>  <dbl>   <dbl>   <dbl> <dbl> <dbl>  <dbl>  <dbl>  <dbl>
+#> 1 carb     32     0   2.81   1.62     2.40  1.80  1      2      2      4   
+#> 2 cyl      32     0   6.19   1.79     5.92  1.36  4      4      6      8   
+#> 3 disp     32     0 231.   124.     197.    1.80 71.1  121.   196.   326   
+#> 4 drat     32     0   3.60   0.535    3.56  1.16  2.76   3.08   3.70   3.92
+#> 5 gear     32     0   3.69   0.738    3.62  1.21  3      3      4      4   
+#> 6 hp       32     0 147.    68.6    132.    1.61 52     96.5  123    180   
+#> 7 mpg      32     0  20.1    6.03    19.3   1.35 10.4   15.4   19.2   22.8 
+#> 8 qsec     32     0  17.8    1.79    17.8   1.10 14.5   16.9   17.7   18.9 
+#> 9 wt       32     0   3.22   0.978    3.07  1.37  1.51   2.58   3.32   3.61
+#> # ℹ 1 more variable: Max <dbl>
 d |> summ_by(pct=c(0.1,0.9))
 #> NB: Non-numeric variables are dropped.
 #> Dropped: vs am
