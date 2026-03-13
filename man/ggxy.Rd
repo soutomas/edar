@@ -23,7 +23,7 @@ ggxy(
 
 \item{x, y}{\verb{<var>} Variables for x- and y-axis as unquoted names.}
 
-\item{...}{Arguments to pass to \link[ggplot2:aes]{ggplot2::aes} for additional mapping.}
+\item{...}{Arguments to pass to \code{\link[ggplot2:aes]{ggplot2::aes()}} for additional mapping.}
 
 \item{lm}{\verb{<lgl>} \code{TRUE} to add regression line from linear model.}
 
@@ -37,14 +37,14 @@ ggxy(
 
 \item{legend}{\verb{<lgl>} \code{TRUE} to show legend.}
 
-\item{asp}{\verb{<num>} For \code{aspect.ratio} in \link[ggplot2:theme]{ggplot2::theme}.}
+\item{asp}{\verb{<num>} For \code{aspect.ratio} in \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
 A ggplot object.
 }
 \description{
 Create basic XY scatter plot for quick data exploration.
-Default to show Pearson correlation coefficient with p-value using \link[ggpubr:stat_cor]{ggpubr::stat_cor}.
+Default to show Pearson correlation coefficient with p-value using \code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}.
 For more complex plots, it is recommended to use \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} directly.
 }
 \examples{
@@ -59,5 +59,5 @@ mtcars |> ggxy(wt,hp,se=FALSE)
 mtcars |> ggxy(wt,hp,cor=FALSE)
 }
 \seealso{
-\link[ggpubr:stat_cor]{ggpubr::stat_cor}
+\code{\link[ggpubr:stat_cor]{ggpubr::stat_cor()}}
 }

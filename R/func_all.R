@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2026-03-05
+# Updated  : 2026-03-13
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -128,6 +128,38 @@ ft_def = function(show=FALSE, font="Calibri Light", fsize=10, pad=3, na="", nan=
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Geometric mean
+#'
+#' Compute geometric mean.
+#'
+#' @param x `<num>` A vector of values.
+#' @param ... Other augments to pass to [mean()].
+#' @returns Geometric mean.
+#' @export
+#' @examples
+#' geoMean(rlnorm(10))
+geoMean = function(x,...){
+  out = exp(mean(log(x),...))
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Geometric standard deviation
+#'
+#' Compute geometric standard deviation
+#'
+#' @param x `<num>` A vector of values.
+#' @param ... Other augments to pass to [sd()].
+#' @returns Geometric standard deviation
+#' @export
+#' @examples
+#' geoSD(rlnorm(10))
+geoSD = function(x,...){
+  out = exp(stats::sd(log(x),...))
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Generate hex colour codes
 #'
 #' Generate a vector of hex colour codes for the desired number of colours.
@@ -243,6 +275,7 @@ label_tz = function(omit=""){
 #' @param cols `<var>` Optional. Columns to summarise as unquoted names.
 #' @param ... `<var>` Optional. Columns to group by as unquoted names.
 #' @param pct `<num>` A vector of two indicating the percentiles to compute.
+#' @param geo `<lgl>` TRUE to add geometric mean and standard devaition.
 #' @param xname  `<chr>` Characters to omit in output column names.
 #' @param view `<lgl>` TRUE to print output as flextable.
 #' @returns A data frame of summarised variables.
@@ -250,6 +283,7 @@ label_tz = function(omit=""){
 #' @examples
 #' d = mtcars |> dplyr::mutate(vs=factor(vs), am=factor(am))
 #' d |> summ_by()
+#' d |> summ_by(geo=TRUE)
 #' d |> summ_by(pct=c(0.1,0.9))
 #' d |> summ_by(mpg)
 #' d |> summ_by(mpg,vs)
@@ -259,7 +293,7 @@ label_tz = function(omit=""){
 #' d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 #' # Grouping without column selection is possible but rarely useful in large dataset
 #' d |> summ_by(,vs)
-summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", view=FALSE){
+summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=FALSE, xname="", view=FALSE){
   if(!missing(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
@@ -292,7 +326,27 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), xname="", view=FALSE){
           Max = ~max(.x, na.rm=TRUE)
         )
       )
-    ) |>
+    )
+  if(geo) out = d. |>
+    dplyr::summarise(
+      dplyr::across(
+        dplyr::where(is.numeric),
+        list(
+          n = ~length(.x),
+          nNA = ~sum(is.na(.x)),
+          Mean = ~mean(.x, na.rm=TRUE),
+          SD  = ~sd(.x, na.rm=TRUE),
+          GeoMean = ~geoMean(.x, na.rm=TRUE),
+          GeoSD  = ~geoSD(.x, na.rm=TRUE),
+          Min = ~min(.x, na.rm=TRUE),
+          Plo = ~quantile(.x, pct[1], na.rm=TRUE),
+          Median = ~median(.x, na.rm=TRUE),
+          Pup = ~quantile(.x, pct[2], na.rm=TRUE),
+          Max = ~max(.x, na.rm=TRUE)
+        )
+      )
+    )
+  out = out |>
     dplyr::rename_with(~gsub(xname,"",.x)) |>
     dplyr::rename_with(~gsub("Plo",paste0("P",pct[1]*100), .x), dplyr::contains("Plo")) |>
     dplyr::rename_with(~gsub("Pup",paste0("P",pct[2]*100), .x), dplyr::contains("Pup"))

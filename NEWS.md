@@ -1,5 +1,9 @@
 # edar (development version)
 
+* Add geometric mean and standard deviation to `summ_by()`. 
+
+* New `geoMean()` and `geoSD()` for geometric mean and standard deviation. 
+
 * New `tab2v()` to produce tables for 2 variables. 
 
 * Add flextable printing to `summ_by()` and `summ_cat()`.
