@@ -48,4 +48,7 @@ p |> ggsrc()
 
 p |> ggsrc(lab="My label")
 #> `geom_smooth()` using formula = 'y ~ x'
+
+p |> ggsrc(lab="My label",omit="My ")
+#> `geom_smooth()` using formula = 'y ~ x'
 ```

@@ -16,6 +16,8 @@
   Box plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/dev/reference/gghist.md)
   : Histogram wrapper for continuous covariates
+- [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) :
+  Save ggplot with output path
 - [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md) :
   Add source file label to a ggplot object
 - [`ggtpp()`](https://soutomas.github.io/edar/dev/reference/ggtpp.md) :

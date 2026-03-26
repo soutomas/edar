@@ -2,6 +2,10 @@
 
 ## edar (development version)
 
+- New
+  [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) to
+  save ggplot with label of output path.
+
 - Add geometric mean and standard deviation to
   [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
 
