@@ -29,4 +29,5 @@ Add a label with the current source file path and run time to a ggplot object.
 p = mtcars |> ggxy(mpg,hp)
 p |> ggsrc()
 p |> ggsrc(lab="My label")
+p |> ggsrc(lab="My label",omit="My ")
 }

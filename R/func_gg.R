@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2026-03-13
+# Updated  : 2026-03-26
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -99,6 +99,30 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Save ggplot with output path
+#'
+#' @param plt A ggplot object.
+#' @param fpath `<chr>` File path to save output and add to label.
+#' @param lab `<chr>` Custom label to use instead of `fpath`.
+#' @param omit `<chr>` Text to omit from the label.
+#' @param ... Other arguments to pass to [ggplot2::ggsave()].
+#' @returns The file path of output.
+#' @seealso [ggplot2::ggsave()]
+#' @export
+#' @examples
+#' \dontrun{
+#' fpath = "../output.png"
+#' iris |> gghist() |> ggout(fpath)
+#' }
+ggout = function(plt,fpath,lab="",omit="",...){
+  labout = paste0("Output:",fpath)
+  if(lab!="")  labout = lab
+  if(omit!="") labout = gsub(omit,"",labout)
+  p = plt |> ggsrc(lab=labout)
+  ggplot2::ggsave(fpath,p,...)
+  invisible(fpath)
+}
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Add source file label to a ggplot object
 #'
 #' Add a label with the current source file path and run time to a ggplot object.
@@ -115,9 +139,11 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
 #' p = mtcars |> ggxy(mpg,hp)
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
+#' p |> ggsrc(lab="My label",omit="My ")
 ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
-  labsrc = label_src(span,omit)
+  labsrc = label_src(span)
   if(!is.null(lab)) labsrc = lab
+  labsrc = gsub(omit,"",labsrc)
   out = patchwork::wrap_elements(plt) +
     patchwork::plot_annotation(
       caption = labsrc,

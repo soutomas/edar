@@ -1,5 +1,7 @@
 # edar (development version)
 
+* New `ggout()` to save ggplot with label of output path. 
+
 * Add geometric mean and standard deviation to `summ_by()`. 
 
 * New `geoMean()` and `geoSD()` for geometric mean and standard deviation. 
