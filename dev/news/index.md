@@ -2,6 +2,12 @@
 
 ## edar (development version)
 
+- Update
+  [`label_src()`](https://soutomas.github.io/edar/dev/reference/label_src.md)
+  and
+  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
+  default to `span=1`.
+
 - New
   [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) to
   save ggplot with label of output path.
