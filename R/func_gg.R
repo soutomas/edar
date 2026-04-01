@@ -3,7 +3,7 @@
 # Use      : Wrapper functions for ggplot2
 # Author   : Tomas Sou
 # Created  : 2025-10-25
-# Updated  : 2026-03-26
+# Updated  : 2026-04-01
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -106,7 +106,7 @@ gghist = function(d, cols, bins=30, nsub=TRUE, ...){
 #' @param lab `<chr>` Custom label to use instead of `fpath`.
 #' @param omit `<chr>` Text to omit from the label.
 #' @param ... Other arguments to pass to [ggplot2::ggsave()].
-#' @returns The file path of output.
+#' @returns The file path of the output.
 #' @seealso [ggplot2::ggsave()]
 #' @export
 #' @examples
@@ -140,7 +140,7 @@ ggout = function(plt,fpath,lab="",omit="",...){
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
 #' p |> ggsrc(lab="My label",omit="My ")
-ggsrc = function(plt,span=2,size=8,col="grey55",lab=NULL,omit=""){
+ggsrc = function(plt,span=1,size=8,col="grey55",lab=NULL,omit=""){
   labsrc = label_src(span)
   if(!is.null(lab)) labsrc = lab
   labsrc = gsub(omit,"",labsrc)

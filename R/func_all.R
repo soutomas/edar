@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2026-03-13
+# Updated  : 2026-04-01
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -233,7 +233,7 @@ kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
 #' label_src()
 #' label_src(tz=FALSE)
 #' label_src(fname=TRUE)
-label_src = function(span=2,omit="",tz=TRUE,fname=FALSE){
+label_src = function(span=1,omit="",tz=TRUE,fname=FALSE){
   loc_src = getwd()
   if(interactive()) loc_src = rstudioapi::getActiveDocumentContext()$path |> dirname()
   fname_src = knitr::current_input() |> gsub(".rmarkdown",".qmd",x=_)

@@ -1,5 +1,7 @@
 # edar (development version)
 
+* Update `label_src()` and `ggsrc()` default to `span=1`. 
+
 * New `ggout()` to save ggplot with label of output path. 
 
 * Add geometric mean and standard deviation to `summ_by()`. 
