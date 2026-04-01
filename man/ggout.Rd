@@ -18,7 +18,7 @@ ggout(plt, fpath, lab = "", omit = "", ...)
 \item{...}{Other arguments to pass to \code{\link[ggplot2:ggsave]{ggplot2::ggsave()}}.}
 }
 \value{
-The file path of output.
+The file path of the output.
 }
 \description{
 Save ggplot with output path

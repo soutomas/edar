@@ -4,7 +4,7 @@
 \alias{ggsrc}
 \title{Add source file label to a ggplot object}
 \usage{
-ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 }
 \arguments{
 \item{plt}{A ggplot object.}

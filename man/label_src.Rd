@@ -4,7 +4,7 @@
 \alias{label_src}
 \title{Generate source file label}
 \usage{
-label_src(span = 2, omit = "", tz = TRUE, fname = FALSE)
+label_src(span = 1, omit = "", tz = TRUE, fname = FALSE)
 }
 \arguments{
 \item{span}{\verb{<int>} Number of lines: either 1 or 2.}
