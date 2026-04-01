@@ -9,7 +9,7 @@ empty if run in the console directly.
 ## Usage
 
 ``` r
-label_src(span = 2, omit = "", tz = TRUE, fname = FALSE)
+label_src(span = 1, omit = "", tz = TRUE, fname = FALSE)
 ```
 
 ## Arguments
@@ -38,7 +38,7 @@ A label showing the source file path with a time stamp.
 
 ``` r
 label_src()
-#> [1] "Source:\nRun: 2026-04-01 16:17:58 UTC"
+#> [1] "Source:\nRun: 2026-04-01 17:26:40 UTC"
 label_src(tz=FALSE)
 #> [1] "Source:"
 label_src(fname=TRUE)

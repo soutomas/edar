@@ -6,7 +6,7 @@ object.
 ## Usage
 
 ``` r
-ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 ```
 
 ## Arguments

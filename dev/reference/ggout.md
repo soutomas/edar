@@ -33,7 +33,7 @@ ggout(plt, fpath, lab = "", omit = "", ...)
 
 ## Value
 
-The file path of output.
+The file path of the output.
 
 ## See also
 
