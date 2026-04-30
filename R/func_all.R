@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2026-04-01
+# Updated  : 2026-04-30
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -133,29 +133,46 @@ ft_def = function(show=FALSE, font="Calibri Light", fsize=10, pad=3, na="", nan=
 #' Compute geometric mean.
 #'
 #' @param x `<num>` A vector of values.
-#' @param ... Other augments to pass to [mean()].
 #' @returns Geometric mean.
 #' @export
 #' @examples
-#' geoMean(rlnorm(10))
-geoMean = function(x,...){
-  out = exp(mean(log(x),...))
+#' geo_mean(rlnorm(10))
+geo_mean = function(x){
+  stopifnot(all(x>0))
+  out = exp(mean(log(x),na.rm=TRUE))
   return(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' Geometric standard deviation
 #'
-#' Compute geometric standard deviation
+#' Compute geometric standard deviation (GSD)
 #'
 #' @param x `<num>` A vector of values.
-#' @param ... Other augments to pass to [sd()].
 #' @returns Geometric standard deviation
 #' @export
 #' @examples
-#' geoSD(rlnorm(10))
-geoSD = function(x,...){
-  out = exp(stats::sd(log(x),...))
+#' geo_sd(rlnorm(10))
+geo_sd = function(x){
+  stopifnot(all(x>0))
+  out = exp(stats::sd(log(x),na.rm=TRUE))
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Geometric coefficient of variation
+#'
+#' Compute geometric coefficient of variation (GCV)
+#'
+#' @param x `<num>` A vector of values.
+#' @returns Geometric coefficient of variation
+#' @export
+#' @examples
+#' geo_cv(rlnorm(10))
+geo_cv = function(x){
+  stopifnot(all(x>0))
+  s = stats::sd(log(x),na.rm=TRUE)
+  out = 100 * sqrt(exp(s^2) - 1)
   return(out)
 }
 
@@ -336,8 +353,8 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=FALSE, xname="", view=FAL
           nNA = ~sum(is.na(.x)),
           Mean = ~mean(.x, na.rm=TRUE),
           SD  = ~sd(.x, na.rm=TRUE),
-          GeoMean = ~geoMean(.x, na.rm=TRUE),
-          GeoSD  = ~geoSD(.x, na.rm=TRUE),
+          GeoMean = ~geo_mean(.x),
+          GeoSD  = ~geo_sd(.x),
           Min = ~min(.x, na.rm=TRUE),
           Plo = ~quantile(.x, pct[1], na.rm=TRUE),
           Median = ~median(.x, na.rm=TRUE),
