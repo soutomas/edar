@@ -11,6 +11,7 @@ Analysis*. R package version 0.0.6, <https://github.com/soutomas/edar>.
 ## Installation
 
 ``` r
+
 # From CRAN - for the latest CRAN release 
 install.packages("edar")
 
@@ -26,6 +27,7 @@ pak::pak("soutomas/edar")
 It is often helpful to see a quick summary of the dataset.
 
 ``` r
+
 library(edar)
 #> 
 #> Attaching package: 'edar'
@@ -106,6 +108,7 @@ dat |> summ_cat()
 Results can be viewed directly in a flextable object.
 
 ``` r
+
 # Show data frame as a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
 #> Adding missing grouping variables: `vs`
@@ -118,6 +121,7 @@ dat |> summ_by(mpg,vs) |> ft()
 Variables can be quickly visualised for exploratory graphical analysis.
 
 ``` r
+
 # Scatter plot showing correlation. 
 dat |> ggxy(hp,disp)
 #> `geom_smooth()` using formula = 'y ~ x'
@@ -126,6 +130,7 @@ dat |> ggxy(hp,disp)
 ![](reference/figures/README-unnamed-chunk-4-1.png)
 
 ``` r
+
 
 # Histograms of all continuous variables. 
 dat |> gghist()
@@ -137,6 +142,7 @@ dat |> gghist()
 
 ``` r
 
+
 # Box plots stratified by categorical variables. 
 dat |> ggbox(mpg)
 #> NB: Numeric variables are dropped.
@@ -146,6 +152,7 @@ dat |> ggbox(mpg)
 ![](reference/figures/README-unnamed-chunk-4-3.png)
 
 ``` r
+
 
 # Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
@@ -161,6 +168,7 @@ dat |> ggvio(mpg)
 
 ``` r
 
+
 # Time-profile plot by subject.
 Theoph |> ggtpp(Time, conc, id=Subject, xlab="Time [h]", ylab="Concentration [mg/L]")
 ```
@@ -173,16 +181,19 @@ A label indicating the current source file with a time stamp can be
 easily generated for annotation.
 
 ``` r
+
 # To generate a source file label for annotation.
 lab = label_src()
 ```
 
 ``` r
+
 # A source file label can be directly added to the flextable output. 
 dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ``` r
+
 # A source file label can be directly added to a ggplot object. 
 p = dat |> ggxy(hp,disp)
 p |> ggsrc()
