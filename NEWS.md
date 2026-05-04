@@ -6,7 +6,7 @@
 
 * Add geometric mean and standard deviation to `summ_by()`. 
 
-* New `geoMean()` and `geoSD()` for geometric mean and standard deviation. 
+* New `geo_mean()`, `geo_sd()` and `geo_cv()` for geometric mean, standard deviation and coefficient of variation. 
 
 * New `tab2v()` to produce tables for 2 variables. 
 

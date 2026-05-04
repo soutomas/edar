@@ -3,7 +3,7 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2026-04-30
+# Updated  : 2026-05-04
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -354,7 +354,7 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=FALSE, xname="", view=FAL
           Mean = ~mean(.x, na.rm=TRUE),
           SD  = ~sd(.x, na.rm=TRUE),
           GeoMean = ~geo_mean(.x),
-          GeoSD  = ~geo_sd(.x),
+          GeoCV  = ~geo_cv(.x),
           Min = ~min(.x, na.rm=TRUE),
           Plo = ~quantile(.x, pct[1], na.rm=TRUE),
           Median = ~median(.x, na.rm=TRUE),
