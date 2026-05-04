@@ -15,8 +15,12 @@
 - Add geometric mean and standard deviation to
   [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
 
-- New `geoMean()` and `geoSD()` for geometric mean and standard
-  deviation.
+- New
+  [`geo_mean()`](https://soutomas.github.io/edar/dev/reference/geo_mean.md),
+  [`geo_sd()`](https://soutomas.github.io/edar/dev/reference/geo_sd.md)
+  and
+  [`geo_cv()`](https://soutomas.github.io/edar/dev/reference/geo_cv.md)
+  for geometric mean, standard deviation and coefficient of variation.
 
 - New
   [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to
