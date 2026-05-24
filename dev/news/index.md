@@ -1,19 +1,12 @@
 # Changelog
 
-## edar (development version)
+## edar 0.0.7
 
-- Update
-  [`label_src()`](https://soutomas.github.io/edar/dev/reference/label_src.md)
-  and
-  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
-  default to `span=1`.
+### New features
 
 - New
   [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) to
   save ggplot with label of output path.
-
-- Add geometric mean and standard deviation to
-  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
 
 - New
   [`geo_mean()`](https://soutomas.github.io/edar/dev/reference/geo_mean.md),
@@ -26,20 +19,29 @@
   [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to
   produce tables for 2 variables.
 
-- Add flextable printing to
-  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+### Minor improvements and fixes
+
+- [`label_src()`](https://soutomas.github.io/edar/dev/reference/label_src.md)
   and
-  [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md).
+  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
+  now defaults to `span=1`.
 
-- Left align for
-  [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md).
+- [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  output now contains geometric mean and CV.
 
-- Update
-  [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md)
-  default precision of p-value.
+- [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  output: Renamed `Med` to `Median`.
 
-- Rename `Med` to `Median` in output of
-  [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md).
+- [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  and
+  [`summ_cat()`](https://soutomas.github.io/edar/dev/reference/summ_cat.md)
+  now includes an option for flextable printing.
+
+- [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
+  now defaults to left align.
+
+- [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md) now
+  defaults p-value precision to p=0.001.
 
 ## edar 0.0.6
 
