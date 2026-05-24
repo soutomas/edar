@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">edar</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.6.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.7.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Sou T (2025). <em>edar: Convenient Functions for Exploratory Data Analysis</em>. R package version 0.0.6, <a href="https://github.com/soutomas/edar" class="external-link uri">https://github.com/soutomas/edar</a>.</p>
+<p>Sou T (2025). <em>edar: Convenient Functions for Exploratory Data Analysis</em>. R package version 0.0.7, <a href="https://github.com/soutomas/edar" class="external-link uri">https://github.com/soutomas/edar</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -85,7 +85,7 @@
 </h3>
 <p>It is often helpful to see a quick summary of the dataset.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soutomas.github.io/edar/">edar</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/soutomas/edar/" class="external-link">edar</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'edar'</span></span>
 <span><span class="co">#&gt; The following object is masked from 'package:stats':</span></span>
@@ -101,7 +101,7 @@
 <span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `name`</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
-<span><span class="co">#&gt;   name      n   nNA   Mean      SD   Min    P25    Med    P75    Max</span></span>
+<span><span class="co">#&gt;   name      n   nNA   Mean      SD   Min    P25 Median    P75    Max</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 disp     32     0 231.   124.    71.1  121.   196.   326    472   </span></span>
 <span><span class="co">#&gt; 2 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93</span></span>
@@ -114,10 +114,10 @@
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `vs`</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 10</span></span>
-<span><span class="co">#&gt;   vs        n   nNA  Mean    SD   Min   P25   Med   P75   Max</span></span>
-<span><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  </span></span>
-<span><span class="co">#&gt; 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9</span></span>
+<span><span class="co">#&gt;   vs        n   nNA  Mean    SD   Min   P25 Median   P75   Max</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 0        18     0  16.6  3.86  10.4  14.8   15.6  19.1  26  </span></span>
+<span><span class="co">#&gt; 2 1        14     0  24.6  5.38  17.8  21.4   22.8  29.6  33.9</span></span>
 <span></span>
 <span><span class="co"># Summaries of all categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_cat.html">summ_cat</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -167,7 +167,7 @@
 <code class="sourceCode R"><span><span class="co"># Show data frame as a flextable object. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/summ_by.html">summ_by</a></span><span class="op">(</span><span class="va">mpg</span>,<span class="va">vs</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ft.html">ft</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Adding missing grouping variables: `vs`</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" alt="" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="visualisation">Visualisation<a class="anchor" aria-label="anchor" href="#visualisation"></a>
@@ -177,21 +177,21 @@
 <code class="sourceCode R"><span><span class="co"># Scatter plot showing correlation. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggxy.html">ggxy</a></span><span class="op">(</span><span class="va">hp</span>,<span class="va">disp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Histograms of all continuous variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/gghist.html">gghist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Non-numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: cyl vs am gear carb</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-2.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-2.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Box plots stratified by categorical variables. </span></span>
 <span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggbox.html">ggbox</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NB: Numeric variables are dropped.</span></span>
 <span><span class="co">#&gt; Dropped: disp hp drat wt qsec</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-3.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-3.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Violin plots stratified by categorical variables. </span></span>
@@ -202,12 +202,12 @@
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span>
 <span><span class="co">#&gt; Groups with fewer than two datapoints have been dropped.</span></span>
 <span><span class="co">#&gt; ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-4.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-4.png" alt="" width="70%"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Time-profile plot by subject.</span></span>
 <span><span class="va">Theoph</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/ggtpp.html">ggtpp</a></span><span class="op">(</span><span class="va">Time</span>, <span class="va">conc</span>, id<span class="op">=</span><span class="va">Subject</span>, xlab<span class="op">=</span><span class="st">"Time [h]"</span>, ylab<span class="op">=</span><span class="st">"Concentration [mg/L]"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-5.png" width="70%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-5.png" alt="" width="70%"></p>
 </div>
 <div class="section level3">
 <h3 id="labels">Labels<a class="anchor" aria-label="anchor" href="#labels"></a>

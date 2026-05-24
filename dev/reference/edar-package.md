@@ -11,8 +11,6 @@ plots.
 
 Useful links:
 
-- <https://soutomas.github.io/edar/>
-
 - <https://github.com/soutomas/edar/>
 
 - Report bugs at <https://github.com/soutomas/edar/issues>

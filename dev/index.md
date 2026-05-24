@@ -6,7 +6,7 @@ common tasks in exploratory data analysis.
 ## Citation
 
 Sou T (2025). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.6, <https://github.com/soutomas/edar>.
+Analysis*. R package version 0.0.7, <https://github.com/soutomas/edar>.
 
 ## Installation
 
@@ -44,7 +44,7 @@ dat |> summ_by()
 #> Dropped: cyl vs am gear carb
 #> Adding missing grouping variables: `name`
 #> # A tibble: 6 × 10
-#>   name      n   nNA   Mean      SD   Min    P25    Med    P75    Max
+#>   name      n   nNA   Mean      SD   Min    P25 Median    P75    Max
 #>   <chr> <int> <int>  <dbl>   <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
 #> 1 disp     32     0 231.   124.    71.1  121.   196.   326    472   
 #> 2 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93
@@ -57,10 +57,10 @@ dat |> summ_by()
 dat |> summ_by(mpg,vs)
 #> Adding missing grouping variables: `vs`
 #> # A tibble: 2 × 10
-#>   vs        n   nNA  Mean    SD   Min   P25   Med   P75   Max
-#>   <fct> <int> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  
-#> 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9
+#>   vs        n   nNA  Mean    SD   Min   P25 Median   P75   Max
+#>   <fct> <int> <int> <dbl> <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>
+#> 1 0        18     0  16.6  3.86  10.4  14.8   15.6  19.1  26  
+#> 2 1        14     0  24.6  5.38  17.8  21.4   22.8  29.6  33.9
 
 # Summaries of all categorical variables. 
 dat |> summ_cat()
