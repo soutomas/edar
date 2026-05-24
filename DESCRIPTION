@@ -1,7 +1,7 @@
 Package: edar
 Type: Package
 Title: Convenient Functions for Exploratory Data Analysis
-Version: 0.0.6.9000
+Version: 0.0.7
 Description: A collection of convenient functions to facilitate common tasks in exploratory data analysis. 
           Some common tasks include generating summary tables of variables, 
           displaying tables as a 'flextable' or a 'kable' and visualising variables using 'ggplot2'. 
@@ -10,8 +10,7 @@ Description: A collection of convenient functions to facilitate common tasks in 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://soutomas.github.io/edar/,
-    https://github.com/soutomas/edar/
+URL: https://soutomas.github.io/edar, https://github.com/soutomas/edar
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
     person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"),
