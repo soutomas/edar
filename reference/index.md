@@ -8,10 +8,18 @@
   wrapper
 - [`ft_def()`](https://soutomas.github.io/edar/reference/ft_def.md) :
   flextable defaults
+- [`geo_cv()`](https://soutomas.github.io/edar/reference/geo_cv.md) :
+  Geometric coefficient of variation
+- [`geo_mean()`](https://soutomas.github.io/edar/reference/geo_mean.md)
+  : Geometric mean
+- [`geo_sd()`](https://soutomas.github.io/edar/reference/geo_sd.md) :
+  Geometric standard deviation
 - [`ggbox()`](https://soutomas.github.io/edar/reference/ggbox.md) : Box
   plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/reference/gghist.md) :
   Histogram wrapper for continuous covariates
+- [`ggout()`](https://soutomas.github.io/edar/reference/ggout.md) : Save
+  ggplot with output path
 - [`ggsrc()`](https://soutomas.github.io/edar/reference/ggsrc.md) : Add
   source file label to a ggplot object
 - [`ggtpp()`](https://soutomas.github.io/edar/reference/ggtpp.md) :
@@ -32,3 +40,5 @@
   Summarise continuous variables by group
 - [`summ_cat()`](https://soutomas.github.io/edar/reference/summ_cat.md)
   : Summarise categorical variables
+- [`tab2v()`](https://soutomas.github.io/edar/reference/tab2v.md) :
+  Table wrapper for two variables

@@ -6,7 +6,7 @@ object.
 ## Usage
 
 ``` r
-ggsrc(plt, span = 2, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 ```
 
 ## Arguments
@@ -47,5 +47,8 @@ p |> ggsrc()
 #> `geom_smooth()` using formula = 'y ~ x'
 
 p |> ggsrc(lab="My label")
+#> `geom_smooth()` using formula = 'y ~ x'
+
+p |> ggsrc(lab="My label",omit="My ")
 #> `geom_smooth()` using formula = 'y ~ x'
 ```

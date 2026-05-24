@@ -9,8 +9,12 @@
 <url><loc>https://soutomas.github.io/edar/reference/fc.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ft.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ft_def.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/reference/geo_cv.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/reference/geo_mean.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/reference/geo_sd.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ggbox.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/gghist.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/reference/ggout.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ggsrc.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ggtpp.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/ggvio.html</loc></url>
@@ -23,5 +27,6 @@
 <url><loc>https://soutomas.github.io/edar/reference/reexports.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/summ_by.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/reference/summ_cat.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/reference/tab2v.html</loc></url>
 </urlset>
 

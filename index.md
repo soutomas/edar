@@ -6,31 +6,13 @@ common tasks in exploratory data analysis.
 ## Citation
 
 Sou T (2025). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.5.9000,
-<https://github.com/soutomas/edar>.
-
-``` r
-citation("edar")
-#> To cite package 'edar' in publications use:
-#> 
-#>   Sou T (2025). _edar: Convenient Functions for Exploratory Data
-#>   Analysis_. R package version 0.0.5.9000, https://github.com/soutomas/edar/,
-#>   <https://soutomas.github.io/edar/>.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {edar: Convenient Functions for Exploratory Data Analysis},
-#>     author = {Tomas Sou},
-#>     note = {R package version 0.0.5.9000, https://github.com/soutomas/edar/},
-#>     url = {https://soutomas.github.io/edar/},
-#>   }
-```
+Analysis*. R package version 0.0.6, <https://github.com/soutomas/edar>.
 
 ## Installation
 
 ``` r
-# From CRAN 
+
+# From CRAN - for the latest CRAN release 
 install.packages("edar")
 
 # From GitHub - for the development version
@@ -45,6 +27,7 @@ pak::pak("soutomas/edar")
 It is often helpful to see a quick summary of the dataset.
 
 ``` r
+
 library(edar)
 #> 
 #> Attaching package: 'edar'
@@ -125,27 +108,40 @@ dat |> summ_cat()
 Results can be viewed directly in a flextable object.
 
 ``` r
+
 # Show data frame as a flextable object. 
 dat |> summ_by(mpg,vs) |> ft()
 #> Adding missing grouping variables: `vs`
 ```
 
-![](reference/figures/README-unnamed-chunk-4-1.png)
+![](reference/figures/README-unnamed-chunk-3-1.png)
 
 ### Visualisation
 
 Variables can be quickly visualised for exploratory graphical analysis.
 
 ``` r
+
+# Scatter plot showing correlation. 
+dat |> ggxy(hp,disp)
+#> `geom_smooth()` using formula = 'y ~ x'
+```
+
+![](reference/figures/README-unnamed-chunk-4-1.png)
+
+``` r
+
+
 # Histograms of all continuous variables. 
 dat |> gghist()
 #> NB: Non-numeric variables are dropped.
 #> Dropped: cyl vs am gear carb
 ```
 
-![](reference/figures/README-unnamed-chunk-5-1.png)
+![](reference/figures/README-unnamed-chunk-4-2.png)
 
 ``` r
+
 
 # Box plots stratified by categorical variables. 
 dat |> ggbox(mpg)
@@ -153,9 +149,10 @@ dat |> ggbox(mpg)
 #> Dropped: disp hp drat wt qsec
 ```
 
-![](reference/figures/README-unnamed-chunk-5-2.png)
+![](reference/figures/README-unnamed-chunk-4-3.png)
 
 ``` r
+
 
 # Violin plots stratified by categorical variables. 
 dat |> ggvio(mpg)
@@ -167,16 +164,16 @@ dat |> ggvio(mpg)
 #> ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-![](reference/figures/README-unnamed-chunk-5-3.png)
+![](reference/figures/README-unnamed-chunk-4-4.png)
 
 ``` r
 
-# Scatter plot showing correlation. 
-dat |> ggxy(hp,disp)
-#> `geom_smooth()` using formula = 'y ~ x'
+
+# Time-profile plot by subject.
+Theoph |> ggtpp(Time, conc, id=Subject, xlab="Time [h]", ylab="Concentration [mg/L]")
 ```
 
-![](reference/figures/README-unnamed-chunk-5-4.png)
+![](reference/figures/README-unnamed-chunk-4-5.png)
 
 ### Labels
 
@@ -184,16 +181,19 @@ A label indicating the current source file with a time stamp can be
 easily generated for annotation.
 
 ``` r
+
 # To generate a source file label for annotation.
 lab = label_src()
 ```
 
 ``` r
+
 # A source file label can be directly added to the flextable output. 
 dat |> summ_by(mpg,vs) |> ft(src=1)
 ```
 
 ``` r
+
 # A source file label can be directly added to a ggplot object. 
 p = dat |> ggxy(hp,disp)
 p |> ggsrc()

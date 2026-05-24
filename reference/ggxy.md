@@ -2,7 +2,7 @@
 
 Create basic XY scatter plot for quick data exploration. Default to show
 Pearson correlation coefficient with p-value using
-[ggpubr::stat_cor](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html).
+[`ggpubr::stat_cor()`](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html).
 For more complex plots, it is recommended to use
 [ggplot2::ggplot2](https://ggplot2.tidyverse.org/reference/ggplot2-package.html)
 directly.
@@ -18,7 +18,7 @@ ggxy(
   lm = TRUE,
   se = TRUE,
   cor = TRUE,
-  pv = NULL,
+  pv = 0.001,
   nsub = TRUE,
   legend = TRUE,
   asp = 1
@@ -38,8 +38,8 @@ ggxy(
 - ...:
 
   Arguments to pass to
-  [ggplot2::aes](https://ggplot2.tidyverse.org/reference/aes.html) for
-  additional mapping.
+  [`ggplot2::aes()`](https://ggplot2.tidyverse.org/reference/aes.html)
+  for additional mapping.
 
 - lm:
 
@@ -55,8 +55,8 @@ ggxy(
 
 - pv:
 
-  `<dbl>` Precision for the p-value, e.g., 0.001 to show 3 decimal
-  places.
+  `<dbl>` Precision of p-value, e.g., 0.001 to show 3 decimal places,
+  `NULL` for no rounding.
 
 - nsub:
 
@@ -69,7 +69,7 @@ ggxy(
 - asp:
 
   `<num>` For `aspect.ratio` in
-  [ggplot2::theme](https://ggplot2.tidyverse.org/reference/theme.html).
+  [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html).
 
 ## Value
 
@@ -77,7 +77,7 @@ A ggplot object.
 
 ## See also
 
-[ggpubr::stat_cor](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html)
+[`ggpubr::stat_cor()`](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html)
 
 ## Examples
 
@@ -97,7 +97,7 @@ mtcars |> ggxy(wt,hp,col=factor(gear),pch=factor(am))
 mtcars |> ggxy(wt,hp,nsub=FALSE)
 #> `geom_smooth()` using formula = 'y ~ x'
 
-mtcars |> ggxy(wt,hp,pv=0.001)
+mtcars |> ggxy(wt,hp,pv=NULL)
 #> `geom_smooth()` using formula = 'y ~ x'
 
 mtcars |> ggxy(wt,hp,lm=FALSE)
