@@ -10,7 +10,7 @@ Description: A collection of convenient functions to facilitate common tasks in 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://soutomas.github.io/edar, https://github.com/soutomas/edar
+URL: https://github.com/soutomas/edar/
 BugReports: https://github.com/soutomas/edar/issues
 Authors@R: 
     person("Tomas", "Sou", , "tomas.sou@carexer.com", role = c("aut", "cre"),

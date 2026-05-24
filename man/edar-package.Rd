@@ -11,7 +11,6 @@ A collection of convenient functions to facilitate common tasks in exploratory d
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://soutomas.github.io/edar/}
   \item \url{https://github.com/soutomas/edar/}
   \item Report bugs at \url{https://github.com/soutomas/edar/issues}
 }
