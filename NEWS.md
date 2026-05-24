@@ -1,22 +1,26 @@
-# edar (development version)
+# edar 0.0.7 
 
-* Update `label_src()` and `ggsrc()` default to `span=1`. 
+## New features 
 
 * New `ggout()` to save ggplot with label of output path. 
-
-* Add geometric mean and standard deviation to `summ_by()`. 
 
 * New `geo_mean()`, `geo_sd()` and `geo_cv()` for geometric mean, standard deviation and coefficient of variation. 
 
 * New `tab2v()` to produce tables for 2 variables. 
 
-* Add flextable printing to `summ_by()` and `summ_cat()`.
+## Minor improvements and fixes
 
-* Left align for `ggsrc()`.
+* `label_src()` and `ggsrc()` now defaults to `span=1`. 
 
-* Update `ggxy()` default precision of p-value.  
+* `summ_by()` output now contains geometric mean and CV. 
 
-* Rename `Med` to `Median` in output of `summ_by()`. 
+* `summ_by()` output: Renamed `Med` to `Median`. 
+
+* `summ_by()` and `summ_cat()` now includes an option for flextable printing.
+
+* `ggsrc()` now defaults to left align.
+
+* `ggxy()` now defaults p-value precision to p=0.001.
 
 # edar 0.0.6
 
