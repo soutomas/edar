@@ -18,7 +18,7 @@ common tasks in exploratory data analysis.
 
 ## Citation
 
-Sou T (2025). *edar: Convenient Functions for Exploratory Data
+Sou T (2026). *edar: Convenient Functions for Exploratory Data
 Analysis*. R package version 0.0.7, <https://github.com/soutomas/edar>.
 
 ## Installation
