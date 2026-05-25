@@ -4,6 +4,8 @@
 
 ## edar 0.0.7
 
+CRAN release: 2026-05-24
+
 ### New features
 
 - New
