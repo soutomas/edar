@@ -5,7 +5,7 @@ Sugar function for default kable output.
 ## Usage
 
 ``` r
-kb(d, fnote = NULL, cap = NULL, sig = 8, dig = 2, src = 0, omit = "")
+kb(d, fnote = NULL, cap = NULL, sig = 3, dig = NULL, src = 0, omit = "")
 ```
 
 ## Arguments
@@ -72,7 +72,7 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.62 </td>
-#>    <td style="text-align:right;"> 16.46 </td>
+#>    <td style="text-align:right;"> 16.5 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -86,7 +86,7 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.88 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -100,7 +100,7 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 93 </td>
 #>    <td style="text-align:right;"> 3.85 </td>
 #>    <td style="text-align:right;"> 2.32 </td>
-#>    <td style="text-align:right;"> 18.61 </td>
+#>    <td style="text-align:right;"> 18.6 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -113,8 +113,8 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 258 </td>
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.08 </td>
-#>    <td style="text-align:right;"> 3.21 </td>
-#>    <td style="text-align:right;"> 19.44 </td>
+#>    <td style="text-align:right;"> 3.22 </td>
+#>    <td style="text-align:right;"> 19.4 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -128,7 +128,7 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 175 </td>
 #>    <td style="text-align:right;"> 3.15 </td>
 #>    <td style="text-align:right;"> 3.44 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -142,7 +142,7 @@ mtcars |> head() |> kb()
 #>    <td style="text-align:right;"> 105 </td>
 #>    <td style="text-align:right;"> 2.76 </td>
 #>    <td style="text-align:right;"> 3.46 </td>
-#>    <td style="text-align:right;"> 20.22 </td>
+#>    <td style="text-align:right;"> 20.2 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -177,7 +177,7 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.62 </td>
-#>    <td style="text-align:right;"> 16.46 </td>
+#>    <td style="text-align:right;"> 16.5 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -191,7 +191,7 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.88 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -205,7 +205,7 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 93 </td>
 #>    <td style="text-align:right;"> 3.85 </td>
 #>    <td style="text-align:right;"> 2.32 </td>
-#>    <td style="text-align:right;"> 18.61 </td>
+#>    <td style="text-align:right;"> 18.6 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -218,8 +218,8 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 258 </td>
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.08 </td>
-#>    <td style="text-align:right;"> 3.21 </td>
-#>    <td style="text-align:right;"> 19.44 </td>
+#>    <td style="text-align:right;"> 3.22 </td>
+#>    <td style="text-align:right;"> 19.4 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -233,7 +233,7 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 175 </td>
 #>    <td style="text-align:right;"> 3.15 </td>
 #>    <td style="text-align:right;"> 3.44 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -247,7 +247,7 @@ mtcars |> head() |> kb(src=1)
 #>    <td style="text-align:right;"> 105 </td>
 #>    <td style="text-align:right;"> 2.76 </td>
 #>    <td style="text-align:right;"> 3.46 </td>
-#>    <td style="text-align:right;"> 20.22 </td>
+#>    <td style="text-align:right;"> 20.2 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -255,7 +255,7 @@ mtcars |> head() |> kb(src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Source:<br>Run: 2026-06-23 16:27:43 UTC</td></tr></tfoot>
+#> <sup></sup> Source:<br>Run: 2026-10-01 10:52:13 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb("Footnote")
 #> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
@@ -284,7 +284,7 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.62 </td>
-#>    <td style="text-align:right;"> 16.46 </td>
+#>    <td style="text-align:right;"> 16.5 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -298,7 +298,7 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.88 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -312,7 +312,7 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 93 </td>
 #>    <td style="text-align:right;"> 3.85 </td>
 #>    <td style="text-align:right;"> 2.32 </td>
-#>    <td style="text-align:right;"> 18.61 </td>
+#>    <td style="text-align:right;"> 18.6 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -325,8 +325,8 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 258 </td>
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.08 </td>
-#>    <td style="text-align:right;"> 3.21 </td>
-#>    <td style="text-align:right;"> 19.44 </td>
+#>    <td style="text-align:right;"> 3.22 </td>
+#>    <td style="text-align:right;"> 19.4 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -340,7 +340,7 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 175 </td>
 #>    <td style="text-align:right;"> 3.15 </td>
 #>    <td style="text-align:right;"> 3.44 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -354,7 +354,7 @@ mtcars |> head() |> kb("Footnote")
 #>    <td style="text-align:right;"> 105 </td>
 #>    <td style="text-align:right;"> 2.76 </td>
 #>    <td style="text-align:right;"> 3.46 </td>
-#>    <td style="text-align:right;"> 20.22 </td>
+#>    <td style="text-align:right;"> 20.2 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -392,7 +392,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.62 </td>
-#>    <td style="text-align:right;"> 16.46 </td>
+#>    <td style="text-align:right;"> 16.5 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -406,7 +406,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.90 </td>
 #>    <td style="text-align:right;"> 2.88 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -420,7 +420,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 93 </td>
 #>    <td style="text-align:right;"> 3.85 </td>
 #>    <td style="text-align:right;"> 2.32 </td>
-#>    <td style="text-align:right;"> 18.61 </td>
+#>    <td style="text-align:right;"> 18.6 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 4 </td>
@@ -433,8 +433,8 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 258 </td>
 #>    <td style="text-align:right;"> 110 </td>
 #>    <td style="text-align:right;"> 3.08 </td>
-#>    <td style="text-align:right;"> 3.21 </td>
-#>    <td style="text-align:right;"> 19.44 </td>
+#>    <td style="text-align:right;"> 3.22 </td>
+#>    <td style="text-align:right;"> 19.4 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -448,7 +448,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 175 </td>
 #>    <td style="text-align:right;"> 3.15 </td>
 #>    <td style="text-align:right;"> 3.44 </td>
-#>    <td style="text-align:right;"> 17.02 </td>
+#>    <td style="text-align:right;"> 17.0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -462,7 +462,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>    <td style="text-align:right;"> 105 </td>
 #>    <td style="text-align:right;"> 2.76 </td>
 #>    <td style="text-align:right;"> 3.46 </td>
-#>    <td style="text-align:right;"> 20.22 </td>
+#>    <td style="text-align:right;"> 20.2 </td>
 #>    <td style="text-align:right;"> 1 </td>
 #>    <td style="text-align:right;"> 0 </td>
 #>    <td style="text-align:right;"> 3 </td>
@@ -470,7 +470,7 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Footnote<br>Source:<br>Run: 2026-06-23 16:27:43 UTC</td></tr></tfoot>
+#> <sup></sup> Footnote<br>Source:<br>Run: 2026-10-01 10:52:13 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb(sig=2,dig=1)
 #> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
