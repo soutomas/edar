@@ -4,7 +4,7 @@
 \alias{kb}
 \title{kable wrapper}
 \usage{
-kb(d, fnote = NULL, cap = NULL, sig = 8, dig = 2, src = 0, omit = "")
+kb(d, fnote = NULL, cap = NULL, sig = 3, dig = NULL, src = 0, omit = "")
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}

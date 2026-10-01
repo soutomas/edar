@@ -3,7 +3,6 @@
 # Use      : Convenient functions for EDA
 # Author   : Tomas Sou
 # Created  : 2025-08-29
-# Updated  : 2026-05-04
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Notes
 # na
@@ -77,7 +76,7 @@ fc = function(...,des="",tag="",td=TRUE){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
+ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
@@ -86,11 +85,11 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=8, dig=2, src=0, omit=""){
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     flextable::flextable() |>
-    flextable::colformat_double(digits=dig) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
     flextable::add_footer_lines(lab) |>
     flextable::align(align="left", part="all")
+  if(!is.null(dig)) out = out |> flextable::colformat_double(digits=dig)
   return(out)
 }
 
@@ -218,17 +217,21 @@ hexn = function(n,show=FALSE){
 #' mtcars |> head() |> kb("Footnote")
 #' mtcars |> head() |> kb("Footnote",src=1)
 #' mtcars |> head() |> kb(sig=2,dig=1)
-kb = function(d, fnote=NULL, cap=NULL, sig=8, dig=2, src=0, omit=""){
+kb = function(d, fnote=NULL, cap=NULL, sig=3, dig=NULL, src=0, omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
   if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
   lab = fnote
   if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
-  d |>
-    dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
-    kableExtra::kbl(caption=cap,digits=dig) |>
+  d = d |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig)))
+  if(!is.null(dig)) d = d |>
+    dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~round(.x,dig)))
+  out = d |>
+    kableExtra::kbl(caption=cap) |>
     kableExtra::kable_classic(full_width=FALSE) |>
     kableExtra::footnote(lab,general_title="")
+  return(out)
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

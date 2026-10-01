@@ -4,7 +4,7 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL, sig = 8, dig = 2, src = 0, omit = "")
+ft(d, fnote = NULL, ttl = NULL, sig = 3, dig = NULL, src = 0, omit = "")
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
