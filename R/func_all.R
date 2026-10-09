@@ -79,15 +79,13 @@ fc = function(...,des="",tag="",td=TRUE){
 ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit=""){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
-  if(!is.null(fnote)) labsrc = paste0("\n",labsrc)
-  lab = fnote
-  if(!is.null(labsrc)) lab = paste0(fnote,labsrc)
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     flextable::flextable() |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
-    flextable::add_footer_lines(lab) |>
+    flextable::add_footer_lines(fnote) |>
+    flextable::add_footer_lines(labsrc) |>
     flextable::align(align="left", part="all")
   if(!is.null(dig)) out = out |> flextable::colformat_double(digits=dig)
   return(out)
@@ -193,6 +191,26 @@ geo_cv = function(x){
   stopifnot(all(x>0))
   s = stats::sd(log(x),na.rm=TRUE)
   out = 100 * sqrt(exp(s^2) - 1)
+  return(out)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Convert a gtsummary object to flextable and add a source label
+#'
+#' @param gtsum A gtsummary object.
+#' @param omit `<chr>` Text to omit from the label.
+#' @param span `<num>` Number of lines of source label: either 1 or 2.
+#' @returns A flextable object with source label.
+#' @export
+#' @examples
+#' library(gtsummary)
+#' mtcars |> tbl_summary() |> gtsrc()
+gtsrc = function(gtsum,omit="",span=1){
+  labsrc = paste0(label_src(span,omit))
+  out = gtsum |>
+    gtsummary::as_flex_table() |>
+    flextable::add_footer_lines(labsrc) |>
+    flextable::autofit()
   return(out)
 }
 

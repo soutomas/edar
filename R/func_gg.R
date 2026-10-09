@@ -139,7 +139,7 @@ ggout = function(plt,fpath,lab="",omit="",...){
 #' p |> ggsrc()
 #' p |> ggsrc(lab="My label")
 #' p |> ggsrc(lab="My label",omit="My ")
-ggsrc = function(plt,span=1,size=8,col="grey55",lab=NULL,omit=""){
+ggsrc = function(plt,omit="",span=1,size=8,col="grey55",lab=NULL){
   labsrc = label_src(span)
   if(!is.null(lab)) labsrc = lab
   labsrc = gsub(omit,"",labsrc)

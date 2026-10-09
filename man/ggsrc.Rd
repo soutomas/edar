@@ -4,10 +4,12 @@
 \alias{ggsrc}
 \title{Add source file label to a ggplot object}
 \usage{
-ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(plt, omit = "", span = 1, size = 8, col = "grey55", lab = NULL)
 }
 \arguments{
 \item{plt}{A ggplot object.}
+
+\item{omit}{\verb{<chr>} Text to omit from the label.}
 
 \item{span}{\verb{<num>} Number of lines: either 1 or 2.}
 
@@ -16,8 +18,6 @@ ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 \item{col}{\verb{<chr>} Colour of the text.}
 
 \item{lab}{\verb{<chr>} Custom label to use instead of the default.}
-
-\item{omit}{\verb{<chr>} Text to omit from the label.}
 }
 \value{
 A ggplot object with the added label.

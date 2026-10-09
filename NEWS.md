@@ -1,5 +1,7 @@
 # edar (development version)
 
+* New `gtsrc()` to convert gtsummary object to flextable and add source label. 
+
 * New `ftdoc()` to save flextable with label of output path. 
 
 # edar 0.0.7 
