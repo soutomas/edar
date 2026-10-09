@@ -30,6 +30,8 @@
   Violin plot wrapper for categorical covariates
 - [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md) : XY
   scatter plot wrapper
+- [`gtsrc()`](https://soutomas.github.io/edar/dev/reference/gtsrc.md) :
+  Convert a gtsummary object to flextable and add a source label
 - [`hexn()`](https://soutomas.github.io/edar/dev/reference/hexn.md) :
   Generate hex colour codes
 - [`kb()`](https://soutomas.github.io/edar/dev/reference/kb.md) : kable

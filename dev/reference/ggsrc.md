@@ -6,7 +6,7 @@ object.
 ## Usage
 
 ``` r
-ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(plt, omit = "", span = 1, size = 8, col = "grey55", lab = NULL)
 ```
 
 ## Arguments
@@ -14,6 +14,10 @@ ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 - plt:
 
   A ggplot object.
+
+- omit:
+
+  `<chr>` Text to omit from the label.
 
 - span:
 
@@ -30,10 +34,6 @@ ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 - lab:
 
   `<chr>` Custom label to use instead of the default.
-
-- omit:
-
-  `<chr>` Text to omit from the label.
 
 ## Value
 
