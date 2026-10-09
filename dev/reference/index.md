@@ -8,6 +8,8 @@
   flextable wrapper
 - [`ft_def()`](https://soutomas.github.io/edar/dev/reference/ft_def.md)
   : flextable defaults
+- [`ftdoc()`](https://soutomas.github.io/edar/dev/reference/ftdoc.md) :
+  Export flextable as MS Word table
 - [`geo_cv()`](https://soutomas.github.io/edar/dev/reference/geo_cv.md)
   : Geometric coefficient of variation
 - [`geo_mean()`](https://soutomas.github.io/edar/dev/reference/geo_mean.md)

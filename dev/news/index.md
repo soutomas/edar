@@ -2,6 +2,10 @@
 
 ## edar (development version)
 
+- New
+  [`ftdoc()`](https://soutomas.github.io/edar/dev/reference/ftdoc.md) to
+  save flextable with label of output path.
+
 ## edar 0.0.7
 
 CRAN release: 2026-05-24
