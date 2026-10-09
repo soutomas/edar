@@ -94,6 +94,27 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit=""){
 }
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#' Export flextable as MS Word table
+#'
+#' @param ft A flextable object.
+#' @param fpath `<chr>` File path to save output and add to label.
+#' @param omit `<chr>` Text to omit from the label.
+#' @returns A string containing the full name of the generated file.
+#' @export
+#' @examples
+#' \dontrun{
+#' fpath = "../output.png"
+#' mtcars |> head() |> ft() |> ftdoc(fpath)
+#' }
+ftdoc = function(ft,fpath,omit){
+  labout = paste0("Output:",gsub(omit,"",fpath))
+  ft |>
+    flextable::add_footer_lines(labout) |>
+    flextable::save_as_docx(path=fpath)
+  invisible(fpath)
+}
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' flextable defaults
 #'
 #' Sugar function to set flextable defaults.

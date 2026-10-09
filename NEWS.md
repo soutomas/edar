@@ -1,5 +1,7 @@
 # edar (development version)
 
+* New `ftdoc()` to save flextable with label of output path. 
+
 # edar 0.0.7 
 
 ## New features 
