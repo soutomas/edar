@@ -20,12 +20,8 @@ CRAN release: 2026-05-24
   [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) to
   save ggplot with label of output path.
 
-- New
-  [`geo_mean()`](https://soutomas.github.io/edar/dev/reference/geo_mean.md),
-  [`geo_sd()`](https://soutomas.github.io/edar/dev/reference/geo_sd.md)
-  and
-  [`geo_cv()`](https://soutomas.github.io/edar/dev/reference/geo_cv.md)
-  for geometric mean, standard deviation and coefficient of variation.
+- New `geo_mean()`, `geo_sd()` and `geo_cv()` for geometric mean,
+  standard deviation and coefficient of variation.
 
 - New
   [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to

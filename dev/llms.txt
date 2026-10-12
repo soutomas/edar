@@ -211,12 +211,8 @@ p |> ggsrc()
   : flextable defaults
 - [`ftdoc()`](https://soutomas.github.io/edar/dev/reference/ftdoc.md) :
   Export flextable as MS Word table
-- [`geo_cv()`](https://soutomas.github.io/edar/dev/reference/geo_cv.md)
-  : Geometric coefficient of variation
-- [`geo_mean()`](https://soutomas.github.io/edar/dev/reference/geo_mean.md)
-  : Geometric mean
-- [`geo_sd()`](https://soutomas.github.io/edar/dev/reference/geo_sd.md)
-  : Geometric standard deviation
+- [`gcv()`](https://soutomas.github.io/edar/dev/reference/gcv.md) :
+  Geometric coefficient of variation
 - [`ggbox()`](https://soutomas.github.io/edar/dev/reference/ggbox.md) :
   Box plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/dev/reference/gghist.md)
@@ -231,6 +227,10 @@ p |> ggsrc()
   Violin plot wrapper for categorical covariates
 - [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md) : XY
   scatter plot wrapper
+- [`gmean()`](https://soutomas.github.io/edar/dev/reference/gmean.md) :
+  Geometric mean
+- [`gsd()`](https://soutomas.github.io/edar/dev/reference/gsd.md) :
+  Geometric standard deviation
 - [`gtsrc()`](https://soutomas.github.io/edar/dev/reference/gtsrc.md) :
   Convert a gtsummary object to flextable and add a source label
 - [`hexn()`](https://soutomas.github.io/edar/dev/reference/hexn.md) :

@@ -9,9 +9,7 @@
 <url><loc>https://soutomas.github.io/edar/dev/reference/ft.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ft_def.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ftdoc.html</loc></url>
-<url><loc>https://soutomas.github.io/edar/dev/reference/geo_cv.html</loc></url>
-<url><loc>https://soutomas.github.io/edar/dev/reference/geo_mean.html</loc></url>
-<url><loc>https://soutomas.github.io/edar/dev/reference/geo_sd.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/dev/reference/gcv.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ggbox.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/gghist.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ggout.html</loc></url>
@@ -19,6 +17,8 @@
 <url><loc>https://soutomas.github.io/edar/dev/reference/ggtpp.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ggvio.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/ggxy.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/dev/reference/gmean.html</loc></url>
+<url><loc>https://soutomas.github.io/edar/dev/reference/gsd.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/gtsrc.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/hexn.html</loc></url>
 <url><loc>https://soutomas.github.io/edar/dev/reference/index.html</loc></url>
