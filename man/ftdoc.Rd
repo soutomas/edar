@@ -4,7 +4,7 @@
 \alias{ftdoc}
 \title{Export flextable as MS Word table}
 \usage{
-ftdoc(ft, fpath, omit)
+ftdoc(ft, fpath, omit = "")
 }
 \arguments{
 \item{ft}{A flextable object.}
@@ -21,7 +21,7 @@ Export flextable as MS Word table
 }
 \examples{
 \dontrun{
-fpath = "../output.png"
+fpath = "output.docx"
 mtcars |> head() |> ft() |> ftdoc(fpath)
 }
 }

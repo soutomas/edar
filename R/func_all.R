@@ -101,10 +101,10 @@ ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit=""){
 #' @export
 #' @examples
 #' \dontrun{
-#' fpath = "../output.png"
+#' fpath = "output.docx"
 #' mtcars |> head() |> ft() |> ftdoc(fpath)
 #' }
-ftdoc = function(ft,fpath,omit){
+ftdoc = function(ft,fpath,omit=""){
   labout = paste0("Output:",gsub(omit,"",fpath))
   ft |>
     flextable::add_footer_lines(labout) |>
