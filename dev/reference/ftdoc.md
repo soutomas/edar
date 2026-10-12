@@ -5,7 +5,7 @@ Export flextable as MS Word table
 ## Usage
 
 ``` r
-ftdoc(ft, fpath, omit)
+ftdoc(ft, fpath, omit = "")
 ```
 
 ## Arguments
@@ -30,7 +30,7 @@ A string containing the full name of the generated file.
 
 ``` r
 if (FALSE) { # \dontrun{
-fpath = "../output.png"
+fpath = "output.docx"
 mtcars |> head() |> ft() |> ftdoc(fpath)
 } # }
 ```
