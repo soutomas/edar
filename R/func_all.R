@@ -154,8 +154,8 @@ ft_def = function(show=FALSE, font="Calibri Light", fsize=10, pad=3, na="", nan=
 #' @returns Geometric mean.
 #' @export
 #' @examples
-#' geo_mean(rlnorm(10))
-geo_mean = function(x){
+#' gmean(rlnorm(10))
+gmean = function(x){
   stopifnot(all(x>0))
   out = exp(mean(log(x),na.rm=TRUE))
   return(out)
@@ -170,8 +170,8 @@ geo_mean = function(x){
 #' @returns Geometric standard deviation
 #' @export
 #' @examples
-#' geo_sd(rlnorm(10))
-geo_sd = function(x){
+#' gsd(rlnorm(10))
+gsd = function(x){
   stopifnot(all(x>0))
   out = exp(stats::sd(log(x),na.rm=TRUE))
   return(out)
@@ -186,8 +186,8 @@ geo_sd = function(x){
 #' @returns Geometric coefficient of variation
 #' @export
 #' @examples
-#' geo_cv(rlnorm(10))
-geo_cv = function(x){
+#' gcv(rlnorm(10))
+gcv = function(x){
   stopifnot(all(x>0))
   s = stats::sd(log(x),na.rm=TRUE)
   out = 100 * sqrt(exp(s^2) - 1)
@@ -395,8 +395,8 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=FALSE, xname="", view=FAL
           nNA = ~sum(is.na(.x)),
           Mean = ~mean(.x, na.rm=TRUE),
           SD  = ~sd(.x, na.rm=TRUE),
-          GeoMean = ~geo_mean(.x),
-          GeoCV  = ~geo_cv(.x),
+          GeoMean = ~gmean(.x),
+          GeoCV  = ~gcv(.x),
           Min = ~min(.x, na.rm=TRUE),
           Plo = ~quantile(.x, pct[1], na.rm=TRUE),
           Median = ~median(.x, na.rm=TRUE),
