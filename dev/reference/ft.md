@@ -1,11 +1,20 @@
 # flextable wrapper
 
-Sugar function for default flextable output.
+Wrapper function for default flextable output.
 
 ## Usage
 
 ``` r
-ft(d, fnote = NULL, ttl = NULL, sig = 3, dig = NULL, src = 0, omit = "")
+ft(
+  d,
+  fnote = NULL,
+  ttl = NULL,
+  sig = 3,
+  dig = NULL,
+  src = 0,
+  omit = "",
+  tz = TRUE
+)
 ```
 
 ## Arguments
@@ -37,6 +46,10 @@ ft(d, fnote = NULL, ttl = NULL, sig = 3, dig = NULL, src = 0, omit = "")
 - omit:
 
   `<chr>` Text to omit from the source label.
+
+- tz:
+
+  `<lgl>` `FALSE` to exclude time stamp.
 
 ## Value
 

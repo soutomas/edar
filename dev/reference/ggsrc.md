@@ -6,7 +6,15 @@ object.
 ## Usage
 
 ``` r
-ggsrc(plt, omit = "", span = 1, size = 8, col = "grey55", lab = NULL)
+ggsrc(
+  plt,
+  span = 1,
+  size = 8,
+  col = "grey55",
+  lab = NULL,
+  omit = "",
+  tz = TRUE
+)
 ```
 
 ## Arguments
@@ -14,10 +22,6 @@ ggsrc(plt, omit = "", span = 1, size = 8, col = "grey55", lab = NULL)
 - plt:
 
   A ggplot object.
-
-- omit:
-
-  `<chr>` Text to omit from the label.
 
 - span:
 
@@ -34,6 +38,14 @@ ggsrc(plt, omit = "", span = 1, size = 8, col = "grey55", lab = NULL)
 - lab:
 
   `<chr>` Custom label to use instead of the default.
+
+- omit:
+
+  `<chr>` Text to omit from the label.
+
+- tz:
+
+  `<lgl>` `FALSE` to exclude time stamp.
 
 ## Value
 
