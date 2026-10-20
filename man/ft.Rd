@@ -4,7 +4,16 @@
 \alias{ft}
 \title{flextable wrapper}
 \usage{
-ft(d, fnote = NULL, ttl = NULL, sig = 3, dig = NULL, src = 0, omit = "")
+ft(
+  d,
+  fnote = NULL,
+  ttl = NULL,
+  sig = 3,
+  dig = NULL,
+  src = 0,
+  omit = "",
+  tz = TRUE
+)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
@@ -20,12 +29,14 @@ ft(d, fnote = NULL, ttl = NULL, sig = 3, dig = NULL, src = 0, omit = "")
 \item{src}{\verb{<int>} Either 1 or 2 to add source label over 1 or 2 lines.}
 
 \item{omit}{\verb{<chr>} Text to omit from the source label.}
+
+\item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp.}
 }
 \value{
 A flextable object.
 }
 \description{
-Sugar function for default flextable output.
+Wrapper function for default flextable output.
 }
 \examples{
 mtcars |> head() |> ft()

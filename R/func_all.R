@@ -59,7 +59,7 @@ fc = function(...,des="",tag="",td=TRUE){
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #' flextable wrapper
 #'
-#' Sugar function for default flextable output.
+#' Wrapper function for default flextable output.
 #'
 #' @param d `<dfr>` A data frame.
 #' @param fnote `<chr>` Footnote.
@@ -67,6 +67,7 @@ fc = function(...,des="",tag="",td=TRUE){
 #' @param sig `<int>` Number of significant digits to compute.
 #' @param dig `<int>` Number of decimal places to display.
 #' @param src `<int>` Either 1 or 2 to add source label over 1 or 2 lines.
+#' @param tz `<lgl>` `FALSE` to exclude time stamp.
 #' @param omit `<chr>` Text to omit from the source label.
 #' @returns A flextable object.
 #' @export
@@ -76,9 +77,9 @@ fc = function(...,des="",tag="",td=TRUE){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit=""){
+ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit="",tz=TRUE){
   labsrc = NULL
-  if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit))
+  if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit,tz))
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
     flextable::flextable() |>
