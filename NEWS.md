@@ -1,18 +1,20 @@
 # edar (development version)
 
-* New `gtsrc()` to convert gtsummary object to flextable and add source label. 
+* `g*()` replaces the `geo_*()` family. 
 
-* New `ftdoc()` to save flextable with label of output path. 
+* New `gtsrc()` converts gtsummary object to flextable and add source label. 
+
+* New `ftdoc()` saves flextable with label of output path. 
 
 # edar 0.0.7 
 
 ## New features 
 
-* New `ggout()` to save ggplot with label of output path. 
+* New `ggout()` saves ggplot with label of output path. 
 
 * New `geo_mean()`, `geo_sd()` and `geo_cv()` for geometric mean, standard deviation and coefficient of variation. 
 
-* New `tab2v()` to produce tables for 2 variables. 
+* New `tab2v()` produces tables for 2 variables. 
 
 ## Minor improvements and fixes
 

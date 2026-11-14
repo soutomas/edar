@@ -16,18 +16,13 @@ status](https://www.r-pkg.org/badges/version/edar)](https://CRAN.R-project.org/p
 The goal of edar is to provide some convenient functions to facilitate
 common tasks in exploratory data analysis.
 
-## Citation
-
-Sou T (2026). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.7, <https://github.com/soutomas/edar>.
-
 ## Installation
 
 ``` r
-# From CRAN - for the latest CRAN release 
+# From CRAN 
 install.packages("edar")
 
-# From GitHub - for the development version
+# From GitHub - for the latest development version
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
