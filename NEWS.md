@@ -1,4 +1,4 @@
-# edar (development version)
+# edar 0.0.8
 
 * `g*()` replaces the `geo_*()` family. 
 
