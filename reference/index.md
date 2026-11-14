@@ -8,12 +8,10 @@
   wrapper
 - [`ft_def()`](https://soutomas.github.io/edar/reference/ft_def.md) :
   flextable defaults
-- [`geo_cv()`](https://soutomas.github.io/edar/reference/geo_cv.md) :
+- [`ftdoc()`](https://soutomas.github.io/edar/reference/ftdoc.md) :
+  Export flextable as MS Word table
+- [`gcv()`](https://soutomas.github.io/edar/reference/gcv.md) :
   Geometric coefficient of variation
-- [`geo_mean()`](https://soutomas.github.io/edar/reference/geo_mean.md)
-  : Geometric mean
-- [`geo_sd()`](https://soutomas.github.io/edar/reference/geo_sd.md) :
-  Geometric standard deviation
 - [`ggbox()`](https://soutomas.github.io/edar/reference/ggbox.md) : Box
   plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/reference/gghist.md) :
@@ -28,6 +26,12 @@
   Violin plot wrapper for categorical covariates
 - [`ggxy()`](https://soutomas.github.io/edar/reference/ggxy.md) : XY
   scatter plot wrapper
+- [`gmean()`](https://soutomas.github.io/edar/reference/gmean.md) :
+  Geometric mean
+- [`gsd()`](https://soutomas.github.io/edar/reference/gsd.md) :
+  Geometric standard deviation
+- [`gtsrc()`](https://soutomas.github.io/edar/reference/gtsrc.md) :
+  Convert a gtsummary object to flextable and add a source label
 - [`hexn()`](https://soutomas.github.io/edar/reference/hexn.md) :
   Generate hex colour codes
 - [`kb()`](https://soutomas.github.io/edar/reference/kb.md) : kable

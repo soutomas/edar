@@ -6,7 +6,15 @@ object.
 ## Usage
 
 ``` r
-ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
+ggsrc(
+  plt,
+  span = 1,
+  size = 8,
+  col = "grey55",
+  lab = NULL,
+  omit = "",
+  tz = TRUE
+)
 ```
 
 ## Arguments
@@ -34,6 +42,10 @@ ggsrc(plt, span = 1, size = 8, col = "grey55", lab = NULL, omit = "")
 - omit:
 
   `<chr>` Text to omit from the label.
+
+- tz:
+
+  `<lgl>` `FALSE` to exclude time stamp.
 
 ## Value
 

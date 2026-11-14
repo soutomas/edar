@@ -3,19 +3,14 @@
 The goal of edar is to provide some convenient functions to facilitate
 common tasks in exploratory data analysis.
 
-## Citation
-
-Sou T (2025). *edar: Convenient Functions for Exploratory Data
-Analysis*. R package version 0.0.6, <https://github.com/soutomas/edar>.
-
 ## Installation
 
 ``` r
 
-# From CRAN - for the latest CRAN release 
+# From CRAN 
 install.packages("edar")
 
-# From GitHub - for the development version
+# From GitHub - for the latest development version
 # install.packages("pak")
 pak::pak("soutomas/edar")
 ```
@@ -44,7 +39,7 @@ dat |> summ_by()
 #> Dropped: cyl vs am gear carb
 #> Adding missing grouping variables: `name`
 #> # A tibble: 6 × 10
-#>   name      n   nNA   Mean      SD   Min    P25    Med    P75    Max
+#>   name      n   nNA   Mean      SD   Min    P25 Median    P75    Max
 #>   <chr> <int> <int>  <dbl>   <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
 #> 1 disp     32     0 231.   124.    71.1  121.   196.   326    472   
 #> 2 drat     32     0   3.60   0.535  2.76   3.08   3.70   3.92   4.93
@@ -57,10 +52,10 @@ dat |> summ_by()
 dat |> summ_by(mpg,vs)
 #> Adding missing grouping variables: `vs`
 #> # A tibble: 2 × 10
-#>   vs        n   nNA  Mean    SD   Min   P25   Med   P75   Max
-#>   <fct> <int> <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 0        18     0  16.6  3.86  10.4  14.8  15.6  19.1  26  
-#> 2 1        14     0  24.6  5.38  17.8  21.4  22.8  29.6  33.9
+#>   vs        n   nNA  Mean    SD   Min   P25 Median   P75   Max
+#>   <fct> <int> <int> <dbl> <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>
+#> 1 0        18     0  16.6  3.86  10.4  14.8   15.6  19.1  26  
+#> 2 1        14     0  24.6  5.38  17.8  21.4   22.8  29.6  33.9
 
 # Summaries of all categorical variables. 
 dat |> summ_cat()
@@ -209,12 +204,10 @@ p |> ggsrc()
   wrapper
 - [`ft_def()`](https://soutomas.github.io/edar/reference/ft_def.md) :
   flextable defaults
-- [`geo_cv()`](https://soutomas.github.io/edar/reference/geo_cv.md) :
+- [`ftdoc()`](https://soutomas.github.io/edar/reference/ftdoc.md) :
+  Export flextable as MS Word table
+- [`gcv()`](https://soutomas.github.io/edar/reference/gcv.md) :
   Geometric coefficient of variation
-- [`geo_mean()`](https://soutomas.github.io/edar/reference/geo_mean.md)
-  : Geometric mean
-- [`geo_sd()`](https://soutomas.github.io/edar/reference/geo_sd.md) :
-  Geometric standard deviation
 - [`ggbox()`](https://soutomas.github.io/edar/reference/ggbox.md) : Box
   plot wrapper for categorical covariates
 - [`gghist()`](https://soutomas.github.io/edar/reference/gghist.md) :
@@ -229,6 +222,12 @@ p |> ggsrc()
   Violin plot wrapper for categorical covariates
 - [`ggxy()`](https://soutomas.github.io/edar/reference/ggxy.md) : XY
   scatter plot wrapper
+- [`gmean()`](https://soutomas.github.io/edar/reference/gmean.md) :
+  Geometric mean
+- [`gsd()`](https://soutomas.github.io/edar/reference/gsd.md) :
+  Geometric standard deviation
+- [`gtsrc()`](https://soutomas.github.io/edar/reference/gtsrc.md) :
+  Convert a gtsummary object to flextable and add a source label
 - [`hexn()`](https://soutomas.github.io/edar/reference/hexn.md) :
   Generate hex colour codes
 - [`kb()`](https://soutomas.github.io/edar/reference/kb.md) : kable
