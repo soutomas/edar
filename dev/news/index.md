@@ -2,13 +2,15 @@
 
 ## edar (development version)
 
-- New
-  [`gtsrc()`](https://soutomas.github.io/edar/dev/reference/gtsrc.md) to
-  convert gtsummary object to flextable and add source label.
+- `g*()` replaces the `geo_*()` family.
 
 - New
-  [`ftdoc()`](https://soutomas.github.io/edar/dev/reference/ftdoc.md) to
-  save flextable with label of output path.
+  [`gtsrc()`](https://soutomas.github.io/edar/dev/reference/gtsrc.md)
+  converts gtsummary object to flextable and add source label.
+
+- New
+  [`ftdoc()`](https://soutomas.github.io/edar/dev/reference/ftdoc.md)
+  saves flextable with label of output path.
 
 ## edar 0.0.7
 
@@ -17,15 +19,15 @@ CRAN release: 2026-05-24
 ### New features
 
 - New
-  [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md) to
-  save ggplot with label of output path.
+  [`ggout()`](https://soutomas.github.io/edar/dev/reference/ggout.md)
+  saves ggplot with label of output path.
 
 - New `geo_mean()`, `geo_sd()` and `geo_cv()` for geometric mean,
   standard deviation and coefficient of variation.
 
 - New
-  [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md) to
-  produce tables for 2 variables.
+  [`tab2v()`](https://soutomas.github.io/edar/dev/reference/tab2v.md)
+  produces tables for 2 variables.
 
 ### Minor improvements and fixes
 

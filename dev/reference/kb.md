@@ -46,7 +46,7 @@ A kable object.
 
 ``` r
 mtcars |> head() |> kb()
-#> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+#> <table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 #>  <thead>
 #>   <tr>
 #>    <th style="text-align:left;">   </th>
@@ -151,7 +151,7 @@ mtcars |> head() |> kb()
 #> </tbody>
 #> </table>
 mtcars |> head() |> kb(src=1)
-#> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
+#> <table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
 #>  <thead>
 #>   <tr>
 #>    <th style="text-align:left;">   </th>
@@ -255,10 +255,10 @@ mtcars |> head() |> kb(src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Source:<br>Run: 2026-11-04 20:11:24 UTC</td></tr></tfoot>
+#> <sup></sup> Source:<br>Run: 2026-11-14 23:41:22 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb("Footnote")
-#> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
+#> <table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
 #>  <thead>
 #>   <tr>
 #>    <th style="text-align:left;">   </th>
@@ -366,7 +366,7 @@ mtcars |> head() |> kb("Footnote")
 #> </td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb("Footnote",src=1)
-#> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;'>
+#> <table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
 #>  <thead>
 #>   <tr>
 #>    <th style="text-align:left;">   </th>
@@ -470,10 +470,10 @@ mtcars |> head() |> kb("Footnote",src=1)
 #>   </tr>
 #> </tbody>
 #> <tfoot><tr><td style="padding: 0; " colspan="100%">
-#> <sup></sup> Footnote<br>Source:<br>Run: 2026-11-04 20:11:24 UTC</td></tr></tfoot>
+#> <sup></sup> Footnote<br>Source:<br>Run: 2026-11-14 23:41:22 UTC</td></tr></tfoot>
 #> </table>
 mtcars |> head() |> kb(sig=2,dig=1)
-#> <table class=" lightable-classic" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+#> <table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 #>  <thead>
 #>   <tr>
 #>    <th style="text-align:left;">   </th>

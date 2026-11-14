@@ -38,7 +38,7 @@ A label showing the source file path with a time stamp.
 
 ``` r
 label_src()
-#> [1] "Source:\nRun: 2026-11-04 20:11:24 UTC"
+#> [1] "Source:\nRun: 2026-11-14 23:41:22 UTC"
 label_src(tz=FALSE)
 #> [1] "Source:"
 label_src(fname=TRUE)
