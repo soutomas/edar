@@ -9,7 +9,7 @@ summ_by(
   cols,
   ...,
   pct = c(0.25, 0.75),
-  geo = FALSE,
+  geo = TRUE,
   xname = "",
   view = FALSE
 )

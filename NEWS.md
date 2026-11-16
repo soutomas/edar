@@ -1,5 +1,7 @@
 # edar (development version)
 
+* `summ_by()` now defaults to `geo=TRUE`
+
 # edar 0.0.8
 
 * `g*()` replaces the `geo_*()` family. 
@@ -24,11 +26,11 @@
 
 * `summ_by()` output now contains geometric mean and CV. 
 
-* `summ_by()` output: Renamed `Med` to `Median`. 
+* `summ_by()` output now states `Median` instead of `Med`. 
 
 * `summ_by()` and `summ_cat()` now includes an option for flextable printing.
 
-* `ggsrc()` now defaults to left align.
+* `ggsrc()` now defaults to left-aligned.
 
 * `ggxy()` now defaults p-value precision to p=0.001.
 

@@ -353,7 +353,7 @@ label_tz = function(omit=""){
 #' d |> summ_by(c(mpg,disp),vs,xname="mpg_")
 #' # Grouping without column selection is possible but rarely useful in large dataset
 #' d |> summ_by(,vs)
-summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=FALSE, xname="", view=FALSE){
+summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=TRUE, xname="", view=FALSE){
   if(!missing(cols)) d = d |> dplyr::select(...,{{cols}})
   d. = d |> dplyr::group_by(...)
   gps = d. |> attr("groups")
