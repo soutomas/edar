@@ -2,7 +2,12 @@
 
 ## edar (development version)
 
+- [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
+  now defaults to `geo=TRUE`
+
 ## edar 0.0.8
+
+CRAN release: 2026-11-14
 
 - `g*()` replaces the `geo_*()` family.
 
@@ -42,7 +47,7 @@ CRAN release: 2026-05-24
   output now contains geometric mean and CV.
 
 - [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
-  output: Renamed `Med` to `Median`.
+  output now states `Median` instead of `Med`.
 
 - [`summ_by()`](https://soutomas.github.io/edar/dev/reference/summ_by.md)
   and
@@ -50,7 +55,7 @@ CRAN release: 2026-05-24
   now includes an option for flextable printing.
 
 - [`ggsrc()`](https://soutomas.github.io/edar/dev/reference/ggsrc.md)
-  now defaults to left align.
+  now defaults to left-aligned.
 
 - [`ggxy()`](https://soutomas.github.io/edar/dev/reference/ggxy.md) now
   defaults p-value precision to p=0.001.
