@@ -12,7 +12,8 @@ ft(
   dig = NULL,
   src = 0,
   omit = "",
-  tz = TRUE
+  tz = TRUE,
+  ...
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ ft(
 \item{omit}{\verb{<chr>} Text to omit from the source label.}
 
 \item{tz}{\verb{<lgl>} \code{FALSE} to exclude time stamp.}
+
+\item{...}{Other arguments to pass to \code{flextable::flextable()}.}
 }
 \value{
 A flextable object.

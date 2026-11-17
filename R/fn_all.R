@@ -68,6 +68,7 @@ fc = function(...,des="",tag="",td=TRUE){
 #' @param dig `<int>` Number of decimal places to display.
 #' @param src `<int>` Either 1 or 2 to add source label over 1 or 2 lines.
 #' @param tz `<lgl>` `FALSE` to exclude time stamp.
+#' @param ... Other arguments to pass to `flextable::flextable()`.
 #' @param omit `<chr>` Text to omit from the source label.
 #' @returns A flextable object.
 #' @export
@@ -77,12 +78,12 @@ fc = function(...,des="",tag="",td=TRUE){
 #' mtcars |> head() |> ft("Footnote")
 #' mtcars |> head() |> ft("Footnote",src=1)
 #' mtcars |> head() |> ft(sig=2,dig=1)
-ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit="",tz=TRUE){
+ft = function(d, fnote=NULL, ttl=NULL, sig=3, dig=NULL, src=0, omit="", tz=TRUE, ...){
   labsrc = NULL
   if(src %in% c(1,2)) labsrc = paste0(label_src(src,omit,tz))
   out = d |>
     dplyr::mutate(dplyr::across(dplyr::where(~ is.numeric(.x) && is.double(.x)), ~signif(.x,sig))) |>
-    flextable::flextable() |>
+    flextable::flextable(...) |>
     flextable::autofit() |>
     flextable::add_header_lines(ttl) |>
     flextable::add_footer_lines(fnote) |>
