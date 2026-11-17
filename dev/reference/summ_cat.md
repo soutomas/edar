@@ -5,7 +5,7 @@ Summarise all categorical variables. Numeric variables will be dropped.
 ## Usage
 
 ``` r
-summ_cat(d, ..., var, view = FALSE)
+summ_cat(d, var, ..., view = FALSE)
 ```
 
 ## Arguments
@@ -14,14 +14,14 @@ summ_cat(d, ..., var, view = FALSE)
 
   `<dfr>` A data frame.
 
-- ...:
-
-  `<var>` Optional. Columns to summarise.
-
 - var:
 
   `<var/int>` (name or index) Optional. A variable to extract as a data
   frame.
+
+- ...:
+
+  `<var>` Optional. Columns to summarise.
 
 - view:
 
@@ -75,7 +75,7 @@ d |> summ_cat()
 #>      8  1 0.03125
 #>  Total 32 1.00000
 #> 
-d |> summ_cat(cyl,vs)
+d |> summ_cat(,cyl,vs)
 #> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #> $cyl
@@ -91,7 +91,7 @@ d |> summ_cat(cyl,vs)
 #>      1 14  0.4375
 #>  Total 32  1.0000
 #> 
-d |> summ_cat(var=cyl)
+d |> summ_cat(cyl)
 #> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #>    cyl  n percent
@@ -99,7 +99,7 @@ d |> summ_cat(var=cyl)
 #>      6  7 0.21875
 #>      8 14 0.43750
 #>  Total 32 1.00000
-d |> summ_cat(var=1)
+d |> summ_cat(1)
 #> NB: Numeric variables are dropped.
 #> Dropped: mpg disp hp drat wt qsec
 #>    cyl  n percent
