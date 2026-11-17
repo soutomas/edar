@@ -13,7 +13,8 @@ ft(
   dig = NULL,
   src = 0,
   omit = "",
-  tz = TRUE
+  tz = TRUE,
+  ...
 )
 ```
 
@@ -50,6 +51,11 @@ ft(
 - tz:
 
   `<lgl>` `FALSE` to exclude time stamp.
+
+- ...:
+
+  Other arguments to pass to
+  [`flextable::flextable()`](https://davidgohel.github.io/flextable/reference/flextable.html).
 
 ## Value
 
