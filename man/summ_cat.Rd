@@ -4,14 +4,14 @@
 \alias{summ_cat}
 \title{Summarise categorical variables}
 \usage{
-summ_cat(d, ..., var, view = FALSE)
+summ_cat(d, var, ..., view = FALSE)
 }
 \arguments{
 \item{d}{\verb{<dfr>} A data frame.}
 
-\item{...}{\verb{<var>} Optional. Columns to summarise.}
-
 \item{var}{\verb{<var/int>} (name or index) Optional. A variable to extract as a data frame.}
+
+\item{...}{\verb{<var>} Optional. Columns to summarise.}
 
 \item{view}{\verb{<lgl>} TRUE to show output as flextable.}
 }
@@ -26,7 +26,7 @@ Numeric variables will be dropped.
 \examples{
 d = mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
 d |> summ_cat()
-d |> summ_cat(cyl,vs)
-d |> summ_cat(var=cyl)
-d |> summ_cat(var=1)
+d |> summ_cat(,cyl,vs)
+d |> summ_cat(cyl)
+d |> summ_cat(1)
 }

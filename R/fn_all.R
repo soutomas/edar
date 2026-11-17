@@ -422,8 +422,8 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=TRUE, xname="", view=FALS
 #' Numeric variables will be dropped.
 #'
 #' @param d `<dfr>` A data frame.
-#' @param ... `<var>` Optional. Columns to summarise.
 #' @param var `<var/int>` (name or index) Optional. A variable to extract as a data frame.
+#' @param ... `<var>` Optional. Columns to summarise.
 #' @param view `<lgl>` TRUE to show output as flextable.
 #' @returns A list containing summaries for all categorical variables or
 #'   a data frame showing the summary of a selected variable.
@@ -431,10 +431,10 @@ summ_by = function(d, cols, ..., pct=c(0.25,0.75), geo=TRUE, xname="", view=FALS
 #' @examples
 #' d = mtcars |> dplyr::mutate(dplyr::across(c(cyl,vs,am,gear,carb),factor))
 #' d |> summ_cat()
-#' d |> summ_cat(cyl,vs)
-#' d |> summ_cat(var=cyl)
-#' d |> summ_cat(var=1)
-summ_cat = function(d, ..., var, view=FALSE){
+#' d |> summ_cat(,cyl,vs)
+#' d |> summ_cat(cyl)
+#' d |> summ_cat(1)
+summ_cat = function(d, var, ..., view=FALSE){
   x = d |> dplyr::select(dplyr::where(is.numeric))
   if(!missing(...)) d = d |> dplyr::select(...)
   message("NB: Numeric variables are dropped.")
